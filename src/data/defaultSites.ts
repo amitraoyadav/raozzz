@@ -62,71 +62,9 @@ export const DEFAULT_PRICING_PLANS: PricingPlan[] = [
   }
 ];
 
-import { BATCH_001_WEBSITES } from './batchSystem';
+// Active website catalog completely reset to 0 demo websites
+// Clean canvas for building fresh websites from scratch
+export const DEFAULT_WEBSITES: BusinessWebsite[] = [];
 
-// Active catalog strictly contains the 20 reference website implementations of the active batch (Batch 001).
-// Legacy 80 demo websites are safely archived in ARCHIVED_LEGACY_CATALOG.
-export const DEFAULT_WEBSITES: BusinessWebsite[] = BATCH_001_WEBSITES;
+export const INITIAL_LEADS: LeadEnquiry[] = [];
 
-export const INITIAL_LEADS: LeadEnquiry[] = [
-  {
-    id: 'lead-1',
-    websiteSlug: 'shree-ganesh-super-mart',
-    businessName: 'Shree Ganesh Super Mart & Kirana',
-    customerName: 'Suman Gupta',
-    customerPhone: '+91 98110 54321',
-    customerEmail: 'suman.g@gmail.com',
-    message: 'Need 10kg Aashirvaad Atta, 5kg Fortune Oil, 2 packets Tata Salt. Please pack and deliver to Tower 4, Flat 602.',
-    serviceRequested: 'WhatsApp Grocery List Order',
-    bookingType: 'whatsapp_order',
-    status: 'new',
-    createdAt: '2026-03-25T11:45:00Z'
-  },
-  {
-    id: 'lead-2',
-    websiteSlug: 'quickfix-mobile-repair',
-    businessName: 'QuickFix Mobile & Tablet Care',
-    customerName: 'Rahul Verma',
-    customerPhone: '+91 98991 22334',
-    customerEmail: 'rahul.verma@outlook.com',
-    message: 'iPhone 13 screen cracked after drop. Touch working partially. Need pickup from DLF Phase 3.',
-    serviceRequested: 'Screen Replacement',
-    deviceBrandModel: 'Apple iPhone 13 (Midnight Blue)',
-    pickupAddress: 'DLF Phase 3, Cyber City, Gurugram',
-    ticketNumber: 'QF-8492',
-    bookingType: 'pickup_drop',
-    status: 'contacted',
-    createdAt: '2026-03-24T15:20:00Z'
-  },
-  {
-    id: 'lead-3',
-    websiteSlug: 'spin-sparkle-laundry',
-    businessName: 'Spin & Sparkle Premium Dry Cleaners',
-    customerName: 'Megha Singhal',
-    customerPhone: '+91 98104 99887',
-    customerEmail: 'megha.s@gmail.com',
-    message: 'Need pickup for 3 silk sarees, 2 men blazers, and 1 double quilt.',
-    serviceRequested: 'Dry Cleaning Doorstep Pickup',
-    preferredDate: '2026-03-27',
-    preferredTime: 'Morning (10 AM - 1 PM)',
-    pickupAddress: 'Sector 50, Mahagun Maestro, Noida',
-    bookingType: 'pickup_drop',
-    status: 'converted',
-    createdAt: '2026-03-23T09:15:00Z'
-  },
-  {
-    id: 'lead-4',
-    websiteSlug: 'punjab-zaika-dhaba',
-    businessName: 'Punjab Zaika Highway Dhaba & Family Dine',
-    customerName: 'Harpreet Singh',
-    customerPhone: '+91 98760 11223',
-    message: 'Reserving family table for 6 adults and 2 kids this Saturday evening around 8 PM.',
-    serviceRequested: 'Table Reservation',
-    preferredDate: '2026-03-28',
-    preferredTime: '8:00 PM',
-    partySize: 8,
-    bookingType: 'reservation_party',
-    status: 'new',
-    createdAt: '2026-03-25T16:30:00Z'
-  }
-];

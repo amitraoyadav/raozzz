@@ -195,6 +195,7 @@ interface AppContextType {
   websiteRequests: WebsiteRequest[];
   submitWebsiteRequest: (req: Omit<WebsiteRequest, 'id' | 'status' | 'createdAt'>) => Promise<WebsiteRequest>;
   updateWebsiteRequestStatus: (id: string, status: WebsiteRequest['status']) => Promise<void>;
+  resetDemoCatalog: () => Promise<void>;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -204,33 +205,31 @@ const LOCAL_STORAGE_KEY_LEADS = 'raositez_leads_v2';
 const LOCAL_STORAGE_KEY_PLANS = 'raositez_plans_v2';
 const LOCAL_STORAGE_KEY_DEMO_ADMIN = 'raositez_demo_admin';
 
+const RESET_CATALOG_STORAGE_KEY = 'raositez_clean_slate_catalog_v3';
+
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [websites, setWebsites] = useState<BusinessWebsite[]>(() => {
     try {
+      // Purge any legacy demo/placeholder website cache to ensure clean slate
+      if (!localStorage.getItem(RESET_CATALOG_STORAGE_KEY)) {
+        localStorage.removeItem(LOCAL_STORAGE_KEY_SITES);
+        localStorage.removeItem(LOCAL_STORAGE_KEY_LEADS);
+        localStorage.setItem(RESET_CATALOG_STORAGE_KEY, 'true');
+        return [];
+      }
       const stored = localStorage.getItem(LOCAL_STORAGE_KEY_SITES);
       if (stored) {
         const parsed = JSON.parse(stored);
         if (Array.isArray(parsed) && parsed.length > 0) {
-          const normalized = parsed
+          return parsed
             .filter((s: unknown): s is Partial<BusinessWebsite> => Boolean(s && typeof s === 'object'))
             .map(s => normalizeBusinessSite(s));
-          // Always ensure all default demo sites exist and update flagship defaults
-          const updatedSites = normalized.map(s => {
-            const freshDefault = DEFAULT_WEBSITES.find(d => d.slug === s.slug);
-            if (freshDefault && ['the-roastery-cafe', 'openhouse-bistro-lounge', 'swagglam-salon-at-home'].includes(s.slug)) {
-              return normalizeBusinessSite({ ...s, ...freshDefault });
-            }
-            return s;
-          });
-          const existingSlugs = new Set(updatedSites.map(s => s.slug));
-          const missingDemos = DEFAULT_WEBSITES.filter(d => !existingSlugs.has(d.slug)).map(d => normalizeBusinessSite(d));
-          return [...updatedSites, ...missingDemos];
         }
       }
     } catch (e) {
       console.warn('Could not parse stored websites', e);
     }
-    return DEFAULT_WEBSITES.map(d => normalizeBusinessSite(d));
+    return [];
   });
 
   const [pricingPlans, setPricingPlans] = useState<PricingPlan[]>(() => {
@@ -534,16 +533,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
               loaded.push(normalizeBusinessSite(d.data() as Partial<BusinessWebsite>));
             });
             if (loaded.length > 0) {
-              const loadedSlugs = new Set(loaded.map(s => s.slug));
-              const missingDemos = DEFAULT_WEBSITES.filter(d => !loadedSlugs.has(d.slug)).map(d => normalizeBusinessSite(d));
-              const updatedLoaded = loaded.map(s => {
-                const freshDefault = DEFAULT_WEBSITES.find(d => d.slug === s.slug);
-                if (freshDefault && ['the-roastery-cafe', 'openhouse-bistro-lounge', 'swagglam-salon-at-home'].includes(s.slug)) {
-                  return normalizeBusinessSite({ ...s, ...freshDefault });
-                }
-                return s;
-              });
-              setWebsites([...updatedLoaded, ...missingDemos]);
+              setWebsites(loaded);
             }
           }
         } catch (e) {
@@ -866,8 +856,22 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     localStorage.setItem('raositez_130_references_v1', JSON.stringify(CATEGORIES_130_DATA));
   };
 
-  const getCategoryReference = (catId: string) => {
-    return categoryReferences.find(c => c.id === catId || c.categoryName.toLowerCase() === catId.toLowerCase());
+  const resetDemoCatalog = async () => {
+    setWebsites([]);
+    localStorage.removeItem(LOCAL_STORAGE_KEY_SITES);
+    localStorage.removeItem(LOCAL_STORAGE_KEY_LEADS);
+    localStorage.setItem(RESET_CATALOG_STORAGE_KEY, 'true');
+    // If admin is connected to Firestore, remove demo website documents
+    if (auth.currentUser) {
+      try {
+        const snap = await getDocs(collection(db, 'websites'));
+        for (const docSnap of snap.docs) {
+          await deleteDoc(doc(db, 'websites', docSnap.id));
+        }
+      } catch (e) {
+        console.warn('Firestore reset catalog cleanup', e);
+      }
+    }
   };
 
   return (
@@ -921,7 +925,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         revenueMetrics,
         websiteRequests,
         submitWebsiteRequest,
-        updateWebsiteRequestStatus
+        updateWebsiteRequestStatus,
+        resetDemoCatalog
       }}
     >
       {children}
