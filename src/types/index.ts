@@ -127,6 +127,7 @@ export interface ItemOrService {
   registrationNo?: string;
   turnaroundTime?: string;
   capacityDetails?: string;
+  popular?: boolean;
 }
 
 export interface WebsiteOffer {
@@ -135,15 +136,18 @@ export interface WebsiteOffer {
   description: string;
   discountPercent?: number;
   couponCode?: string;
+  discount?: string;
+  code?: string;
+  validTill?: string;
   startDate?: string;
   endDate?: string;
-  isActive: boolean;
+  isActive?: boolean;
 }
 
 export interface GalleryImage {
   id: string;
   title?: string;
-  category: 'exterior' | 'interior' | 'products' | 'food' | 'staff' | 'facilities' | 'general';
+  category: 'exterior' | 'interior' | 'products' | 'food' | 'staff' | 'facilities' | 'general' | 'events';
   imageUrl: string;
 }
 

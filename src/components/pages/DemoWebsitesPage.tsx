@@ -234,7 +234,7 @@ export const DemoWebsitesPage: React.FC<DemoWebsitesPageProps> = ({ onOpenOrderM
               }`}
             >
               <Sparkles className="w-4 h-4 text-amber-400" />
-              <span>Ready-Built Demos ({websites.length})</span>
+              <span>Created Websites ({websites.length})</span>
             </button>
           </div>
 
@@ -246,7 +246,7 @@ export const DemoWebsitesPage: React.FC<DemoWebsitesPageProps> = ({ onOpenOrderM
               placeholder={
                 viewMode === 'references'
                   ? 'Search 130 categories or 396 reference URLs (e.g. Blinkit, Blue Tokai, Salon, Clinic)...'
-                  : 'Find ready-built demo websites...'
+                  : 'Find created business websites...'
               }
               value={searchQuery}
               onChange={e => setSearchQuery(e.target.value)}
@@ -431,11 +431,11 @@ export const DemoWebsitesPage: React.FC<DemoWebsitesPageProps> = ({ onOpenOrderM
             </div>
           </div>
         ) : (
-          /* TAB 2: Ready-Built Demonstrations */
+          /* TAB 2: Ready-Built Websites */
           <div>
             <div className="flex items-center justify-between mb-6">
               <p className="text-xs text-slate-500">
-                Showing <strong className="text-slate-900">{filteredWebsites.length}</strong> live demonstration websites
+                Showing <strong className="text-slate-900">{filteredWebsites.length}</strong> created business websites
               </p>
               {searchQuery && (
                 <button
@@ -447,6 +447,34 @@ export const DemoWebsitesPage: React.FC<DemoWebsitesPageProps> = ({ onOpenOrderM
               )}
             </div>
 
+            {filteredWebsites.length === 0 ? (
+              <div className="text-center py-20 px-6 bg-white rounded-3xl border border-[#E8E7F0] max-w-lg mx-auto shadow-xs space-y-4">
+                <div className="w-14 h-14 rounded-2xl bg-indigo-50 text-[#4338CA] mx-auto flex items-center justify-center">
+                  <Sparkles className="w-7 h-7" />
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 font-['Fraunces']">
+                  Website Catalog Clean & Ready
+                </h3>
+                <p className="text-xs text-slate-500 leading-relaxed font-['Inter']">
+                  All previous demo websites and sample templates have been removed. You have a fresh slate to create new business websites from scratch.
+                </p>
+                <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
+                  <button
+                    onClick={() => setActiveView('wizard')}
+                    className="w-full sm:w-auto px-5 py-2.5 bg-[#4338CA] hover:bg-[#3730A3] text-white text-xs font-bold rounded-xl shadow-xs transition-colors cursor-pointer flex items-center justify-center gap-2"
+                  >
+                    <Smartphone className="w-4 h-4" />
+                    <span>Create with Mobile Wizard</span>
+                  </button>
+                  <button
+                    onClick={() => setViewMode('references')}
+                    className="w-full sm:w-auto px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold rounded-xl transition-colors cursor-pointer"
+                  >
+                    <span>Browse 130 Category References</span>
+                  </button>
+                </div>
+              </div>
+            ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredWebsites.map(site => (
                 <div
@@ -535,6 +563,7 @@ export const DemoWebsitesPage: React.FC<DemoWebsitesPageProps> = ({ onOpenOrderM
                 </div>
               ))}
             </div>
+            )}
           </div>
         )}
 

@@ -56,7 +56,7 @@ export const Footer: React.FC<{ onOpenOrderModal: () => void }> = ({ onOpenOrder
                   onClick={() => setActiveView('demo-websites')}
                   className="hover:text-white transition-colors text-left cursor-pointer"
                 >
-                  Demo Websites (54+ Sites)
+                  130 Business Categories
                 </button>
               </li>
               <li>
@@ -147,28 +147,39 @@ export const Footer: React.FC<{ onOpenOrderModal: () => void }> = ({ onOpenOrder
             </ul>
           </div>
 
-          {/* Featured Demos Col */}
+          {/* Supported Categories Col */}
           <div>
             <h4 className="text-xs font-bold text-white tracking-wider uppercase mb-4 font-['Fraunces']">
-              Featured Demos
+              Business Categories
             </h4>
             <ul className="space-y-2 text-xs">
-              {websites.slice(0, 6).map(site => (
-                <li key={site.slug}>
-                  <button
-                    onClick={() => setActiveView('site', site.slug)}
-                    className="hover:text-white transition-colors text-left truncate max-w-full block cursor-pointer"
-                  >
-                    {site.businessName}
-                  </button>
-                </li>
-              ))}
+              {websites.length > 0 ? (
+                websites.slice(0, 6).map(site => (
+                  <li key={site.slug}>
+                    <button
+                      onClick={() => setActiveView('site', site.slug)}
+                      className="hover:text-white transition-colors text-left truncate max-w-full block cursor-pointer"
+                    >
+                      {site.businessName}
+                    </button>
+                  </li>
+                ))
+              ) : (
+                <>
+                  <li><button onClick={() => setActiveView('demo-websites')} className="hover:text-white transition-colors text-left">Cafes & Bakeries</button></li>
+                  <li><button onClick={() => setActiveView('demo-websites')} className="hover:text-white transition-colors text-left">Clinics & Doctors</button></li>
+                  <li><button onClick={() => setActiveView('demo-websites')} className="hover:text-white transition-colors text-left">Salons & Spas</button></li>
+                  <li><button onClick={() => setActiveView('demo-websites')} className="hover:text-white transition-colors text-left">Fitness Gyms & Studios</button></li>
+                  <li><button onClick={() => setActiveView('demo-websites')} className="hover:text-white transition-colors text-left">Retail & Kirana Stores</button></li>
+                  <li><button onClick={() => setActiveView('demo-websites')} className="hover:text-white transition-colors text-left">Coaching & Tuitions</button></li>
+                </>
+              )}
               <li>
                 <button
                   onClick={() => setActiveView('demo-websites')}
                   className="text-[#FF6B4A] hover:underline font-bold text-[11px] block mt-1 cursor-pointer"
                 >
-                  View All 54+ Categories →
+                  View All 130 Categories →
                 </button>
               </li>
             </ul>

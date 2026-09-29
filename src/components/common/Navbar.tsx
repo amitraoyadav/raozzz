@@ -107,10 +107,17 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenOrderModal }) => {
               Home
             </button>
             <button
+              onClick={() => setActiveView('site', '2d-cafe')}
+              className="px-2.5 py-1 rounded-lg bg-amber-50 text-amber-900 border border-amber-200/80 hover:bg-amber-100 transition-colors cursor-pointer font-bold flex items-center gap-1.5"
+            >
+              <span>☕</span>
+              <span>Brew & Bloom (15 Sites)</span>
+            </button>
+            <button
               onClick={() => setActiveView('demo-websites')}
               className="hover:text-[#4338CA] transition-colors cursor-pointer"
             >
-              Explore Designs
+              130 Categories
             </button>
             <button
               onClick={() => scrollToSection('process')}
@@ -224,12 +231,23 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenOrderModal }) => {
             </button>
 
             <button
+              onClick={() => navigateTo(() => setActiveView('site', '2d-cafe'))}
+              className="w-full text-left min-h-[48px] py-3 px-4 rounded-2xl bg-amber-50 hover:bg-amber-100 active:bg-amber-200 flex items-center justify-between cursor-pointer border border-amber-200 text-amber-900 font-bold"
+            >
+              <div className="flex items-center gap-2">
+                <span>☕</span>
+                <span>Brew & Bloom (15 Recreated Sites)</span>
+              </div>
+              <ArrowRight className="w-4 h-4 text-amber-700" />
+            </button>
+
+            <button
               onClick={() => navigateTo(() => setActiveView('demo-websites'))}
               className="w-full text-left min-h-[48px] py-3 px-4 rounded-2xl hover:bg-white active:bg-[#E8E7F0] flex items-center justify-between cursor-pointer border border-transparent hover:border-[#E8E7F0]"
             >
               <div className="flex items-center gap-2">
                 <Compass className="w-4 h-4 text-[#4338CA]" />
-                <span>Explore Designs</span>
+                <span>130 Business Categories</span>
               </div>
               <ArrowRight className="w-4 h-4 text-slate-400" />
             </button>

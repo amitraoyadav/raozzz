@@ -62,9 +62,40 @@ export const DEFAULT_PRICING_PLANS: PricingPlan[] = [
   }
 ];
 
-// Active website catalog completely reset to 0 demo websites
-// Clean canvas for building fresh websites from scratch
-export const DEFAULT_WEBSITES: BusinessWebsite[] = [];
+import { SWEET_COFFEE_WEBSITE } from './sweetCoffeeData';
+import { BREW_BLOOM_WEBSITE } from './brewBloomData';
+import { TIM_WENDELBOE_WEBSITE } from './timWendelboeData';
+import { ONYX_WEBSITE } from './onyxCoffeeData';
+import { CITY_BREW_WEBSITE } from './cityBrewData';
+import { GREGORYS_WEBSITE } from './gregorysCoffeeData';
+import { TWOD_WEBSITE } from './twoDCafeData';
+import { BLUE_TOKAI_WEBSITE } from './blueTokaiData';
+import { THIRD_WAVE_WEBSITE } from './thirdWaveCoffeeData';
+import { CCD_WEBSITE } from './cafeCoffeeDayData';
+import { RUBYS_WEBSITE } from './rubysCafeData';
+import { BREWED_WEBSITE } from './brewedCoffeeData';
+import { GREENBERRYS_WEBSITE } from './greenberrysData';
+import { MEAN_MUG_WEBSITE } from './meanMugCoffeeData';
+import { REVIVAL_WEBSITE } from './revivalCafeData';
+
+// User's active 15 Reference Websites faithfully recreated as BREW & BLOOM
+export const DEFAULT_WEBSITES: BusinessWebsite[] = [
+  TWOD_WEBSITE,
+  BLUE_TOKAI_WEBSITE,
+  THIRD_WAVE_WEBSITE,
+  CCD_WEBSITE,
+  SWEET_COFFEE_WEBSITE,
+  TIM_WENDELBOE_WEBSITE,
+  ONYX_WEBSITE,
+  CITY_BREW_WEBSITE,
+  GREGORYS_WEBSITE,
+  RUBYS_WEBSITE,
+  BREWED_WEBSITE,
+  GREENBERRYS_WEBSITE,
+  MEAN_MUG_WEBSITE,
+  REVIVAL_WEBSITE,
+  BREW_BLOOM_WEBSITE
+];
 
 export const INITIAL_LEADS: LeadEnquiry[] = [];
 

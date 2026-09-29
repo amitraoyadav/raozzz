@@ -33,6 +33,12 @@ import { CitySeoPage } from './components/home/CitySeoPage';
 import { MobileWizard } from './components/wizard/MobileWizard';
 import { MobileEditor } from './components/editor/MobileEditor';
 import { MobileDashboard } from './components/dashboard/MobileDashboard';
+import { SweetCoffeeApp } from './components/sweetcoffee/SweetCoffeeApp';
+import { BrewBloomApp } from './components/brewbloom/BrewBloomApp';
+import { TimWendelboeApp } from './components/timwendelboe/TimWendelboeApp';
+import { OnyxApp } from './components/onyx/OnyxApp';
+import { CityBrewApp } from './components/citybrew/CityBrewApp';
+import { GregorysApp } from './components/gregorys/GregorysApp';
 
 function AppContent() {
   const {
@@ -105,6 +111,30 @@ function AppContent() {
 
   if (activeView === 'site') {
     return <SiteRenderer />;
+  }
+
+  if (activeView === 'sweet-coffee') {
+    return <SweetCoffeeApp />;
+  }
+
+  if (activeView === 'brew-bloom') {
+    return <BrewBloomApp />;
+  }
+
+  if (activeView === 'tim-wendelboe') {
+    return <TimWendelboeApp />;
+  }
+
+  if (activeView === 'onyx') {
+    return <OnyxApp />;
+  }
+
+  if (activeView === 'city-brew') {
+    return <CityBrewApp />;
+  }
+
+  if (activeView === 'gregorys') {
+    return <GregorysApp />;
   }
 
   const renderPublicShell = (content: React.ReactNode, isHome = false) => (

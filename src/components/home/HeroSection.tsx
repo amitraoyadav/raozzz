@@ -59,120 +59,113 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenOrderModal, onEx
             </button>
 
             <button
-              onClick={onExploreDemos}
+              onClick={() => setActiveView('wizard')}
               className="w-full sm:w-auto min-h-[50px] inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-semibold text-[#14162B] bg-white hover:bg-slate-50 border border-[#E8E7F0] rounded-xl shadow-xs transition-all cursor-pointer font-['Inter']"
             >
-              <span>Explore Designs</span>
+              <Smartphone className="w-4 h-4 text-[#4338CA]" />
+              <span>Create With Mobile Wizard</span>
             </button>
           </div>
         </div>
 
-        {/* Responsive Website Preview below hero text */}
+        {/* Clean Website Builder Experience Preview */}
         <div className="mt-10 sm:mt-14 max-w-4xl mx-auto">
-          <div className="bg-[#14162B] rounded-3xl p-3 sm:p-5 shadow-2xl border border-slate-800 overflow-hidden">
+          <div className="bg-[#14162B] rounded-3xl p-4 sm:p-6 shadow-2xl border border-slate-800 overflow-hidden text-white font-['Inter']">
             {/* Top mock address bar */}
-            <div className="flex items-center justify-between pb-3 px-2 border-b border-slate-800 text-xs text-slate-400">
+            <div className="flex items-center justify-between pb-4 px-1 border-b border-slate-800 text-xs text-slate-400">
               <div className="flex items-center gap-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-rose-500" />
                 <span className="w-2.5 h-2.5 rounded-full bg-amber-500" />
                 <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
-                <span className="ml-2 font-mono text-[11px] text-slate-300 bg-slate-900 px-2.5 py-0.5 rounded-md border border-slate-800 truncate max-w-[180px] sm:max-w-none">
-                  raositez.in/the-roastery-cafe
+                <span className="ml-2 font-mono text-[11px] text-slate-300 bg-slate-900 px-3 py-1 rounded-md border border-slate-800 truncate max-w-[200px] sm:max-w-none">
+                  raositez.in/your-business-name
                 </span>
               </div>
               <div className="flex items-center gap-1.5 text-[11px] text-emerald-400 font-semibold">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                <span>Live Preview</span>
+                <span>Ready to Launch · 24h Turnaround</span>
               </div>
             </div>
 
-            {/* Showcase cards grid */}
-            <div className="pt-3.5 grid grid-cols-1 sm:grid-cols-3 gap-3">
-              {/* Card 1: Roastery Coffee House */}
-              <div
-                onClick={() => setActiveView('site', 'the-roastery-cafe')}
-                className="bg-[#2D1F17] hover:bg-[#3D2B1F] text-[#F5E6D3] rounded-2xl p-3.5 cursor-pointer transition-all border border-[#523B2B] flex flex-col justify-between"
-              >
+            {/* 3 Value Pillars for Small Businesses */}
+            <div className="pt-5 grid grid-cols-1 sm:grid-cols-3 gap-3.5">
+              {/* Feature 1 */}
+              <div className="bg-[#1E223D] rounded-2xl p-4 border border-slate-700/60 flex flex-col justify-between">
                 <div>
-                  <div className="relative h-28 rounded-xl overflow-hidden mb-2.5">
-                    <img
-                      src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=600&q=80"
-                      alt="Roastery Coffee House"
-                      className="w-full h-full object-cover"
-                    />
-                    <span className="absolute top-2 left-2 bg-[#1A110B]/90 text-[#C08552] text-[10px] font-bold px-2 py-0.5 rounded">
-                      Cafe & Bakery
-                    </span>
+                  <div className="w-9 h-9 rounded-xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center mb-3">
+                    <Smartphone className="w-5 h-5" />
                   </div>
-                  <h3 className="font-bold text-[#F5E6D3] text-sm font-['Fraunces']">
-                    Roastery Coffee House
-                  </h3>
-                  <p className="text-[11px] text-[#D8C7B4] mt-0.5 line-clamp-1 font-['Inter']">
-                    Estate pour-overs, cold brew, and table reservations.
+                  <h4 className="font-bold text-sm text-white font-['Fraunces']">
+                    Mobile-First Storefront
+                  </h4>
+                  <p className="text-xs text-slate-300 mt-1.5 leading-relaxed">
+                    Custom tailored for your shop or service. Looks stunning on all mobile phones with zero clutter.
                   </p>
                 </div>
-                <div className="mt-2.5 pt-2 border-t border-[#523B2B] flex items-center justify-between text-[11px] font-['Inter']">
-                  <span className="text-[#C08552] font-semibold">Tap to view</span>
-                  <span className="text-[#C08552]">→</span>
+                <div className="mt-4 pt-3 border-t border-slate-700/50 flex items-center gap-1.5 text-[11px] text-indigo-300 font-semibold">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                  <span>No Coding Required</span>
                 </div>
               </div>
 
-              {/* Card 2: OpenHouse Bistro Lounge */}
-              <div
-                onClick={() => setActiveView('site', 'openhouse-bistro-lounge')}
-                className="bg-[#3D1A14] hover:bg-[#4E221A] text-[#FFF7ED] rounded-2xl p-3.5 cursor-pointer transition-all border border-[#C2573F]/40 flex flex-col justify-between"
-              >
+              {/* Feature 2 */}
+              <div className="bg-[#1E223D] rounded-2xl p-4 border border-slate-700/60 flex flex-col justify-between">
                 <div>
-                  <div className="relative h-28 rounded-xl overflow-hidden mb-2.5">
-                    <img
-                      src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80"
-                      alt="OpenHouse Cafe Lounge"
-                      className="w-full h-full object-cover"
-                    />
-                    <span className="absolute top-2 left-2 bg-[#241F1C]/90 text-[#E0A526] text-[10px] font-bold px-2 py-0.5 rounded">
-                      Restaurant & Bar
-                    </span>
+                  <div className="w-9 h-9 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center mb-3">
+                    <Sparkles className="w-5 h-5" />
                   </div>
-                  <h3 className="font-bold text-[#FFF7ED] text-sm font-['Fraunces']">
-                    OpenHouse Bistro
-                  </h3>
-                  <p className="text-[11px] text-[#FED7AA] mt-0.5 line-clamp-1 font-['Inter']">
-                    Wood-fired pizzas, cocktails, and weekend acoustics.
+                  <h4 className="font-bold text-sm text-white font-['Fraunces']">
+                    Direct WhatsApp Orders
+                  </h4>
+                  <p className="text-xs text-slate-300 mt-1.5 leading-relaxed">
+                    Customers browse your menu or service list with real ₹ prices and order straight to your WhatsApp.
                   </p>
                 </div>
-                <div className="mt-2.5 pt-2 border-t border-[#C2573F]/40 flex items-center justify-between text-[11px] font-['Inter']">
-                  <span className="text-[#E0A526] font-semibold">Tap to view</span>
-                  <span className="text-[#E0A526]">→</span>
+                <div className="mt-4 pt-3 border-t border-slate-700/50 flex items-center gap-1.5 text-[11px] text-emerald-300 font-semibold">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                  <span>Instant Customer Chat</span>
                 </div>
               </div>
 
-              {/* Card 3: SwagGlam Salon at Home */}
-              <div
-                onClick={() => setActiveView('site', 'swagglam-salon-at-home')}
-                className="bg-[#2D162A] hover:bg-[#3D1D39] text-[#EFD9D3] rounded-2xl p-3.5 cursor-pointer transition-all border border-[#63335D] flex flex-col justify-between"
-              >
+              {/* Feature 3 */}
+              <div className="bg-[#1E223D] rounded-2xl p-4 border border-slate-700/60 flex flex-col justify-between">
                 <div>
-                  <div className="relative h-28 rounded-xl overflow-hidden mb-2.5">
-                    <img
-                      src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=600&q=80"
-                      alt="SwagGlam Salon at Home"
-                      className="w-full h-full object-cover"
-                    />
-                    <span className="absolute top-2 left-2 bg-[#291326] text-[#EFD9D3] text-[10px] font-bold px-2 py-0.5 rounded">
-                      Salon & Spa
-                    </span>
+                  <div className="w-9 h-9 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center mb-3">
+                    <ShieldCheck className="w-5 h-5" />
                   </div>
-                  <h3 className="font-bold text-[#EFD9D3] text-sm font-['Fraunces']">
-                    SwagGlam Doorstep Salon
-                  </h3>
-                  <p className="text-[11px] text-[#DFBFC7] mt-0.5 line-clamp-1 font-['Inter']">
-                    Sealed monodose beauty kits and bridal packages.
+                  <h4 className="font-bold text-sm text-white font-['Fraunces']">
+                    Free Hosting & QR Standee
+                  </h4>
+                  <p className="text-xs text-slate-300 mt-1.5 leading-relaxed">
+                    Includes 1 year of ultra-fast cloud hosting, Google Maps directions, and print-ready QR standee files.
                   </p>
                 </div>
-                <div className="mt-2.5 pt-2 border-t border-[#63335D] flex items-center justify-between text-[11px] font-['Inter']">
-                  <span className="text-[#EFD9D3] font-semibold">Tap to view</span>
-                  <span className="text-[#EFD9D3]">→</span>
+                <div className="mt-4 pt-3 border-t border-slate-700/50 flex items-center gap-1.5 text-[11px] text-amber-300 font-semibold">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                  <span>₹999 Flat One-Time</span>
                 </div>
+              </div>
+            </div>
+
+            {/* Bottom Action Strip */}
+            <div className="mt-4 pt-4 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3">
+              <span className="text-xs text-slate-400">
+                Ready to build? Launch the creator wizard or let our team build it for you.
+              </span>
+              <div className="flex items-center gap-2.5 w-full sm:w-auto">
+                <button
+                  onClick={() => setActiveView('wizard')}
+                  className="flex-1 sm:flex-none px-4 py-2 bg-[#4338CA] hover:bg-[#3730A3] text-white text-xs font-bold rounded-xl transition-all cursor-pointer flex items-center justify-center gap-1.5"
+                >
+                  <Smartphone className="w-3.5 h-3.5" />
+                  <span>Open Creator Wizard</span>
+                </button>
+                <button
+                  onClick={onOpenOrderModal}
+                  className="flex-1 sm:flex-none px-4 py-2 bg-[#FF6B4A] hover:bg-[#F25A38] text-white text-xs font-bold rounded-xl transition-all cursor-pointer flex items-center justify-center gap-1.5"
+                >
+                  <span>Build For Me (₹999)</span>
+                </button>
               </div>
             </div>
           </div>

@@ -149,7 +149,7 @@ export const CategoryPickerPopup: React.FC<CategoryPickerPopupProps> = ({ isOpen
             What's your business?
           </h2>
           <p className="mt-1 text-xs sm:text-sm text-[#474B64] leading-relaxed">
-            Select your industry to immediately view live, tailored demo websites with real Indian ₹ pricing and WhatsApp ordering.
+            Select your industry to create your tailored website with real Indian ₹ pricing and WhatsApp ordering.
           </p>
 
           {/* Popular Row: 6 Category Icons */}
@@ -227,7 +227,7 @@ export const CategoryPickerPopup: React.FC<CategoryPickerPopupProps> = ({ isOpen
             onClick={handleSkipToAll}
             className="inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-2 text-xs font-bold text-white bg-[#4338CA] hover:bg-[#3730A3] rounded-xl shadow-xs transition-colors cursor-pointer"
           >
-            <span>Explore All Demos</span>
+            <span>Explore 130 Categories</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </button>
         </div>

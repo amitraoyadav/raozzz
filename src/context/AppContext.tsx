@@ -19,8 +19,20 @@ export type AppView =
   | 'faq'
   | 'contact'
   | 'city'
-  | 'properties';
+  | 'properties'
+  | 'sweet-coffee'
+  | 'brew-bloom'
+  | 'tim-wendelboe'
+  | 'onyx'
+  | 'city-brew'
+  | 'gregorys';
 
+import { SWEET_COFFEE_WEBSITE } from '../data/sweetCoffeeData';
+import { BREW_BLOOM_WEBSITE } from '../data/brewBloomData';
+import { TIM_WENDELBOE_WEBSITE } from '../data/timWendelboeData';
+import { ONYX_WEBSITE } from '../data/onyxCoffeeData';
+import { CITY_BREW_WEBSITE } from '../data/cityBrewData';
+import { GREGORYS_WEBSITE } from '../data/gregorysCoffeeData';
 import { CATEGORY_INFO } from '../data/templateDefs';
 import {
   CATEGORIES_130_DATA,
@@ -205,31 +217,59 @@ const LOCAL_STORAGE_KEY_LEADS = 'raositez_leads_v2';
 const LOCAL_STORAGE_KEY_PLANS = 'raositez_plans_v2';
 const LOCAL_STORAGE_KEY_DEMO_ADMIN = 'raositez_demo_admin';
 
-const RESET_CATALOG_STORAGE_KEY = 'raositez_clean_slate_catalog_v3';
+const RESET_CATALOG_STORAGE_KEY = 'raositez_clean_slate_catalog_v5';
+
+export const isLegacyDemoSite = (site: any): boolean => {
+  if (!site) return true;
+  const slug = String(site.slug || site.id || '').toLowerCase();
+  if (slug.startsWith('demo-') || slug.startsWith('preview-') || slug.startsWith('legacy-') || slug.startsWith('sample-')) return true;
+  const legacyDemoSlugs = [
+    'the-roastery-cafe', 'openhouse-bistro-lounge', 'swagglam-salon-at-home',
+    'apex-fitness-gym', 'city-pet-clinic', 'fresh-harvest-organic-retail',
+    'sharma-sweet-corner', 'elite-bridal-studio', 'metro-dental-implant-clinic',
+    'zenith-crossfit-mma', 'heritage-jewellers-silver', 'bright-minds-neet-academy'
+  ];
+  return legacyDemoSlugs.includes(slug);
+};
 
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [websites, setWebsites] = useState<BusinessWebsite[]>(() => {
     try {
-      // Purge any legacy demo/placeholder website cache to ensure clean slate
-      if (!localStorage.getItem(RESET_CATALOG_STORAGE_KEY)) {
-        localStorage.removeItem(LOCAL_STORAGE_KEY_SITES);
-        localStorage.removeItem(LOCAL_STORAGE_KEY_LEADS);
-        localStorage.setItem(RESET_CATALOG_STORAGE_KEY, 'true');
-        return [];
-      }
       const stored = localStorage.getItem(LOCAL_STORAGE_KEY_SITES);
       if (stored) {
         const parsed = JSON.parse(stored);
         if (Array.isArray(parsed) && parsed.length > 0) {
-          return parsed
-            .filter((s: unknown): s is Partial<BusinessWebsite> => Boolean(s && typeof s === 'object'))
+          const cleaned = parsed
+            .filter((s: unknown): s is Partial<BusinessWebsite> => Boolean(s && typeof s === 'object' && !isLegacyDemoSite(s)))
             .map(s => normalizeBusinessSite(s));
+          const list = [...cleaned];
+          const ensureSites = [
+            TIM_WENDELBOE_WEBSITE,
+            ONYX_WEBSITE,
+            CITY_BREW_WEBSITE,
+            GREGORYS_WEBSITE,
+            SWEET_COFFEE_WEBSITE,
+            BREW_BLOOM_WEBSITE
+          ];
+          for (const s of ensureSites) {
+            if (!list.some(w => w.slug === s.slug)) {
+              list.push(s);
+            }
+          }
+          return list;
         }
       }
     } catch (e) {
       console.warn('Could not parse stored websites', e);
     }
-    return [];
+    return [
+      TIM_WENDELBOE_WEBSITE,
+      ONYX_WEBSITE,
+      CITY_BREW_WEBSITE,
+      GREGORYS_WEBSITE,
+      SWEET_COFFEE_WEBSITE,
+      BREW_BLOOM_WEBSITE
+    ];
   });
 
   const [pricingPlans, setPricingPlans] = useState<PricingPlan[]>(() => {
@@ -414,6 +454,46 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         setActiveViewInternal('contact');
       } else if (raw === 'properties' || raw === 'real-estate') {
         setActiveViewInternal('properties');
+      } else if (raw === 'sweet-coffee') {
+        setActiveViewInternal('sweet-coffee');
+        setActiveSiteSlug('sweet-coffee');
+      } else if (raw.startsWith('references/')) {
+        const refSlug = raw.replace(/^references\//, '').replace(/\/$/, '');
+        setActiveViewInternal('site');
+        const aliasMap: Record<string, string> = {
+          '2d-cafe': '2d-cafe',
+          'blue-tokai': 'blue-tokai',
+          'third-wave': 'third-wave',
+          'cafe-coffee-day': 'cafe-coffee-day',
+          'koffee-hut': 'sweet-coffee',
+          'tim-wendelboe': 'brew-bloom-tim-wendelboe',
+          'onyx-coffee-lab': 'brew-bloom-onyx',
+          'city-brew': 'brew-bloom-city-brew',
+          'gregorys-coffee': 'brew-bloom-gregorys',
+          'rubys-cafe': 'rubys-cafe',
+          'brewed-coffee-shop': 'brewed-coffee-shop',
+          'greenberrys': 'greenberrys',
+          'mean-mug': 'mean-mug',
+          'revival-cafe': 'revival-cafe',
+          'subko': 'brew-bloom'
+        };
+        const targetSlug = aliasMap[refSlug] || refSlug;
+        setActiveSiteSlug(targetSlug);
+      } else if (raw === 'brew-bloom' || raw.startsWith('brew-bloom/')) {
+        setActiveViewInternal('brew-bloom');
+        setActiveSiteSlug('brew-bloom');
+      } else if (raw === 'tim-wendelboe' || raw === 'brew-bloom-tim-wendelboe') {
+        setActiveViewInternal('tim-wendelboe');
+        setActiveSiteSlug('brew-bloom-tim-wendelboe');
+      } else if (raw === 'onyx' || raw === 'brew-bloom-onyx') {
+        setActiveViewInternal('onyx');
+        setActiveSiteSlug('brew-bloom-onyx');
+      } else if (raw === 'city-brew' || raw === 'brew-bloom-city-brew') {
+        setActiveViewInternal('city-brew');
+        setActiveSiteSlug('brew-bloom-city-brew');
+      } else if (raw === 'gregorys' || raw === 'brew-bloom-gregorys') {
+        setActiveViewInternal('gregorys');
+        setActiveSiteSlug('brew-bloom-gregorys');
       } else if (raw.startsWith('for-')) {
         const city = raw.replace('for-', '').toLowerCase();
         setActiveViewInternal('city');
@@ -530,11 +610,26 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
           if (isMounted && !websitesSnap.empty) {
             const loaded: BusinessWebsite[] = [];
             websitesSnap.forEach(d => {
-              loaded.push(normalizeBusinessSite(d.data() as Partial<BusinessWebsite>));
+              const data = d.data() as Partial<BusinessWebsite>;
+              if (!isLegacyDemoSite(data)) {
+                loaded.push(normalizeBusinessSite(data));
+              }
             });
-            if (loaded.length > 0) {
-              setWebsites(loaded);
+            const list = [...loaded];
+            const ensureSites = [
+              TIM_WENDELBOE_WEBSITE,
+              ONYX_WEBSITE,
+              CITY_BREW_WEBSITE,
+              GREGORYS_WEBSITE,
+              SWEET_COFFEE_WEBSITE,
+              BREW_BLOOM_WEBSITE
+            ];
+            for (const s of ensureSites) {
+              if (!list.some(w => w.slug === s.slug)) {
+                list.push(s);
+              }
             }
+            setWebsites(list);
           }
         } catch (e) {
           // Graceful fallback to default/local websites
@@ -588,8 +683,27 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         const websitesSnap = await getDocs(websiteQuery);
         if (!websitesSnap.empty) {
           const loaded: BusinessWebsite[] = [];
-          websitesSnap.forEach(d => loaded.push(normalizeBusinessSite(d.data() as Partial<BusinessWebsite>)));
-          setWebsites(loaded);
+          websitesSnap.forEach(d => {
+            const data = d.data() as Partial<BusinessWebsite>;
+            if (!isLegacyDemoSite(data)) {
+              loaded.push(normalizeBusinessSite(data));
+            }
+          });
+          const list = [...loaded];
+          const ensureSites = [
+            TIM_WENDELBOE_WEBSITE,
+            ONYX_WEBSITE,
+            CITY_BREW_WEBSITE,
+            GREGORYS_WEBSITE,
+            SWEET_COFFEE_WEBSITE,
+            BREW_BLOOM_WEBSITE
+          ];
+          for (const s of ensureSites) {
+            if (!list.some(w => w.slug === s.slug)) {
+              list.push(s);
+            }
+          }
+          setWebsites(list);
         }
         const plansSnap = await getDocs(collection(db, 'pricing_plans'));
         if (!plansSnap.empty) {

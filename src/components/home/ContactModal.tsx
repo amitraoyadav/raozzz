@@ -132,50 +132,74 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                 </p>
               </div>
 
-              {/* Thank-you preview: 2-3 existing DEMO sites from the same category */}
+              {/* Next Steps or Inspiration Websites */}
               <div className="pt-4 border-t border-slate-100 text-left">
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-xs font-bold text-slate-800">
-                    Here's the kind of website we'll build for you:
-                  </span>
-                  <span className="text-[11px] text-slate-500">Live Demonstrations</span>
-                </div>
+                {fallbackDemos.length > 0 ? (
+                  <>
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="text-xs font-bold text-slate-800">
+                        Here's the kind of website we'll build for you:
+                      </span>
+                      <span className="text-[11px] text-slate-500">Live Sites</span>
+                    </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                  {fallbackDemos.map(demo => (
-                    <div
-                      key={demo.slug}
-                      onClick={() => {
-                        onClose();
-                        setActiveView('site', demo.slug);
-                      }}
-                      className="group cursor-pointer rounded-2xl border border-slate-200 overflow-hidden bg-white hover:border-indigo-400 hover:shadow-md transition-all flex flex-col justify-between"
-                    >
-                      <div className="aspect-16/10 bg-slate-900 overflow-hidden relative">
-                        <img
-                          src={demo.coverUrl || demo.logoUrl}
-                          alt={demo.businessName}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                        />
-                        <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-black/70 text-white text-[9px] font-bold">
-                          {demo.category}
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                      {fallbackDemos.map(demo => (
+                        <div
+                          key={demo.slug}
+                          onClick={() => {
+                            onClose();
+                            setActiveView('site', demo.slug);
+                          }}
+                          className="group cursor-pointer rounded-2xl border border-slate-200 overflow-hidden bg-white hover:border-indigo-400 hover:shadow-md transition-all flex flex-col justify-between"
+                        >
+                          <div className="aspect-16/10 bg-slate-900 overflow-hidden relative">
+                            <img
+                              src={demo.coverUrl || demo.logoUrl}
+                              alt={demo.businessName}
+                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            />
+                            <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-black/70 text-white text-[9px] font-bold">
+                              {demo.category}
+                            </div>
+                          </div>
+                          <div className="p-2.5">
+                            <h5 className="font-bold text-xs text-slate-900 truncate group-hover:text-indigo-600">
+                              {demo.businessName}
+                            </h5>
+                            <p className="text-[10px] text-slate-500 truncate mt-0.5">
+                              {demo.city || 'India'}
+                            </p>
+                            <div className="mt-2 text-[10px] font-bold text-indigo-600 flex items-center gap-0.5">
+                              <span>View Site</span>
+                              <ArrowRight className="w-2.5 h-2.5" />
+                            </div>
+                          </div>
                         </div>
+                      ))}
+                    </div>
+                  </>
+                ) : (
+                  <div className="p-4 bg-slate-50 rounded-2xl border border-slate-100 space-y-3">
+                    <span className="text-xs font-bold text-slate-900 uppercase tracking-wider block">
+                      What Happens Next
+                    </span>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs">
+                      <div className="p-2.5 bg-white rounded-xl border border-slate-200">
+                        <span className="font-bold text-indigo-600 block mb-0.5">1. Quick Call</span>
+                        <p className="text-[11px] text-slate-600">We call to understand your business, products, and prices.</p>
                       </div>
-                      <div className="p-2.5">
-                        <h5 className="font-bold text-xs text-slate-900 truncate group-hover:text-indigo-600">
-                          {demo.businessName}
-                        </h5>
-                        <p className="text-[10px] text-slate-500 truncate mt-0.5">
-                          {demo.city || 'India'}
-                        </p>
-                        <div className="mt-2 text-[10px] font-bold text-indigo-600 flex items-center gap-0.5">
-                          <span>View Demo</span>
-                          <ArrowRight className="w-2.5 h-2.5" />
-                        </div>
+                      <div className="p-2.5 bg-white rounded-xl border border-slate-200">
+                        <span className="font-bold text-emerald-600 block mb-0.5">2. WhatsApp Setup</span>
+                        <p className="text-[11px] text-slate-600">We configure your direct WhatsApp ordering and Google Maps.</p>
+                      </div>
+                      <div className="p-2.5 bg-white rounded-xl border border-slate-200">
+                        <span className="font-bold text-amber-600 block mb-0.5">3. Live in 24h</span>
+                        <p className="text-[11px] text-slate-600">Your site is published on fast cloud hosting with QR standee.</p>
                       </div>
                     </div>
-                  ))}
-                </div>
+                  </div>
+                )}
               </div>
 
               <div className="pt-2 flex flex-col sm:flex-row gap-2.5">

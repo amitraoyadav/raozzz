@@ -32,6 +32,21 @@ import { getCategoryReferences, ReferenceSite } from '../../data/categories130Da
 import { getReferenceRegistryItemById } from '../../data/referenceDesignRegistry';
 import { DynamicSectionEngine } from './DynamicSectionEngine';
 import { DynamicSectionDefinition } from '../../types/referenceDesign';
+import { SweetCoffeeApp } from '../sweetcoffee/SweetCoffeeApp';
+import { BrewBloomApp } from '../brewbloom/BrewBloomApp';
+import { TimWendelboeApp } from '../timwendelboe/TimWendelboeApp';
+import { OnyxApp } from '../onyx/OnyxApp';
+import { CityBrewApp } from '../citybrew/CityBrewApp';
+import { GregorysApp } from '../gregorys/GregorysApp';
+import { TwoDCafeApp } from '../twodcafe/TwoDCafeApp';
+import { BlueTokaiApp } from '../bluetokai/BlueTokaiApp';
+import { ThirdWaveApp } from '../thirdwave/ThirdWaveApp';
+import { CafeCoffeeDayApp } from '../ccd/CafeCoffeeDayApp';
+import { RubysApp } from '../rubys/RubysApp';
+import { BrewedApp } from '../brewed/BrewedApp';
+import { GreenberrysApp } from '../greenberrys/GreenberrysApp';
+import { MeanMugApp } from '../meanmug/MeanMugApp';
+import { RevivalCafeApp } from '../revival/RevivalCafeApp';
 
 const getHeaderCity = (city?: string, address?: string): string => {
   if (typeof city === 'string' && city.trim()) return city.trim();
@@ -170,6 +185,159 @@ export const SiteRenderer: React.FC<SiteRendererProps> = ({ site: propSite, isPr
         </button>
       </div>
     );
+  }
+
+  // Website 1: 2D Cafe
+  if (
+    site.slug === '2d-cafe' ||
+    site.slug === 'references/2d-cafe' ||
+    site.templateId === '2d-cafe'
+  ) {
+    return <TwoDCafeApp />;
+  }
+
+  // Website 2: Blue Tokai
+  if (
+    site.slug === 'blue-tokai' ||
+    site.slug === 'references/blue-tokai' ||
+    site.templateId === 'blue-tokai'
+  ) {
+    return <BlueTokaiApp />;
+  }
+
+  // Website 3: Third Wave Coffee
+  if (
+    site.slug === 'third-wave' ||
+    site.slug === 'references/third-wave' ||
+    site.templateId === 'third-wave'
+  ) {
+    return <ThirdWaveApp />;
+  }
+
+  // Website 4: Cafe Coffee Day
+  if (
+    site.slug === 'cafe-coffee-day' ||
+    site.slug === 'references/cafe-coffee-day' ||
+    site.templateId === 'cafe-coffee-day'
+  ) {
+    return <CafeCoffeeDayApp />;
+  }
+
+  // Website 5: Koffee Hut (Sweet Coffee)
+  if (
+    site.slug === 'sweet-coffee' ||
+    site.slug === 'koffee-hut' ||
+    site.slug === 'references/koffee-hut' ||
+    site.templateId === 'sweet-coffee' ||
+    site.templateId === 'koffee-hut'
+  ) {
+    return <SweetCoffeeApp />;
+  }
+
+  // Website 6: Tim Wendelboe
+  if (
+    site.slug === 'brew-bloom-tim-wendelboe' ||
+    site.slug === 'tim-wendelboe' ||
+    site.slug === 'references/tim-wendelboe' ||
+    site.templateId === 'tim-wendelboe'
+  ) {
+    return <TimWendelboeApp />;
+  }
+
+  // Website 7: Onyx Coffee Lab EU
+  if (
+    site.slug === 'brew-bloom-onyx' ||
+    site.slug === 'onyx' ||
+    site.slug === 'onyx-coffee-lab' ||
+    site.slug === 'references/onyx-coffee-lab' ||
+    site.templateId === 'onyx-coffee'
+  ) {
+    return <OnyxApp />;
+  }
+
+  // Website 8: City Brew
+  if (
+    site.slug === 'brew-bloom-city-brew' ||
+    site.slug === 'city-brew' ||
+    site.slug === 'references/city-brew' ||
+    site.templateId === 'city-brew'
+  ) {
+    return <CityBrewApp />;
+  }
+
+  // Website 9: Gregorys Coffee
+  if (
+    site.slug === 'brew-bloom-gregorys' ||
+    site.slug === 'gregorys' ||
+    site.slug === 'gregorys-coffee' ||
+    site.slug === 'references/gregorys-coffee' ||
+    site.templateId === 'gregorys-coffee'
+  ) {
+    return <GregorysApp />;
+  }
+
+  // Website 10: Ruby's Cafe
+  if (
+    site.slug === 'rubys-cafe' ||
+    site.slug === 'brew-bloom-rubys' ||
+    site.slug === 'rubys' ||
+    site.slug === 'references/rubys-cafe' ||
+    site.templateId === 'rubys-cafe'
+  ) {
+    return <RubysApp />;
+  }
+
+  // Website 11: Brewed Coffee Shop
+  if (
+    site.slug === 'brewed-coffee-shop' ||
+    site.slug === 'brew-bloom-brewed' ||
+    site.slug === 'brewed' ||
+    site.slug === 'references/brewed-coffee-shop' ||
+    site.templateId === 'brewed-coffee-shop'
+  ) {
+    return <BrewedApp />;
+  }
+
+  // Website 12: Greenberry's
+  if (
+    site.slug === 'greenberrys' ||
+    site.slug === 'brew-bloom-greenberrys' ||
+    site.slug === 'references/greenberrys' ||
+    site.templateId === 'greenberrys'
+  ) {
+    return <GreenberrysApp />;
+  }
+
+  // Website 13: Mean Mug Coffeehouse
+  if (
+    site.slug === 'mean-mug' ||
+    site.slug === 'brew-bloom-mean-mug' ||
+    site.slug === 'references/mean-mug' ||
+    site.templateId === 'mean-mug'
+  ) {
+    return <MeanMugApp />;
+  }
+
+  // Website 14: Revival Cafe & Kitchen
+  if (
+    site.slug === 'revival-cafe' ||
+    site.slug === 'brew-bloom-revival' ||
+    site.slug === 'revival' ||
+    site.slug === 'references/revival-cafe' ||
+    site.templateId === 'revival-cafe'
+  ) {
+    return <RevivalCafeApp />;
+  }
+
+  // Website 15: Subko Coffee (recreated as BREW & BLOOM)
+  if (
+    site.slug === 'brew-bloom' ||
+    site.slug === 'subko' ||
+    site.slug === 'references/subko' ||
+    site.templateId === 'brew-bloom' ||
+    site.templateId === 'subko'
+  ) {
+    return <BrewBloomApp />;
   }
 
   // Safe Categories extracted from items

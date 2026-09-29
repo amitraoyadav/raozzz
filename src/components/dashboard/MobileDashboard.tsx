@@ -256,12 +256,12 @@ export const MobileDashboard: React.FC<MobileDashboardProps> = ({
                   </button>
 
                   <button
-                    onClick={() => setPreviewSite(site)}
+                    onClick={() => onPreviewSite(site)}
                     className="min-h-[40px] px-3 py-1.5 bg-white border border-[#E8E7F0] hover:bg-slate-50 text-slate-700 text-xs font-semibold rounded-xl transition-colors cursor-pointer flex items-center justify-center gap-1"
-                    title="Preview Site"
+                    title="Open Live Website"
                   >
                     <ExternalLink className="w-3.5 h-3.5" />
-                    <span>Preview</span>
+                    <span>View Site</span>
                   </button>
 
                   <button

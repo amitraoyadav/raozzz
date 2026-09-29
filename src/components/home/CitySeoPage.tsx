@@ -251,67 +251,71 @@ export const CitySeoPage: React.FC<{
         </div>
       </section>
 
-      {/* Live Demo Websites in This City */}
+      {/* Websites in This City (if any exist) */}
       <section className="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-12">
-          <span className="text-xs font-bold text-[#4338CA] uppercase tracking-wider block mb-1">
-            Live Demo Websites
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-black text-[#14162B] font-['Fraunces']">
-            Featured Demos Ready for {city.name} Businesses
-          </h2>
-          <p className="mt-2 text-xs sm:text-sm text-[#474B64]">
-            Every site is mobile-first, features ₹ pricing, Google Maps routing, and connects straight to your WhatsApp.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {displayWebsites.slice(0, 6).map(site => (
-            <div
-              key={site.slug}
-              onClick={() => setActiveView('site', site.slug)}
-              className="bg-white rounded-2xl overflow-hidden border border-[#E8E7F0] shadow-sm hover:shadow-md hover:border-[#4338CA]/30 transition-all cursor-pointer group flex flex-col justify-between"
-            >
-              <div className="aspect-16/10 relative overflow-hidden bg-slate-100">
-                <img
-                  src={site.coverUrl || site.logoUrl}
-                  alt={site.businessName}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <span className="absolute top-3 left-3 px-2.5 py-0.5 rounded-md bg-[#14162B]/80 backdrop-blur-xs text-white text-[10px] font-bold">
-                  {site.category.replace('_', ' ')}
-                </span>
-                <span className="absolute top-3 right-3 px-2 py-0.5 rounded-md bg-emerald-500 text-white text-[10px] font-bold">
-                  Verified
-                </span>
-              </div>
-
-              <div className="p-5 flex-1 flex flex-col justify-between">
-                <div>
-                  <h3 className="text-sm font-bold text-[#14162B] line-clamp-1 group-hover:text-[#4338CA] transition-colors">
-                    {site.businessName}
-                  </h3>
-                  <p className="text-xs text-[#474B64] mt-1 line-clamp-2">
-                    {site.tagline}
-                  </p>
-                  <p className="text-[11px] text-[#8E92A8] mt-2 flex items-center gap-1">
-                    <MapPin className="w-3 h-3 text-[#4338CA] shrink-0" />
-                    <span className="truncate">{site.address}</span>
-                  </p>
-                </div>
-
-                <div className="pt-4 border-t border-[#E8E7F0] mt-4 flex items-center justify-between">
-                  <span className="text-xs font-bold text-[#14162B] font-mono-price">
-                    ₹999 Turnkey
-                  </span>
-                  <span className="text-xs font-bold text-[#4338CA] flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                    View Live Site <ChevronRight className="w-3.5 h-3.5" />
-                  </span>
-                </div>
-              </div>
+        {displayWebsites.length > 0 && (
+          <>
+            <div className="text-center max-w-2xl mx-auto mb-12">
+              <span className="text-xs font-bold text-[#4338CA] uppercase tracking-wider block mb-1">
+                Active Websites
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-black text-[#14162B] font-['Fraunces']">
+                Featured Websites in {city.name}
+              </h2>
+              <p className="mt-2 text-xs sm:text-sm text-[#474B64]">
+                Every site is mobile-first, features ₹ pricing, Google Maps routing, and connects straight to your WhatsApp.
+              </p>
             </div>
-          ))}
-        </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+              {displayWebsites.slice(0, 6).map(site => (
+                <div
+                  key={site.slug}
+                  onClick={() => setActiveView('site', site.slug)}
+                  className="bg-white rounded-2xl overflow-hidden border border-[#E8E7F0] shadow-sm hover:shadow-md hover:border-[#4338CA]/30 transition-all cursor-pointer group flex flex-col justify-between"
+                >
+                  <div className="aspect-16/10 relative overflow-hidden bg-slate-100">
+                    <img
+                      src={site.coverUrl || site.logoUrl}
+                      alt={site.businessName}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <span className="absolute top-3 left-3 px-2.5 py-0.5 rounded-md bg-[#14162B]/80 backdrop-blur-xs text-white text-[10px] font-bold">
+                      {site.category.replace('_', ' ')}
+                    </span>
+                    <span className="absolute top-3 right-3 px-2 py-0.5 rounded-md bg-emerald-500 text-white text-[10px] font-bold">
+                      Verified
+                    </span>
+                  </div>
+
+                  <div className="p-5 flex-1 flex flex-col justify-between">
+                    <div>
+                      <h3 className="text-sm font-bold text-[#14162B] line-clamp-1 group-hover:text-[#4338CA] transition-colors">
+                        {site.businessName}
+                      </h3>
+                      <p className="text-xs text-[#474B64] mt-1 line-clamp-2">
+                        {site.tagline}
+                      </p>
+                      <p className="text-[11px] text-[#8E92A8] mt-2 flex items-center gap-1">
+                        <MapPin className="w-3 h-3 text-[#4338CA] shrink-0" />
+                        <span className="truncate">{site.address}</span>
+                      </p>
+                    </div>
+
+                    <div className="pt-4 border-t border-[#E8E7F0] mt-4 flex items-center justify-between">
+                      <span className="text-xs font-bold text-[#14162B] font-mono-price">
+                        ₹999 Turnkey
+                      </span>
+                      <span className="text-xs font-bold text-[#4338CA] flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                        View Live Site <ChevronRight className="w-3.5 h-3.5" />
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </>
+        )}
 
         {/* Localized Bottom CTA */}
         <div className="mt-16 bg-[#14162B] text-white rounded-3xl p-8 sm:p-12 text-center max-w-4xl mx-auto shadow-xl relative overflow-hidden">

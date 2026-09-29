@@ -15,7 +15,7 @@ export const TrustBadgesRow: React.FC = () => {
     <div className="py-6 border-y border-[#E8E7F0] bg-white font-['Inter']">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
-          {/* Badge 1: Real Published Websites Count */}
+          {/* Badge 1: Categories or Real Published Websites Count */}
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-indigo-50 text-[#4338CA] flex items-center justify-center shrink-0">
               <Globe className="w-5 h-5" />
@@ -23,14 +23,14 @@ export const TrustBadgesRow: React.FC = () => {
             <div>
               <div className="flex items-baseline gap-1">
                 <span className="text-xl sm:text-2xl font-black text-[#14162B] font-mono-price">
-                  {liveWebsitesCount}+
+                  {publishedCount > 0 ? `${publishedCount}+` : '130+'}
                 </span>
                 <span className="text-[10px] uppercase font-bold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded">
-                  Live
+                  {publishedCount > 0 ? 'Live' : 'Ready'}
                 </span>
               </div>
               <p className="text-[11px] text-[#636882] font-medium">
-                Active Indian Business Websites
+                {publishedCount > 0 ? 'Active Indian Business Websites' : 'Supported Business Categories'}
               </p>
             </div>
           </div>
