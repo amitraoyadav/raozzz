@@ -39,7 +39,7 @@ export const DemoShowcase: React.FC<DemoShowcaseProps> = ({ onOpenOrderModal }) 
       { id: 'all', label: `All Designs (${websites.length})` },
       ...cats.map(c => ({
         id: c,
-        label: CATEGORY_INFO[c]?.name || c.replace(/_/g, ' ')
+        label: CATEGORY_INFO[c]?.label || c.replace(/_/g, ' ')
       }))
     ];
   }, [websites]);
@@ -323,6 +323,8 @@ export const DemoShowcase: React.FC<DemoShowcaseProps> = ({ onOpenOrderModal }) 
             );
           })}
         </div>
+          </>
+        )}
       </div>
 
       {/* Mobile Filter Bottom Sheet Drawer */}

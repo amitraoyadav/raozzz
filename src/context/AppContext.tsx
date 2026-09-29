@@ -856,6 +856,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     localStorage.setItem('raositez_130_references_v1', JSON.stringify(CATEGORIES_130_DATA));
   };
 
+  const getCategoryReference = (catId: string) => {
+    return categoryReferences.find(c => c.id === catId);
+  };
+
   const resetDemoCatalog = async () => {
     setWebsites([]);
     localStorage.removeItem(LOCAL_STORAGE_KEY_SITES);
