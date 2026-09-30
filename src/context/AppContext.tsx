@@ -25,7 +25,11 @@ export type AppView =
   | 'tim-wendelboe'
   | 'onyx'
   | 'city-brew'
-  | 'gregorys';
+  | 'gregorys'
+  | 'veena-world'
+  | 'enrich'
+  | 'bodycraft'
+  | 'home-salon';
 
 import { TWOD_WEBSITE } from '../data/twoDCafeData';
 import { BLUE_TOKAI_WEBSITE } from '../data/blueTokaiData';
@@ -63,6 +67,8 @@ import { ITDC_TRAVELS_WEBSITE } from '../data/itdcTravelsData';
 import { TRAVEL_ART_WEBSITE } from '../data/travelArtData';
 import { BRIO_TRAVELS_WEBSITE } from '../data/brioTravelsWebsite';
 import { TOUR_TRAVEL_2_WEBSITE } from '../data/tourTravel2Website';
+import { BODYCRAFT_WEBSITE } from '../data/bodycraftData';
+import { HOME_SALON_WEBSITE } from '../data/homeSalonData';
 
 export const ALL_CAFE_WEBSITES: BusinessWebsite[] = [
   TWOD_WEBSITE,
@@ -109,14 +115,23 @@ export const ALL_TRAVEL_WEBSITES: BusinessWebsite[] = [
   TRAVEL_ART_WEBSITE
 ];
 
-export const ALL_34_COLLECTION_WEBSITES: BusinessWebsite[] = [
-  ...ALL_CAFE_WEBSITES,
-  ...ALL_RESTAURANT_WEBSITES,
-  ...ALL_TRAVEL_WEBSITES
+export const ALL_SALON_WEBSITES: BusinessWebsite[] = [
+  BODYCRAFT_WEBSITE,
+  HOME_SALON_WEBSITE
 ];
 
-export const ALL_30_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_34_COLLECTION_WEBSITES;
-export const ALL_29_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_34_COLLECTION_WEBSITES;
+export const ALL_38_COLLECTION_WEBSITES: BusinessWebsite[] = [
+  ...ALL_CAFE_WEBSITES,
+  ...ALL_RESTAURANT_WEBSITES,
+  ...ALL_TRAVEL_WEBSITES,
+  ...ALL_SALON_WEBSITES
+];
+
+export const ALL_37_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_38_COLLECTION_WEBSITES;
+export const ALL_36_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_38_COLLECTION_WEBSITES;
+export const ALL_34_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_38_COLLECTION_WEBSITES;
+export const ALL_30_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_38_COLLECTION_WEBSITES;
+export const ALL_29_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_38_COLLECTION_WEBSITES;
 
 export const ALL_15_REFERENCE_WEBSITES: BusinessWebsite[] = ALL_CAFE_WEBSITES.slice(0, 15);
 import { CATEGORY_INFO } from '../data/templateDefs';
@@ -253,8 +268,8 @@ interface AppContextType {
   discountLeads: DiscountLead[];
   demoCategoryFilter: string | null;
   setDemoCategoryFilter: (cat: string | null) => void;
-  referenceCategoryFilter: 'all' | 'cafes' | 'restaurants' | 'travel';
-  setReferenceCategoryFilter: (filter: 'all' | 'cafes' | 'restaurants' | 'travel') => void;
+  referenceCategoryFilter: 'all' | 'cafes' | 'restaurants' | 'travel' | 'salon';
+  setReferenceCategoryFilter: (filter: 'all' | 'cafes' | 'restaurants' | 'travel' | 'salon') => void;
   categoryPickerOpen: boolean;
   setCategoryPickerOpen: (open: boolean) => void;
   openCategoryPicker: () => void;
@@ -330,20 +345,15 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
           const cleaned = parsed
             .filter((s: unknown): s is Partial<BusinessWebsite> => Boolean(s && typeof s === 'object' && !isLegacyDemoSite(s)))
             .map(s => normalizeBusinessSite(s));
-          const list = [...cleaned];
-          const ensureSites = ALL_34_COLLECTION_WEBSITES;
-          for (const s of ensureSites) {
-            if (!list.some(w => w.slug === s.slug)) {
-              list.push(s);
-            }
-          }
-          return list;
+          const canonical = [...ALL_37_COLLECTION_WEBSITES];
+          const custom = cleaned.filter(s => !canonical.some(c => c.slug === s.slug || c.id === s.id));
+          return [...canonical, ...custom];
         }
       }
     } catch (e) {
       console.warn('Could not parse stored websites', e);
     }
-    return ALL_34_COLLECTION_WEBSITES;
+    return ALL_37_COLLECTION_WEBSITES;
   });
 
   const [pricingPlans, setPricingPlans] = useState<PricingPlan[]>(() => {
@@ -444,7 +454,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [activeSiteSlug, setActiveSiteSlug] = useState<string | null>(null);
   const [activeCitySlug, setActiveCitySlug] = useState<string>('delhi');
   const [demoCategoryFilter, setDemoCategoryFilter] = useState<string | null>(null);
-  const [referenceCategoryFilter, setReferenceCategoryFilter] = useState<'all' | 'cafes' | 'restaurants' | 'travel'>('all');
+  const [referenceCategoryFilter, setReferenceCategoryFilter] = useState<'all' | 'cafes' | 'restaurants' | 'travel' | 'salon'>('all');
   const [categoryPickerOpen, setCategoryPickerOpen] = useState<boolean>(false);
   const openCategoryPicker = () => setCategoryPickerOpen(true);
   const [builderEditSiteId, setBuilderEditSiteId] = useState<string | null>(null);
@@ -636,6 +646,13 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       } else if (raw === 'gregorys' || raw === 'brew-bloom-gregorys') {
         setActiveViewInternal('gregorys');
         setActiveSiteSlug('brew-bloom-gregorys');
+      } else if (raw === 'veena-world' || raw === 'veenaworld') {
+        setActiveViewInternal('veena-world');
+      } else if (raw === 'enrich' || raw === 'enrich-beauty') {
+        setActiveViewInternal('enrich');
+      } else if (raw === 'bodycraft' || raw === 'bodycraft-salon' || raw === 'bodycraft-clinic' || raw === 'demo/bodycraft' || raw === 'demos/bodycraft' || raw === 'site/bodycraft' || raw === 'references/bodycraft') {
+        setActiveViewInternal('bodycraft');
+        setActiveSiteSlug('bodycraft');
       } else if (raw.startsWith('for-')) {
         const city = raw.replace('for-', '').toLowerCase();
         setActiveViewInternal('city');

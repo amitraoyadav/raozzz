@@ -68,6 +68,8 @@ import { ItdcTravelsApp } from '../itdctravels/ItdcTravelsApp';
 import { TravelArtApp } from '../travelart/TravelArtApp';
 import { BrioTravelsApp } from '../../demos/tour-travel/brio-travels/BrioTravelsApp';
 import { TourTravel2App } from '../../demos/tour-travel-2/TourTravel2App';
+import { VeenaWorldApp } from '../veenaworld/VeenaWorldApp';
+import { BodycraftApp } from '../bodycraft/BodycraftApp';
 
 const getHeaderCity = (city?: string, address?: string): string => {
   if (typeof city === 'string' && city.trim()) return city.trim();
@@ -604,6 +606,33 @@ export const SiteRenderer: React.FC<SiteRendererProps> = ({ site: propSite, isPr
     targetTemplate === 'tour-travel-2'
   ) {
     return <TourTravel2App />;
+  }
+
+  // Website 37: Veena World (veenaworld.com)
+  if (
+    targetSlug === 'veena-world' ||
+    targetSlug === 'veenaworld' ||
+    targetSlug === 'veena-world-tours' ||
+    targetSlug === 'references/veena-world' ||
+    targetSlug === '/references/veena-world/' ||
+    targetSlug === 'references/veenaworld' ||
+    targetSlug === '/references/veenaworld/' ||
+    targetTemplate === 'veena-world'
+  ) {
+    return <VeenaWorldApp />;
+  }
+
+  // Website 38: Bodycraft Salon, Clinic & Spa (bodycraft.co.in)
+  if (
+    targetSlug === 'bodycraft' ||
+    targetSlug === 'bodycraft-salon' ||
+    targetSlug === 'bodycraft-clinic' ||
+    targetSlug === 'bodycraft-spa' ||
+    targetSlug === 'references/bodycraft' ||
+    targetSlug === '/references/bodycraft/' ||
+    targetTemplate === 'bodycraft'
+  ) {
+    return <BodycraftApp />;
   }
 
   if (!site) {

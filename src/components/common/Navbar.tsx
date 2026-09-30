@@ -84,15 +84,19 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenOrderModal }) => {
     <header className="sticky top-0 z-40 w-full bg-[#FAFAF8]/95 backdrop-blur-md border-b border-[#E8E7F0] transition-all">
       {/* Top Special Offer Announcement Bar - Compact on mobile */}
       <div className="bg-[#14162B] text-[#FAFAF8] text-[10px] sm:text-xs font-medium py-1.5 px-3 text-center tracking-wide flex items-center justify-center gap-1.5 sm:gap-2 flex-wrap border-b border-[#232742]">
-        <span className="bg-[#FF6B4A] text-white px-1.5 py-0.2 rounded text-[9px] uppercase font-bold tracking-wider">
-          Deal
+        <span className="bg-[#FDB813] text-[#0A1D37] px-1.5 py-0.5 rounded text-[9px] uppercase font-black tracking-wider">
+          Featured
         </span>
-        <span className="font-['Inter']">
-          Get your complete business website for <span className="line-through text-[#8E92A8] font-normal">₹9,999</span> <span className="text-[#FF6B4A] font-extrabold text-xs sm:text-sm">₹999</span>
-        </span>
+        <button
+          onClick={() => setActiveView('veena-world')}
+          className="text-[#FDB813] hover:underline font-bold flex items-center gap-1 cursor-pointer"
+        >
+          <span>Veena World Travel Portal Recreation</span>
+          <ArrowRight className="w-3 h-3 inline" />
+        </button>
         <span className="text-[#474B64] hidden sm:inline" aria-hidden="true">·</span>
-        <span className="hidden sm:inline text-[#D5D4E3]">
-          Live in 24 hrs · No hidden charges
+        <span className="font-['Inter'] hidden sm:inline">
+          Get your complete business website for <span className="line-through text-[#8E92A8] font-normal">₹9,999</span> <span className="text-[#FF6B4A] font-extrabold text-xs sm:text-sm">₹999</span>
         </span>
       </div>
 
@@ -163,6 +167,20 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenOrderModal }) => {
               className="hover:text-[#4338CA] transition-colors cursor-pointer"
             >
               130 Categories
+            </button>
+            <button
+              onClick={() => setActiveView('enrich')}
+              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-bold text-[#f82148] hover:bg-rose-50 transition-colors cursor-pointer border border-[#f82148]/25"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-[#f82148] animate-pulse"></span>
+              <span>Enrich</span>
+            </button>
+            <button
+              onClick={() => setActiveView('bodycraft')}
+              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-bold text-[#C5A880] bg-[#121212] hover:bg-[#252525] transition-colors cursor-pointer border border-[#C5A880]/30"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-[#C5A880]"></span>
+              <span>Bodycraft</span>
             </button>
             <button
               onClick={() => scrollToSection('process')}
@@ -323,6 +341,28 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenOrderModal }) => {
                 <span>Brew & Bloom (15 Recreated Sites)</span>
               </div>
               <ArrowRight className="w-4 h-4 text-amber-700" />
+            </button>
+
+            <button
+              onClick={() => navigateTo(() => setActiveView('enrich'))}
+              className="w-full text-left min-h-[48px] py-3 px-4 rounded-2xl bg-rose-50 hover:bg-rose-100 active:bg-rose-200 flex items-center justify-between cursor-pointer border border-rose-200 text-[#f82148] font-bold"
+            >
+              <div className="flex items-center gap-2">
+                <span>✂️</span>
+                <span>Enrich Beauty (107 Salons)</span>
+              </div>
+              <ArrowRight className="w-4 h-4 text-[#f82148]" />
+            </button>
+
+            <button
+              onClick={() => navigateTo(() => setActiveView('bodycraft'))}
+              className="w-full text-left min-h-[48px] py-3 px-4 rounded-2xl bg-[#121212] hover:bg-[#252525] active:bg-black flex items-center justify-between cursor-pointer border border-[#C5A880]/40 text-[#C5A880] font-bold"
+            >
+              <div className="flex items-center gap-2">
+                <span>✨</span>
+                <span>Bodycraft (Salon · Clinic · Spa)</span>
+              </div>
+              <ArrowRight className="w-4 h-4 text-[#C5A880]" />
             </button>
 
             <button
