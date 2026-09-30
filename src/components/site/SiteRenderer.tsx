@@ -67,6 +67,7 @@ import { SrmHolidaysApp } from '../srmholidays/SrmHolidaysApp';
 import { ItdcTravelsApp } from '../itdctravels/ItdcTravelsApp';
 import { TravelArtApp } from '../travelart/TravelArtApp';
 import { BrioTravelsApp } from '../../demos/tour-travel/brio-travels/BrioTravelsApp';
+import { TourTravel2App } from '../../demos/tour-travel-2/TourTravel2App';
 
 const getHeaderCity = (city?: string, address?: string): string => {
   if (typeof city === 'string' && city.trim()) return city.trim();
@@ -590,6 +591,19 @@ export const SiteRenderer: React.FC<SiteRendererProps> = ({ site: propSite, isPr
     targetTemplate === 'brio-travels'
   ) {
     return <BrioTravelsApp />;
+  }
+
+  // Website 36: VenturePulse Holidays (Tour & Travel 2)
+  if (
+    targetSlug === 'tour-travel-2' ||
+    targetSlug === 'tourtravel2' ||
+    targetSlug === 'demos/tour-travel-2' ||
+    targetSlug === 'demos/tour-travel-2/' ||
+    targetSlug === 'references/tour-travel-2' ||
+    targetSlug === '/references/tour-travel-2/' ||
+    targetTemplate === 'tour-travel-2'
+  ) {
+    return <TourTravel2App />;
   }
 
   if (!site) {

@@ -62,6 +62,7 @@ import { SRM_HOLIDAYS_WEBSITE } from '../data/srmHolidaysData';
 import { ITDC_TRAVELS_WEBSITE } from '../data/itdcTravelsData';
 import { TRAVEL_ART_WEBSITE } from '../data/travelArtData';
 import { BRIO_TRAVELS_WEBSITE } from '../data/brioTravelsWebsite';
+import { TOUR_TRAVEL_2_WEBSITE } from '../data/tourTravel2Website';
 
 export const ALL_CAFE_WEBSITES: BusinessWebsite[] = [
   TWOD_WEBSITE,
@@ -99,6 +100,7 @@ export const ALL_RESTAURANT_WEBSITES: BusinessWebsite[] = [
 ];
 
 export const ALL_TRAVEL_WEBSITES: BusinessWebsite[] = [
+  TOUR_TRAVEL_2_WEBSITE,
   BRIO_TRAVELS_WEBSITE,
   DREAM_TRAVELS_WEBSITE,
   SOUTHERN_TRAVELS_WEBSITE,
@@ -583,7 +585,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
           'travelart': 'travel-art',
           'travelartcompany': 'travel-art',
           'brio-travels': 'brio-travels',
-          'briotravels': 'brio-travels'
+          'briotravels': 'brio-travels',
+          'tour-travel-2': 'tour-travel-2',
+          'tourtravel2': 'tour-travel-2'
         };
         const targetSlug = aliasMap[refSlug] || refSlug;
         setActiveSiteSlug(targetSlug);
@@ -591,6 +595,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         const demoSlug = raw.replace(/^(demo|demos)\//, '').replace(/^tour-travel\//, '').replace(/\/$/, '');
         setActiveViewInternal('site');
         const aliasMap: Record<string, string> = {
+          'tour-travel-2': 'tour-travel-2',
+          'tourtravel2': 'tour-travel-2',
           'brio-travels': 'brio-travels',
           'briotravels': 'brio-travels',
           'tour-travel': 'brio-travels',
@@ -609,6 +615,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         };
         const targetSlug = aliasMap[demoSlug] || demoSlug;
         setActiveSiteSlug(targetSlug);
+      } else if (raw === 'tour-travel-2' || raw.startsWith('tour-travel-2/') || raw === 'demos/tour-travel-2' || raw === 'demos/tour-travel-2/') {
+        setActiveViewInternal('site');
+        setActiveSiteSlug('tour-travel-2');
       } else if (raw === 'brio-travels' || raw.startsWith('brio-travels/') || raw === 'demos/tour-travel/brio-travels' || raw === 'demos/tour-travel') {
         setActiveViewInternal('site');
         setActiveSiteSlug('brio-travels');
