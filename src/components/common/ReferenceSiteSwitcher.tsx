@@ -5,7 +5,7 @@ import { useApp } from '../../context/AppContext';
 export interface ReferenceSiteInfo {
   id: string;
   num: number;
-  category: 'cafe' | 'restaurant' | 'travel';
+  category: 'cafe' | 'restaurant' | 'travel' | 'salon';
   name: string;
   originalUrl: string;
   slug: string;
@@ -428,9 +428,48 @@ export const ALL_29_REFERENCE_SITES: ReferenceSiteInfo[] = [
     concept: 'Luxury Bus, Coach & Tempo Traveller Rentals in Delhi NCR (Sagar Tours)',
     themeColor: '#DC2626',
     badge: 'Luxury Bus Fleet'
+  },
+  {
+    id: 'veena-world',
+    num: 35,
+    category: 'travel',
+    name: 'Veena World',
+    originalUrl: 'https://www.veenaworld.com/',
+    slug: 'veena-world',
+    referencePath: '/references/veena-world/',
+    concept: 'Travel, Explore, Celebrate Life — India & World Escorted Group Tours & Speciality Holidays',
+    themeColor: '#FDB813',
+    badge: 'India Premier Tour Operator'
+  },
+  {
+    id: 'tour-travel-2',
+    num: 36,
+    category: 'travel',
+    name: 'VenturePulse Holidays',
+    originalUrl: 'https://venturepulseholidays.com/',
+    slug: 'tour-travel-2',
+    referencePath: '/references/tour-travel-2/',
+    concept: 'Boutique Experiential Travel Itineraries, Himalayan Treks & Luxury Getaways',
+    themeColor: '#0284c7',
+    badge: 'Curated Escapes'
+  },
+  {
+    id: 'bodycraft',
+    num: 37,
+    category: 'salon',
+    name: 'Bodycraft',
+    originalUrl: 'https://www.bodycraft.co.in/',
+    slug: 'bodycraft',
+    referencePath: '/references/bodycraft/',
+    concept: "India's First Hybrid Clinic-Salon · Salon Care Backed by Dermatology Expertise",
+    themeColor: '#C5A880',
+    badge: 'Hybrid Clinic & Salon'
   }
 ];
 
+export const ALL_37_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_29_REFERENCE_SITES;
+export const ALL_36_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_29_REFERENCE_SITES;
+export const ALL_35_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_29_REFERENCE_SITES;
 export const ALL_34_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_29_REFERENCE_SITES;
 export const ALL_30_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_29_REFERENCE_SITES;
 export const ALL_15_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_29_REFERENCE_SITES.slice(0, 15);
@@ -442,13 +481,13 @@ interface SwitcherProps {
 export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }) => {
   const { setActiveView } = useApp();
   const [modalOpen, setModalOpen] = useState(false);
-  const [categoryFilter, setCategoryFilter] = useState<'all' | 'cafe' | 'restaurant' | 'travel'>('all');
+  const [categoryFilter, setCategoryFilter] = useState<'all' | 'cafe' | 'restaurant' | 'travel' | 'salon'>('all');
 
   const currentSite =
-    ALL_30_REFERENCE_SITES.find(s => s.id === currentSiteId || s.slug === currentSiteId) ||
-    ALL_30_REFERENCE_SITES[0];
+    ALL_37_REFERENCE_SITES.find(s => s.id === currentSiteId || s.slug === currentSiteId) ||
+    ALL_37_REFERENCE_SITES[0];
 
-  const filteredSites = ALL_30_REFERENCE_SITES.filter(s => {
+  const filteredSites = ALL_37_REFERENCE_SITES.filter(s => {
     if (categoryFilter === 'all') return true;
     return s.category === categoryFilter;
   });
@@ -461,7 +500,8 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
   const getCategoryTitle = (cat: string) => {
     if (cat === 'cafe') return 'CAFES';
     if (cat === 'restaurant') return 'RESTAURANTS';
-    return 'TOUR & TRAVEL';
+    if (cat === 'travel') return 'TOUR & TRAVEL';
+    return 'SALON';
   };
 
   return (
@@ -484,7 +524,7 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
             className="px-2.5 py-1 rounded bg-stone-800 hover:bg-stone-700 text-stone-200 border border-stone-700 font-medium text-[11px] flex items-center gap-1.5 cursor-pointer transition-colors"
           >
             <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-            <span>Switch Website ({ALL_34_REFERENCE_SITES.length} Sites)</span>
+            <span>Switch Website ({ALL_37_REFERENCE_SITES.length} Sites)</span>
             <ChevronDown className="w-3.5 h-3.5 text-stone-400" />
           </button>
 
@@ -498,7 +538,7 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
         </div>
       </nav>
 
-      {/* 34 Reference Websites Picker Modal */}
+      {/* 37 Reference Websites Picker Modal */}
       {modalOpen && (
         <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm flex items-center justify-center p-4">
           <div className="bg-[#18181b] text-white border border-stone-800 rounded-2xl w-full max-w-5xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden">
@@ -507,13 +547,13 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
               <div>
                 <div className="flex items-center gap-2 text-amber-400 text-xs font-bold uppercase tracking-wider">
                   <Sparkles className="w-4 h-4" />
-                  <span>{ALL_34_REFERENCE_SITES.length} Complete Faithful Website Recreations</span>
+                  <span>{ALL_37_REFERENCE_SITES.length} Complete Faithful Website Recreations</span>
                 </div>
                 <h3 className="text-lg sm:text-xl font-bold text-white mt-1">
-                  Reference Website Directory — Cafes, Restaurants & Tour & Travel
+                  Reference Website Directory — Cafes, Restaurants, Tour & Travel & Salon
                 </h3>
                 <p className="text-xs text-stone-400 mt-0.5">
-                  Three Main Categories: 19 Cafes, 10 Restaurants & 5 Tour & Travel. Every website maintains its independent UI, layouts, and features.
+                  Four Categories: 19 Cafes, 10 Restaurants, 7 Tour & Travel & 1 Salon. Every website maintains its independent UI, layouts, and features.
                 </p>
               </div>
               <button
@@ -534,7 +574,7 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
                     : 'bg-stone-800 text-stone-300 hover:bg-stone-700'
                 }`}
               >
-                All Websites ({ALL_34_REFERENCE_SITES.length})
+                All Websites ({ALL_37_REFERENCE_SITES.length})
               </button>
               <button
                 onClick={() => setCategoryFilter('cafe')}
@@ -545,7 +585,7 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
                 }`}
               >
                 <Coffee className="w-3.5 h-3.5" />
-                <span>Cafes ({ALL_34_REFERENCE_SITES.filter(s => s.category === 'cafe').length})</span>
+                <span>Cafes ({ALL_37_REFERENCE_SITES.filter(s => s.category === 'cafe').length})</span>
               </button>
               <button
                 onClick={() => setCategoryFilter('restaurant')}
@@ -556,7 +596,7 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
                 }`}
               >
                 <Utensils className="w-3.5 h-3.5" />
-                <span>Restaurants ({ALL_34_REFERENCE_SITES.filter(s => s.category === 'restaurant').length})</span>
+                <span>Restaurants ({ALL_37_REFERENCE_SITES.filter(s => s.category === 'restaurant').length})</span>
               </button>
               <button
                 onClick={() => setCategoryFilter('travel')}
@@ -567,7 +607,18 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
                 }`}
               >
                 <Compass className="w-3.5 h-3.5" />
-                <span>Tour & Travel ({ALL_34_REFERENCE_SITES.filter(s => s.category === 'travel').length})</span>
+                <span>Tour & Travel ({ALL_37_REFERENCE_SITES.filter(s => s.category === 'travel').length})</span>
+              </button>
+              <button
+                onClick={() => setCategoryFilter('salon')}
+                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
+                  categoryFilter === 'salon'
+                    ? 'bg-amber-500 text-black shadow-sm'
+                    : 'bg-stone-800 text-stone-300 hover:bg-stone-700'
+                }`}
+              >
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>Salon ({ALL_37_REFERENCE_SITES.filter(s => s.category === 'salon').length})</span>
               </button>
             </div>
 
@@ -588,7 +639,7 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
                     <div>
                       <div className="flex items-center justify-between gap-2 mb-1.5">
                         <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-stone-800 text-stone-400">
-                          #{s.num} · {s.category === 'cafe' ? 'CAFE' : 'RESTAURANT'}
+                          #{s.num} · {s.category === 'cafe' ? 'CAFE' : s.category === 'restaurant' ? 'RESTAURANT' : s.category === 'travel' ? 'TRAVEL' : 'SALON'}
                         </span>
                         <span
                           className="text-[10px] font-bold px-2 py-0.5 rounded-full"

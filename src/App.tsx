@@ -39,6 +39,9 @@ import { TimWendelboeApp } from './components/timwendelboe/TimWendelboeApp';
 import { OnyxApp } from './components/onyx/OnyxApp';
 import { CityBrewApp } from './components/citybrew/CityBrewApp';
 import { GregorysApp } from './components/gregorys/GregorysApp';
+import { VeenaWorldApp } from './components/veenaworld/VeenaWorldApp';
+import { EnrichBeautyApp } from './components/enrich/EnrichBeautyApp';
+import { BodycraftApp } from './components/bodycraft/BodycraftApp';
 
 function AppContent() {
   const {
@@ -135,6 +138,18 @@ function AppContent() {
 
   if (activeView === 'gregorys') {
     return <GregorysApp />;
+  }
+
+  if (activeView === 'veena-world') {
+    return <VeenaWorldApp />;
+  }
+
+  if (activeView === 'enrich') {
+    return <EnrichBeautyApp />;
+  }
+
+  if (activeView === 'bodycraft') {
+    return <BodycraftApp />;
   }
 
   const renderPublicShell = (content: React.ReactNode, isHome = false) => (
