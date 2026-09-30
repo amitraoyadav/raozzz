@@ -237,7 +237,7 @@ export const MobileDashboard: React.FC<MobileDashboardProps> = ({
                   <div className="p-4 space-y-2 text-xs text-[#51556E]">
                     <p className="line-clamp-2">{site.tagline}</p>
                     <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400">
-                      <span>Updated {new Date(site.updatedAt || site.createdAt).toLocaleDateString()}</span>
+                      <span>Updated {new Date(site.updatedAt || site.createdAt || Date.now()).toLocaleDateString()}</span>
                       <span className="font-medium text-slate-700">
                         {site.items?.length || 0} Products / Items
                       </span>

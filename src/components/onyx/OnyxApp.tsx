@@ -21,6 +21,7 @@ import {
   DollarSign
 } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
+import { ReferenceSiteSwitcher } from '../common/ReferenceSiteSwitcher';
 import {
   ONYX_PRODUCTS,
   ONYX_BREW_METHODS,
@@ -156,21 +157,8 @@ export const OnyxApp: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-[#f5f5f5] font-['Space_Grotesk',sans-serif] selection:bg-[#c5a059] selection:text-black">
-      {/* Website Switcher Bar */}
-      <div className="bg-[#141414] text-[#d4af37] text-xs py-2 px-4 border-b border-[#222222] flex flex-wrap items-center justify-between gap-2">
-        <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-[#c5a059]"></span>
-          <span className="font-bold tracking-wide text-white">WEBSITE 2: ONYX COFFEE LAB EU (Recreated as BREW & BLOOM)</span>
-        </div>
-        <div className="flex items-center gap-2 text-[11px]">
-          <span className="text-stone-400">Switch Website:</span>
-          <button onClick={() => setActiveView('site', 'brew-bloom-tim-wendelboe')} className="px-2 py-0.5 rounded bg-white/10 hover:bg-white/20 text-stone-300 cursor-pointer">1. Tim Wendelboe</button>
-          <button onClick={() => setActiveView('site', 'brew-bloom-onyx')} className="px-2 py-0.5 rounded bg-[#c5a059] text-black font-bold cursor-pointer">2. Onyx Coffee Lab</button>
-          <button onClick={() => setActiveView('site', 'brew-bloom-city-brew')} className="px-2 py-0.5 rounded bg-white/10 hover:bg-white/20 text-stone-300 cursor-pointer">3. City Brew</button>
-          <button onClick={() => setActiveView('site', 'brew-bloom-gregorys')} className="px-2 py-0.5 rounded bg-white/10 hover:bg-white/20 text-stone-300 cursor-pointer">4. Gregorys</button>
-          <button onClick={() => setActiveView('dashboard')} className="px-2 py-0.5 rounded bg-stone-700 text-white font-bold ml-2 cursor-pointer">Dashboard</button>
-        </div>
-      </div>
+      {/* 15 Reference Sites Switcher */}
+      <ReferenceSiteSwitcher currentSiteId="onyx-coffee-lab" />
 
       {/* Top Banner */}
       <div className="bg-[#111111] border-b border-stone-800 text-[11px] tracking-widest uppercase text-stone-400 py-2 px-4 text-center flex items-center justify-center gap-4">

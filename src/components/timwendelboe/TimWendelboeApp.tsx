@@ -20,6 +20,7 @@ import {
   Menu as MenuIcon
 } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
+import { ReferenceSiteSwitcher } from '../common/ReferenceSiteSwitcher';
 import {
   TIM_WENDELBOE_PRODUCTS,
   TIM_WENDELBOE_BREW_GUIDES,
@@ -107,21 +108,8 @@ export const TimWendelboeApp: React.FC = () => {
   return (
     <div className="min-h-screen bg-[#fcfbf9] text-[#111111] font-['Inter',system-ui,sans-serif] selection:bg-[#b91c1c] selection:text-white">
 
-      {/* Website Switcher Bar */}
-      <div className="bg-[#111111] text-[#f4e8d5] text-xs py-2 px-4 border-b border-[#222222] flex flex-wrap items-center justify-between gap-2">
-        <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
-          <span className="font-bold tracking-wide">WEBSITE 1: TIM WENDELBOE (Recreated as BREW & BLOOM)</span>
-        </div>
-        <div className="flex items-center gap-2 text-[11px]">
-          <span className="text-stone-400">Switch Website:</span>
-          <button onClick={() => setActiveView('site', 'brew-bloom-tim-wendelboe')} className="px-2 py-0.5 rounded bg-white/20 font-bold text-white cursor-pointer">1. Tim Wendelboe</button>
-          <button onClick={() => setActiveView('site', 'brew-bloom-onyx')} className="px-2 py-0.5 rounded bg-white/10 hover:bg-white/20 text-stone-300 cursor-pointer">2. Onyx Coffee</button>
-          <button onClick={() => setActiveView('site', 'brew-bloom-city-brew')} className="px-2 py-0.5 rounded bg-white/10 hover:bg-white/20 text-stone-300 cursor-pointer">3. City Brew</button>
-          <button onClick={() => setActiveView('site', 'brew-bloom-gregorys')} className="px-2 py-0.5 rounded bg-white/10 hover:bg-white/20 text-stone-300 cursor-pointer">4. Gregorys</button>
-          <button onClick={() => setActiveView('dashboard')} className="px-2 py-0.5 rounded bg-[#c49a6c] text-[#111] font-bold ml-2 cursor-pointer">Dashboard</button>
-        </div>
-      </div>
+      {/* 15 Reference Sites Switcher */}
+      <ReferenceSiteSwitcher currentSiteId="tim-wendelboe" />
 
       {/* Announcement Ticker */}
       <div className="bg-[#111111] text-[#fcfbf9] text-xs py-2 px-4 text-center tracking-wider font-light border-b border-stone-800">

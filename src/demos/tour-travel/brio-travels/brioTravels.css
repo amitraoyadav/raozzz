@@ -1,0 +1,61 @@
+/* Brio Travels Isolated Scoped Styles */
+.brio-app {
+  --brio-teal-dark: #0f766e;
+  --brio-teal-primary: #0d9488;
+  --brio-teal-light: #ccfbf1;
+  --brio-orange: #f97316;
+  --brio-orange-hover: #ea580c;
+  --brio-slate-dark: #0f172a;
+  --brio-slate-body: #475569;
+  --brio-bg-soft: #f8fafc;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: var(--brio-slate-dark);
+  background-color: #ffffff;
+}
+
+.brio-heading {
+  font-family: 'Poppins', 'Inter', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.brio-btn-primary {
+  background-color: #0d9488;
+  color: #ffffff;
+  transition: all 0.2s ease-in-out;
+}
+.brio-btn-primary:hover {
+  background-color: #0f766e;
+}
+
+.brio-btn-accent {
+  background-color: #f97316;
+  color: #ffffff;
+  transition: all 0.2s ease-in-out;
+}
+.brio-btn-accent:hover {
+  background-color: #ea580c;
+}
+
+.brio-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.brio-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px -8px rgba(15, 118, 110, 0.12);
+}
+
+.brio-badge-teal {
+  background-color: #f0fdfa;
+  color: #0f766e;
+  border: 1px solid #99f6e4;
+}
+
+.brio-badge-orange {
+  background-color: #fff7ed;
+  color: #c2410c;
+  border: 1px solid #ffedd5;
+}

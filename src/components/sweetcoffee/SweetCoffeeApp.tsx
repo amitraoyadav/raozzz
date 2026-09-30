@@ -29,6 +29,7 @@ import {
 } from 'lucide-react';
 import { SWEET_COFFEE_WEBSITE, SWEET_COFFEE_CATEGORIES, SweetCoffeeCategory } from '../../data/sweetCoffeeData';
 import { useApp } from '../../context/AppContext';
+import { ReferenceSiteSwitcher } from '../common/ReferenceSiteSwitcher';
 
 export const SweetCoffeeApp: React.FC = () => {
   const { setActiveView } = useApp();
@@ -145,6 +146,9 @@ export const SweetCoffeeApp: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-[#fffaf3] text-[#1a1613] font-['Manrope',system-ui,sans-serif] selection:bg-[#bf8547] selection:text-white">
+      {/* 15 Reference Sites Switcher */}
+      <ReferenceSiteSwitcher currentSiteId="koffee-hut" />
+
       {/* Top Bar for AI Studio Navigation / Dashboard Backlink */}
       <div className="bg-[#21140f] text-[#f4e8d5] text-xs py-2 px-4 border-b border-[#302018] flex items-center justify-between">
         <div className="flex items-center gap-2">

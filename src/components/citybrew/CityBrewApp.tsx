@@ -22,6 +22,7 @@ import {
   Users
 } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
+import { ReferenceSiteSwitcher } from '../common/ReferenceSiteSwitcher';
 import {
   CITY_BREW_MENU,
   CITY_BREW_LOCATIONS,
@@ -172,21 +173,8 @@ export const CityBrewApp: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-[#faf8f5] text-[#2b2b2b] font-['Inter',sans-serif] selection:bg-[#1b4332] selection:text-white">
-      {/* Website Switcher Bar */}
-      <div className="bg-[#143826] text-[#e8f5e9] text-xs py-2 px-4 border-b border-[#0f291e] flex flex-wrap items-center justify-between gap-2">
-        <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-[#81c784]"></span>
-          <span className="font-bold tracking-wide">WEBSITE 3: CITY BREW (Recreated as BREW & BLOOM)</span>
-        </div>
-        <div className="flex items-center gap-2 text-[11px]">
-          <span className="text-emerald-200/70">Switch Website:</span>
-          <button onClick={() => setActiveView('site', 'brew-bloom-tim-wendelboe')} className="px-2 py-0.5 rounded bg-white/10 hover:bg-white/20 text-white cursor-pointer">1. Tim Wendelboe</button>
-          <button onClick={() => setActiveView('site', 'brew-bloom-onyx')} className="px-2 py-0.5 rounded bg-white/10 hover:bg-white/20 text-white cursor-pointer">2. Onyx Coffee Lab</button>
-          <button onClick={() => setActiveView('site', 'brew-bloom-city-brew')} className="px-2 py-0.5 rounded bg-white text-[#1b4332] font-bold cursor-pointer">3. City Brew</button>
-          <button onClick={() => setActiveView('site', 'brew-bloom-gregorys')} className="px-2 py-0.5 rounded bg-white/10 hover:bg-white/20 text-white cursor-pointer">4. Gregorys</button>
-          <button onClick={() => setActiveView('dashboard')} className="px-2 py-0.5 rounded bg-[#c28b38] text-white font-bold ml-2 cursor-pointer">Dashboard</button>
-        </div>
-      </div>
+      {/* 15 Reference Sites Switcher */}
+      <ReferenceSiteSwitcher currentSiteId="city-brew" />
 
       {/* Top Banner Announcement */}
       <div className="bg-[#1b4332] text-white text-xs py-2 px-4 text-center font-medium tracking-wide flex items-center justify-center gap-2">

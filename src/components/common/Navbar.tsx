@@ -21,13 +21,30 @@ interface NavbarProps {
 
 export const Navbar: React.FC<NavbarProps> = ({ onOpenOrderModal }) => {
   const {
+    activeView,
     setActiveView,
+    referenceCategoryFilter,
+    setReferenceCategoryFilter,
     isAdminAuthenticated,
     loginDemoAdmin,
     openCategoryPicker,
     user
   } = useApp();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const handleCategoryNav = (cat: 'all' | 'cafes' | 'restaurants' | 'travel') => {
+    setReferenceCategoryFilter(cat);
+    setMobileMenuOpen(false);
+    if (activeView !== 'home') {
+      setActiveView('home');
+    }
+    setTimeout(() => {
+      const el = document.getElementById('demos');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 60);
+  };
 
   // Close on Escape & Prevent Background Scrolling
   useEffect(() => {
@@ -99,20 +116,48 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenOrderModal }) => {
           </button>
 
           {/* Desktop Nav Links */}
-          <nav className="hidden lg:flex items-center gap-6 xl:gap-7 text-xs font-semibold text-[#474B64] font-['Inter']">
+          <nav className="hidden lg:flex items-center gap-5 xl:gap-6 text-xs font-semibold text-[#474B64] font-['Inter']">
             <button
               onClick={() => setActiveView('home')}
               className="hover:text-[#4338CA] transition-colors cursor-pointer"
             >
               Home
             </button>
-            <button
-              onClick={() => setActiveView('site', '2d-cafe')}
-              className="px-2.5 py-1 rounded-lg bg-amber-50 text-amber-900 border border-amber-200/80 hover:bg-amber-100 transition-colors cursor-pointer font-bold flex items-center gap-1.5"
-            >
-              <span>☕</span>
-              <span>Brew & Bloom (15 Sites)</span>
-            </button>
+
+            {/* Exactly Three Main Categories Filter Interface */}
+            <div className="flex items-center gap-1 p-1 bg-[#E8E7F0]/70 rounded-xl border border-[#D5D4E3]">
+              <button
+                onClick={() => handleCategoryNav('cafes')}
+                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                  referenceCategoryFilter === 'cafes'
+                    ? 'bg-[#14162B] text-white shadow-xs'
+                    : 'text-[#474B64] hover:text-[#14162B]'
+                }`}
+              >
+                CAFES
+              </button>
+              <button
+                onClick={() => handleCategoryNav('restaurants')}
+                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                  referenceCategoryFilter === 'restaurants'
+                    ? 'bg-[#14162B] text-white shadow-xs'
+                    : 'text-[#474B64] hover:text-[#14162B]'
+                }`}
+              >
+                RESTAURANTS
+              </button>
+              <button
+                onClick={() => handleCategoryNav('travel')}
+                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                  referenceCategoryFilter === 'travel'
+                    ? 'bg-[#14162B] text-white shadow-xs'
+                    : 'text-[#474B64] hover:text-[#14162B]'
+                }`}
+              >
+                TOUR & TRAVEL
+              </button>
+            </div>
+
             <button
               onClick={() => setActiveView('demo-websites')}
               className="hover:text-[#4338CA] transition-colors cursor-pointer"
@@ -221,7 +266,46 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenOrderModal }) => {
           className="fixed inset-0 top-[88px] sm:top-[100px] z-50 bg-[#FAFAF8] flex flex-col justify-between overflow-y-auto p-5 animate-fadeIn font-['Inter']"
         >
           {/* Required Primary Navigation Links */}
-          <div className="space-y-1.5 text-base font-semibold text-[#14162B]">
+          <div className="space-y-2 text-base font-semibold text-[#14162B]">
+            {/* Category Filter Buttons in Mobile Navigation */}
+            <div className="p-2 bg-[#E8E7F0]/80 rounded-2xl border border-[#D5D4E3] space-y-1 mb-3">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-[#636882] px-2 block">
+                Website Categories
+              </span>
+              <div className="grid grid-cols-3 gap-1">
+                <button
+                  onClick={() => handleCategoryNav('cafes')}
+                  className={`py-2 px-1 rounded-xl text-[11px] font-bold text-center transition-all cursor-pointer ${
+                    referenceCategoryFilter === 'cafes'
+                      ? 'bg-[#14162B] text-white shadow-xs'
+                      : 'bg-white text-slate-700 hover:bg-slate-100'
+                  }`}
+                >
+                  CAFES
+                </button>
+                <button
+                  onClick={() => handleCategoryNav('restaurants')}
+                  className={`py-2 px-1 rounded-xl text-[11px] font-bold text-center transition-all cursor-pointer ${
+                    referenceCategoryFilter === 'restaurants'
+                      ? 'bg-[#14162B] text-white shadow-xs'
+                      : 'bg-white text-slate-700 hover:bg-slate-100'
+                  }`}
+                >
+                  DINING
+                </button>
+                <button
+                  onClick={() => handleCategoryNav('travel')}
+                  className={`py-2 px-1 rounded-xl text-[11px] font-bold text-center transition-all cursor-pointer ${
+                    referenceCategoryFilter === 'travel'
+                      ? 'bg-[#14162B] text-white shadow-xs'
+                      : 'bg-white text-slate-700 hover:bg-slate-100'
+                  }`}
+                >
+                  TRAVEL
+                </button>
+              </div>
+            </div>
+
             <button
               onClick={() => navigateTo(() => setActiveView('home'))}
               className="w-full text-left min-h-[48px] py-3 px-4 rounded-2xl hover:bg-white active:bg-[#E8E7F0] flex items-center justify-between cursor-pointer border border-transparent hover:border-[#E8E7F0]"

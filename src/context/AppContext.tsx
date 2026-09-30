@@ -27,12 +27,96 @@ export type AppView =
   | 'city-brew'
   | 'gregorys';
 
+import { TWOD_WEBSITE } from '../data/twoDCafeData';
+import { BLUE_TOKAI_WEBSITE } from '../data/blueTokaiData';
+import { THIRD_WAVE_WEBSITE } from '../data/thirdWaveCoffeeData';
+import { CCD_WEBSITE } from '../data/cafeCoffeeDayData';
 import { SWEET_COFFEE_WEBSITE } from '../data/sweetCoffeeData';
-import { BREW_BLOOM_WEBSITE } from '../data/brewBloomData';
 import { TIM_WENDELBOE_WEBSITE } from '../data/timWendelboeData';
 import { ONYX_WEBSITE } from '../data/onyxCoffeeData';
 import { CITY_BREW_WEBSITE } from '../data/cityBrewData';
 import { GREGORYS_WEBSITE } from '../data/gregorysCoffeeData';
+import { RUBYS_WEBSITE } from '../data/rubysCafeData';
+import { BREWED_WEBSITE } from '../data/brewedCoffeeData';
+import { GREENBERRYS_WEBSITE } from '../data/greenberrysData';
+import { MEAN_MUG_WEBSITE } from '../data/meanMugCoffeeData';
+import { REVIVAL_WEBSITE } from '../data/revivalCafeData';
+import { BREW_BLOOM_WEBSITE } from '../data/brewBloomData';
+import { AMERICAN_PROVISIONS_WEBSITE } from '../data/americanProvisionsData';
+import { MOJO_WEBSITE } from '../data/mojoCoffeeData';
+import { SWEETWATERS_WEBSITE } from '../data/sweetwatersData';
+import { BENNE_WEBSITE } from '../data/benneData';
+import { BARBEQUE_NATION_WEBSITE } from '../data/barbequeNationData';
+import { NANDOS_WEBSITE } from '../data/nandosData';
+import { MAINLAND_CHINA_WEBSITE } from '../data/mainlandChinaData';
+import { OH_CALCUTTA_WEBSITE } from '../data/ohCalcuttaData';
+import { PUNJAB_GRILL_WEBSITE } from '../data/punjabGrillData';
+import { BIKANERVALA_WEBSITE } from '../data/bikanervalaData';
+import { SAGAR_RATNA_WEBSITE } from '../data/sagarRatnaData';
+import { KARIMS_WEBSITE } from '../data/karimsData';
+import { AL_BAIK_WEBSITE } from '../data/alBaikData';
+import { MR_IDLI_WEBSITE } from '../data/mrIdliData';
+import { DREAM_TRAVELS_WEBSITE } from '../data/dreamToTravelsData';
+import { SOUTHERN_TRAVELS_WEBSITE } from '../data/southernTravelsData';
+import { SRM_HOLIDAYS_WEBSITE } from '../data/srmHolidaysData';
+import { ITDC_TRAVELS_WEBSITE } from '../data/itdcTravelsData';
+import { TRAVEL_ART_WEBSITE } from '../data/travelArtData';
+import { BRIO_TRAVELS_WEBSITE } from '../data/brioTravelsWebsite';
+
+export const ALL_CAFE_WEBSITES: BusinessWebsite[] = [
+  TWOD_WEBSITE,
+  BLUE_TOKAI_WEBSITE,
+  THIRD_WAVE_WEBSITE,
+  CCD_WEBSITE,
+  SWEET_COFFEE_WEBSITE,
+  TIM_WENDELBOE_WEBSITE,
+  ONYX_WEBSITE,
+  CITY_BREW_WEBSITE,
+  GREGORYS_WEBSITE,
+  RUBYS_WEBSITE,
+  BREWED_WEBSITE,
+  GREENBERRYS_WEBSITE,
+  MEAN_MUG_WEBSITE,
+  REVIVAL_WEBSITE,
+  BREW_BLOOM_WEBSITE,
+  AMERICAN_PROVISIONS_WEBSITE,
+  MOJO_WEBSITE,
+  SWEETWATERS_WEBSITE,
+  BENNE_WEBSITE
+];
+
+export const ALL_RESTAURANT_WEBSITES: BusinessWebsite[] = [
+  BARBEQUE_NATION_WEBSITE,
+  NANDOS_WEBSITE,
+  MAINLAND_CHINA_WEBSITE,
+  OH_CALCUTTA_WEBSITE,
+  PUNJAB_GRILL_WEBSITE,
+  BIKANERVALA_WEBSITE,
+  SAGAR_RATNA_WEBSITE,
+  KARIMS_WEBSITE,
+  AL_BAIK_WEBSITE,
+  MR_IDLI_WEBSITE
+];
+
+export const ALL_TRAVEL_WEBSITES: BusinessWebsite[] = [
+  BRIO_TRAVELS_WEBSITE,
+  DREAM_TRAVELS_WEBSITE,
+  SOUTHERN_TRAVELS_WEBSITE,
+  SRM_HOLIDAYS_WEBSITE,
+  ITDC_TRAVELS_WEBSITE,
+  TRAVEL_ART_WEBSITE
+];
+
+export const ALL_34_COLLECTION_WEBSITES: BusinessWebsite[] = [
+  ...ALL_CAFE_WEBSITES,
+  ...ALL_RESTAURANT_WEBSITES,
+  ...ALL_TRAVEL_WEBSITES
+];
+
+export const ALL_30_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_34_COLLECTION_WEBSITES;
+export const ALL_29_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_34_COLLECTION_WEBSITES;
+
+export const ALL_15_REFERENCE_WEBSITES: BusinessWebsite[] = ALL_CAFE_WEBSITES.slice(0, 15);
 import { CATEGORY_INFO } from '../data/templateDefs';
 import {
   CATEGORIES_130_DATA,
@@ -167,6 +251,8 @@ interface AppContextType {
   discountLeads: DiscountLead[];
   demoCategoryFilter: string | null;
   setDemoCategoryFilter: (cat: string | null) => void;
+  referenceCategoryFilter: 'all' | 'cafes' | 'restaurants' | 'travel';
+  setReferenceCategoryFilter: (filter: 'all' | 'cafes' | 'restaurants' | 'travel') => void;
   categoryPickerOpen: boolean;
   setCategoryPickerOpen: (open: boolean) => void;
   openCategoryPicker: () => void;
@@ -243,14 +329,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
             .filter((s: unknown): s is Partial<BusinessWebsite> => Boolean(s && typeof s === 'object' && !isLegacyDemoSite(s)))
             .map(s => normalizeBusinessSite(s));
           const list = [...cleaned];
-          const ensureSites = [
-            TIM_WENDELBOE_WEBSITE,
-            ONYX_WEBSITE,
-            CITY_BREW_WEBSITE,
-            GREGORYS_WEBSITE,
-            SWEET_COFFEE_WEBSITE,
-            BREW_BLOOM_WEBSITE
-          ];
+          const ensureSites = ALL_34_COLLECTION_WEBSITES;
           for (const s of ensureSites) {
             if (!list.some(w => w.slug === s.slug)) {
               list.push(s);
@@ -262,14 +341,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     } catch (e) {
       console.warn('Could not parse stored websites', e);
     }
-    return [
-      TIM_WENDELBOE_WEBSITE,
-      ONYX_WEBSITE,
-      CITY_BREW_WEBSITE,
-      GREGORYS_WEBSITE,
-      SWEET_COFFEE_WEBSITE,
-      BREW_BLOOM_WEBSITE
-    ];
+    return ALL_34_COLLECTION_WEBSITES;
   });
 
   const [pricingPlans, setPricingPlans] = useState<PricingPlan[]>(() => {
@@ -370,6 +442,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [activeSiteSlug, setActiveSiteSlug] = useState<string | null>(null);
   const [activeCitySlug, setActiveCitySlug] = useState<string>('delhi');
   const [demoCategoryFilter, setDemoCategoryFilter] = useState<string | null>(null);
+  const [referenceCategoryFilter, setReferenceCategoryFilter] = useState<'all' | 'cafes' | 'restaurants' | 'travel'>('all');
   const [categoryPickerOpen, setCategoryPickerOpen] = useState<boolean>(false);
   const openCategoryPicker = () => setCategoryPickerOpen(true);
   const [builderEditSiteId, setBuilderEditSiteId] = useState<string | null>(null);
@@ -475,10 +548,70 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
           'greenberrys': 'greenberrys',
           'mean-mug': 'mean-mug',
           'revival-cafe': 'revival-cafe',
-          'subko': 'brew-bloom'
+          'subko': 'brew-bloom',
+          'american-provisions': 'american-provisions',
+          'mojo-coffee': 'mojo-coffee',
+          'sweetwaters': 'sweetwaters',
+          'sweetwaters-cafe': 'sweetwaters',
+          'benne': 'benne',
+          'barbeque-nation': 'barbeque-nation',
+          'nandos': 'nandos',
+          'nandos-india': 'nandos',
+          'mainland-china': 'mainland-china',
+          'oh-calcutta': 'oh-calcutta',
+          'punjab-grill': 'punjab-grill',
+          'bikanervala': 'bikanervala',
+          'sagar-ratna': 'sagar-ratna',
+          'karims': 'karims',
+          'al-baik': 'al-baik',
+          'mr-idli': 'mr-idli',
+          'dream-travels': 'dream-travels',
+          'dreamtotravels': 'dream-travels',
+          'dream-to-travels': 'dream-travels',
+          'tour-travel': 'dream-travels',
+          'southern-travels': 'southern-travels',
+          'southerntravels': 'southern-travels',
+          'southerntravelsindia': 'southern-travels',
+          'brandstore.aspx-new-delhi': 'southern-travels',
+          'srm-holidays': 'srm-holidays',
+          'srmholidays': 'srm-holidays',
+          'itdc-travels': 'itdc-travels',
+          'itdc': 'itdc-travels',
+          'travels-tours': 'itdc-travels',
+          'ashok-travels': 'itdc-travels',
+          'travel-art': 'travel-art',
+          'travelart': 'travel-art',
+          'travelartcompany': 'travel-art',
+          'brio-travels': 'brio-travels',
+          'briotravels': 'brio-travels'
         };
         const targetSlug = aliasMap[refSlug] || refSlug;
         setActiveSiteSlug(targetSlug);
+      } else if (raw.startsWith('demo/') || raw.startsWith('demos/')) {
+        const demoSlug = raw.replace(/^(demo|demos)\//, '').replace(/^tour-travel\//, '').replace(/\/$/, '');
+        setActiveViewInternal('site');
+        const aliasMap: Record<string, string> = {
+          'brio-travels': 'brio-travels',
+          'briotravels': 'brio-travels',
+          'tour-travel': 'brio-travels',
+          'southern-travels': 'southern-travels',
+          'southerntravels': 'southern-travels',
+          'srm-holidays': 'srm-holidays',
+          'srmholidays': 'srm-holidays',
+          'itdc-travels': 'itdc-travels',
+          'itdc': 'itdc-travels',
+          'travels-tours': 'itdc-travels',
+          'ashok-travels': 'itdc-travels',
+          'travel-art': 'travel-art',
+          'travelart': 'travel-art',
+          'travelartcompany': 'travel-art',
+          'dream-travels': 'dream-travels'
+        };
+        const targetSlug = aliasMap[demoSlug] || demoSlug;
+        setActiveSiteSlug(targetSlug);
+      } else if (raw === 'brio-travels' || raw.startsWith('brio-travels/') || raw === 'demos/tour-travel/brio-travels' || raw === 'demos/tour-travel') {
+        setActiveViewInternal('site');
+        setActiveSiteSlug('brio-travels');
       } else if (raw === 'brew-bloom' || raw.startsWith('brew-bloom/')) {
         setActiveViewInternal('brew-bloom');
         setActiveSiteSlug('brew-bloom');
@@ -895,8 +1028,53 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   const getWebsiteBySlug = (slug: string) => {
     if (!slug || typeof slug !== 'string') return undefined;
-    const clean = slug.trim().toLowerCase();
-    const found = websites.find(w => (w?.slug && w.slug.toLowerCase() === clean) || (w?.id && w.id.toLowerCase() === clean)) ||
+    const clean = slug.trim().toLowerCase().replace(/^\/?references\//, '').replace(/\/$/, '');
+    const aliasMap: Record<string, string> = {
+      '2d-cafe': '2d-cafe',
+      'blue-tokai': 'blue-tokai',
+      'third-wave': 'third-wave',
+      'cafe-coffee-day': 'cafe-coffee-day',
+      'koffee-hut': 'sweet-coffee',
+      'tim-wendelboe': 'brew-bloom-tim-wendelboe',
+      'onyx-coffee-lab': 'brew-bloom-onyx',
+      'onyx': 'brew-bloom-onyx',
+      'city-brew': 'brew-bloom-city-brew',
+      'gregorys-coffee': 'brew-bloom-gregorys',
+      'gregorys': 'brew-bloom-gregorys',
+      'rubys-cafe': 'rubys-cafe',
+      'rubys': 'rubys-cafe',
+      'brewed-coffee-shop': 'brewed-coffee-shop',
+      'brewed': 'brewed-coffee-shop',
+      'greenberrys': 'greenberrys',
+      'mean-mug': 'mean-mug',
+      'revival-cafe': 'revival-cafe',
+      'revival': 'revival-cafe',
+      'subko': 'brew-bloom',
+      'american-provisions': 'american-provisions',
+      'mojo-coffee': 'mojo-coffee',
+      'sweetwaters': 'sweetwaters',
+      'sweetwaters-cafe': 'sweetwaters',
+      'benne': 'benne',
+      'barbeque-nation': 'barbeque-nation',
+      'nandos': 'nandos',
+      'nandos-india': 'nandos',
+      'mainland-china': 'mainland-china',
+      'oh-calcutta': 'oh-calcutta',
+      'punjab-grill': 'punjab-grill',
+      'bikanervala': 'bikanervala',
+      'sagar-ratna': 'sagar-ratna',
+      'karims': 'karims',
+      'al-baik': 'al-baik',
+      'mr-idli': 'mr-idli',
+      'dream-travels': 'dream-travels',
+      'dreamtotravels': 'dream-travels',
+      'dream-to-travels': 'dream-travels',
+      'tour-travel': 'dream-travels',
+      'auravoyage': 'dream-travels'
+    };
+    const target = aliasMap[clean] || clean;
+    const found = websites.find(w => (w?.slug && (w.slug.toLowerCase() === clean || w.slug.toLowerCase() === target)) || (w?.id && (w.id.toLowerCase() === clean || w.id.toLowerCase() === target))) ||
+      ALL_30_COLLECTION_WEBSITES.find(w => (w?.slug && (w.slug.toLowerCase() === clean || w.slug.toLowerCase() === target)) || (w?.id && (w.id.toLowerCase() === clean || w.id.toLowerCase() === target))) ||
       DEFAULT_WEBSITES.find(w => (w?.slug && w.slug.toLowerCase() === clean) || (w?.id && w.id.toLowerCase() === clean));
     return found ? normalizeBusinessSite(found) : undefined;
   };
@@ -913,7 +1091,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     const currentYear = new Date().getFullYear();
     const monthlyRevenue = paidSites
       .filter(s => {
-        const d = new Date(s.createdAt);
+        const d = new Date(s.createdAt || Date.now());
         return d.getMonth() === currentMonth && d.getFullYear() === currentYear;
       })
       .reduce((sum, s) => sum + (s.amountPaid || 0), 0);
@@ -1009,6 +1187,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         discountLeads,
         demoCategoryFilter,
         setDemoCategoryFilter,
+        referenceCategoryFilter,
+        setReferenceCategoryFilter,
         categoryPickerOpen,
         setCategoryPickerOpen,
         openCategoryPicker,

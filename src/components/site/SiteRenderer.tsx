@@ -47,6 +47,26 @@ import { BrewedApp } from '../brewed/BrewedApp';
 import { GreenberrysApp } from '../greenberrys/GreenberrysApp';
 import { MeanMugApp } from '../meanmug/MeanMugApp';
 import { RevivalCafeApp } from '../revival/RevivalCafeApp';
+import { AmericanProvisionsApp } from '../americanprovisions/AmericanProvisionsApp';
+import { MojoCoffeeApp } from '../mojocoffee/MojoCoffeeApp';
+import { SweetwatersApp } from '../sweetwaters/SweetwatersApp';
+import { BenneApp } from '../benne/BenneApp';
+import { BarbequeNationApp } from '../barbequenation/BarbequeNationApp';
+import { NandosApp } from '../nandos/NandosApp';
+import { MainlandChinaApp } from '../mainlandchina/MainlandChinaApp';
+import { OhCalcuttaApp } from '../ohcalcutta/OhCalcuttaApp';
+import { PunjabGrillApp } from '../punjabgrill/PunjabGrillApp';
+import { BikanervalaApp } from '../bikanervala/BikanervalaApp';
+import { SagarRatnaApp } from '../sagarratna/SagarRatnaApp';
+import { KarimsApp } from '../karims/KarimsApp';
+import { AlBaikApp } from '../albaik/AlBaikApp';
+import { MrIdliApp } from '../mridli/MrIdliApp';
+import { DreamToTravelsApp } from '../dreamtotravels/DreamToTravelsApp';
+import { SouthernTravelsApp } from '../southerntravels/SouthernTravelsApp';
+import { SrmHolidaysApp } from '../srmholidays/SrmHolidaysApp';
+import { ItdcTravelsApp } from '../itdctravels/ItdcTravelsApp';
+import { TravelArtApp } from '../travelart/TravelArtApp';
+import { BrioTravelsApp } from '../../demos/tour-travel/brio-travels/BrioTravelsApp';
 
 const getHeaderCity = (city?: string, address?: string): string => {
   if (typeof city === 'string' && city.trim()) return city.trim();
@@ -170,6 +190,408 @@ export const SiteRenderer: React.FC<SiteRendererProps> = ({ site: propSite, isPr
     }
   };
 
+  const targetSlug = site?.slug || activeSiteSlug || '';
+  const targetTemplate = site?.templateId || '';
+
+  // Website 1: 2D Cafe
+  if (
+    targetSlug === '2d-cafe' ||
+    targetSlug === 'references/2d-cafe' ||
+    targetSlug === '/references/2d-cafe/' ||
+    targetTemplate === '2d-cafe'
+  ) {
+    return <TwoDCafeApp />;
+  }
+
+  // Website 2: Blue Tokai
+  if (
+    targetSlug === 'blue-tokai' ||
+    targetSlug === 'references/blue-tokai' ||
+    targetSlug === '/references/blue-tokai/' ||
+    targetTemplate === 'blue-tokai'
+  ) {
+    return <BlueTokaiApp />;
+  }
+
+  // Website 3: Third Wave Coffee
+  if (
+    targetSlug === 'third-wave' ||
+    targetSlug === 'references/third-wave' ||
+    targetSlug === '/references/third-wave/' ||
+    targetTemplate === 'third-wave'
+  ) {
+    return <ThirdWaveApp />;
+  }
+
+  // Website 4: Cafe Coffee Day
+  if (
+    targetSlug === 'cafe-coffee-day' ||
+    targetSlug === 'references/cafe-coffee-day' ||
+    targetSlug === '/references/cafe-coffee-day/' ||
+    targetTemplate === 'cafe-coffee-day'
+  ) {
+    return <CafeCoffeeDayApp />;
+  }
+
+  // Website 5: Koffee Hut (Sweet Coffee)
+  if (
+    targetSlug === 'sweet-coffee' ||
+    targetSlug === 'koffee-hut' ||
+    targetSlug === 'references/koffee-hut' ||
+    targetSlug === '/references/koffee-hut/' ||
+    targetTemplate === 'sweet-coffee' ||
+    targetTemplate === 'koffee-hut'
+  ) {
+    return <SweetCoffeeApp />;
+  }
+
+  // Website 6: Tim Wendelboe
+  if (
+    targetSlug === 'brew-bloom-tim-wendelboe' ||
+    targetSlug === 'tim-wendelboe' ||
+    targetSlug === 'references/tim-wendelboe' ||
+    targetSlug === '/references/tim-wendelboe/' ||
+    targetTemplate === 'tim-wendelboe'
+  ) {
+    return <TimWendelboeApp />;
+  }
+
+  // Website 7: Onyx Coffee Lab EU
+  if (
+    targetSlug === 'brew-bloom-onyx' ||
+    targetSlug === 'onyx' ||
+    targetSlug === 'onyx-coffee-lab' ||
+    targetSlug === 'references/onyx-coffee-lab' ||
+    targetSlug === '/references/onyx-coffee-lab/' ||
+    targetTemplate === 'onyx-coffee'
+  ) {
+    return <OnyxApp />;
+  }
+
+  // Website 8: City Brew
+  if (
+    targetSlug === 'brew-bloom-city-brew' ||
+    targetSlug === 'city-brew' ||
+    targetSlug === 'references/city-brew' ||
+    targetSlug === '/references/city-brew/' ||
+    targetTemplate === 'city-brew'
+  ) {
+    return <CityBrewApp />;
+  }
+
+  // Website 9: Gregorys Coffee
+  if (
+    targetSlug === 'brew-bloom-gregorys' ||
+    targetSlug === 'gregorys' ||
+    targetSlug === 'gregorys-coffee' ||
+    targetSlug === 'references/gregorys-coffee' ||
+    targetSlug === '/references/gregorys-coffee/' ||
+    targetTemplate === 'gregorys-coffee'
+  ) {
+    return <GregorysApp />;
+  }
+
+  // Website 10: Ruby's Cafe
+  if (
+    targetSlug === 'rubys-cafe' ||
+    targetSlug === 'brew-bloom-rubys' ||
+    targetSlug === 'rubys' ||
+    targetSlug === 'references/rubys-cafe' ||
+    targetSlug === '/references/rubys-cafe/' ||
+    targetTemplate === 'rubys-cafe'
+  ) {
+    return <RubysApp />;
+  }
+
+  // Website 11: Brewed Coffee Shop
+  if (
+    targetSlug === 'brewed-coffee-shop' ||
+    targetSlug === 'brew-bloom-brewed' ||
+    targetSlug === 'brewed' ||
+    targetSlug === 'references/brewed-coffee-shop' ||
+    targetSlug === '/references/brewed-coffee-shop/' ||
+    targetTemplate === 'brewed-coffee-shop'
+  ) {
+    return <BrewedApp />;
+  }
+
+  // Website 12: Greenberry's
+  if (
+    targetSlug === 'greenberrys' ||
+    targetSlug === 'brew-bloom-greenberrys' ||
+    targetSlug === 'references/greenberrys' ||
+    targetSlug === '/references/greenberrys/' ||
+    targetTemplate === 'greenberrys'
+  ) {
+    return <GreenberrysApp />;
+  }
+
+  // Website 13: Mean Mug Coffeehouse
+  if (
+    targetSlug === 'mean-mug' ||
+    targetSlug === 'brew-bloom-mean-mug' ||
+    targetSlug === 'references/mean-mug' ||
+    targetSlug === '/references/mean-mug/' ||
+    targetTemplate === 'mean-mug'
+  ) {
+    return <MeanMugApp />;
+  }
+
+  // Website 14: Revival Cafe & Kitchen
+  if (
+    targetSlug === 'revival-cafe' ||
+    targetSlug === 'brew-bloom-revival' ||
+    targetSlug === 'revival' ||
+    targetSlug === 'references/revival-cafe' ||
+    targetSlug === '/references/revival-cafe/' ||
+    targetTemplate === 'revival-cafe'
+  ) {
+    return <RevivalCafeApp />;
+  }
+
+  // Website 15: Subko Coffee (recreated as BREW & BLOOM)
+  if (
+    targetSlug === 'brew-bloom' ||
+    targetSlug === 'subko' ||
+    targetSlug === 'references/subko' ||
+    targetSlug === '/references/subko/' ||
+    targetTemplate === 'brew-bloom' ||
+    targetTemplate === 'subko'
+  ) {
+    return <BrewBloomApp />;
+  }
+
+  // Website 16: American Provisions
+  if (
+    targetSlug === 'american-provisions' ||
+    targetSlug === 'references/american-provisions' ||
+    targetSlug === '/references/american-provisions/' ||
+    targetTemplate === 'american-provisions'
+  ) {
+    return <AmericanProvisionsApp />;
+  }
+
+  // Website 17: Mojo Coffee House
+  if (
+    targetSlug === 'mojo-coffee' ||
+    targetSlug === 'mojocoffee' ||
+    targetSlug === 'references/mojo-coffee' ||
+    targetSlug === '/references/mojo-coffee/' ||
+    targetTemplate === 'mojo-coffee'
+  ) {
+    return <MojoCoffeeApp />;
+  }
+
+  // Website 18: Sweetwaters Cafe
+  if (
+    targetSlug === 'sweetwaters' ||
+    targetSlug === 'sweetwaters-cafe' ||
+    targetSlug === 'references/sweetwaters' ||
+    targetSlug === '/references/sweetwaters/' ||
+    targetTemplate === 'sweetwaters'
+  ) {
+    return <SweetwatersApp />;
+  }
+
+  // Website 19: Benne
+  if (
+    targetSlug === 'benne' ||
+    targetSlug === 'references/benne' ||
+    targetSlug === '/references/benne/' ||
+    targetTemplate === 'benne'
+  ) {
+    return <BenneApp />;
+  }
+
+  // Restaurant 1: Barbeque Nation
+  if (
+    targetSlug === 'barbeque-nation' ||
+    targetSlug === 'references/barbeque-nation' ||
+    targetSlug === '/references/barbeque-nation/' ||
+    targetTemplate === 'barbeque-nation'
+  ) {
+    return <BarbequeNationApp />;
+  }
+
+  // Restaurant 2: Nando's India
+  if (
+    targetSlug === 'nandos' ||
+    targetSlug === 'nandos-india' ||
+    targetSlug === 'references/nandos' ||
+    targetSlug === '/references/nandos/' ||
+    targetTemplate === 'nandos'
+  ) {
+    return <NandosApp />;
+  }
+
+  // Restaurant 3: Mainland China
+  if (
+    targetSlug === 'mainland-china' ||
+    targetSlug === 'references/mainland-china' ||
+    targetSlug === '/references/mainland-china/' ||
+    targetTemplate === 'mainland-china'
+  ) {
+    return <MainlandChinaApp />;
+  }
+
+  // Restaurant 4: Oh! Calcutta
+  if (
+    targetSlug === 'oh-calcutta' ||
+    targetSlug === 'ohcalcutta' ||
+    targetSlug === 'references/oh-calcutta' ||
+    targetSlug === '/references/oh-calcutta/' ||
+    targetTemplate === 'oh-calcutta'
+  ) {
+    return <OhCalcuttaApp />;
+  }
+
+  // Restaurant 5: Punjab Grill
+  if (
+    targetSlug === 'punjab-grill' ||
+    targetSlug === 'punjabgrill' ||
+    targetSlug === 'references/punjab-grill' ||
+    targetSlug === '/references/punjab-grill/' ||
+    targetTemplate === 'punjab-grill'
+  ) {
+    return <PunjabGrillApp />;
+  }
+
+  // Restaurant 6: Bikanervala
+  if (
+    targetSlug === 'bikanervala' ||
+    targetSlug === 'references/bikanervala' ||
+    targetSlug === '/references/bikanervala/' ||
+    targetTemplate === 'bikanervala'
+  ) {
+    return <BikanervalaApp />;
+  }
+
+  // Restaurant 7: Sagar Ratna
+  if (
+    targetSlug === 'sagar-ratna' ||
+    targetSlug === 'sagarratna' ||
+    targetSlug === 'references/sagar-ratna' ||
+    targetSlug === '/references/sagar-ratna/' ||
+    targetTemplate === 'sagar-ratna'
+  ) {
+    return <SagarRatnaApp />;
+  }
+
+  // Restaurant 8: Karim's
+  if (
+    targetSlug === 'karims' ||
+    targetSlug === 'karim' ||
+    targetSlug === 'references/karims' ||
+    targetSlug === '/references/karims/' ||
+    targetTemplate === 'karims'
+  ) {
+    return <KarimsApp />;
+  }
+
+  // Restaurant 9: Al Baik
+  if (
+    targetSlug === 'al-baik' ||
+    targetSlug === 'albaik' ||
+    targetSlug === 'references/al-baik' ||
+    targetSlug === '/references/al-baik/' ||
+    targetTemplate === 'al-baik'
+  ) {
+    return <AlBaikApp />;
+  }
+
+  // Restaurant 10: Mr. Idli
+  if (
+    targetSlug === 'mr-idli' ||
+    targetSlug === 'mridli' ||
+    targetSlug === 'references/mr-idli' ||
+    targetSlug === '/references/mr-idli/' ||
+    targetTemplate === 'mr-idli'
+  ) {
+    return <MrIdliApp />;
+  }
+
+  // Website 30: DreamScape Travels (Tour & Travel - dreamtotravels.com)
+  if (
+    targetSlug === 'dream-travels' ||
+    targetSlug === 'dream-to-travels' ||
+    targetSlug === 'dreamtotravels' ||
+    targetSlug === 'references/dreamtotravels' ||
+    targetSlug === '/references/dreamtotravels/' ||
+    targetSlug === 'references/dream-to-travels' ||
+    targetSlug === '/references/dream-to-travels/' ||
+    targetSlug === 'tour-travel' ||
+    targetSlug === 'auravoyage' ||
+    targetTemplate === 'travel-agency' ||
+    targetTemplate === 'dream-travels'
+  ) {
+    return <DreamToTravelsApp />;
+  }
+
+  // Website 31: Southern Travels (southerntravelsindia.com)
+  if (
+    targetSlug === 'southern-travels' ||
+    targetSlug === 'southerntravels' ||
+    targetSlug === 'southern-travels-india' ||
+    targetSlug === 'references/southern-travels' ||
+    targetSlug === '/references/southern-travels/' ||
+    targetSlug === 'brandstore.aspx-new-delhi' ||
+    targetTemplate === 'southern-travels'
+  ) {
+    return <SouthernTravelsApp />;
+  }
+
+  // Website 32: SRM Holidays (srmholidays.in)
+  if (
+    targetSlug === 'srm-holidays' ||
+    targetSlug === 'srmholidays' ||
+    targetSlug === 'references/srm-holidays' ||
+    targetSlug === '/references/srm-holidays/' ||
+    targetTemplate === 'srm-holidays'
+  ) {
+    return <SrmHolidaysApp />;
+  }
+
+  // Website 33: Ashok Travels & Tours / ITDC (itdc.co.in/travels-tours/)
+  if (
+    targetSlug === 'itdc-travels' ||
+    targetSlug === 'itdc' ||
+    targetSlug === 'ashok-travels' ||
+    targetSlug === 'travels-tours' ||
+    targetSlug === 'references/itdc-travels' ||
+    targetSlug === '/references/itdc-travels/' ||
+    targetSlug === 'references/ashok-travels' ||
+    targetSlug === '/references/ashok-travels/' ||
+    targetTemplate === 'itdc-travels'
+  ) {
+    return <ItdcTravelsApp />;
+  }
+
+  // Website 34: Travel Art Company (travelartcompany.com)
+  if (
+    targetSlug === 'travel-art' ||
+    targetSlug === 'travelart' ||
+    targetSlug === 'travel-art-company' ||
+    targetSlug === 'travelartcompany' ||
+    targetSlug === 'references/travel-art' ||
+    targetSlug === '/references/travel-art/' ||
+    targetTemplate === 'travel-art'
+  ) {
+    return <TravelArtApp />;
+  }
+
+  // Website 35: Brio Travels (Tour & Travel - Delhi)
+  if (
+    targetSlug === 'brio-travels' ||
+    targetSlug === 'briotravels' ||
+    targetSlug === 'demos/tour-travel/brio-travels' ||
+    targetSlug === 'demos/tour-travel' ||
+    targetSlug === 'references/brio-travels' ||
+    targetSlug === '/references/brio-travels/' ||
+    targetTemplate === 'brio-travels'
+  ) {
+    return <BrioTravelsApp />;
+  }
+
   if (!site) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center p-6 bg-slate-50 text-center">
@@ -185,159 +607,6 @@ export const SiteRenderer: React.FC<SiteRendererProps> = ({ site: propSite, isPr
         </button>
       </div>
     );
-  }
-
-  // Website 1: 2D Cafe
-  if (
-    site.slug === '2d-cafe' ||
-    site.slug === 'references/2d-cafe' ||
-    site.templateId === '2d-cafe'
-  ) {
-    return <TwoDCafeApp />;
-  }
-
-  // Website 2: Blue Tokai
-  if (
-    site.slug === 'blue-tokai' ||
-    site.slug === 'references/blue-tokai' ||
-    site.templateId === 'blue-tokai'
-  ) {
-    return <BlueTokaiApp />;
-  }
-
-  // Website 3: Third Wave Coffee
-  if (
-    site.slug === 'third-wave' ||
-    site.slug === 'references/third-wave' ||
-    site.templateId === 'third-wave'
-  ) {
-    return <ThirdWaveApp />;
-  }
-
-  // Website 4: Cafe Coffee Day
-  if (
-    site.slug === 'cafe-coffee-day' ||
-    site.slug === 'references/cafe-coffee-day' ||
-    site.templateId === 'cafe-coffee-day'
-  ) {
-    return <CafeCoffeeDayApp />;
-  }
-
-  // Website 5: Koffee Hut (Sweet Coffee)
-  if (
-    site.slug === 'sweet-coffee' ||
-    site.slug === 'koffee-hut' ||
-    site.slug === 'references/koffee-hut' ||
-    site.templateId === 'sweet-coffee' ||
-    site.templateId === 'koffee-hut'
-  ) {
-    return <SweetCoffeeApp />;
-  }
-
-  // Website 6: Tim Wendelboe
-  if (
-    site.slug === 'brew-bloom-tim-wendelboe' ||
-    site.slug === 'tim-wendelboe' ||
-    site.slug === 'references/tim-wendelboe' ||
-    site.templateId === 'tim-wendelboe'
-  ) {
-    return <TimWendelboeApp />;
-  }
-
-  // Website 7: Onyx Coffee Lab EU
-  if (
-    site.slug === 'brew-bloom-onyx' ||
-    site.slug === 'onyx' ||
-    site.slug === 'onyx-coffee-lab' ||
-    site.slug === 'references/onyx-coffee-lab' ||
-    site.templateId === 'onyx-coffee'
-  ) {
-    return <OnyxApp />;
-  }
-
-  // Website 8: City Brew
-  if (
-    site.slug === 'brew-bloom-city-brew' ||
-    site.slug === 'city-brew' ||
-    site.slug === 'references/city-brew' ||
-    site.templateId === 'city-brew'
-  ) {
-    return <CityBrewApp />;
-  }
-
-  // Website 9: Gregorys Coffee
-  if (
-    site.slug === 'brew-bloom-gregorys' ||
-    site.slug === 'gregorys' ||
-    site.slug === 'gregorys-coffee' ||
-    site.slug === 'references/gregorys-coffee' ||
-    site.templateId === 'gregorys-coffee'
-  ) {
-    return <GregorysApp />;
-  }
-
-  // Website 10: Ruby's Cafe
-  if (
-    site.slug === 'rubys-cafe' ||
-    site.slug === 'brew-bloom-rubys' ||
-    site.slug === 'rubys' ||
-    site.slug === 'references/rubys-cafe' ||
-    site.templateId === 'rubys-cafe'
-  ) {
-    return <RubysApp />;
-  }
-
-  // Website 11: Brewed Coffee Shop
-  if (
-    site.slug === 'brewed-coffee-shop' ||
-    site.slug === 'brew-bloom-brewed' ||
-    site.slug === 'brewed' ||
-    site.slug === 'references/brewed-coffee-shop' ||
-    site.templateId === 'brewed-coffee-shop'
-  ) {
-    return <BrewedApp />;
-  }
-
-  // Website 12: Greenberry's
-  if (
-    site.slug === 'greenberrys' ||
-    site.slug === 'brew-bloom-greenberrys' ||
-    site.slug === 'references/greenberrys' ||
-    site.templateId === 'greenberrys'
-  ) {
-    return <GreenberrysApp />;
-  }
-
-  // Website 13: Mean Mug Coffeehouse
-  if (
-    site.slug === 'mean-mug' ||
-    site.slug === 'brew-bloom-mean-mug' ||
-    site.slug === 'references/mean-mug' ||
-    site.templateId === 'mean-mug'
-  ) {
-    return <MeanMugApp />;
-  }
-
-  // Website 14: Revival Cafe & Kitchen
-  if (
-    site.slug === 'revival-cafe' ||
-    site.slug === 'brew-bloom-revival' ||
-    site.slug === 'revival' ||
-    site.slug === 'references/revival-cafe' ||
-    site.templateId === 'revival-cafe'
-  ) {
-    return <RevivalCafeApp />;
-  }
-
-  // Website 15: Subko Coffee (recreated as BREW & BLOOM)
-  if (
-    site.slug === 'brew-bloom' ||
-    site.slug === 'subko' ||
-    site.slug === 'references/subko' ||
-    site.templateId === 'brew-bloom' ||
-    site.templateId === 'subko'
-  ) {
-    return <BrewBloomApp />;
   }
 
   // Safe Categories extracted from items

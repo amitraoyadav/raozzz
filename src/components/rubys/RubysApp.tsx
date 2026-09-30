@@ -19,6 +19,7 @@ import {
   Users,
   CheckCircle2
 } from 'lucide-react';
+import { useApp } from '../../context/AppContext';
 import { ReferenceSiteSwitcher } from '../common/ReferenceSiteSwitcher';
 import {
   RUBYS_MENU,

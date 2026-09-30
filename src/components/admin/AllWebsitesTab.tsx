@@ -47,7 +47,7 @@ export const AllWebsitesTab: React.FC<AllWebsitesTabProps> = ({
     const matchesSearch =
       site.businessName.toLowerCase().includes(searchQuery.toLowerCase()) ||
       site.slug.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      site.ownerName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (site.ownerName || '').toLowerCase().includes(searchQuery.toLowerCase()) ||
       site.phone.includes(searchQuery);
 
     const matchesStatus = selectedStatus === 'all' || site.status === selectedStatus;

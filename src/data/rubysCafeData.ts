@@ -264,8 +264,8 @@ export const RUBYS_LOCATIONS: RubysLocation[] = [
 ];
 
 export const RUBYS_WEBSITE: BusinessWebsite = {
-  id: 'brew-bloom-rubys',
-  slug: 'brew-bloom-rubys',
+  id: 'site-rubys-cafe',
+  slug: 'rubys-cafe',
   businessName: 'BREW & BLOOM — Australian Cafe & Dining (Ruby’s Cafe Recreation)',
   category: 'cafe',
   templateId: 'rubys-cafe',

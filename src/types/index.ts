@@ -147,7 +147,7 @@ export interface WebsiteOffer {
 export interface GalleryImage {
   id: string;
   title?: string;
-  category: 'exterior' | 'interior' | 'products' | 'food' | 'staff' | 'facilities' | 'general' | 'events';
+  category: 'exterior' | 'interior' | 'products' | 'food' | 'staff' | 'facilities' | 'general' | 'events' | 'coffee' | 'bakery' | 'sandwiches' | (string & {});
   imageUrl: string;
 }
 
@@ -172,8 +172,8 @@ export interface BusinessWebsite {
   category: BusinessCategory;
   templateId: string;
   tagline: string;
-  description: string;
-  ownerName: string;
+  description?: string;
+  ownerName?: string;
   phone: string;
   whatsapp: string;
   email: string;
@@ -223,8 +223,8 @@ export interface BusinessWebsite {
   seoDescription?: string;
   seoKeywords?: string;
   viewsCount?: number;
-  createdAt: string;
-  updatedAt: string;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 export interface LeadEnquiry {

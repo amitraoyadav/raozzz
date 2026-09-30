@@ -29,6 +29,7 @@ import {
   Tag
 } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
+import { ReferenceSiteSwitcher } from '../common/ReferenceSiteSwitcher';
 import {
   BREW_BLOOM_PRODUCTS,
   BREW_BLOOM_LOCATIONS,
@@ -260,6 +261,8 @@ export const BrewBloomApp: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-[#fff8f2] text-[#1a1a1a] font-['IBM_Plex_Sans',system-ui,sans-serif] selection:bg-[#c49a6c] selection:text-white">
+      {/* 15 Reference Sites Switcher */}
+      <ReferenceSiteSwitcher currentSiteId="subko" />
 
       {/* AI Studio Platform Bar */}
       <div className="bg-[#111111] text-[#f4e8d5] text-xs py-2 px-4 border-b border-[#222222] flex items-center justify-between">

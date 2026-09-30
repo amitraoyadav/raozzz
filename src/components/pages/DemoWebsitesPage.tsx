@@ -27,7 +27,7 @@ interface DemoWebsitesPageProps {
 }
 
 export const DemoWebsitesPage: React.FC<DemoWebsitesPageProps> = ({ onOpenOrderModal }) => {
-  const { websites, setActiveView, demoCategoryFilter, categoryReferences } = useApp();
+  const { websites, setActiveView, demoCategoryFilter, categoryReferences, referenceCategoryFilter, setReferenceCategoryFilter } = useApp();
 
   // Top Mode: 'references' (130 Categories & 396 Reference Sites) vs 'demos' (Ready-Built Demos)
   const [viewMode, setViewMode] = useState<'references' | 'demos'>('references');
@@ -73,6 +73,15 @@ export const DemoWebsitesPage: React.FC<DemoWebsitesPageProps> = ({ onOpenOrderM
   // Filter ready-built demos
   const filteredWebsites = useMemo(() => {
     return websites.filter(site => {
+      if (referenceCategoryFilter === 'cafes' && site.category !== 'cafe') {
+        return false;
+      }
+      if (referenceCategoryFilter === 'restaurants' && site.category !== 'restaurant') {
+        return false;
+      }
+      if (referenceCategoryFilter === 'travel' && site.category !== 'travel' && site.category !== ('tour_travel' as any)) {
+        return false;
+      }
       if (selectedDemoCat !== 'all' && site.category !== selectedDemoCat) {
         return false;
       }
@@ -86,7 +95,7 @@ export const DemoWebsitesPage: React.FC<DemoWebsitesPageProps> = ({ onOpenOrderM
       }
       return true;
     });
-  }, [websites, selectedDemoCat, searchQuery]);
+  }, [websites, selectedDemoCat, searchQuery, referenceCategoryFilter]);
 
   // Create an on-the-fly interactive preview site driven by a selected reference site
   const handlePreviewReference = (cat: CategoryReferenceItem, ref: ReferenceSite) => {
@@ -275,7 +284,7 @@ export const DemoWebsitesPage: React.FC<DemoWebsitesPageProps> = ({ onOpenOrderM
                 </button>
               ))
             ) : (
-              ['all', 'cafe', 'salon', 'clinic', 'retail', 'gym', 'realestate', 'coaching', 'services'].map(cat => (
+              ['all', 'cafe', 'restaurant', 'travel', 'salon', 'clinic', 'retail', 'gym', 'realestate', 'coaching', 'services'].map(cat => (
                 <button
                   key={cat}
                   onClick={() => setSelectedDemoCat(cat)}
@@ -433,6 +442,87 @@ export const DemoWebsitesPage: React.FC<DemoWebsitesPageProps> = ({ onOpenOrderM
         ) : (
           /* TAB 2: Ready-Built Websites */
           <div>
+            {/* EXACTLY THREE CATEGORIES: Cafes, Restaurants, Tour & Travel */}
+            <div className="flex flex-col items-center justify-center mb-6">
+              <div className="inline-flex items-center gap-1 sm:gap-2 p-1.5 bg-white rounded-2xl border border-[#D5D4E3] shadow-xs">
+                {/* 1. CAFES */}
+                <button
+                  onClick={() => {
+                    const next = referenceCategoryFilter === 'cafes' ? 'all' : 'cafes';
+                    setReferenceCategoryFilter(next);
+                  }}
+                  className={`px-3.5 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center gap-1.5 sm:gap-2 ${
+                    referenceCategoryFilter === 'cafes'
+                      ? 'bg-[#14162B] text-white shadow-sm ring-1 ring-[#14162B]'
+                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                  }`}
+                  aria-pressed={referenceCategoryFilter === 'cafes'}
+                >
+                  <span>☕ CAFES</span>
+                  <span className={`text-[10px] px-1.5 py-0.5 rounded-md font-mono ${
+                    referenceCategoryFilter === 'cafes' ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-700'
+                  }`}>
+                    {websites.filter(w => w.category === 'cafe').length}
+                  </span>
+                </button>
+
+                {/* 2. RESTAURANTS */}
+                <button
+                  onClick={() => {
+                    const next = referenceCategoryFilter === 'restaurants' ? 'all' : 'restaurants';
+                    setReferenceCategoryFilter(next);
+                  }}
+                  className={`px-3.5 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center gap-1.5 sm:gap-2 ${
+                    referenceCategoryFilter === 'restaurants'
+                      ? 'bg-[#14162B] text-white shadow-sm ring-1 ring-[#14162B]'
+                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                  }`}
+                  aria-pressed={referenceCategoryFilter === 'restaurants'}
+                >
+                  <span>🍽️ RESTAURANTS</span>
+                  <span className={`text-[10px] px-1.5 py-0.5 rounded-md font-mono ${
+                    referenceCategoryFilter === 'restaurants' ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-700'
+                  }`}>
+                    {websites.filter(w => w.category === 'restaurant').length}
+                  </span>
+                </button>
+
+                {/* 3. TOUR & TRAVEL */}
+                <button
+                  onClick={() => {
+                    const next = referenceCategoryFilter === 'travel' ? 'all' : 'travel';
+                    setReferenceCategoryFilter(next);
+                  }}
+                  className={`px-3.5 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center gap-1.5 sm:gap-2 ${
+                    referenceCategoryFilter === 'travel'
+                      ? 'bg-[#14162B] text-white shadow-sm ring-1 ring-[#14162B]'
+                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                  }`}
+                  aria-pressed={referenceCategoryFilter === 'travel'}
+                >
+                  <span>✈️ TOUR & TRAVEL</span>
+                  <span className={`text-[10px] px-1.5 py-0.5 rounded-md font-mono ${
+                    referenceCategoryFilter === 'travel' ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-700'
+                  }`}>
+                    {websites.filter(w => w.category === 'travel' || w.category === ('tour_travel' as any)).length}
+                  </span>
+                </button>
+              </div>
+
+              {referenceCategoryFilter !== 'all' && (
+                <div className="mt-2 flex items-center gap-2 text-xs text-slate-500 font-['Inter']">
+                  <span>Filtered by: <strong className="text-slate-800 capitalize">{referenceCategoryFilter === 'travel' ? 'Tour & Travel' : referenceCategoryFilter}</strong></span>
+                  <span>•</span>
+                  <button
+                    onClick={() => setReferenceCategoryFilter('all')}
+                    className="text-[#4338CA] hover:underline font-bold cursor-pointer"
+                  >
+                    Clear filter (Show all {websites.length})
+                  </button>
+                </div>
+              )}
+            </div>
+
             <div className="flex items-center justify-between mb-6">
               <p className="text-xs text-slate-500">
                 Showing <strong className="text-slate-900">{filteredWebsites.length}</strong> created business websites
@@ -544,19 +634,20 @@ export const DemoWebsitesPage: React.FC<DemoWebsitesPageProps> = ({ onOpenOrderM
                     {/* Preview and Public Order Buttons */}
                     <div className="pt-4 border-t border-slate-100 flex items-center gap-2">
                       <button
-                        onClick={() => setPreviewModalSite(site)}
-                        className="flex-1 min-h-[44px] px-3 py-2 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-slate-800 text-xs font-bold transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+                        onClick={() => setActiveView('site', site.slug)}
+                        className="flex-1 min-h-[44px] px-3.5 py-2 rounded-xl bg-[#14162B] hover:bg-[#4338CA] text-white text-xs font-bold transition-colors flex items-center justify-center gap-1.5 cursor-pointer shadow-xs"
                       >
-                        <Eye className="w-4 h-4 text-slate-500" />
-                        <span>Preview</span>
+                        <ExternalLink className="w-3.5 h-3.5 text-amber-400" />
+                        <span>{site.bookingCtaLabel || 'Open Website'}</span>
                       </button>
 
                       <button
-                        onClick={onOpenOrderModal}
-                        className="flex-1 min-h-[44px] px-3 py-2 rounded-xl bg-[#FF6B4A] hover:bg-[#F25A38] text-white text-xs font-bold transition-all shadow-xs flex items-center justify-center gap-1.5 cursor-pointer"
+                        onClick={() => setPreviewModalSite(site)}
+                        className="min-h-[44px] px-3 py-2 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-slate-800 text-xs font-bold transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+                        title="Interactive Device Preview"
                       >
-                        <Sparkles className="w-3.5 h-3.5" />
-                        <span>Get Website</span>
+                        <Eye className="w-4 h-4 text-slate-500" />
+                        <span className="hidden sm:inline">Preview</span>
                       </button>
                     </div>
                   </div>

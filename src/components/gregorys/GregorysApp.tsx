@@ -23,6 +23,7 @@ import {
   Briefcase
 } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
+import { ReferenceSiteSwitcher } from '../common/ReferenceSiteSwitcher';
 import {
   GREGORYS_MENU,
   GREGORYS_PRODUCTS,
@@ -178,21 +179,8 @@ export const GregorysApp: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-white text-[#111111] font-['Inter',sans-serif] selection:bg-[#e11d48] selection:text-white">
-      {/* Website Switcher Bar */}
-      <div className="bg-[#111111] text-white text-xs py-2 px-4 border-b border-stone-800 flex flex-wrap items-center justify-between gap-2">
-        <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-[#e11d48]"></span>
-          <span className="font-bold tracking-wide">WEBSITE 4: GREGORYS COFFEE (Recreated as BREW & BLOOM)</span>
-        </div>
-        <div className="flex items-center gap-2 text-[11px]">
-          <span className="text-stone-400">Switch Website:</span>
-          <button onClick={() => setActiveView('site', 'brew-bloom-tim-wendelboe')} className="px-2 py-0.5 rounded bg-white/10 hover:bg-white/20 text-stone-300 cursor-pointer">1. Tim Wendelboe</button>
-          <button onClick={() => setActiveView('site', 'brew-bloom-onyx')} className="px-2 py-0.5 rounded bg-white/10 hover:bg-white/20 text-stone-300 cursor-pointer">2. Onyx Coffee Lab</button>
-          <button onClick={() => setActiveView('site', 'brew-bloom-city-brew')} className="px-2 py-0.5 rounded bg-white/10 hover:bg-white/20 text-stone-300 cursor-pointer">3. City Brew</button>
-          <button onClick={() => setActiveView('site', 'brew-bloom-gregorys')} className="px-2 py-0.5 rounded bg-[#e11d48] text-white font-bold cursor-pointer">4. Gregorys</button>
-          <button onClick={() => setActiveView('dashboard')} className="px-2 py-0.5 rounded bg-stone-700 text-white font-bold ml-2 cursor-pointer">Dashboard</button>
-        </div>
-      </div>
+      {/* 15 Reference Sites Switcher */}
+      <ReferenceSiteSwitcher currentSiteId="gregorys-coffee" />
 
       {/* Top Ticker Announcement */}
       <div className="bg-[#e11d48] text-white text-[11px] font-bold py-2 px-4 text-center tracking-wider uppercase flex items-center justify-center gap-3">

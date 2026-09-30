@@ -10,6 +10,7 @@ import {
   Wine,
   UtensilsCrossed,
   CheckCircle2,
+  Menu as MenuIcon,
 } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 import { ReferenceSiteSwitcher } from '../common/ReferenceSiteSwitcher';

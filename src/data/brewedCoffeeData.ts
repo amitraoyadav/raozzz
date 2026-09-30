@@ -170,8 +170,8 @@ export const BREWED_LOCATIONS: BrewedLocation[] = [
 ];
 
 export const BREWED_WEBSITE: BusinessWebsite = {
-  id: 'brew-bloom-brewed',
-  slug: 'brew-bloom-brewed',
+  id: 'site-brewed-coffee-shop',
+  slug: 'brewed-coffee-shop',
   businessName: 'BREW & BLOOM — Premier Coffee Experience (Brewed Awakenings Recreation)',
   category: 'cafe',
   templateId: 'brewed-coffee',
