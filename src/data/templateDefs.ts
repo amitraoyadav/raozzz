@@ -442,6 +442,7 @@ export const CATEGORY_INFO: Record<string, { label: string; icon: string; defaul
   icecream: { label: 'Ice Cream Parlour & Desserts', icon: 'IceCream', defaultBooking: 'whatsapp_order', defaultCta: 'Order Party Ice Cream Tub' },
   carwash: { label: 'Car Wash & Auto Detailing', icon: 'Car', defaultBooking: 'appointment_slot', defaultCta: 'Book Car Detailing Slot' },
   gym: { label: 'Gym, CrossFit & Yoga Studio', icon: 'Dumbbell', defaultBooking: 'appointment_slot', defaultCta: 'Claim 1-Day Trial Pass' },
+  gym_fitness: { label: 'Gym & Fitness', icon: 'Dumbbell', defaultBooking: 'appointment_slot', defaultCta: 'Claim 1-Day Trial Pass' },
   hotel: { label: 'Hotel, Resort & Luxury Stays', icon: 'Building', defaultBooking: 'reservation_party', defaultCta: 'Book Room & Suite' },
   realestate: { label: 'Real Estate Agent / Broker', icon: 'Building', defaultBooking: 'reservation_party', defaultCta: 'Book Free Property Visit' },
   travel: { label: 'Tour Operator & Holiday Planner', icon: 'Plane', defaultBooking: 'reservation_party', defaultCta: 'Request Holiday Itinerary' },
@@ -508,5 +509,7 @@ export const CATEGORY_INFO: Record<string, { label: string; icon: string; defaul
   corporate_gifting: { label: 'Corporate Gifting Supplier', icon: 'Gift', defaultBooking: 'whatsapp_order', defaultCta: 'Get Instant Bulk Quotation on WhatsApp' },
   handicraft_store: { label: 'Handicraft & Artisan Store', icon: 'Palette', defaultBooking: 'whatsapp_order', defaultCta: 'Buy Artisan Crafts on WhatsApp' },
   rooftop_cafe: { label: 'Rooftop & Terrace Café', icon: 'Coffee', defaultBooking: 'reservation_party', defaultCta: 'Reserve Sunset Rooftop Table' },
-  office_tiffin: { label: 'B2B Office Tiffin Service', icon: 'UtensilsCrossed', defaultBooking: 'whatsapp_order', defaultCta: 'Book 5-Day Corporate Meal Trial' }
+  office_tiffin: { label: 'B2B Office Tiffin Service', icon: 'UtensilsCrossed', defaultBooking: 'whatsapp_order', defaultCta: 'Book 5-Day Corporate Meal Trial' },
+  jewellery: { label: 'Fine Jewellery & Diamonds', icon: 'Gem', defaultBooking: 'appointment_slot', defaultCta: 'Book Store Appointment' },
+  beauty_cosmetics: { label: 'Beauty & Cosmetics', icon: 'Sparkles', defaultBooking: 'whatsapp_order', defaultCta: 'Shop Beauty Products' }
 };

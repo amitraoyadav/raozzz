@@ -66,6 +66,12 @@ export const DemoShowcase: React.FC<DemoShowcaseProps> = ({ onOpenOrderModal }) 
     if (referenceCategoryFilter === 'salon' && site.category !== 'salon') {
       return false;
     }
+    if (referenceCategoryFilter === 'jewellery' && site.category !== 'jewellery') {
+      return false;
+    }
+    if (referenceCategoryFilter === 'beauty_cosmetics' && site.category !== 'beauty_cosmetics') {
+      return false;
+    }
 
     // Specific Category match
     if (selectedCategory !== 'all' && site.category !== selectedCategory) {
@@ -244,11 +250,55 @@ export const DemoShowcase: React.FC<DemoShowcaseProps> = ({ onOpenOrderModal }) 
                     {websites.filter(w => w.category === 'salon').length}
                   </span>
                 </button>
+
+                {/* 5. JEWELLERY */}
+                <button
+                  onClick={() => {
+                    const next = referenceCategoryFilter === 'jewellery' ? 'all' : 'jewellery';
+                    setReferenceCategoryFilter(next);
+                    setSelectedCategory('all');
+                  }}
+                  className={`px-3.5 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center gap-1.5 sm:gap-2 ${
+                    referenceCategoryFilter === 'jewellery'
+                      ? 'bg-[#14162B] text-white shadow-sm ring-1 ring-[#14162B]'
+                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                  }`}
+                  aria-pressed={referenceCategoryFilter === 'jewellery'}
+                >
+                  <span>💎 JEWELLERY</span>
+                  <span className={`text-[10px] px-1.5 py-0.5 rounded-md font-mono ${
+                    referenceCategoryFilter === 'jewellery' ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-700'
+                  }`}>
+                    {websites.filter(w => w.category === 'jewellery').length}
+                  </span>
+                </button>
+
+                {/* 6. BEAUTY & COSMETICS */}
+                <button
+                  onClick={() => {
+                    const next = referenceCategoryFilter === 'beauty_cosmetics' ? 'all' : 'beauty_cosmetics';
+                    setReferenceCategoryFilter(next);
+                    setSelectedCategory('all');
+                  }}
+                  className={`px-3.5 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center gap-1.5 sm:gap-2 ${
+                    referenceCategoryFilter === 'beauty_cosmetics'
+                      ? 'bg-[#14162B] text-white shadow-sm ring-1 ring-[#14162B]'
+                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                  }`}
+                  aria-pressed={referenceCategoryFilter === 'beauty_cosmetics'}
+                >
+                  <span>💄 BEAUTY & COSMETICS</span>
+                  <span className={`text-[10px] px-1.5 py-0.5 rounded-md font-mono ${
+                    referenceCategoryFilter === 'beauty_cosmetics' ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-700'
+                  }`}>
+                    {websites.filter(w => w.category === 'beauty_cosmetics').length}
+                  </span>
+                </button>
               </div>
 
               {referenceCategoryFilter !== 'all' && (
                 <div className="mt-2 flex items-center gap-2 text-xs text-slate-500 font-['Inter']">
-                  <span>Filtered by: <strong className="text-slate-800 capitalize">{referenceCategoryFilter === 'travel' ? 'Tour & Travel' : referenceCategoryFilter === 'salon' ? 'Salon' : referenceCategoryFilter}</strong></span>
+                  <span>Filtered by: <strong className="text-slate-800 capitalize">{referenceCategoryFilter === 'travel' ? 'Tour & Travel' : referenceCategoryFilter === 'salon' ? 'Salon' : referenceCategoryFilter === 'jewellery' ? 'Jewellery' : referenceCategoryFilter === 'beauty_cosmetics' ? 'Beauty & Cosmetics' : referenceCategoryFilter}</strong></span>
                   <span>•</span>
                   <button
                     onClick={() => {

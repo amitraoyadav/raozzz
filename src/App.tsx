@@ -42,6 +42,11 @@ import { GregorysApp } from './components/gregorys/GregorysApp';
 import { VeenaWorldApp } from './components/veenaworld/VeenaWorldApp';
 import { EnrichBeautyApp } from './components/enrich/EnrichBeautyApp';
 import { BodycraftApp } from './components/bodycraft/BodycraftApp';
+import { HomeSalonApp } from './components/homesalon/HomeSalonApp';
+import { DessangeMumbaiApp } from './components/dessange/DessangeMumbaiApp';
+import { TanishqApp } from './components/tanishq/TanishqApp';
+import { JewelboxApp } from './components/jewelbox/JewelboxApp';
+import { BeautyBerryApp } from './components/beautyberry/BeautyBerryApp';
 
 function AppContent() {
   const {
@@ -150,6 +155,26 @@ function AppContent() {
 
   if (activeView === 'bodycraft') {
     return <BodycraftApp />;
+  }
+
+  if (activeView === 'home-salon') {
+    return <HomeSalonApp />;
+  }
+
+  if (activeView === 'dessange-mumbai') {
+    return <DessangeMumbaiApp />;
+  }
+
+  if (activeView === 'tanishq') {
+    return <TanishqApp />;
+  }
+
+  if (activeView === 'jewelbox') {
+    return <JewelboxApp />;
+  }
+
+  if (activeView === 'beauty-berry') {
+    return <BeautyBerryApp />;
   }
 
   const renderPublicShell = (content: React.ReactNode, isHome = false) => (

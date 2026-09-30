@@ -103,11 +103,22 @@ import { SRM_HOLIDAYS_WEBSITE } from './srmHolidaysData';
 import { ITDC_TRAVELS_WEBSITE } from './itdcTravelsData';
 import { TRAVEL_ART_WEBSITE } from './travelArtData';
 
-// 2 Salon (Bodycraft as site #37, Home Salon as site #38)
+// 3 Salon (Bodycraft as site #37, Home Salon as site #38, DESSANGE Mumbai as site #39)
 import { BODYCRAFT_WEBSITE } from './bodycraftData';
 import { HOME_SALON_WEBSITE } from './homeSalonData';
+import { DESSANGE_MUMBAI_WEBSITE } from './dessangeData';
 
-// User's active 38 Reference Websites faithfully recreated
+// 2 Jewellery (Tanishq as site #40, Jewelbox as site #41)
+import { TANISHQ_WEBSITE } from './tanishqData';
+import { JEWELBOX_WEBSITE } from './jewelboxData';
+
+// 1 Beauty & Cosmetics (Beauty Berry as site #42)
+import { BEAUTY_BERRY_WEBSITE } from './beautyBerryData';
+
+// 1 Gym & Fitness (Gold's Gym as site #43)
+import { GOLDS_GYM_WEBSITE } from './goldsGymData';
+
+// User's active 43 Reference Websites faithfully recreated
 export const DEFAULT_WEBSITES: BusinessWebsite[] = [
   // 1-19: Cafes (19)
   TWOD_WEBSITE,
@@ -151,9 +162,20 @@ export const DEFAULT_WEBSITES: BusinessWebsite[] = [
   ITDC_TRAVELS_WEBSITE,
   TRAVEL_ART_WEBSITE,
 
-  // 37-38: Salon (2)
+  // 37-39: Salon (3)
   BODYCRAFT_WEBSITE,
-  HOME_SALON_WEBSITE
+  HOME_SALON_WEBSITE,
+  DESSANGE_MUMBAI_WEBSITE,
+
+  // 40-41: Jewellery (2)
+  TANISHQ_WEBSITE,
+  JEWELBOX_WEBSITE,
+
+  // 42: Beauty & Cosmetics (1)
+  BEAUTY_BERRY_WEBSITE,
+
+  // 43: Gym & Fitness (1)
+  GOLDS_GYM_WEBSITE
 ];
 
 export const INITIAL_LEADS: LeadEnquiry[] = [];

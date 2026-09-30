@@ -185,6 +185,23 @@ export const CATEGORY_TOKENS: Record<string, CategoryToken> = {
     taglineVibe: 'Uncompromising Iron'
   },
 
+  // 7b. Gym & Fitness (Gold's Gym etc.)
+  gym_fitness: {
+    category: 'gym_fitness' as any,
+    name: 'Gym & Fitness',
+    baseBg: '#111214',
+    surfaceBg: '#181A1D',
+    textColor: '#FFFFFF',
+    bodyTextColor: '#E2E8F0',
+    accentColor: '#FFE400',
+    secondaryAccent: '#8A8F98',
+    headlineFont: 'Montserrat, sans-serif',
+    bodyFont: 'Montserrat, sans-serif',
+    fontPairingLabel: 'Montserrat Bold + Regular',
+    imageDirection: 'World-class strength equipment, Olympic lifting platforms, dynamic group workouts',
+    taglineVibe: 'The Mecca of Fitness'
+  },
+
   // 8. Clinic & Dental Care
   clinic: {
     category: 'clinic',
@@ -504,6 +521,36 @@ export const CATEGORY_TOKENS: Record<string, CategoryToken> = {
     fontPairingLabel: 'Playfair Display + Plus Jakarta Sans',
     imageDirection: 'Hallmarked 22K gold necklace, uncut polki choker, solitaire diamond sparkles',
     taglineVibe: 'Timeless Shahi Elegance'
+  },
+  jewellery: {
+    category: 'jewellery',
+    name: 'Fine Jewellery & Diamonds',
+    baseBg: '#832729',
+    surfaceBg: '#FFFDF7',
+    textColor: '#FFFBEA',
+    bodyTextColor: '#1C1819',
+    accentColor: '#D4AF37',
+    secondaryAccent: '#C59B27',
+    headlineFont: 'Playfair Display, serif',
+    bodyFont: 'Inter, sans-serif',
+    fontPairingLabel: 'Playfair Display + Inter',
+    imageDirection: 'Hallmarked 22K gold necklace, certified solitaire diamonds, Rivaah bridal trousseau',
+    taglineVibe: 'Pure Gold & Timeless Trust'
+  },
+  beauty_cosmetics: {
+    category: 'beauty_cosmetics',
+    name: 'Beauty & Cosmetics',
+    baseBg: '#71DBD4',
+    surfaceBg: '#F5EDED',
+    textColor: '#000000',
+    bodyTextColor: '#1A1A1A',
+    accentColor: '#71DBD4',
+    secondaryAccent: '#45E8D8',
+    headlineFont: 'Rethink Sans, Montserrat, sans-serif',
+    bodyFont: 'Montserrat, sans-serif',
+    fontPairingLabel: 'Rethink Sans + Montserrat',
+    imageDirection: 'Matte lipsticks, dual application mascaras, concealer palettes, nail lacquer and cosmetics',
+    taglineVibe: 'Premium Beauty & Makeup Essentials'
   },
   optical_shop: {
     category: 'optical_shop',

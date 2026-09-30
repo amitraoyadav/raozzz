@@ -70,6 +70,11 @@ import { BrioTravelsApp } from '../../demos/tour-travel/brio-travels/BrioTravels
 import { TourTravel2App } from '../../demos/tour-travel-2/TourTravel2App';
 import { VeenaWorldApp } from '../veenaworld/VeenaWorldApp';
 import { BodycraftApp } from '../bodycraft/BodycraftApp';
+import { HomeSalonApp } from '../homesalon/HomeSalonApp';
+import { DessangeMumbaiApp } from '../dessange/DessangeMumbaiApp';
+import { TanishqApp } from '../tanishq/TanishqApp';
+import { JewelboxApp } from '../jewelbox/JewelboxApp';
+import { BeautyBerryApp } from '../beautyberry/BeautyBerryApp';
 
 const getHeaderCity = (city?: string, address?: string): string => {
   if (typeof city === 'string' && city.trim()) return city.trim();
@@ -622,7 +627,7 @@ export const SiteRenderer: React.FC<SiteRendererProps> = ({ site: propSite, isPr
     return <VeenaWorldApp />;
   }
 
-  // Website 38: Bodycraft Salon, Clinic & Spa (bodycraft.co.in)
+  // Website 37: Bodycraft Salon, Clinic & Spa (bodycraft.co.in)
   if (
     targetSlug === 'bodycraft' ||
     targetSlug === 'bodycraft-salon' ||
@@ -630,9 +635,75 @@ export const SiteRenderer: React.FC<SiteRendererProps> = ({ site: propSite, isPr
     targetSlug === 'bodycraft-spa' ||
     targetSlug === 'references/bodycraft' ||
     targetSlug === '/references/bodycraft/' ||
+    targetSlug === 'demo/bodycraft' ||
     targetTemplate === 'bodycraft'
   ) {
     return <BodycraftApp />;
+  }
+
+  // Website 38: Home Salon & Spa (homesalon.in)
+  if (
+    targetSlug === 'home-salon' ||
+    targetSlug === 'homesalon' ||
+    targetSlug === 'references/home-salon' ||
+    targetSlug === '/references/home-salon/' ||
+    targetSlug === 'demo/home-salon' ||
+    targetTemplate === 'home-salon'
+  ) {
+    return <HomeSalonApp />;
+  }
+
+  // Website 39: DESSANGE Mumbai (dessangemumbai.com)
+  if (
+    targetSlug === 'dessange-mumbai' ||
+    targetSlug === 'dessange' ||
+    targetSlug === 'dessangemumbai' ||
+    targetSlug === 'references/dessange-mumbai' ||
+    targetSlug === '/references/dessange-mumbai/' ||
+    targetSlug === 'demo/dessange-mumbai' ||
+    targetSlug === 'demos/dessange-mumbai' ||
+    targetTemplate === 'dessange-mumbai' ||
+    targetTemplate === 'dessange'
+  ) {
+    return <DessangeMumbaiApp />;
+  }
+
+  // Website 40: Tanishq (tanishq.co.in)
+  if (
+    targetSlug === 'tanishq' ||
+    targetSlug === 'references/tanishq' ||
+    targetSlug === '/references/tanishq/' ||
+    targetSlug === 'demo/tanishq' ||
+    targetSlug === 'demos/tanishq' ||
+    targetTemplate === 'tanishq'
+  ) {
+    return <TanishqApp />;
+  }
+
+  // Website 41: Jewelbox (jewelbox.co.in)
+  if (
+    targetSlug === 'jewelbox' ||
+    targetSlug === 'references/jewelbox' ||
+    targetSlug === '/references/jewelbox/' ||
+    targetSlug === 'demo/jewelbox' ||
+    targetSlug === 'demos/jewelbox' ||
+    targetTemplate === 'jewelbox'
+  ) {
+    return <JewelboxApp />;
+  }
+
+  // Website 42: Beauty Berry (beautyberry.co.in)
+  if (
+    targetSlug === 'beauty-berry' ||
+    targetSlug === 'beautyberry' ||
+    targetSlug === 'references/beauty-berry' ||
+    targetSlug === '/references/beauty-berry/' ||
+    targetSlug === 'demo/beauty-berry' ||
+    targetSlug === 'demos/beauty-berry' ||
+    targetTemplate === 'beautyberry' ||
+    targetTemplate === 'beauty-berry'
+  ) {
+    return <BeautyBerryApp />;
   }
 
   if (!site) {

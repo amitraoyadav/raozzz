@@ -32,7 +32,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenOrderModal }) => {
   } = useApp();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const handleCategoryNav = (cat: 'all' | 'cafes' | 'restaurants' | 'travel') => {
+  const handleCategoryNav = (cat: 'all' | 'cafes' | 'restaurants' | 'travel' | 'salon') => {
     setReferenceCategoryFilter(cat);
     setMobileMenuOpen(false);
     if (activeView !== 'home') {
@@ -128,7 +128,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenOrderModal }) => {
               Home
             </button>
 
-            {/* Exactly Three Main Categories Filter Interface */}
+            {/* Main Categories Filter Interface */}
             <div className="flex items-center gap-1 p-1 bg-[#E8E7F0]/70 rounded-xl border border-[#D5D4E3]">
               <button
                 onClick={() => handleCategoryNav('cafes')}
@@ -160,6 +160,16 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenOrderModal }) => {
               >
                 TOUR & TRAVEL
               </button>
+              <button
+                onClick={() => handleCategoryNav('salon')}
+                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                  referenceCategoryFilter === 'salon'
+                    ? 'bg-[#14162B] text-white shadow-xs'
+                    : 'text-[#474B64] hover:text-[#14162B]'
+                }`}
+              >
+                SALON
+              </button>
             </div>
 
             <button
@@ -181,6 +191,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenOrderModal }) => {
             >
               <span className="w-1.5 h-1.5 rounded-full bg-[#C5A880]"></span>
               <span>Bodycraft</span>
+            </button>
+            <button
+              onClick={() => setActiveView('dessange-mumbai')}
+              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-bold text-[#C5A880] bg-[#121212] hover:bg-[#252525] transition-colors cursor-pointer border border-[#C5A880]/40"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-[#C5A880] animate-pulse"></span>
+              <span>Dessange</span>
             </button>
             <button
               onClick={() => scrollToSection('process')}
@@ -290,10 +307,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenOrderModal }) => {
               <span className="text-[10px] font-bold uppercase tracking-wider text-[#636882] px-2 block">
                 Website Categories
               </span>
-              <div className="grid grid-cols-3 gap-1">
+              <div className="grid grid-cols-4 gap-1">
                 <button
                   onClick={() => handleCategoryNav('cafes')}
-                  className={`py-2 px-1 rounded-xl text-[11px] font-bold text-center transition-all cursor-pointer ${
+                  className={`py-2 px-1 rounded-xl text-[10px] font-bold text-center transition-all cursor-pointer ${
                     referenceCategoryFilter === 'cafes'
                       ? 'bg-[#14162B] text-white shadow-xs'
                       : 'bg-white text-slate-700 hover:bg-slate-100'
@@ -303,7 +320,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenOrderModal }) => {
                 </button>
                 <button
                   onClick={() => handleCategoryNav('restaurants')}
-                  className={`py-2 px-1 rounded-xl text-[11px] font-bold text-center transition-all cursor-pointer ${
+                  className={`py-2 px-1 rounded-xl text-[10px] font-bold text-center transition-all cursor-pointer ${
                     referenceCategoryFilter === 'restaurants'
                       ? 'bg-[#14162B] text-white shadow-xs'
                       : 'bg-white text-slate-700 hover:bg-slate-100'
@@ -313,13 +330,23 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenOrderModal }) => {
                 </button>
                 <button
                   onClick={() => handleCategoryNav('travel')}
-                  className={`py-2 px-1 rounded-xl text-[11px] font-bold text-center transition-all cursor-pointer ${
+                  className={`py-2 px-1 rounded-xl text-[10px] font-bold text-center transition-all cursor-pointer ${
                     referenceCategoryFilter === 'travel'
                       ? 'bg-[#14162B] text-white shadow-xs'
                       : 'bg-white text-slate-700 hover:bg-slate-100'
                   }`}
                 >
                   TRAVEL
+                </button>
+                <button
+                  onClick={() => handleCategoryNav('salon')}
+                  className={`py-2 px-1 rounded-xl text-[10px] font-bold text-center transition-all cursor-pointer ${
+                    referenceCategoryFilter === 'salon'
+                      ? 'bg-[#14162B] text-white shadow-xs'
+                      : 'bg-white text-slate-700 hover:bg-slate-100'
+                  }`}
+                >
+                  SALON
                 </button>
               </div>
             </div>
@@ -361,6 +388,17 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenOrderModal }) => {
               <div className="flex items-center gap-2">
                 <span>✨</span>
                 <span>Bodycraft (Salon · Clinic · Spa)</span>
+              </div>
+              <ArrowRight className="w-4 h-4 text-[#C5A880]" />
+            </button>
+
+            <button
+              onClick={() => navigateTo(() => setActiveView('dessange-mumbai'))}
+              className="w-full text-left min-h-[48px] py-3 px-4 rounded-2xl bg-[#121212] hover:bg-[#252525] active:bg-black flex items-center justify-between cursor-pointer border border-[#C5A880]/50 text-white font-bold"
+            >
+              <div className="flex items-center gap-2">
+                <span>💎</span>
+                <span>DESSANGE Mumbai (Parisian Luxury)</span>
               </div>
               <ArrowRight className="w-4 h-4 text-[#C5A880]" />
             </button>

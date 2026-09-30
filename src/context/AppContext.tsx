@@ -29,7 +29,12 @@ export type AppView =
   | 'veena-world'
   | 'enrich'
   | 'bodycraft'
-  | 'home-salon';
+  | 'home-salon'
+  | 'dessange-mumbai'
+  | 'tanishq'
+  | 'jewelbox'
+  | 'beauty-berry'
+  | 'golds-gym';
 
 import { TWOD_WEBSITE } from '../data/twoDCafeData';
 import { BLUE_TOKAI_WEBSITE } from '../data/blueTokaiData';
@@ -69,6 +74,11 @@ import { BRIO_TRAVELS_WEBSITE } from '../data/brioTravelsWebsite';
 import { TOUR_TRAVEL_2_WEBSITE } from '../data/tourTravel2Website';
 import { BODYCRAFT_WEBSITE } from '../data/bodycraftData';
 import { HOME_SALON_WEBSITE } from '../data/homeSalonData';
+import { DESSANGE_MUMBAI_WEBSITE } from '../data/dessangeData';
+import { TANISHQ_WEBSITE } from '../data/tanishqData';
+import { JEWELBOX_WEBSITE } from '../data/jewelboxData';
+import { BEAUTY_BERRY_WEBSITE } from '../data/beautyBerryData';
+import { GOLDS_GYM_WEBSITE } from '../data/goldsGymData';
 
 export const ALL_CAFE_WEBSITES: BusinessWebsite[] = [
   TWOD_WEBSITE,
@@ -117,21 +127,44 @@ export const ALL_TRAVEL_WEBSITES: BusinessWebsite[] = [
 
 export const ALL_SALON_WEBSITES: BusinessWebsite[] = [
   BODYCRAFT_WEBSITE,
-  HOME_SALON_WEBSITE
+  HOME_SALON_WEBSITE,
+  DESSANGE_MUMBAI_WEBSITE
 ];
 
-export const ALL_38_COLLECTION_WEBSITES: BusinessWebsite[] = [
+export const ALL_JEWELLERY_WEBSITES: BusinessWebsite[] = [
+  TANISHQ_WEBSITE,
+  JEWELBOX_WEBSITE
+];
+
+export const ALL_BEAUTY_COSMETICS_WEBSITES: BusinessWebsite[] = [
+  BEAUTY_BERRY_WEBSITE
+];
+
+export const ALL_GYM_FITNESS_WEBSITES: BusinessWebsite[] = [
+  GOLDS_GYM_WEBSITE
+];
+
+export const ALL_43_COLLECTION_WEBSITES: BusinessWebsite[] = [
   ...ALL_CAFE_WEBSITES,
   ...ALL_RESTAURANT_WEBSITES,
   ...ALL_TRAVEL_WEBSITES,
-  ...ALL_SALON_WEBSITES
+  ...ALL_SALON_WEBSITES,
+  ...ALL_JEWELLERY_WEBSITES,
+  ...ALL_BEAUTY_COSMETICS_WEBSITES,
+  ...ALL_GYM_FITNESS_WEBSITES
 ];
 
-export const ALL_37_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_38_COLLECTION_WEBSITES;
-export const ALL_36_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_38_COLLECTION_WEBSITES;
-export const ALL_34_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_38_COLLECTION_WEBSITES;
-export const ALL_30_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_38_COLLECTION_WEBSITES;
-export const ALL_29_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_38_COLLECTION_WEBSITES;
+export const ALL_42_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_43_COLLECTION_WEBSITES;
+export const ALL_41_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_43_COLLECTION_WEBSITES;
+export const ALL_40_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_43_COLLECTION_WEBSITES;
+
+export const ALL_39_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_40_COLLECTION_WEBSITES;
+export const ALL_38_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_40_COLLECTION_WEBSITES;
+export const ALL_37_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_40_COLLECTION_WEBSITES;
+export const ALL_36_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_40_COLLECTION_WEBSITES;
+export const ALL_34_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_40_COLLECTION_WEBSITES;
+export const ALL_30_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_40_COLLECTION_WEBSITES;
+export const ALL_29_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_40_COLLECTION_WEBSITES;
 
 export const ALL_15_REFERENCE_WEBSITES: BusinessWebsite[] = ALL_CAFE_WEBSITES.slice(0, 15);
 import { CATEGORY_INFO } from '../data/templateDefs';
@@ -268,8 +301,8 @@ interface AppContextType {
   discountLeads: DiscountLead[];
   demoCategoryFilter: string | null;
   setDemoCategoryFilter: (cat: string | null) => void;
-  referenceCategoryFilter: 'all' | 'cafes' | 'restaurants' | 'travel' | 'salon';
-  setReferenceCategoryFilter: (filter: 'all' | 'cafes' | 'restaurants' | 'travel' | 'salon') => void;
+  referenceCategoryFilter: 'all' | 'cafes' | 'restaurants' | 'travel' | 'salon' | 'jewellery' | 'beauty_cosmetics' | 'gym_fitness';
+  setReferenceCategoryFilter: (filter: 'all' | 'cafes' | 'restaurants' | 'travel' | 'salon' | 'jewellery' | 'beauty_cosmetics' | 'gym_fitness') => void;
   categoryPickerOpen: boolean;
   setCategoryPickerOpen: (open: boolean) => void;
   openCategoryPicker: () => void;
@@ -454,7 +487,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [activeSiteSlug, setActiveSiteSlug] = useState<string | null>(null);
   const [activeCitySlug, setActiveCitySlug] = useState<string>('delhi');
   const [demoCategoryFilter, setDemoCategoryFilter] = useState<string | null>(null);
-  const [referenceCategoryFilter, setReferenceCategoryFilter] = useState<'all' | 'cafes' | 'restaurants' | 'travel' | 'salon'>('all');
+  const [referenceCategoryFilter, setReferenceCategoryFilter] = useState<'all' | 'cafes' | 'restaurants' | 'travel' | 'salon' | 'jewellery' | 'beauty_cosmetics'>('all');
   const [categoryPickerOpen, setCategoryPickerOpen] = useState<boolean>(false);
   const openCategoryPicker = () => setCategoryPickerOpen(true);
   const [builderEditSiteId, setBuilderEditSiteId] = useState<string | null>(null);
@@ -597,7 +630,16 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
           'brio-travels': 'brio-travels',
           'briotravels': 'brio-travels',
           'tour-travel-2': 'tour-travel-2',
-          'tourtravel2': 'tour-travel-2'
+          'tourtravel2': 'tour-travel-2',
+          'bodycraft': 'bodycraft',
+          'home-salon': 'home-salon',
+          'dessange-mumbai': 'dessange-mumbai',
+          'dessange': 'dessange-mumbai',
+          'dessangemumbai': 'dessange-mumbai',
+          'tanishq': 'tanishq',
+          'jewelbox': 'jewelbox',
+          'beauty-berry': 'beauty-berry',
+          'beautyberry': 'beauty-berry'
         };
         const targetSlug = aliasMap[refSlug] || refSlug;
         setActiveSiteSlug(targetSlug);
@@ -621,7 +663,16 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
           'travel-art': 'travel-art',
           'travelart': 'travel-art',
           'travelartcompany': 'travel-art',
-          'dream-travels': 'dream-travels'
+          'dream-travels': 'dream-travels',
+          'bodycraft': 'bodycraft',
+          'home-salon': 'home-salon',
+          'dessange-mumbai': 'dessange-mumbai',
+          'dessange': 'dessange-mumbai',
+          'dessangemumbai': 'dessange-mumbai',
+          'tanishq': 'tanishq',
+          'jewelbox': 'jewelbox',
+          'beauty-berry': 'beauty-berry',
+          'beautyberry': 'beauty-berry'
         };
         const targetSlug = aliasMap[demoSlug] || demoSlug;
         setActiveSiteSlug(targetSlug);
@@ -653,6 +704,21 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       } else if (raw === 'bodycraft' || raw === 'bodycraft-salon' || raw === 'bodycraft-clinic' || raw === 'demo/bodycraft' || raw === 'demos/bodycraft' || raw === 'site/bodycraft' || raw === 'references/bodycraft') {
         setActiveViewInternal('bodycraft');
         setActiveSiteSlug('bodycraft');
+      } else if (raw === 'home-salon' || raw === 'demo/home-salon' || raw === 'demos/home-salon' || raw === 'site/home-salon' || raw === 'references/home-salon') {
+        setActiveViewInternal('home-salon');
+        setActiveSiteSlug('home-salon');
+      } else if (raw === 'dessange-mumbai' || raw === 'dessange' || raw === 'dessangemumbai' || raw === 'demo/dessange-mumbai' || raw === 'demos/dessange-mumbai' || raw === 'site/dessange-mumbai' || raw === 'references/dessange-mumbai') {
+        setActiveViewInternal('dessange-mumbai');
+        setActiveSiteSlug('dessange-mumbai');
+      } else if (raw === 'tanishq' || raw === 'demo/tanishq' || raw === 'demos/tanishq' || raw === 'site/tanishq' || raw === 'references/tanishq' || raw === 'jewellery/tanishq') {
+        setActiveViewInternal('tanishq');
+        setActiveSiteSlug('tanishq');
+      } else if (raw === 'jewelbox' || raw === 'demo/jewelbox' || raw === 'demos/jewelbox' || raw === 'site/jewelbox' || raw === 'references/jewelbox' || raw === 'jewellery/jewelbox') {
+        setActiveViewInternal('jewelbox');
+        setActiveSiteSlug('jewelbox');
+      } else if (raw === 'beauty-berry' || raw === 'beautyberry' || raw === 'demo/beauty-berry' || raw === 'demos/beauty-berry' || raw === 'site/beauty-berry' || raw === 'references/beauty-berry' || raw === 'beauty-cosmetics/beauty-berry' || raw === 'cosmetics/beauty-berry') {
+        setActiveViewInternal('beauty-berry');
+        setActiveSiteSlug('beauty-berry');
       } else if (raw.startsWith('for-')) {
         const city = raw.replace('for-', '').toLowerCase();
         setActiveViewInternal('city');
@@ -775,16 +841,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
               }
             });
             const list = [...loaded];
-            const ensureSites = [
-              TIM_WENDELBOE_WEBSITE,
-              ONYX_WEBSITE,
-              CITY_BREW_WEBSITE,
-              GREGORYS_WEBSITE,
-              SWEET_COFFEE_WEBSITE,
-              BREW_BLOOM_WEBSITE
-            ];
-            for (const s of ensureSites) {
-              if (!list.some(w => w.slug === s.slug)) {
+            for (const s of ALL_42_COLLECTION_WEBSITES) {
+              if (!list.some(w => w.slug === s.slug || w.id === s.id)) {
                 list.push(s);
               }
             }

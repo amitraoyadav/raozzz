@@ -5,7 +5,7 @@ import { useApp } from '../../context/AppContext';
 export interface ReferenceSiteInfo {
   id: string;
   num: number;
-  category: 'cafe' | 'restaurant' | 'travel' | 'salon';
+  category: 'cafe' | 'restaurant' | 'travel' | 'salon' | 'jewellery' | 'beauty_cosmetics';
   name: string;
   originalUrl: string;
   slug: string;
@@ -464,9 +464,74 @@ export const ALL_29_REFERENCE_SITES: ReferenceSiteInfo[] = [
     concept: "India's First Hybrid Clinic-Salon · Salon Care Backed by Dermatology Expertise",
     themeColor: '#C5A880',
     badge: 'Hybrid Clinic & Salon'
+  },
+  {
+    id: 'home-salon',
+    num: 38,
+    category: 'salon',
+    name: 'Home Salon & Spa',
+    originalUrl: 'https://homesalon.in/',
+    slug: 'home-salon',
+    referencePath: '/references/home-salon/',
+    concept: 'Hygienic Doorstep Salon & Wellness for Women Across Mumbai',
+    themeColor: '#D81B60',
+    badge: 'Doorstep Salon'
+  },
+  {
+    id: 'dessange-mumbai',
+    num: 39,
+    category: 'salon',
+    name: 'DESSANGE Mumbai',
+    originalUrl: 'https://www.dessangemumbai.com/',
+    slug: 'dessange-mumbai',
+    referencePath: '/references/dessange-mumbai/',
+    concept: 'Haute Coiffure Française, Californian Balayage & Parisian Luxury Beauty',
+    themeColor: '#1A1A1A',
+    badge: 'Parisian Haute Coiffure'
+  },
+  {
+    id: 'tanishq',
+    num: 40,
+    category: 'jewellery',
+    name: 'Tanishq',
+    originalUrl: 'https://www.tanishq.co.in/shop/jewellery?lang=en_IN',
+    slug: 'tanishq',
+    referencePath: '/references/tanishq/',
+    concept: 'India’s Most Trusted Jeweller · A TATA Enterprise · 100% BIS Hallmarked Gold & Certified Diamonds',
+    themeColor: '#832729',
+    badge: 'A TATA Enterprise'
+  },
+  {
+    id: 'jewelbox',
+    num: 41,
+    category: 'jewellery',
+    name: 'Jewelbox',
+    originalUrl: 'https://jewelbox.co.in/',
+    slug: 'jewelbox',
+    referencePath: '/references/jewelbox/',
+    concept: 'Conscious Luxury · India’s Leading Lab-Grown Diamond Jewellery · Featured on Shark Tank India S3',
+    themeColor: '#0F2C24',
+    badge: 'Shark Tank S3'
+  },
+  {
+    id: 'beauty-berry',
+    num: 42,
+    category: 'beauty_cosmetics',
+    name: 'Beauty Berry',
+    originalUrl: 'https://www.beautyberry.co.in/',
+    slug: 'beauty-berry',
+    referencePath: '/references/beauty-berry/',
+    concept: 'Buy Beauty and Cosmetics Products Online · Premier Makeup Essentials',
+    themeColor: '#71DBD4',
+    badge: 'Premier Cosmetics'
   }
 ];
 
+export const ALL_42_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_29_REFERENCE_SITES;
+export const ALL_41_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_29_REFERENCE_SITES;
+export const ALL_40_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_29_REFERENCE_SITES;
+export const ALL_39_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_29_REFERENCE_SITES;
+export const ALL_38_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_29_REFERENCE_SITES;
 export const ALL_37_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_29_REFERENCE_SITES;
 export const ALL_36_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_29_REFERENCE_SITES;
 export const ALL_35_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_29_REFERENCE_SITES;
@@ -481,7 +546,7 @@ interface SwitcherProps {
 export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }) => {
   const { setActiveView } = useApp();
   const [modalOpen, setModalOpen] = useState(false);
-  const [categoryFilter, setCategoryFilter] = useState<'all' | 'cafe' | 'restaurant' | 'travel' | 'salon'>('all');
+  const [categoryFilter, setCategoryFilter] = useState<'all' | 'cafe' | 'restaurant' | 'travel' | 'salon' | 'jewellery' | 'beauty_cosmetics'>('all');
 
   const currentSite =
     ALL_37_REFERENCE_SITES.find(s => s.id === currentSiteId || s.slug === currentSiteId) ||
@@ -501,7 +566,8 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
     if (cat === 'cafe') return 'CAFES';
     if (cat === 'restaurant') return 'RESTAURANTS';
     if (cat === 'travel') return 'TOUR & TRAVEL';
-    return 'SALON';
+    if (cat === 'salon') return 'SALON';
+    return 'JEWELLERY';
   };
 
   return (
@@ -513,7 +579,7 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
             style={{ backgroundColor: currentSite.themeColor || '#10b981' }}
           />
           <span className="font-bold tracking-wide truncate max-w-[200px] xs:max-w-[320px] sm:max-w-none text-white font-mono text-[11px] sm:text-xs">
-            WEBSITE {currentSite.num}/34: {currentSite.name.toUpperCase()} ({getCategoryTitle(currentSite.category)})
+            WEBSITE {currentSite.num}/{ALL_37_REFERENCE_SITES.length}: {currentSite.name.toUpperCase()} ({getCategoryTitle(currentSite.category)})
           </span>
         </div>
 
@@ -550,10 +616,10 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
                   <span>{ALL_37_REFERENCE_SITES.length} Complete Faithful Website Recreations</span>
                 </div>
                 <h3 className="text-lg sm:text-xl font-bold text-white mt-1">
-                  Reference Website Directory — Cafes, Restaurants, Tour & Travel & Salon
+                  Reference Website Directory — Cafes, Restaurants, Tour & Travel, Salon, Jewellery & Cosmetics
                 </h3>
                 <p className="text-xs text-stone-400 mt-0.5">
-                  Four Categories: 19 Cafes, 10 Restaurants, 7 Tour & Travel & 1 Salon. Every website maintains its independent UI, layouts, and features.
+                  Six Categories: 19 Cafes, 10 Restaurants, 7 Tour & Travel, {ALL_37_REFERENCE_SITES.filter(s => s.category === 'salon').length} Salons, {ALL_37_REFERENCE_SITES.filter(s => s.category === 'jewellery').length} Jewellery & {ALL_37_REFERENCE_SITES.filter(s => s.category === 'beauty_cosmetics').length} Beauty & Cosmetics. Every website maintains its independent UI, layouts, and features.
                 </p>
               </div>
               <button
@@ -620,6 +686,28 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>Salon ({ALL_37_REFERENCE_SITES.filter(s => s.category === 'salon').length})</span>
               </button>
+              <button
+                onClick={() => setCategoryFilter('jewellery')}
+                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
+                  categoryFilter === 'jewellery'
+                    ? 'bg-amber-500 text-black shadow-sm'
+                    : 'bg-stone-800 text-stone-300 hover:bg-stone-700'
+                }`}
+              >
+                <Sparkles className="w-3.5 h-3.5 text-amber-300" />
+                <span>Jewellery ({ALL_37_REFERENCE_SITES.filter(s => s.category === 'jewellery').length})</span>
+              </button>
+              <button
+                onClick={() => setCategoryFilter('beauty_cosmetics')}
+                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
+                  categoryFilter === 'beauty_cosmetics'
+                    ? 'bg-amber-500 text-black shadow-sm'
+                    : 'bg-stone-800 text-stone-300 hover:bg-stone-700'
+                }`}
+              >
+                <Sparkles className="w-3.5 h-3.5 text-pink-400" />
+                <span>Beauty & Cosmetics ({ALL_37_REFERENCE_SITES.filter(s => s.category === 'beauty_cosmetics').length})</span>
+              </button>
             </div>
 
             {/* Grid of Websites */}
@@ -639,7 +727,7 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
                     <div>
                       <div className="flex items-center justify-between gap-2 mb-1.5">
                         <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-stone-800 text-stone-400">
-                          #{s.num} · {s.category === 'cafe' ? 'CAFE' : s.category === 'restaurant' ? 'RESTAURANT' : s.category === 'travel' ? 'TRAVEL' : 'SALON'}
+                          #{s.num} · {s.category === 'cafe' ? 'CAFE' : s.category === 'restaurant' ? 'RESTAURANT' : s.category === 'travel' ? 'TRAVEL' : s.category === 'salon' ? 'SALON' : 'JEWELLERY'}
                         </span>
                         <span
                           className="text-[10px] font-bold px-2 py-0.5 rounded-full"
@@ -674,7 +762,7 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
 
             {/* Modal Footer */}
             <div className="p-4 bg-[#141416] border-t border-stone-800 flex items-center justify-between text-xs text-stone-400">
-              <span>All 29 reference websites preserved and active in this project.</span>
+              <span>All {ALL_37_REFERENCE_SITES.length} reference websites preserved and active in this project.</span>
               <button
                 onClick={() => setModalOpen(false)}
                 className="px-4 py-1.5 bg-stone-800 hover:bg-stone-700 text-white font-medium rounded-lg cursor-pointer transition-colors"
