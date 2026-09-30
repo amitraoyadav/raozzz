@@ -449,7 +449,7 @@ export const CATEGORY_INFO: Record<string, { label: string; icon: string; defaul
   florist: { label: 'Florist & Fresh Flower Studio', icon: 'Flower2', defaultBooking: 'whatsapp_order', defaultCta: 'Order Flower Bouquet' },
   printing: { label: 'Printing, Xerox & Stationery', icon: 'Printer', defaultBooking: 'whatsapp_order', defaultCta: 'Send File for Printing' },
   clinic: { label: 'Doctor Clinic & Dental Care', icon: 'Stethoscope', defaultBooking: 'appointment_slot', defaultCta: 'Book OPD Appointment' },
-  salon: { label: 'Salon', icon: 'Scissors', defaultBooking: 'appointment_slot', defaultCta: 'Book Beauty Slot' },
+  salon: { label: 'Salon, Spa & Beauty Lounge', icon: 'Scissors', defaultBooking: 'appointment_slot', defaultCta: 'Book Beauty Slot' },
   retail: { label: 'Boutique & Retail Shop', icon: 'ShoppingBag', defaultBooking: 'whatsapp_order', defaultCta: 'WhatsApp Video Shopping' },
   cafe: { label: 'Café & Roastery', icon: 'Coffee', defaultBooking: 'whatsapp_order', defaultCta: 'Order Coffee & Bakes' },
   construction: { label: 'Construction & Building Materials E-Commerce', icon: 'Truck', defaultBooking: 'whatsapp_order', defaultCta: 'Order Materials on WhatsApp' },

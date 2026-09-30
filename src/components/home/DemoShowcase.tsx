@@ -38,7 +38,6 @@ export const DemoShowcase: React.FC<DemoShowcaseProps> = ({ onOpenOrderModal }) 
       if (referenceCategoryFilter === 'cafes') return w.category === 'cafe';
       if (referenceCategoryFilter === 'restaurants') return w.category === 'restaurant';
       if (referenceCategoryFilter === 'travel') return w.category === 'travel' || w.category === ('tour_travel' as any);
-      if (referenceCategoryFilter === 'salon') return w.category === 'salon';
       return true;
     });
     const cats = Array.from(new Set(relevantWebsites.map(w => w.category)));
@@ -46,14 +45,14 @@ export const DemoShowcase: React.FC<DemoShowcaseProps> = ({ onOpenOrderModal }) 
       { id: 'all', label: `All In View (${relevantWebsites.length})` },
       ...cats.map(c => ({
         id: c,
-        label: CATEGORY_INFO[c]?.label || (c === 'travel' ? 'Tour & Travel' : c === 'salon' ? 'Salon & Clinic' : c.replace(/_/g, ' '))
+        label: CATEGORY_INFO[c]?.label || (c === 'travel' ? 'Tour & Travel' : c.replace(/_/g, ' '))
       }))
     ];
   }, [websites, referenceCategoryFilter]);
 
   // Filtering & Search
   const filteredWebsites = websites.filter(site => {
-    // Four categories filter: CAFES, RESTAURANTS, TOUR & TRAVEL, SALON & CLINIC
+    // Exactly three categories filter: CAFES, RESTAURANTS, TOUR & TRAVEL
     if (referenceCategoryFilter === 'cafes' && site.category !== 'cafe') {
       return false;
     }
@@ -61,9 +60,6 @@ export const DemoShowcase: React.FC<DemoShowcaseProps> = ({ onOpenOrderModal }) 
       return false;
     }
     if (referenceCategoryFilter === 'travel' && site.category !== 'travel' && site.category !== ('tour_travel' as any)) {
-      return false;
-    }
-    if (referenceCategoryFilter === 'salon' && site.category !== 'salon') {
       return false;
     }
 
@@ -222,33 +218,11 @@ export const DemoShowcase: React.FC<DemoShowcaseProps> = ({ onOpenOrderModal }) 
                     {websites.filter(w => w.category === 'travel' || w.category === ('tour_travel' as any)).length}
                   </span>
                 </button>
-
-                {/* 4. SALON */}
-                <button
-                  onClick={() => {
-                    const next = referenceCategoryFilter === 'salon' ? 'all' : 'salon';
-                    setReferenceCategoryFilter(next);
-                    setSelectedCategory('all');
-                  }}
-                  className={`px-3.5 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center gap-1.5 sm:gap-2 ${
-                    referenceCategoryFilter === 'salon'
-                      ? 'bg-[#14162B] text-white shadow-sm ring-1 ring-[#14162B]'
-                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
-                  }`}
-                  aria-pressed={referenceCategoryFilter === 'salon'}
-                >
-                  <span>✂️ SALON</span>
-                  <span className={`text-[10px] px-1.5 py-0.5 rounded-md font-mono ${
-                    referenceCategoryFilter === 'salon' ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-700'
-                  }`}>
-                    {websites.filter(w => w.category === 'salon').length}
-                  </span>
-                </button>
               </div>
 
               {referenceCategoryFilter !== 'all' && (
                 <div className="mt-2 flex items-center gap-2 text-xs text-slate-500 font-['Inter']">
-                  <span>Filtered by: <strong className="text-slate-800 capitalize">{referenceCategoryFilter === 'travel' ? 'Tour & Travel' : referenceCategoryFilter === 'salon' ? 'Salon' : referenceCategoryFilter}</strong></span>
+                  <span>Filtered by: <strong className="text-slate-800 capitalize">{referenceCategoryFilter === 'travel' ? 'Tour & Travel' : referenceCategoryFilter}</strong></span>
                   <span>•</span>
                   <button
                     onClick={() => {

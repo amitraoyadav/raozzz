@@ -61,24 +61,6 @@ export const Footer: React.FC<{ onOpenOrderModal: () => void }> = ({ onOpenOrder
               </li>
               <li>
                 <button
-                  onClick={() => setActiveView('enrich')}
-                  className="hover:text-white transition-colors text-left cursor-pointer flex items-center gap-1.5 text-rose-400 font-semibold"
-                >
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#f82148]"></span>
-                  <span>Enrich Beauty (107 Salons)</span>
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => setActiveView('bodycraft')}
-                  className="hover:text-[#C5A880] transition-colors text-left cursor-pointer flex items-center gap-1.5 text-amber-200/90 font-semibold"
-                >
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#C5A880]"></span>
-                  <span>Bodycraft (Salon · Clinic · Spa)</span>
-                </button>
-              </li>
-              <li>
-                <button
                   onClick={() => setActiveView('pricing')}
                   className="hover:text-white transition-colors text-left cursor-pointer"
                 >

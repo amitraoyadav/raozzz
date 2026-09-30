@@ -82,9 +82,6 @@ export const DemoWebsitesPage: React.FC<DemoWebsitesPageProps> = ({ onOpenOrderM
       if (referenceCategoryFilter === 'travel' && site.category !== 'travel' && site.category !== ('tour_travel' as any)) {
         return false;
       }
-      if (referenceCategoryFilter === 'salon' && site.category !== 'salon') {
-        return false;
-      }
       if (selectedDemoCat !== 'all' && site.category !== selectedDemoCat) {
         return false;
       }
@@ -510,32 +507,11 @@ export const DemoWebsitesPage: React.FC<DemoWebsitesPageProps> = ({ onOpenOrderM
                     {websites.filter(w => w.category === 'travel' || w.category === ('tour_travel' as any)).length}
                   </span>
                 </button>
-
-                {/* 4. SALON */}
-                <button
-                  onClick={() => {
-                    const next = referenceCategoryFilter === 'salon' ? 'all' : 'salon';
-                    setReferenceCategoryFilter(next);
-                  }}
-                  className={`px-3.5 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center gap-1.5 sm:gap-2 ${
-                    referenceCategoryFilter === 'salon'
-                      ? 'bg-[#14162B] text-white shadow-sm ring-1 ring-[#14162B]'
-                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
-                  }`}
-                  aria-pressed={referenceCategoryFilter === 'salon'}
-                >
-                  <span>✂️ SALON</span>
-                  <span className={`text-[10px] px-1.5 py-0.5 rounded-md font-mono ${
-                    referenceCategoryFilter === 'salon' ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-700'
-                  }`}>
-                    {websites.filter(w => w.category === 'salon').length}
-                  </span>
-                </button>
               </div>
 
               {referenceCategoryFilter !== 'all' && (
                 <div className="mt-2 flex items-center gap-2 text-xs text-slate-500 font-['Inter']">
-                  <span>Filtered by: <strong className="text-slate-800 capitalize">{referenceCategoryFilter === 'travel' ? 'Tour & Travel' : referenceCategoryFilter === 'salon' ? 'Salon' : referenceCategoryFilter}</strong></span>
+                  <span>Filtered by: <strong className="text-slate-800 capitalize">{referenceCategoryFilter === 'travel' ? 'Tour & Travel' : referenceCategoryFilter}</strong></span>
                   <span>•</span>
                   <button
                     onClick={() => setReferenceCategoryFilter('all')}
