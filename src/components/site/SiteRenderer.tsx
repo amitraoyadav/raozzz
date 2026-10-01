@@ -76,6 +76,9 @@ import { TanishqApp } from '../tanishq/TanishqApp';
 import { JewelboxApp } from '../jewelbox/JewelboxApp';
 import { BeautyBerryApp } from '../beautyberry/BeautyBerryApp';
 import { GoldsGymApp } from '../goldsgym/GoldsGymApp';
+import { FitpassApp } from '../fitpass/FitpassApp';
+import { KrishnaJewellersApp } from '../krishnajewellers/KrishnaJewellersApp';
+import { HazoorilalApp } from '../hazoorilal/HazoorilalApp';
 
 const getHeaderCity = (city?: string, address?: string): string => {
   if (typeof city === 'string' && city.trim()) return city.trim();
@@ -719,6 +722,45 @@ export const SiteRenderer: React.FC<SiteRendererProps> = ({ site: propSite, isPr
     targetTemplate === 'golds-gym'
   ) {
     return <GoldsGymApp />;
+  }
+
+  // Website 44: FITPASS (fitpass.co.in)
+  if (
+    targetSlug === 'fitpass' ||
+    targetSlug === 'references/fitpass' ||
+    targetSlug === '/references/fitpass/' ||
+    targetSlug === 'demo/fitpass' ||
+    targetSlug === 'demos/fitpass' ||
+    targetTemplate === 'fitpass'
+  ) {
+    return <FitpassApp />;
+  }
+
+  // Website 45: Krishna Jewellers (krishnajewellers.com)
+  if (
+    targetSlug === 'krishna-jewellers' ||
+    targetSlug === 'krishnajewellers' ||
+    targetSlug === 'references/krishna-jewellers' ||
+    targetSlug === '/references/krishna-jewellers/' ||
+    targetSlug === 'demo/krishna-jewellers' ||
+    targetSlug === 'demos/krishna-jewellers' ||
+    targetTemplate === 'krishna-jewellers' ||
+    targetTemplate === 'krishnajewellers'
+  ) {
+    return <KrishnaJewellersApp />;
+  }
+
+  if (
+    targetSlug === 'hazoorilal-jewellers' ||
+    targetSlug === 'hazoorilal' ||
+    targetSlug === 'references/hazoorilal-jewellers' ||
+    targetSlug === '/references/hazoorilal-jewellers/' ||
+    targetSlug === 'demo/hazoorilal-jewellers' ||
+    targetSlug === 'demos/hazoorilal-jewellers' ||
+    targetTemplate === 'hazoorilal-jewellers' ||
+    targetTemplate === 'hazoorilal'
+  ) {
+    return <HazoorilalApp />;
   }
 
   if (!site) {

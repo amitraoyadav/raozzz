@@ -34,7 +34,10 @@ export type AppView =
   | 'tanishq'
   | 'jewelbox'
   | 'beauty-berry'
-  | 'golds-gym';
+  | 'golds-gym'
+  | 'fitpass'
+  | 'krishna-jewellers'
+  | 'hazoorilal-jewellers';
 
 import { TWOD_WEBSITE } from '../data/twoDCafeData';
 import { BLUE_TOKAI_WEBSITE } from '../data/blueTokaiData';
@@ -79,6 +82,9 @@ import { TANISHQ_WEBSITE } from '../data/tanishqData';
 import { JEWELBOX_WEBSITE } from '../data/jewelboxData';
 import { BEAUTY_BERRY_WEBSITE } from '../data/beautyBerryData';
 import { GOLDS_GYM_WEBSITE } from '../data/goldsGymData';
+import { FITPASS_WEBSITE } from '../data/fitpassData';
+import { KRISHNA_JEWELLERS_WEBSITE } from '../data/krishnaJewellersData';
+import { HAZOORILAL_WEBSITE } from '../data/hazoorilalData';
 
 export const ALL_CAFE_WEBSITES: BusinessWebsite[] = [
   TWOD_WEBSITE,
@@ -133,7 +139,9 @@ export const ALL_SALON_WEBSITES: BusinessWebsite[] = [
 
 export const ALL_JEWELLERY_WEBSITES: BusinessWebsite[] = [
   TANISHQ_WEBSITE,
-  JEWELBOX_WEBSITE
+  JEWELBOX_WEBSITE,
+  KRISHNA_JEWELLERS_WEBSITE,
+  HAZOORILAL_WEBSITE
 ];
 
 export const ALL_BEAUTY_COSMETICS_WEBSITES: BusinessWebsite[] = [
@@ -141,10 +149,11 @@ export const ALL_BEAUTY_COSMETICS_WEBSITES: BusinessWebsite[] = [
 ];
 
 export const ALL_GYM_FITNESS_WEBSITES: BusinessWebsite[] = [
-  GOLDS_GYM_WEBSITE
+  GOLDS_GYM_WEBSITE,
+  FITPASS_WEBSITE
 ];
 
-export const ALL_43_COLLECTION_WEBSITES: BusinessWebsite[] = [
+export const ALL_46_COLLECTION_WEBSITES: BusinessWebsite[] = [
   ...ALL_CAFE_WEBSITES,
   ...ALL_RESTAURANT_WEBSITES,
   ...ALL_TRAVEL_WEBSITES,
@@ -154,9 +163,14 @@ export const ALL_43_COLLECTION_WEBSITES: BusinessWebsite[] = [
   ...ALL_GYM_FITNESS_WEBSITES
 ];
 
-export const ALL_42_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_43_COLLECTION_WEBSITES;
-export const ALL_41_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_43_COLLECTION_WEBSITES;
-export const ALL_40_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_43_COLLECTION_WEBSITES;
+export const ALL_45_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_46_COLLECTION_WEBSITES;
+
+export const ALL_44_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_45_COLLECTION_WEBSITES;
+
+export const ALL_43_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_44_COLLECTION_WEBSITES;
+export const ALL_42_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_44_COLLECTION_WEBSITES;
+export const ALL_41_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_44_COLLECTION_WEBSITES;
+export const ALL_40_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_44_COLLECTION_WEBSITES;
 
 export const ALL_39_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_40_COLLECTION_WEBSITES;
 export const ALL_38_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_40_COLLECTION_WEBSITES;
@@ -378,7 +392,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
           const cleaned = parsed
             .filter((s: unknown): s is Partial<BusinessWebsite> => Boolean(s && typeof s === 'object' && !isLegacyDemoSite(s)))
             .map(s => normalizeBusinessSite(s));
-          const canonical = [...ALL_37_COLLECTION_WEBSITES];
+          const canonical = [...ALL_46_COLLECTION_WEBSITES];
           const custom = cleaned.filter(s => !canonical.some(c => c.slug === s.slug || c.id === s.id));
           return [...canonical, ...custom];
         }
@@ -386,7 +400,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     } catch (e) {
       console.warn('Could not parse stored websites', e);
     }
-    return ALL_37_COLLECTION_WEBSITES;
+    return ALL_46_COLLECTION_WEBSITES;
   });
 
   const [pricingPlans, setPricingPlans] = useState<PricingPlan[]>(() => {
@@ -639,7 +653,14 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
           'tanishq': 'tanishq',
           'jewelbox': 'jewelbox',
           'beauty-berry': 'beauty-berry',
-          'beautyberry': 'beauty-berry'
+          'beautyberry': 'beauty-berry',
+          'golds-gym': 'golds-gym',
+          'goldsgym': 'golds-gym',
+          'fitpass': 'fitpass',
+          'krishna-jewellers': 'krishna-jewellers',
+          'krishnajewellers': 'krishna-jewellers',
+          'hazoorilal-jewellers': 'hazoorilal-jewellers',
+          'hazoorilal': 'hazoorilal-jewellers'
         };
         const targetSlug = aliasMap[refSlug] || refSlug;
         setActiveSiteSlug(targetSlug);
@@ -672,7 +693,14 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
           'tanishq': 'tanishq',
           'jewelbox': 'jewelbox',
           'beauty-berry': 'beauty-berry',
-          'beautyberry': 'beauty-berry'
+          'beautyberry': 'beauty-berry',
+          'golds-gym': 'golds-gym',
+          'goldsgym': 'golds-gym',
+          'fitpass': 'fitpass',
+          'krishna-jewellers': 'krishna-jewellers',
+          'krishnajewellers': 'krishna-jewellers',
+          'hazoorilal-jewellers': 'hazoorilal-jewellers',
+          'hazoorilal': 'hazoorilal-jewellers'
         };
         const targetSlug = aliasMap[demoSlug] || demoSlug;
         setActiveSiteSlug(targetSlug);
@@ -719,6 +747,18 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       } else if (raw === 'beauty-berry' || raw === 'beautyberry' || raw === 'demo/beauty-berry' || raw === 'demos/beauty-berry' || raw === 'site/beauty-berry' || raw === 'references/beauty-berry' || raw === 'beauty-cosmetics/beauty-berry' || raw === 'cosmetics/beauty-berry') {
         setActiveViewInternal('beauty-berry');
         setActiveSiteSlug('beauty-berry');
+      } else if (raw === 'golds-gym' || raw === 'goldsgym' || raw === 'demo/golds-gym' || raw === 'demos/golds-gym' || raw === 'site/golds-gym' || raw === 'references/golds-gym' || raw === 'gym/golds-gym') {
+        setActiveViewInternal('golds-gym');
+        setActiveSiteSlug('golds-gym');
+      } else if (raw === 'fitpass' || raw === 'demo/fitpass' || raw === 'demos/fitpass' || raw === 'site/fitpass' || raw === 'references/fitpass' || raw === 'gym/fitpass') {
+        setActiveViewInternal('fitpass');
+        setActiveSiteSlug('fitpass');
+      } else if (raw === 'krishna-jewellers' || raw === 'krishnajewellers' || raw === 'demo/krishna-jewellers' || raw === 'demos/krishna-jewellers' || raw === 'site/krishna-jewellers' || raw === 'references/krishna-jewellers' || raw === 'jewellery/krishna-jewellers') {
+        setActiveViewInternal('krishna-jewellers');
+        setActiveSiteSlug('krishna-jewellers');
+      } else if (raw === 'hazoorilal-jewellers' || raw === 'hazoorilal' || raw === 'demo/hazoorilal-jewellers' || raw === 'demos/hazoorilal-jewellers' || raw === 'site/hazoorilal-jewellers' || raw === 'references/hazoorilal-jewellers' || raw === 'jewellery/hazoorilal-jewellers') {
+        setActiveViewInternal('hazoorilal-jewellers');
+        setActiveSiteSlug('hazoorilal-jewellers');
       } else if (raw.startsWith('for-')) {
         const city = raw.replace('for-', '').toLowerCase();
         setActiveViewInternal('city');
@@ -841,7 +881,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
               }
             });
             const list = [...loaded];
-            for (const s of ALL_42_COLLECTION_WEBSITES) {
+            for (const s of ALL_46_COLLECTION_WEBSITES) {
               if (!list.some(w => w.slug === s.slug || w.id === s.id)) {
                 list.push(s);
               }

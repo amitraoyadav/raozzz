@@ -536,21 +536,60 @@ export const ALL_29_REFERENCE_SITES: ReferenceSiteInfo[] = [
     concept: "The Mecca of Bodybuilding & Fitness · 150+ Gyms Across 95 Cities in India",
     themeColor: '#FFE400',
     badge: '150+ Gyms in India'
+  },
+  {
+    id: 'fitpass',
+    num: 44,
+    category: 'gym_fitness',
+    name: 'FITPASS',
+    originalUrl: 'https://fitpass.co.in/',
+    slug: 'fitpass',
+    referencePath: '/references/fitpass/',
+    concept: "India's Largest Fitness Network · 12,000+ Gyms, FITCOACH, FITFEAST & FITPASS-TV",
+    themeColor: '#D6383B',
+    badge: '12,000+ Gyms in India'
+  },
+  {
+    id: 'krishna-jewellers',
+    num: 45,
+    category: 'jewellery',
+    name: 'Krishna Jewellers',
+    originalUrl: 'https://krishnajewellers.com/',
+    slug: 'krishna-jewellers',
+    referencePath: '/references/krishna-jewellers/',
+    concept: 'Hyderabad’s Renowned Heritage Jewellers Since 1983 · 22K Gold, Diamonds, Polki, Kundan & Silver',
+    themeColor: '#543E3A',
+    badge: 'Est. 1983 · Hyderabad Heritage'
+  },
+  {
+    id: 'hazoorilal-jewellers',
+    num: 46,
+    category: 'jewellery',
+    name: 'Hazoorilal Jewellers',
+    originalUrl: 'https://hazoorilaljewellers.com/',
+    slug: 'hazoorilal-jewellers',
+    referencePath: '/references/hazoorilal-jewellers/',
+    concept: 'By Sandeep Narang Since 1952 · High Jewellery, Bespoke Diamonds, Solitaires & Polki',
+    themeColor: '#000000',
+    badge: 'Since 1952 · High Jewellery'
   }
 ];
 
-export const ALL_43_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_29_REFERENCE_SITES;
-export const ALL_42_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_43_REFERENCE_SITES;
-export const ALL_41_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_43_REFERENCE_SITES;
-export const ALL_40_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_43_REFERENCE_SITES;
-export const ALL_39_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_43_REFERENCE_SITES;
-export const ALL_38_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_43_REFERENCE_SITES;
-export const ALL_37_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_43_REFERENCE_SITES;
-export const ALL_36_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_43_REFERENCE_SITES;
-export const ALL_35_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_43_REFERENCE_SITES;
-export const ALL_34_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_43_REFERENCE_SITES;
-export const ALL_30_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_43_REFERENCE_SITES;
-export const ALL_15_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_43_REFERENCE_SITES.slice(0, 15);
+export const ALL_46_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_29_REFERENCE_SITES;
+export const ALL_45_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_46_REFERENCE_SITES;
+export const ALL_44_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_45_REFERENCE_SITES;
+export const ALL_43_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_45_REFERENCE_SITES;
+export const ALL_42_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_45_REFERENCE_SITES;
+export const ALL_41_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_45_REFERENCE_SITES;
+export const ALL_40_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_45_REFERENCE_SITES;
+export const ALL_39_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_45_REFERENCE_SITES;
+export const ALL_38_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_45_REFERENCE_SITES;
+export const ALL_37_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_45_REFERENCE_SITES;
+export const ALL_36_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_45_REFERENCE_SITES;
+export const ALL_35_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_45_REFERENCE_SITES;
+export const ALL_34_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_45_REFERENCE_SITES;
+export const ALL_30_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_45_REFERENCE_SITES;
+export const ALL_15_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_45_REFERENCE_SITES.slice(0, 15);
 
 interface SwitcherProps {
   currentSiteId: string;
@@ -562,10 +601,10 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
   const [categoryFilter, setCategoryFilter] = useState<'all' | 'cafe' | 'restaurant' | 'travel' | 'salon' | 'jewellery' | 'beauty_cosmetics' | 'gym_fitness'>('all');
 
   const currentSite =
-    ALL_37_REFERENCE_SITES.find(s => s.id === currentSiteId || s.slug === currentSiteId) ||
-    ALL_37_REFERENCE_SITES[0];
+    ALL_45_REFERENCE_SITES.find(s => s.id === currentSiteId || s.slug === currentSiteId) ||
+    ALL_45_REFERENCE_SITES[0];
 
-  const filteredSites = ALL_37_REFERENCE_SITES.filter(s => {
+  const filteredSites = ALL_45_REFERENCE_SITES.filter(s => {
     if (categoryFilter === 'all') return true;
     return s.category === categoryFilter;
   });

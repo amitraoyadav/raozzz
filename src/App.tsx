@@ -48,6 +48,9 @@ import { TanishqApp } from './components/tanishq/TanishqApp';
 import { JewelboxApp } from './components/jewelbox/JewelboxApp';
 import { BeautyBerryApp } from './components/beautyberry/BeautyBerryApp';
 import { GoldsGymApp } from './components/goldsgym/GoldsGymApp';
+import { FitpassApp } from './components/fitpass/FitpassApp';
+import { KrishnaJewellersApp } from './components/krishnajewellers/KrishnaJewellersApp';
+import { HazoorilalApp } from './components/hazoorilal/HazoorilalApp';
 
 function AppContent() {
   const {
@@ -180,6 +183,18 @@ function AppContent() {
 
   if (activeView === 'golds-gym') {
     return <GoldsGymApp />;
+  }
+
+  if (activeView === 'fitpass') {
+    return <FitpassApp />;
+  }
+
+  if (activeView === 'krishna-jewellers') {
+    return <KrishnaJewellersApp />;
+  }
+
+  if (activeView === 'hazoorilal-jewellers') {
+    return <HazoorilalApp />;
   }
 
   const renderPublicShell = (content: React.ReactNode, isHome = false) => (

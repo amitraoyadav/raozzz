@@ -108,17 +108,20 @@ import { BODYCRAFT_WEBSITE } from './bodycraftData';
 import { HOME_SALON_WEBSITE } from './homeSalonData';
 import { DESSANGE_MUMBAI_WEBSITE } from './dessangeData';
 
-// 2 Jewellery (Tanishq as site #40, Jewelbox as site #41)
+// 4 Jewellery (Tanishq as site #40, Jewelbox as site #41, Krishna Jewellers as site #45, Hazoorilal Jewellers as site #46)
 import { TANISHQ_WEBSITE } from './tanishqData';
 import { JEWELBOX_WEBSITE } from './jewelboxData';
+import { KRISHNA_JEWELLERS_WEBSITE } from './krishnaJewellersData';
+import { HAZOORILAL_WEBSITE } from './hazoorilalData';
 
 // 1 Beauty & Cosmetics (Beauty Berry as site #42)
 import { BEAUTY_BERRY_WEBSITE } from './beautyBerryData';
 
-// 1 Gym & Fitness (Gold's Gym as site #43)
+// 2 Gym & Fitness (Gold's Gym as site #43, FITPASS as site #44)
 import { GOLDS_GYM_WEBSITE } from './goldsGymData';
+import { FITPASS_WEBSITE } from './fitpassData';
 
-// User's active 43 Reference Websites faithfully recreated
+// User's active 46 Reference Websites faithfully recreated
 export const DEFAULT_WEBSITES: BusinessWebsite[] = [
   // 1-19: Cafes (19)
   TWOD_WEBSITE,
@@ -174,8 +177,13 @@ export const DEFAULT_WEBSITES: BusinessWebsite[] = [
   // 42: Beauty & Cosmetics (1)
   BEAUTY_BERRY_WEBSITE,
 
-  // 43: Gym & Fitness (1)
-  GOLDS_GYM_WEBSITE
+  // 43-44: Gym & Fitness (2)
+  GOLDS_GYM_WEBSITE,
+  FITPASS_WEBSITE,
+
+  // 45-46: Jewellery (3rd & 4th in Jewellery category)
+  KRISHNA_JEWELLERS_WEBSITE,
+  HAZOORILAL_WEBSITE
 ];
 
 export const INITIAL_LEADS: LeadEnquiry[] = [];
