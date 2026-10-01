@@ -5,7 +5,7 @@ import { useApp } from '../../context/AppContext';
 export interface ReferenceSiteInfo {
   id: string;
   num: number;
-  category: 'cafe' | 'restaurant' | 'travel' | 'salon' | 'jewellery' | 'beauty_cosmetics' | 'gym_fitness';
+  category: 'cafe' | 'restaurant' | 'travel' | 'salon' | 'jewellery' | 'beauty_cosmetics' | 'gym_fitness' | 'loans' | 'real_estate';
   name: string;
   originalUrl: string;
   slug: string;
@@ -572,24 +572,63 @@ export const ALL_29_REFERENCE_SITES: ReferenceSiteInfo[] = [
     concept: 'By Sandeep Narang Since 1952 · High Jewellery, Bespoke Diamonds, Solitaires & Polki',
     themeColor: '#000000',
     badge: 'Since 1952 · High Jewellery'
+  },
+  {
+    id: 'sabka-loans',
+    num: 49,
+    category: 'loans',
+    name: 'Sabka Loans',
+    originalUrl: 'https://www.brightloans.in/',
+    slug: 'sabka-loans',
+    referencePath: '/references/brightloans/',
+    concept: 'Simple, Transparent Digital Loan Assistance for Personal, Home & Property Loans',
+    themeColor: '#1E40AF',
+    badge: 'Site 49 · Finance Website #1'
+  },
+  {
+    id: 'sabka-finance',
+    num: 50,
+    category: 'loans',
+    name: 'Sabka Finance',
+    originalUrl: 'https://lonkaro.com/',
+    slug: 'sabka-finance',
+    referencePath: '/references/sabka-loan/',
+    concept: 'Sabka Finance (Lonkaro) — Customer-Focused Financial Assistance & Everyday Loans',
+    themeColor: '#0D9488',
+    badge: 'Site 50 · Finance Website #2'
+  },
+  {
+    id: 'square-yard-dealers',
+    num: 51,
+    category: 'real_estate',
+    name: 'Square Yard Dealers',
+    originalUrl: 'https://www.squareyards.com/',
+    slug: 'square-yard-dealers',
+    referencePath: '/references/square-yards/',
+    concept: 'Property Discovery & Real-Estate Advisory Made Simpler · Buy, Rent & Sell Properties',
+    themeColor: '#0F172A',
+    badge: 'Site 51 · Real Estate'
   }
 ];
 
-export const ALL_46_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_29_REFERENCE_SITES;
-export const ALL_45_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_46_REFERENCE_SITES;
-export const ALL_44_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_45_REFERENCE_SITES;
-export const ALL_43_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_45_REFERENCE_SITES;
-export const ALL_42_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_45_REFERENCE_SITES;
-export const ALL_41_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_45_REFERENCE_SITES;
-export const ALL_40_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_45_REFERENCE_SITES;
-export const ALL_39_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_45_REFERENCE_SITES;
-export const ALL_38_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_45_REFERENCE_SITES;
-export const ALL_37_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_45_REFERENCE_SITES;
-export const ALL_36_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_45_REFERENCE_SITES;
-export const ALL_35_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_45_REFERENCE_SITES;
-export const ALL_34_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_45_REFERENCE_SITES;
-export const ALL_30_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_45_REFERENCE_SITES;
-export const ALL_15_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_45_REFERENCE_SITES.slice(0, 15);
+export const ALL_51_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_29_REFERENCE_SITES;
+export const ALL_50_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_51_REFERENCE_SITES;
+export const ALL_49_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_51_REFERENCE_SITES;
+export const ALL_46_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_51_REFERENCE_SITES;
+export const ALL_45_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_51_REFERENCE_SITES;
+export const ALL_44_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_51_REFERENCE_SITES;
+export const ALL_43_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_51_REFERENCE_SITES;
+export const ALL_42_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_51_REFERENCE_SITES;
+export const ALL_41_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_51_REFERENCE_SITES;
+export const ALL_40_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_51_REFERENCE_SITES;
+export const ALL_39_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_51_REFERENCE_SITES;
+export const ALL_38_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_51_REFERENCE_SITES;
+export const ALL_37_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_51_REFERENCE_SITES;
+export const ALL_36_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_51_REFERENCE_SITES;
+export const ALL_35_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_51_REFERENCE_SITES;
+export const ALL_34_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_51_REFERENCE_SITES;
+export const ALL_30_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_51_REFERENCE_SITES;
+export const ALL_15_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_51_REFERENCE_SITES.slice(0, 15);
 
 interface SwitcherProps {
   currentSiteId: string;
@@ -598,20 +637,29 @@ interface SwitcherProps {
 export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }) => {
   const { setActiveView } = useApp();
   const [modalOpen, setModalOpen] = useState(false);
-  const [categoryFilter, setCategoryFilter] = useState<'all' | 'cafe' | 'restaurant' | 'travel' | 'salon' | 'jewellery' | 'beauty_cosmetics' | 'gym_fitness'>('all');
+  const [categoryFilter, setCategoryFilter] = useState<'all' | 'cafe' | 'restaurant' | 'travel' | 'salon' | 'jewellery' | 'beauty_cosmetics' | 'gym_fitness' | 'loans' | 'real_estate'>('all');
 
   const currentSite =
-    ALL_45_REFERENCE_SITES.find(s => s.id === currentSiteId || s.slug === currentSiteId) ||
-    ALL_45_REFERENCE_SITES[0];
+    ALL_51_REFERENCE_SITES.find(s => s.id === currentSiteId || s.slug === currentSiteId) ||
+    ALL_51_REFERENCE_SITES.find(s => s.id === 'square-yard-dealers') ||
+    ALL_51_REFERENCE_SITES[0];
 
-  const filteredSites = ALL_45_REFERENCE_SITES.filter(s => {
+  const filteredSites = ALL_51_REFERENCE_SITES.filter(s => {
     if (categoryFilter === 'all') return true;
     return s.category === categoryFilter;
   });
 
   const handleSelectSite = (site: ReferenceSiteInfo) => {
     setModalOpen(false);
-    setActiveView('site', site.slug);
+    if (site.id === 'square-yard-dealers' || site.slug === 'square-yard-dealers') {
+      setActiveView('square-yard-dealers');
+    } else if (site.id === 'sabka-loans' || site.slug === 'sabka-loans') {
+      setActiveView('sabka-loans');
+    } else if (site.id === 'sabka-finance' || site.slug === 'sabka-finance') {
+      setActiveView('sabka-finance');
+    } else {
+      setActiveView('site', site.slug);
+    }
   };
 
   const getCategoryTitle = (cat: string) => {
@@ -621,6 +669,8 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
     if (cat === 'salon') return 'SALON';
     if (cat === 'beauty_cosmetics') return 'BEAUTY & COSMETICS';
     if (cat === 'gym_fitness') return 'GYM & FITNESS';
+    if (cat === 'loans') return 'LOANS / FINANCIAL SERVICES';
+    if (cat === 'real_estate') return 'REAL ESTATE';
     return 'JEWELLERY';
   };
 
@@ -760,7 +810,40 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
                 }`}
               >
                 <Sparkles className="w-3.5 h-3.5 text-pink-400" />
-                <span>Beauty & Cosmetics ({ALL_37_REFERENCE_SITES.filter(s => s.category === 'beauty_cosmetics').length})</span>
+                <span>Beauty & Cosmetics ({ALL_49_REFERENCE_SITES.filter(s => s.category === 'beauty_cosmetics').length})</span>
+              </button>
+              <button
+                onClick={() => setCategoryFilter('gym_fitness')}
+                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
+                  categoryFilter === 'gym_fitness'
+                    ? 'bg-amber-500 text-black shadow-sm'
+                    : 'bg-stone-800 text-stone-300 hover:bg-stone-700'
+                }`}
+              >
+                <Sparkles className="w-3.5 h-3.5 text-yellow-400" />
+                <span>Gym & Fitness ({ALL_49_REFERENCE_SITES.filter(s => s.category === 'gym_fitness').length})</span>
+              </button>
+              <button
+                onClick={() => setCategoryFilter('loans')}
+                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
+                  categoryFilter === 'loans'
+                    ? 'bg-blue-500 text-white shadow-sm ring-1 ring-blue-300'
+                    : 'bg-stone-800 text-stone-300 hover:bg-stone-700'
+                }`}
+              >
+                <Sparkles className="w-3.5 h-3.5 text-blue-400" />
+                <span>Loans &amp; Finance ({ALL_50_REFERENCE_SITES.filter(s => s.category === 'loans').length})</span>
+              </button>
+              <button
+                onClick={() => setCategoryFilter('real_estate')}
+                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
+                  categoryFilter === 'real_estate'
+                    ? 'bg-amber-400 text-slate-950 font-black shadow-sm ring-1 ring-amber-300'
+                    : 'bg-stone-800 text-stone-300 hover:bg-stone-700'
+                }`}
+              >
+                <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+                <span>Real Estate ({ALL_50_REFERENCE_SITES.filter(s => s.category === 'real_estate').length})</span>
               </button>
             </div>
 
@@ -781,7 +864,7 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
                     <div>
                       <div className="flex items-center justify-between gap-2 mb-1.5">
                         <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-stone-800 text-stone-400">
-                          #{s.num} · {s.category === 'cafe' ? 'CAFE' : s.category === 'restaurant' ? 'RESTAURANT' : s.category === 'travel' ? 'TRAVEL' : s.category === 'salon' ? 'SALON' : 'JEWELLERY'}
+                          #{s.num} · {getCategoryTitle(s.category)}
                         </span>
                         <span
                           className="text-[10px] font-bold px-2 py-0.5 rounded-full"

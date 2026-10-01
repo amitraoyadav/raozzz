@@ -79,6 +79,7 @@ import { GoldsGymApp } from '../goldsgym/GoldsGymApp';
 import { FitpassApp } from '../fitpass/FitpassApp';
 import { KrishnaJewellersApp } from '../krishnajewellers/KrishnaJewellersApp';
 import { HazoorilalApp } from '../hazoorilal/HazoorilalApp';
+import { SabkaLoansApp } from '../sabkaloans/SabkaLoansApp';
 
 const getHeaderCity = (city?: string, address?: string): string => {
   if (typeof city === 'string' && city.trim()) return city.trim();
@@ -761,6 +762,22 @@ export const SiteRenderer: React.FC<SiteRendererProps> = ({ site: propSite, isPr
     targetTemplate === 'hazoorilal'
   ) {
     return <HazoorilalApp />;
+  }
+
+  // Website 49: Sabka Loans (sabkaloans.in)
+  if (
+    targetSlug === 'sabka-loans' ||
+    targetSlug === 'loans' ||
+    targetSlug === 'references/brightloans' ||
+    targetSlug === '/references/brightloans/' ||
+    targetSlug === 'references/sabka-loans' ||
+    targetSlug === '/references/sabka-loans/' ||
+    targetSlug === 'demo/sabka-loans' ||
+    targetSlug === 'demos/sabka-loans' ||
+    targetTemplate === 'sabka-loans' ||
+    targetTemplate === 'loans'
+  ) {
+    return <SabkaLoansApp />;
   }
 
   if (!site) {

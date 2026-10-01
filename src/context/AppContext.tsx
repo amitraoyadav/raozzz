@@ -37,7 +37,10 @@ export type AppView =
   | 'golds-gym'
   | 'fitpass'
   | 'krishna-jewellers'
-  | 'hazoorilal-jewellers';
+  | 'hazoorilal-jewellers'
+  | 'sabka-loans'
+  | 'sabka-finance'
+  | 'square-yard-dealers';
 
 import { TWOD_WEBSITE } from '../data/twoDCafeData';
 import { BLUE_TOKAI_WEBSITE } from '../data/blueTokaiData';
@@ -85,6 +88,18 @@ import { GOLDS_GYM_WEBSITE } from '../data/goldsGymData';
 import { FITPASS_WEBSITE } from '../data/fitpassData';
 import { KRISHNA_JEWELLERS_WEBSITE } from '../data/krishnaJewellersData';
 import { HAZOORILAL_WEBSITE } from '../data/hazoorilalData';
+import { SABKA_LOANS_WEBSITE } from '../data/sabkaLoansData';
+import { SABKA_FINANCE_WEBSITE } from '../data/sabkaFinanceData';
+import { SQUARE_YARD_DEALERS_WEBSITE } from '../data/squareYardDealersData';
+
+export const ALL_LOANS_WEBSITES: BusinessWebsite[] = [
+  SABKA_LOANS_WEBSITE,
+  SABKA_FINANCE_WEBSITE
+];
+
+export const ALL_REAL_ESTATE_WEBSITES: BusinessWebsite[] = [
+  SQUARE_YARD_DEALERS_WEBSITE
+];
 
 export const ALL_CAFE_WEBSITES: BusinessWebsite[] = [
   TWOD_WEBSITE,
@@ -153,15 +168,20 @@ export const ALL_GYM_FITNESS_WEBSITES: BusinessWebsite[] = [
   FITPASS_WEBSITE
 ];
 
-export const ALL_46_COLLECTION_WEBSITES: BusinessWebsite[] = [
+export const ALL_50_COLLECTION_WEBSITES: BusinessWebsite[] = [
   ...ALL_CAFE_WEBSITES,
   ...ALL_RESTAURANT_WEBSITES,
   ...ALL_TRAVEL_WEBSITES,
   ...ALL_SALON_WEBSITES,
   ...ALL_JEWELLERY_WEBSITES,
   ...ALL_BEAUTY_COSMETICS_WEBSITES,
-  ...ALL_GYM_FITNESS_WEBSITES
+  ...ALL_GYM_FITNESS_WEBSITES,
+  ...ALL_LOANS_WEBSITES,
+  ...ALL_REAL_ESTATE_WEBSITES
 ];
+
+export const ALL_49_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_50_COLLECTION_WEBSITES;
+export const ALL_46_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_50_COLLECTION_WEBSITES;
 
 export const ALL_45_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_46_COLLECTION_WEBSITES;
 
@@ -392,7 +412,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
           const cleaned = parsed
             .filter((s: unknown): s is Partial<BusinessWebsite> => Boolean(s && typeof s === 'object' && !isLegacyDemoSite(s)))
             .map(s => normalizeBusinessSite(s));
-          const canonical = [...ALL_46_COLLECTION_WEBSITES];
+          const canonical = [...ALL_50_COLLECTION_WEBSITES];
           const custom = cleaned.filter(s => !canonical.some(c => c.slug === s.slug || c.id === s.id));
           return [...canonical, ...custom];
         }
@@ -400,7 +420,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     } catch (e) {
       console.warn('Could not parse stored websites', e);
     }
-    return ALL_46_COLLECTION_WEBSITES;
+    return ALL_50_COLLECTION_WEBSITES;
   });
 
   const [pricingPlans, setPricingPlans] = useState<PricingPlan[]>(() => {
@@ -497,7 +517,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [isFirebaseConnected, setIsFirebaseConnected] = useState<boolean>(false);
 
   // App routing state
-  const [activeView, setActiveViewInternal] = useState<AppView>('home');
+  const [activeView, setActiveViewInternal] = useState<AppView>('square-yard-dealers');
   const [activeSiteSlug, setActiveSiteSlug] = useState<string | null>(null);
   const [activeCitySlug, setActiveCitySlug] = useState<string>('delhi');
   const [demoCategoryFilter, setDemoCategoryFilter] = useState<string | null>(null);
@@ -759,6 +779,15 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       } else if (raw === 'hazoorilal-jewellers' || raw === 'hazoorilal' || raw === 'demo/hazoorilal-jewellers' || raw === 'demos/hazoorilal-jewellers' || raw === 'site/hazoorilal-jewellers' || raw === 'references/hazoorilal-jewellers' || raw === 'jewellery/hazoorilal-jewellers') {
         setActiveViewInternal('hazoorilal-jewellers');
         setActiveSiteSlug('hazoorilal-jewellers');
+      } else if (raw === 'sabka-loans' || raw === 'loans' || raw === 'demo/sabka-loans' || raw === 'demos/sabka-loans' || raw === 'site/sabka-loans' || raw === 'references/sabka-loans' || raw === 'references/brightloans' || raw === 'personal-loan' || raw === 'home-loan' || raw === 'loan-against-property') {
+        setActiveViewInternal('sabka-loans');
+        setActiveSiteSlug('sabka-loans');
+      } else if (raw === 'sabka-finance' || raw === 'lonkaro' || raw === 'demo/sabka-finance' || raw === 'demos/sabka-finance' || raw === 'site/sabka-finance' || raw === 'references/sabka-loan') {
+        setActiveViewInternal('sabka-finance');
+        setActiveSiteSlug('sabka-finance');
+      } else if (raw === 'square-yard-dealers' || raw === 'squareyards' || raw === 'square-yards' || raw === 'real-estate' || raw === 'property-dealers' || raw === 'dealers' || raw === 'realestate' || raw === 'buy' || raw === 'rent' || raw === 'sell' || raw === 'projects' || raw === 'demo/square-yard-dealers' || raw === 'demos/square-yard-dealers' || raw === 'site/square-yard-dealers' || raw === 'references/square-yards') {
+        setActiveViewInternal('square-yard-dealers');
+        setActiveSiteSlug('square-yard-dealers');
       } else if (raw.startsWith('for-')) {
         const city = raw.replace('for-', '').toLowerCase();
         setActiveViewInternal('city');

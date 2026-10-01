@@ -51,6 +51,9 @@ import { GoldsGymApp } from './components/goldsgym/GoldsGymApp';
 import { FitpassApp } from './components/fitpass/FitpassApp';
 import { KrishnaJewellersApp } from './components/krishnajewellers/KrishnaJewellersApp';
 import { HazoorilalApp } from './components/hazoorilal/HazoorilalApp';
+import { SabkaLoansApp } from './components/sabkaloans/SabkaLoansApp';
+import { SabkaFinanceApp } from './components/sabkafinance/SabkaFinanceApp';
+import { SquareYardDealersApp } from './components/squareyarddealers/SquareYardDealersApp';
 
 function AppContent() {
   const {
@@ -195,6 +198,18 @@ function AppContent() {
 
   if (activeView === 'hazoorilal-jewellers') {
     return <HazoorilalApp />;
+  }
+
+  if (activeView === 'sabka-loans') {
+    return <SabkaLoansApp />;
+  }
+
+  if (activeView === 'sabka-finance') {
+    return <SabkaFinanceApp />;
+  }
+
+  if (activeView === 'square-yard-dealers') {
+    return <SquareYardDealersApp />;
   }
 
   const renderPublicShell = (content: React.ReactNode, isHome = false) => (
