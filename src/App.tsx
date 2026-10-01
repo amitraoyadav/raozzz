@@ -47,6 +47,7 @@ import { DessangeMumbaiApp } from './components/dessange/DessangeMumbaiApp';
 import { TanishqApp } from './components/tanishq/TanishqApp';
 import { JewelboxApp } from './components/jewelbox/JewelboxApp';
 import { BeautyBerryApp } from './components/beautyberry/BeautyBerryApp';
+import { GoldsGymApp } from './components/goldsgym/GoldsGymApp';
 
 function AppContent() {
   const {
@@ -175,6 +176,10 @@ function AppContent() {
 
   if (activeView === 'beauty-berry') {
     return <BeautyBerryApp />;
+  }
+
+  if (activeView === 'golds-gym') {
+    return <GoldsGymApp />;
   }
 
   const renderPublicShell = (content: React.ReactNode, isHome = false) => (

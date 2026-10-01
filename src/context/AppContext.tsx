@@ -487,7 +487,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [activeSiteSlug, setActiveSiteSlug] = useState<string | null>(null);
   const [activeCitySlug, setActiveCitySlug] = useState<string>('delhi');
   const [demoCategoryFilter, setDemoCategoryFilter] = useState<string | null>(null);
-  const [referenceCategoryFilter, setReferenceCategoryFilter] = useState<'all' | 'cafes' | 'restaurants' | 'travel' | 'salon' | 'jewellery' | 'beauty_cosmetics'>('all');
+  const [referenceCategoryFilter, setReferenceCategoryFilter] = useState<'all' | 'cafes' | 'restaurants' | 'travel' | 'salon' | 'jewellery' | 'beauty_cosmetics' | 'gym_fitness'>('all');
   const [categoryPickerOpen, setCategoryPickerOpen] = useState<boolean>(false);
   const openCategoryPicker = () => setCategoryPickerOpen(true);
   const [builderEditSiteId, setBuilderEditSiteId] = useState<string | null>(null);

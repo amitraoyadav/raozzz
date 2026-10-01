@@ -858,6 +858,7 @@ export const GOLDS_GYM_WEBSITE: BusinessWebsite = {
   tagline: "The Mecca of Bodybuilding & Fitness · 150+ Gyms Across 95 Cities in India",
   description: "Gold’s Gym India is a trusted fitness center with 150+ gyms and a leading fitness institute (GGFI) across India. Featuring world-class Life Fitness and Hammer Strength equipment, group fitness classes, certified personal training, and corporate wellness programs.",
   category: 'gym_fitness' as any,
+  templateId: 'golds-gym',
   phone: '+91 22 2640 1234',
   whatsapp: '+91 98200 12345',
   email: 'customer.care@goldsgym.in',

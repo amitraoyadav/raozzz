@@ -75,6 +75,7 @@ import { DessangeMumbaiApp } from '../dessange/DessangeMumbaiApp';
 import { TanishqApp } from '../tanishq/TanishqApp';
 import { JewelboxApp } from '../jewelbox/JewelboxApp';
 import { BeautyBerryApp } from '../beautyberry/BeautyBerryApp';
+import { GoldsGymApp } from '../goldsgym/GoldsGymApp';
 
 const getHeaderCity = (city?: string, address?: string): string => {
   if (typeof city === 'string' && city.trim()) return city.trim();
@@ -704,6 +705,20 @@ export const SiteRenderer: React.FC<SiteRendererProps> = ({ site: propSite, isPr
     targetTemplate === 'beauty-berry'
   ) {
     return <BeautyBerryApp />;
+  }
+
+  // Website 43: Gold's Gym (goldsgym.in)
+  if (
+    targetSlug === 'golds-gym' ||
+    targetSlug === 'goldsgym' ||
+    targetSlug === 'references/golds-gym' ||
+    targetSlug === '/references/golds-gym/' ||
+    targetSlug === 'demo/golds-gym' ||
+    targetSlug === 'demos/golds-gym' ||
+    targetTemplate === 'goldsgym' ||
+    targetTemplate === 'golds-gym'
+  ) {
+    return <GoldsGymApp />;
   }
 
   if (!site) {

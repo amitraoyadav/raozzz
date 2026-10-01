@@ -5,7 +5,7 @@ import { useApp } from '../../context/AppContext';
 export interface ReferenceSiteInfo {
   id: string;
   num: number;
-  category: 'cafe' | 'restaurant' | 'travel' | 'salon' | 'jewellery' | 'beauty_cosmetics';
+  category: 'cafe' | 'restaurant' | 'travel' | 'salon' | 'jewellery' | 'beauty_cosmetics' | 'gym_fitness';
   name: string;
   originalUrl: string;
   slug: string;
@@ -524,20 +524,33 @@ export const ALL_29_REFERENCE_SITES: ReferenceSiteInfo[] = [
     concept: 'Buy Beauty and Cosmetics Products Online · Premier Makeup Essentials',
     themeColor: '#71DBD4',
     badge: 'Premier Cosmetics'
+  },
+  {
+    id: 'golds-gym',
+    num: 43,
+    category: 'gym_fitness',
+    name: "Gold's Gym",
+    originalUrl: 'https://goldsgym.in/',
+    slug: 'golds-gym',
+    referencePath: '/references/golds-gym/',
+    concept: "The Mecca of Bodybuilding & Fitness · 150+ Gyms Across 95 Cities in India",
+    themeColor: '#FFE400',
+    badge: '150+ Gyms in India'
   }
 ];
 
-export const ALL_42_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_29_REFERENCE_SITES;
-export const ALL_41_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_29_REFERENCE_SITES;
-export const ALL_40_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_29_REFERENCE_SITES;
-export const ALL_39_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_29_REFERENCE_SITES;
-export const ALL_38_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_29_REFERENCE_SITES;
-export const ALL_37_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_29_REFERENCE_SITES;
-export const ALL_36_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_29_REFERENCE_SITES;
-export const ALL_35_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_29_REFERENCE_SITES;
-export const ALL_34_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_29_REFERENCE_SITES;
-export const ALL_30_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_29_REFERENCE_SITES;
-export const ALL_15_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_29_REFERENCE_SITES.slice(0, 15);
+export const ALL_43_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_29_REFERENCE_SITES;
+export const ALL_42_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_43_REFERENCE_SITES;
+export const ALL_41_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_43_REFERENCE_SITES;
+export const ALL_40_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_43_REFERENCE_SITES;
+export const ALL_39_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_43_REFERENCE_SITES;
+export const ALL_38_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_43_REFERENCE_SITES;
+export const ALL_37_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_43_REFERENCE_SITES;
+export const ALL_36_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_43_REFERENCE_SITES;
+export const ALL_35_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_43_REFERENCE_SITES;
+export const ALL_34_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_43_REFERENCE_SITES;
+export const ALL_30_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_43_REFERENCE_SITES;
+export const ALL_15_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_43_REFERENCE_SITES.slice(0, 15);
 
 interface SwitcherProps {
   currentSiteId: string;
@@ -546,7 +559,7 @@ interface SwitcherProps {
 export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }) => {
   const { setActiveView } = useApp();
   const [modalOpen, setModalOpen] = useState(false);
-  const [categoryFilter, setCategoryFilter] = useState<'all' | 'cafe' | 'restaurant' | 'travel' | 'salon' | 'jewellery' | 'beauty_cosmetics'>('all');
+  const [categoryFilter, setCategoryFilter] = useState<'all' | 'cafe' | 'restaurant' | 'travel' | 'salon' | 'jewellery' | 'beauty_cosmetics' | 'gym_fitness'>('all');
 
   const currentSite =
     ALL_37_REFERENCE_SITES.find(s => s.id === currentSiteId || s.slug === currentSiteId) ||
@@ -567,6 +580,8 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
     if (cat === 'restaurant') return 'RESTAURANTS';
     if (cat === 'travel') return 'TOUR & TRAVEL';
     if (cat === 'salon') return 'SALON';
+    if (cat === 'beauty_cosmetics') return 'BEAUTY & COSMETICS';
+    if (cat === 'gym_fitness') return 'GYM & FITNESS';
     return 'JEWELLERY';
   };
 
