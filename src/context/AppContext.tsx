@@ -40,7 +40,13 @@ export type AppView =
   | 'hazoorilal-jewellers'
   | 'sabka-loans'
   | 'sabka-finance'
-  | 'square-yard-dealers';
+  | 'square-yard-dealers'
+  | 'choudhary-realestate'
+  | 'dlc-group'
+  | 'raoz-properties'
+  | 'raoz-bazaar'
+  | 'raoz-weddings'
+  | 'raoz-motors';
 
 import { TWOD_WEBSITE } from '../data/twoDCafeData';
 import { BLUE_TOKAI_WEBSITE } from '../data/blueTokaiData';
@@ -91,14 +97,35 @@ import { HAZOORILAL_WEBSITE } from '../data/hazoorilalData';
 import { SABKA_LOANS_WEBSITE } from '../data/sabkaLoansData';
 import { SABKA_FINANCE_WEBSITE } from '../data/sabkaFinanceData';
 import { SQUARE_YARD_DEALERS_WEBSITE } from '../data/squareYardDealersData';
+import { CHOUDHARY_REALESTATE_WEBSITE } from '../data/choudharyRealestateData';
+import { DLC_GROUP_WEBSITE } from '../data/dlcGroupData';
+import { RAOZ_PROPERTIES_WEBSITE } from '../data/raozPropertiesData';
+import { RAOZ_BAZAAR_WEBSITE } from '../data/raozBazaarData';
+import { RAOZ_WEDDINGS_WEBSITE } from '../data/raozWeddingsData';
+import { RAOZ_MOTORS_WEBSITE } from '../data/raozMotorsData';
+
+export const ALL_COMMERCIAL_VEHICLES_WEBSITES: BusinessWebsite[] = [
+  RAOZ_MOTORS_WEBSITE
+];
 
 export const ALL_LOANS_WEBSITES: BusinessWebsite[] = [
   SABKA_LOANS_WEBSITE,
   SABKA_FINANCE_WEBSITE
 ];
 
+export const ALL_STORE_WEBSITES: BusinessWebsite[] = [
+  RAOZ_BAZAAR_WEBSITE
+];
+
+export const ALL_WEDDING_WEBSITES: BusinessWebsite[] = [
+  RAOZ_WEDDINGS_WEBSITE
+];
+
 export const ALL_REAL_ESTATE_WEBSITES: BusinessWebsite[] = [
-  SQUARE_YARD_DEALERS_WEBSITE
+  SQUARE_YARD_DEALERS_WEBSITE,
+  CHOUDHARY_REALESTATE_WEBSITE,
+  DLC_GROUP_WEBSITE,
+  RAOZ_PROPERTIES_WEBSITE
 ];
 
 export const ALL_CAFE_WEBSITES: BusinessWebsite[] = [
@@ -168,7 +195,7 @@ export const ALL_GYM_FITNESS_WEBSITES: BusinessWebsite[] = [
   FITPASS_WEBSITE
 ];
 
-export const ALL_50_COLLECTION_WEBSITES: BusinessWebsite[] = [
+export const ALL_56_COLLECTION_WEBSITES: BusinessWebsite[] = [
   ...ALL_CAFE_WEBSITES,
   ...ALL_RESTAURANT_WEBSITES,
   ...ALL_TRAVEL_WEBSITES,
@@ -177,10 +204,20 @@ export const ALL_50_COLLECTION_WEBSITES: BusinessWebsite[] = [
   ...ALL_BEAUTY_COSMETICS_WEBSITES,
   ...ALL_GYM_FITNESS_WEBSITES,
   ...ALL_LOANS_WEBSITES,
-  ...ALL_REAL_ESTATE_WEBSITES
+  ...ALL_REAL_ESTATE_WEBSITES,
+  ...ALL_STORE_WEBSITES,
+  ...ALL_WEDDING_WEBSITES,
+  ...ALL_COMMERCIAL_VEHICLES_WEBSITES
 ];
 
-export const ALL_49_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_50_COLLECTION_WEBSITES;
+export const ALL_55_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_56_COLLECTION_WEBSITES;
+
+export const ALL_54_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_55_COLLECTION_WEBSITES;
+export const ALL_53_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_55_COLLECTION_WEBSITES;
+export const ALL_52_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_55_COLLECTION_WEBSITES;
+export const ALL_51_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_55_COLLECTION_WEBSITES;
+export const ALL_50_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_55_COLLECTION_WEBSITES;
+export const ALL_49_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_52_COLLECTION_WEBSITES;
 export const ALL_46_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_50_COLLECTION_WEBSITES;
 
 export const ALL_45_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_46_COLLECTION_WEBSITES;
@@ -412,7 +449,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
           const cleaned = parsed
             .filter((s: unknown): s is Partial<BusinessWebsite> => Boolean(s && typeof s === 'object' && !isLegacyDemoSite(s)))
             .map(s => normalizeBusinessSite(s));
-          const canonical = [...ALL_50_COLLECTION_WEBSITES];
+          const canonical = [...ALL_55_COLLECTION_WEBSITES];
           const custom = cleaned.filter(s => !canonical.some(c => c.slug === s.slug || c.id === s.id));
           return [...canonical, ...custom];
         }
@@ -420,7 +457,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     } catch (e) {
       console.warn('Could not parse stored websites', e);
     }
-    return ALL_50_COLLECTION_WEBSITES;
+    return ALL_55_COLLECTION_WEBSITES;
   });
 
   const [pricingPlans, setPricingPlans] = useState<PricingPlan[]>(() => {
@@ -517,7 +554,19 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [isFirebaseConnected, setIsFirebaseConnected] = useState<boolean>(false);
 
   // App routing state
-  const [activeView, setActiveViewInternal] = useState<AppView>('square-yard-dealers');
+  const [activeView, setActiveViewInternal] = useState<AppView>(() => {
+    if (typeof window !== 'undefined') {
+      const hash = window.location.hash.replace('#/', '').replace('#', '').trim().toLowerCase();
+      if (hash === 'raoz-motors' || hash === 'commercial-vehicles' || hash === 'trucks' || hash === 'buses' || hash === 'sml' || hash === 'smlwindia' || hash === 'smlisuzu' || hash === 'site-56' || hash === '56') return 'raoz-motors';
+      if (hash === 'raoz-weddings' || hash === 'wedding' || hash === 'weddings' || hash === 'theweddingcompany' || hash === 'site-55' || hash === '55') return 'raoz-weddings';
+      if (hash === 'raoz-bazaar' || hash === 'smartkirana' || hash === 'store' || hash === 'shop' || hash === 'site-54' || hash === '54') return 'raoz-bazaar';
+      if (hash === 'raoz-properties') return 'raoz-properties';
+      if (hash === 'dlc-group') return 'dlc-group';
+      if (hash === 'choudhary-realestate') return 'choudhary-realestate';
+      if (hash === 'square-yard-dealers') return 'square-yard-dealers';
+    }
+    return 'raoz-weddings';
+  });
   const [activeSiteSlug, setActiveSiteSlug] = useState<string | null>(null);
   const [activeCitySlug, setActiveCitySlug] = useState<string>('delhi');
   const [demoCategoryFilter, setDemoCategoryFilter] = useState<string | null>(null);
@@ -785,6 +834,24 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       } else if (raw === 'sabka-finance' || raw === 'lonkaro' || raw === 'demo/sabka-finance' || raw === 'demos/sabka-finance' || raw === 'site/sabka-finance' || raw === 'references/sabka-loan') {
         setActiveViewInternal('sabka-finance');
         setActiveSiteSlug('sabka-finance');
+      } else if (raw === 'choudhary-realestate' || raw === 'choudhary' || raw === 'arvindestates' || raw === 'arvind-estates' || raw === 'dwarka' || raw === 'site/choudhary-realestate' || raw === 'references/choudhary-realestate' || raw === 'builder-floors-dwarka') {
+        setActiveViewInternal('choudhary-realestate');
+        setActiveSiteSlug('choudhary-realestate');
+      } else if (raw === 'dlc-group' || raw === 'dlc' || raw === 'dlcgroup' || raw === 'real-estate-agents-in-delhi' || raw === 'site/dlc-group' || raw === 'references/dlc-group' || raw === 'dlc-realestate') {
+        setActiveViewInternal('dlc-group');
+        setActiveSiteSlug('dlc-group');
+      } else if (raw === 'raoz-properties' || raw === 'raoz' || raw === 'hrrealtech' || raw === 'site/raoz-properties' || raw === 'references/raoz-properties' || raw === 'raozproperties') {
+        setActiveViewInternal('raoz-properties');
+        setActiveSiteSlug('raoz-properties');
+      } else if (raw === 'raoz-bazaar' || raw === 'smartkirana' || raw === 'smart-kirana' || raw === 'store' || raw === 'shop' || raw === 'site-54' || raw === 'site/54' || raw === 'site/raoz-bazaar' || raw === 'references/smartkirana' || raw === 'bazaar') {
+        setActiveViewInternal('raoz-bazaar');
+        setActiveSiteSlug('raoz-bazaar');
+      } else if (raw === 'raoz-weddings' || raw === 'wedding' || raw === 'weddings' || raw === 'theweddingcompany' || raw === 'site-55' || raw === 'site/55' || raw === 'site/raoz-weddings' || raw === 'references/theweddingcompany' || raw === 'wedding-venues') {
+        setActiveViewInternal('raoz-weddings');
+        setActiveSiteSlug('raoz-weddings');
+      } else if (raw === 'raoz-motors' || raw === 'commercial-vehicles' || raw === 'trucks' || raw === 'buses' || raw === 'sml' || raw === 'smlwindia' || raw === 'smlisuzu' || raw === 'site-56' || raw === 'site/56' || raw === 'site/raoz-motors' || raw === 'references/smlwindia' || raw === 'commercial') {
+        setActiveViewInternal('raoz-motors');
+        setActiveSiteSlug('raoz-motors');
       } else if (raw === 'square-yard-dealers' || raw === 'squareyards' || raw === 'square-yards' || raw === 'real-estate' || raw === 'property-dealers' || raw === 'dealers' || raw === 'realestate' || raw === 'buy' || raw === 'rent' || raw === 'sell' || raw === 'projects' || raw === 'demo/square-yard-dealers' || raw === 'demos/square-yard-dealers' || raw === 'site/square-yard-dealers' || raw === 'references/square-yards') {
         setActiveViewInternal('square-yard-dealers');
         setActiveSiteSlug('square-yard-dealers');

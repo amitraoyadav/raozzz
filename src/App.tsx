@@ -54,6 +54,12 @@ import { HazoorilalApp } from './components/hazoorilal/HazoorilalApp';
 import { SabkaLoansApp } from './components/sabkaloans/SabkaLoansApp';
 import { SabkaFinanceApp } from './components/sabkafinance/SabkaFinanceApp';
 import { SquareYardDealersApp } from './components/squareyarddealers/SquareYardDealersApp';
+import { ChoudharyRealestateApp } from './components/choudharyrealestate/ChoudharyRealestateApp';
+import { DLCGroupApp } from './components/dlcgroup/DLCGroupApp';
+import { RaozPropertiesApp } from './components/raozproperties/RaozPropertiesApp';
+import { RaozBazaarApp } from './components/raozbazaar/RaozBazaarApp';
+import { RaozWeddingsApp } from './components/raozweddings/RaozWeddingsApp';
+import { RaozMotorsApp } from './components/raozmotors/RaozMotorsApp';
 
 function AppContent() {
   const {
@@ -210,6 +216,30 @@ function AppContent() {
 
   if (activeView === 'square-yard-dealers') {
     return <SquareYardDealersApp />;
+  }
+
+  if (activeView === 'choudhary-realestate') {
+    return <ChoudharyRealestateApp />;
+  }
+
+  if (activeView === 'dlc-group') {
+    return <DLCGroupApp />;
+  }
+
+  if (activeView === 'raoz-properties') {
+    return <RaozPropertiesApp />;
+  }
+
+  if (activeView === 'raoz-bazaar') {
+    return <RaozBazaarApp />;
+  }
+
+  if (activeView === 'raoz-weddings') {
+    return <RaozWeddingsApp />;
+  }
+
+  if (activeView === 'raoz-motors') {
+    return <RaozMotorsApp />;
   }
 
   const renderPublicShell = (content: React.ReactNode, isHome = false) => (

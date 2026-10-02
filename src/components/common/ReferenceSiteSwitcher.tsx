@@ -5,7 +5,7 @@ import { useApp } from '../../context/AppContext';
 export interface ReferenceSiteInfo {
   id: string;
   num: number;
-  category: 'cafe' | 'restaurant' | 'travel' | 'salon' | 'jewellery' | 'beauty_cosmetics' | 'gym_fitness' | 'loans' | 'real_estate';
+  category: 'cafe' | 'restaurant' | 'travel' | 'salon' | 'jewellery' | 'beauty_cosmetics' | 'gym_fitness' | 'loans' | 'real_estate' | 'shop' | 'wedding' | 'commercial_vehicles';
   name: string;
   originalUrl: string;
   slug: string;
@@ -574,6 +574,30 @@ export const ALL_29_REFERENCE_SITES: ReferenceSiteInfo[] = [
     badge: 'Since 1952 · High Jewellery'
   },
   {
+    id: 'sabka-finance',
+    num: 47,
+    category: 'loans',
+    name: 'Sabka Finance',
+    originalUrl: 'https://lonkaro.com/',
+    slug: 'sabka-finance',
+    referencePath: '/references/sabka-loan/',
+    concept: 'Sabka Finance (Lonkaro) — Customer-Focused Financial Assistance & Everyday Loans',
+    themeColor: '#0D9488',
+    badge: 'Site 47 · Finance Website #2'
+  },
+  {
+    id: 'square-yard-dealers',
+    num: 48,
+    category: 'real_estate',
+    name: 'Square Yard Dealers',
+    originalUrl: 'https://www.squareyards.com/',
+    slug: 'square-yard-dealers',
+    referencePath: '/references/square-yards/',
+    concept: 'Property Discovery & Real-Estate Advisory Made Simpler · Buy, Rent & Sell Properties',
+    themeColor: '#0F172A',
+    badge: 'Site 48 · Real Estate'
+  },
+  {
     id: 'sabka-loans',
     num: 49,
     category: 'loans',
@@ -586,32 +610,85 @@ export const ALL_29_REFERENCE_SITES: ReferenceSiteInfo[] = [
     badge: 'Site 49 · Finance Website #1'
   },
   {
-    id: 'sabka-finance',
+    id: 'choudhary-realestate',
     num: 50,
-    category: 'loans',
-    name: 'Sabka Finance',
-    originalUrl: 'https://lonkaro.com/',
-    slug: 'sabka-finance',
-    referencePath: '/references/sabka-loan/',
-    concept: 'Sabka Finance (Lonkaro) — Customer-Focused Financial Assistance & Everyday Loans',
-    themeColor: '#0D9488',
-    badge: 'Site 50 · Finance Website #2'
+    category: 'real_estate',
+    name: 'Choudhary Realestate',
+    originalUrl: 'https://www.arvindestates.com/',
+    slug: 'choudhary-realestate',
+    referencePath: '/references/choudhary-realestate/',
+    concept: 'Best Property Consultant in Dwarka, Delhi · 100% Legally Verified Freehold DDA Builder Floors & Society Flats',
+    themeColor: '#0F1E36',
+    badge: 'Site 50 · Real Estate'
   },
   {
-    id: 'square-yard-dealers',
+    id: 'dlc-group',
     num: 51,
     category: 'real_estate',
-    name: 'Square Yard Dealers',
-    originalUrl: 'https://www.squareyards.com/',
-    slug: 'square-yard-dealers',
-    referencePath: '/references/square-yards/',
-    concept: 'Property Discovery & Real-Estate Advisory Made Simpler · Buy, Rent & Sell Properties',
-    themeColor: '#0F172A',
+    name: 'DLC Group',
+    originalUrl: 'https://dlcgroup.in/real-estate-agents-in-delhi/',
+    slug: 'dlc-group',
+    referencePath: '/references/dlc-group/',
+    concept: 'Best Real Estate Agents in Delhi NCR · Luxury Residential, Commercial, Farmhouses & Land Advisory',
+    themeColor: '#0a192f',
     badge: 'Site 51 · Real Estate'
+  },
+  {
+    id: 'raoz-properties',
+    num: 52,
+    category: 'real_estate',
+    name: 'Raoz Properties',
+    originalUrl: 'https://hrrealtech.com/',
+    slug: 'raoz-properties',
+    referencePath: '/references/raoz-properties/',
+    concept: 'Plots & Property in Delhi NCR & Faridabad · Legally Verified Documents, Builder Floors, Commercial & Farmhouses',
+    themeColor: '#1e3a8a',
+    badge: 'Site 52 · Real Estate'
+  },
+  {
+    id: 'raoz-bazaar',
+    num: 54,
+    category: 'shop',
+    name: 'RAOZ BAZAAR',
+    originalUrl: 'https://smartkirana.co.in/',
+    slug: 'raoz-bazaar',
+    referencePath: '/references/smartkirana/',
+    concept: 'Har Ghar Ka Smart Kirana & Online Grocery Store · 100% Pure Ghee, 15L Cooking Oil B1G1 Free Deals, Staples, Dry Fruits & Pan Corner',
+    themeColor: '#2d5a27',
+    badge: 'Site 54 · Store / Shop Category'
+  },
+  {
+    id: 'raoz-weddings',
+    num: 55,
+    category: 'wedding',
+    name: 'RAOZ WEDDINGS',
+    originalUrl: 'https://www.theweddingcompany.com/',
+    slug: 'raoz-weddings',
+    referencePath: '/references/theweddingcompany/',
+    concept: "India's Premier Wedding Planning & Venue Discovery Platform · 2,500+ Verified Luxury Venues across Bengaluru, Delhi, Mumbai, Goa, Jaipur & Udaipur",
+    themeColor: '#9A2157',
+    badge: 'Site 55 · Wedding Category'
+  },
+  {
+    id: 'raoz-motors',
+    num: 56,
+    category: 'commercial_vehicles',
+    name: 'RAOZ MOTORS',
+    originalUrl: 'https://www.smlwindia.com/',
+    slug: 'raoz-motors',
+    referencePath: '/references/smlwindia/',
+    concept: "India's Premier Commercial Vehicles Platform · Trucks, Buses & Special Applications (Sartaj, Samrat, Supreme, Saarthi School Coaches & 300+ 3S Dealers)",
+    themeColor: '#f59e0b',
+    badge: 'Site 56 · Commercial Vehicles'
   }
 ];
 
-export const ALL_51_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_29_REFERENCE_SITES;
+export const ALL_56_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_29_REFERENCE_SITES;
+export const ALL_55_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_56_REFERENCE_SITES;
+export const ALL_54_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_55_REFERENCE_SITES;
+export const ALL_53_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_55_REFERENCE_SITES;
+export const ALL_52_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_55_REFERENCE_SITES;
+export const ALL_51_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_52_REFERENCE_SITES;
 export const ALL_50_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_51_REFERENCE_SITES;
 export const ALL_49_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_51_REFERENCE_SITES;
 export const ALL_46_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_51_REFERENCE_SITES;
@@ -637,21 +714,39 @@ interface SwitcherProps {
 export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }) => {
   const { setActiveView } = useApp();
   const [modalOpen, setModalOpen] = useState(false);
-  const [categoryFilter, setCategoryFilter] = useState<'all' | 'cafe' | 'restaurant' | 'travel' | 'salon' | 'jewellery' | 'beauty_cosmetics' | 'gym_fitness' | 'loans' | 'real_estate'>('all');
+  const [categoryFilter, setCategoryFilter] = useState<'all' | 'cafe' | 'restaurant' | 'travel' | 'salon' | 'jewellery' | 'beauty_cosmetics' | 'gym_fitness' | 'loans' | 'real_estate' | 'shop' | 'wedding' | 'commercial_vehicles'>('all');
 
   const currentSite =
-    ALL_51_REFERENCE_SITES.find(s => s.id === currentSiteId || s.slug === currentSiteId) ||
-    ALL_51_REFERENCE_SITES.find(s => s.id === 'square-yard-dealers') ||
-    ALL_51_REFERENCE_SITES[0];
+    ALL_56_REFERENCE_SITES.find(s => s.id === currentSiteId || s.slug === currentSiteId) ||
+    ALL_56_REFERENCE_SITES.find(s => s.id === 'raoz-motors') ||
+    ALL_56_REFERENCE_SITES.find(s => s.id === 'raoz-weddings') ||
+    ALL_56_REFERENCE_SITES.find(s => s.id === 'raoz-bazaar') ||
+    ALL_56_REFERENCE_SITES.find(s => s.id === 'raoz-properties') ||
+    ALL_56_REFERENCE_SITES.find(s => s.id === 'dlc-group') ||
+    ALL_56_REFERENCE_SITES.find(s => s.id === 'choudhary-realestate') ||
+    ALL_56_REFERENCE_SITES.find(s => s.id === 'square-yard-dealers') ||
+    ALL_56_REFERENCE_SITES[0];
 
-  const filteredSites = ALL_51_REFERENCE_SITES.filter(s => {
+  const filteredSites = ALL_56_REFERENCE_SITES.filter(s => {
     if (categoryFilter === 'all') return true;
     return s.category === categoryFilter;
   });
 
   const handleSelectSite = (site: ReferenceSiteInfo) => {
     setModalOpen(false);
-    if (site.id === 'square-yard-dealers' || site.slug === 'square-yard-dealers') {
+    if (site.id === 'raoz-motors' || site.slug === 'raoz-motors') {
+      setActiveView('raoz-motors');
+    } else if (site.id === 'raoz-weddings' || site.slug === 'raoz-weddings') {
+      setActiveView('raoz-weddings');
+    } else if (site.id === 'raoz-bazaar' || site.slug === 'raoz-bazaar') {
+      setActiveView('raoz-bazaar');
+    } else if (site.id === 'raoz-properties' || site.slug === 'raoz-properties') {
+      setActiveView('raoz-properties');
+    } else if (site.id === 'dlc-group' || site.slug === 'dlc-group') {
+      setActiveView('dlc-group');
+    } else if (site.id === 'choudhary-realestate' || site.slug === 'choudhary-realestate') {
+      setActiveView('choudhary-realestate');
+    } else if (site.id === 'square-yard-dealers' || site.slug === 'square-yard-dealers') {
       setActiveView('square-yard-dealers');
     } else if (site.id === 'sabka-loans' || site.slug === 'sabka-loans') {
       setActiveView('sabka-loans');
@@ -671,6 +766,9 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
     if (cat === 'gym_fitness') return 'GYM & FITNESS';
     if (cat === 'loans') return 'LOANS / FINANCIAL SERVICES';
     if (cat === 'real_estate') return 'REAL ESTATE';
+    if (cat === 'shop' || cat === 'store') return 'STORE / SHOP';
+    if (cat === 'wedding') return 'WEDDING';
+    if (cat === 'commercial_vehicles') return 'COMMERCIAL VEHICLES';
     return 'JEWELLERY';
   };
 
@@ -683,7 +781,7 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
             style={{ backgroundColor: currentSite.themeColor || '#10b981' }}
           />
           <span className="font-bold tracking-wide truncate max-w-[200px] xs:max-w-[320px] sm:max-w-none text-white font-mono text-[11px] sm:text-xs">
-            WEBSITE {currentSite.num}/{ALL_37_REFERENCE_SITES.length}: {currentSite.name.toUpperCase()} ({getCategoryTitle(currentSite.category)})
+            WEBSITE {currentSite.num}/{ALL_56_REFERENCE_SITES.length}: {currentSite.name.toUpperCase()} ({getCategoryTitle(currentSite.category)})
           </span>
         </div>
 
@@ -694,7 +792,7 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
             className="px-2.5 py-1 rounded bg-stone-800 hover:bg-stone-700 text-stone-200 border border-stone-700 font-medium text-[11px] flex items-center gap-1.5 cursor-pointer transition-colors"
           >
             <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-            <span>Switch Website ({ALL_37_REFERENCE_SITES.length} Sites)</span>
+            <span>Switch Website ({ALL_56_REFERENCE_SITES.length} Sites)</span>
             <ChevronDown className="w-3.5 h-3.5 text-stone-400" />
           </button>
 
@@ -708,7 +806,7 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
         </div>
       </nav>
 
-      {/* 37 Reference Websites Picker Modal */}
+      {/* 56 Reference Websites Picker Modal */}
       {modalOpen && (
         <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm flex items-center justify-center p-4">
           <div className="bg-[#18181b] text-white border border-stone-800 rounded-2xl w-full max-w-5xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden">
@@ -717,13 +815,13 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
               <div>
                 <div className="flex items-center gap-2 text-amber-400 text-xs font-bold uppercase tracking-wider">
                   <Sparkles className="w-4 h-4" />
-                  <span>{ALL_37_REFERENCE_SITES.length} Complete Faithful Website Recreations</span>
+                  <span>{ALL_56_REFERENCE_SITES.length} Complete Faithful Website Recreations</span>
                 </div>
                 <h3 className="text-lg sm:text-xl font-bold text-white mt-1">
-                  Reference Website Directory — Cafes, Restaurants, Tour & Travel, Salon, Jewellery & Cosmetics
+                  Reference Website Directory — Commercial Vehicles, Wedding, Store/Shop, Real Estate, Loans, Cafes &amp; More
                 </h3>
                 <p className="text-xs text-stone-400 mt-0.5">
-                  Six Categories: 19 Cafes, 10 Restaurants, 7 Tour & Travel, {ALL_37_REFERENCE_SITES.filter(s => s.category === 'salon').length} Salons, {ALL_37_REFERENCE_SITES.filter(s => s.category === 'jewellery').length} Jewellery & {ALL_37_REFERENCE_SITES.filter(s => s.category === 'beauty_cosmetics').length} Beauty & Cosmetics. Every website maintains its independent UI, layouts, and features.
+                  Twelve Categories: 1 Commercial Vehicles Portal (Trucks, Buses, Special Applications), 1 Wedding Portal, 1 Store/Shop, 5 Real Estate, 2 Loans & Finance, 19 Cafes, 10 Restaurants, 7 Tour & Travel, 3 Salons, 4 Jewellery, 1 Beauty & Cosmetics, 2 Gym & Fitness.
                 </p>
               </div>
               <button
@@ -744,7 +842,7 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
                     : 'bg-stone-800 text-stone-300 hover:bg-stone-700'
                 }`}
               >
-                All Websites ({ALL_37_REFERENCE_SITES.length})
+                All Websites ({ALL_55_REFERENCE_SITES.length})
               </button>
               <button
                 onClick={() => setCategoryFilter('cafe')}
@@ -843,7 +941,40 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
                 }`}
               >
                 <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-                <span>Real Estate ({ALL_50_REFERENCE_SITES.filter(s => s.category === 'real_estate').length})</span>
+                <span>Real Estate ({ALL_54_REFERENCE_SITES.filter(s => s.category === 'real_estate').length})</span>
+              </button>
+              <button
+                onClick={() => setCategoryFilter('shop')}
+                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
+                  categoryFilter === 'shop'
+                    ? 'bg-emerald-600 text-white font-black shadow-sm ring-1 ring-emerald-300'
+                    : 'bg-stone-800 text-stone-300 hover:bg-stone-700'
+                }`}
+              >
+                <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
+                <span>Store / Shop ({ALL_55_REFERENCE_SITES.filter(s => s.category === 'shop').length})</span>
+              </button>
+              <button
+                onClick={() => setCategoryFilter('wedding')}
+                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
+                  categoryFilter === 'wedding'
+                    ? 'bg-[#9A2157] text-white font-black shadow-sm ring-1 ring-rose-300'
+                    : 'bg-stone-800 text-stone-300 hover:bg-stone-700'
+                }`}
+              >
+                <Sparkles className="w-3.5 h-3.5 text-rose-400" />
+                <span>Wedding ({ALL_56_REFERENCE_SITES.filter(s => s.category === 'wedding').length})</span>
+              </button>
+              <button
+                onClick={() => setCategoryFilter('commercial_vehicles')}
+                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
+                  categoryFilter === 'commercial_vehicles'
+                    ? 'bg-amber-500 text-slate-950 font-black shadow-sm ring-1 ring-amber-300'
+                    : 'bg-stone-800 text-stone-300 hover:bg-stone-700'
+                }`}
+              >
+                <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+                <span>Commercial Vehicles ({ALL_56_REFERENCE_SITES.filter(s => s.category === 'commercial_vehicles').length})</span>
               </button>
             </div>
 
