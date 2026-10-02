@@ -5,7 +5,7 @@ import { useApp } from '../../context/AppContext';
 export interface ReferenceSiteInfo {
   id: string;
   num: number;
-  category: 'cafe' | 'restaurant' | 'travel' | 'salon' | 'jewellery' | 'beauty_cosmetics' | 'gym_fitness' | 'loans' | 'real_estate' | 'shop' | 'wedding' | 'commercial_vehicles' | 'wedding_event_planning' | 'destination_weddings' | 'web_tools';
+  category: 'cafe' | 'restaurant' | 'travel' | 'salon' | 'jewellery' | 'beauty_cosmetics' | 'gym_fitness' | 'loans' | 'real_estate' | 'shop' | 'wedding' | 'commercial_vehicles' | 'wedding_event_planning' | 'destination_weddings' | 'web_tools' | 'lawyer';
   name: string;
   originalUrl: string;
   slug: string;
@@ -646,6 +646,18 @@ export const ALL_29_REFERENCE_SITES: ReferenceSiteInfo[] = [
     badge: 'Site 52 · Real Estate'
   },
   {
+    id: 'raoz-motors',
+    num: 53,
+    category: 'commercial_vehicles',
+    name: 'RAOZ MOTORS',
+    originalUrl: 'https://smlisuzu.com/',
+    slug: 'raoz-motors',
+    referencePath: '/references/raoz-motors/',
+    concept: 'Raoz Motors Commercial Vehicles · Trucks, School Buses, Executive Coaches & SML Saarthi Telematics',
+    themeColor: '#f59e0b',
+    badge: 'Site 53 · Commercial Vehicles'
+  },
+  {
     id: 'raoz-bazaar',
     num: 54,
     category: 'shop',
@@ -728,10 +740,35 @@ export const ALL_29_REFERENCE_SITES: ReferenceSiteInfo[] = [
     concept: "SaveWeb2ZIP · Online Website Copier & Archiver · Download Full Webpages to ZIP Archive with Assets, HTML, CSS, JS & Fonts",
     themeColor: '#f5df4d',
     badge: 'Site 60 · Web Tools / Utilities'
+  },
+  {
+    id: 'lawlinks',
+    num: 61,
+    category: 'lawyer',
+    name: 'LAW LINKS',
+    originalUrl: 'https://lawlinks.in/',
+    slug: 'lawlinks',
+    referencePath: '/references/lawlinks/',
+    concept: "Law Links · Advocates & Legal Consultants · Supreme Court & High Courts Litigation, Commercial Arbitration, Mediation & 32 Industry Sectors",
+    themeColor: '#03A9F5',
+    badge: 'Site 61 · Advocates & Legal Consultants'
+  },
+  {
+    id: 'maheshwari',
+    num: 62,
+    category: 'lawyer',
+    name: 'MAHESHWARI & CO.',
+    originalUrl: 'https://www.maheshwariandco.com/',
+    slug: 'maheshwari',
+    referencePath: '/references/maheshwari/',
+    concept: "Maheshwari & Co. · Advocates & Legal Consultants · Full Service Law Firm in Delhi & Mumbai, Corporate M&A, Supreme Court Litigation, International Arbitration & IPR",
+    themeColor: '#8B1E2B',
+    badge: 'Site 62 · Full Service Law Firm'
   }
 ];
 
-export const ALL_60_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_29_REFERENCE_SITES;
+export const ALL_61_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_29_REFERENCE_SITES;
+export const ALL_60_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_61_REFERENCE_SITES;
 export const ALL_59_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_60_REFERENCE_SITES;
 export const ALL_58_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_60_REFERENCE_SITES;
 export const ALL_57_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_60_REFERENCE_SITES;
@@ -766,10 +803,11 @@ interface SwitcherProps {
 export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }) => {
   const { setActiveView } = useApp();
   const [modalOpen, setModalOpen] = useState(false);
-  const [categoryFilter, setCategoryFilter] = useState<'all' | 'cafe' | 'restaurant' | 'travel' | 'salon' | 'jewellery' | 'beauty_cosmetics' | 'gym_fitness' | 'loans' | 'real_estate' | 'shop' | 'wedding' | 'commercial_vehicles' | 'wedding_event_planning' | 'destination_weddings' | 'web_tools'>('all');
+  const [categoryFilter, setCategoryFilter] = useState<'all' | 'cafe' | 'restaurant' | 'travel' | 'salon' | 'jewellery' | 'beauty_cosmetics' | 'gym_fitness' | 'loans' | 'real_estate' | 'shop' | 'wedding' | 'commercial_vehicles' | 'wedding_event_planning' | 'destination_weddings' | 'web_tools' | 'lawyer'>('all');
 
   const currentSite =
     ALL_60_REFERENCE_SITES.find(s => s.id === currentSiteId || s.slug === currentSiteId) ||
+    ALL_60_REFERENCE_SITES.find(s => s.id === 'lawlinks') ||
     ALL_60_REFERENCE_SITES.find(s => s.id === 'saveweb2zip') ||
     ALL_60_REFERENCE_SITES.find(s => s.id === 'luxespace-htx') ||
     ALL_60_REFERENCE_SITES.find(s => s.id === 'all-in-one-destination-weddings') ||
@@ -791,7 +829,11 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
 
   const handleSelectSite = (site: ReferenceSiteInfo) => {
     setModalOpen(false);
-    if (site.id === 'saveweb2zip' || site.slug === 'saveweb2zip') {
+    if (site.id === 'maheshwari' || site.slug === 'maheshwari') {
+      setActiveView('maheshwari');
+    } else if (site.id === 'lawlinks' || site.slug === 'lawlinks') {
+      setActiveView('lawlinks');
+    } else if (site.id === 'saveweb2zip' || site.slug === 'saveweb2zip') {
       setActiveView('saveweb2zip');
     } else if (site.id === 'luxespace-htx' || site.slug === 'luxespace-htx' || site.id === 'luxespace') {
       setActiveView('luxespace-htx');

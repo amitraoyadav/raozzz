@@ -511,5 +511,6 @@ export const CATEGORY_INFO: Record<string, { label: string; icon: string; defaul
   rooftop_cafe: { label: 'Rooftop & Terrace Café', icon: 'Coffee', defaultBooking: 'reservation_party', defaultCta: 'Reserve Sunset Rooftop Table' },
   office_tiffin: { label: 'B2B Office Tiffin Service', icon: 'UtensilsCrossed', defaultBooking: 'whatsapp_order', defaultCta: 'Book 5-Day Corporate Meal Trial' },
   jewellery: { label: 'Fine Jewellery & Diamonds', icon: 'Gem', defaultBooking: 'appointment_slot', defaultCta: 'Book Store Appointment' },
-  beauty_cosmetics: { label: 'Beauty & Cosmetics', icon: 'Sparkles', defaultBooking: 'whatsapp_order', defaultCta: 'Shop Beauty Products' }
+  beauty_cosmetics: { label: 'Beauty & Cosmetics', icon: 'Sparkles', defaultBooking: 'whatsapp_order', defaultCta: 'Shop Beauty Products' },
+  web_tools: { label: 'Web Tools / Utilities', icon: 'FolderArchive', defaultBooking: 'consultation_quote', defaultCta: 'Save Website to ZIP' }
 };

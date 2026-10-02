@@ -209,7 +209,7 @@ export const BuilderWizard: React.FC<BuilderWizardProps> = ({
 
   // Step 6 - Preview & Publish
   const [previewDeviceMode, setPreviewDeviceMode] = useState<'desktop' | 'tablet' | 'mobile'>('desktop');
-  const [pricingPlanId, setPricingPlanId] = useState<'starter' | 'professional' | 'premium'>(existingSite?.pricingPlanId || 'professional');
+  const [pricingPlanId, setPricingPlanId] = useState<'starter' | 'professional' | 'premium' | 'free'>(existingSite?.pricingPlanId || 'professional');
   const [amountPaid, setAmountPaid] = useState<number>(existingSite?.amountPaid || 1499);
   const [paymentStatus, setPaymentStatus] = useState<'paid' | 'pending' | 'unpaid'>(existingSite?.paymentStatus || 'paid');
   const [status, setStatus] = useState<WebsiteStatus>(existingSite?.status || 'draft');
@@ -1419,6 +1419,7 @@ export const BuilderWizard: React.FC<BuilderWizardProps> = ({
                   onChange={e => setPricingPlanId(e.target.value as any)}
                   className="w-full px-3 py-2 text-xs rounded-xl border border-slate-200 bg-white"
                 >
+                  <option value="free">Free Plan (₹0)</option>
                   <option value="starter">Starter Plan (₹999)</option>
                   <option value="professional">Professional Plan (₹1,499)</option>
                   <option value="premium">Premium Plan (₹1,999)</option>

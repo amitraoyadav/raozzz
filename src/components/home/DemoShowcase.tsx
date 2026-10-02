@@ -42,6 +42,7 @@ export const DemoShowcase: React.FC<DemoShowcaseProps> = ({ onOpenOrderModal }) 
       if (referenceCategoryFilter === 'jewellery') return w.category === 'jewellery';
       if (referenceCategoryFilter === 'beauty_cosmetics') return w.category === 'beauty_cosmetics';
       if (referenceCategoryFilter === 'gym_fitness') return w.category === 'gym_fitness' || w.category === 'gym';
+      if (referenceCategoryFilter === 'web_tools') return w.category === 'web_tools';
       return true;
     });
     const cats = Array.from(new Set(relevantWebsites.map(w => w.category)));
@@ -76,6 +77,9 @@ export const DemoShowcase: React.FC<DemoShowcaseProps> = ({ onOpenOrderModal }) 
       return false;
     }
     if (referenceCategoryFilter === 'gym_fitness' && site.category !== 'gym_fitness' && site.category !== 'gym') {
+      return false;
+    }
+    if (referenceCategoryFilter === 'web_tools' && site.category !== 'web_tools') {
       return false;
     }
 
@@ -322,11 +326,33 @@ export const DemoShowcase: React.FC<DemoShowcaseProps> = ({ onOpenOrderModal }) 
                     {websites.filter(w => w.category === 'gym_fitness' || w.category === 'gym').length}
                   </span>
                 </button>
+
+                {/* 8. WEB TOOLS / UTILITIES */}
+                <button
+                  onClick={() => {
+                    const next = referenceCategoryFilter === 'web_tools' ? 'all' : 'web_tools';
+                    setReferenceCategoryFilter(next);
+                    setSelectedCategory('all');
+                  }}
+                  className={`px-3.5 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center gap-1.5 sm:gap-2 ${
+                    referenceCategoryFilter === 'web_tools'
+                      ? 'bg-[#14162B] text-white shadow-sm ring-1 ring-[#14162B]'
+                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                  }`}
+                  aria-pressed={referenceCategoryFilter === 'web_tools'}
+                >
+                  <span>🛠️ WEB TOOLS</span>
+                  <span className={`text-[10px] px-1.5 py-0.5 rounded-md font-mono ${
+                    referenceCategoryFilter === 'web_tools' ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-700'
+                  }`}>
+                    {websites.filter(w => w.category === 'web_tools').length}
+                  </span>
+                </button>
               </div>
 
               {referenceCategoryFilter !== 'all' && (
                 <div className="mt-2 flex items-center gap-2 text-xs text-slate-500 font-['Inter']">
-                  <span>Filtered by: <strong className="text-slate-800 capitalize">{referenceCategoryFilter === 'travel' ? 'Tour & Travel' : referenceCategoryFilter === 'salon' ? 'Salon' : referenceCategoryFilter === 'jewellery' ? 'Jewellery' : referenceCategoryFilter === 'beauty_cosmetics' ? 'Beauty & Cosmetics' : referenceCategoryFilter === 'gym_fitness' ? 'Gym & Fitness' : referenceCategoryFilter}</strong></span>
+                  <span>Filtered by: <strong className="text-slate-800 capitalize">{referenceCategoryFilter === 'travel' ? 'Tour & Travel' : referenceCategoryFilter === 'salon' ? 'Salon' : referenceCategoryFilter === 'jewellery' ? 'Jewellery' : referenceCategoryFilter === 'beauty_cosmetics' ? 'Beauty & Cosmetics' : referenceCategoryFilter === 'gym_fitness' ? 'Gym & Fitness' : referenceCategoryFilter === 'web_tools' ? 'Web Tools / Utilities' : referenceCategoryFilter}</strong></span>
                   <span>•</span>
                   <button
                     onClick={() => {

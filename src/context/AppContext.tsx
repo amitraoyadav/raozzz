@@ -51,7 +51,9 @@ export type AppView =
   | 'rathore-weddings'
   | 'all-in-one-destination-weddings'
   | 'luxespace-htx'
-  | 'saveweb2zip';
+  | 'saveweb2zip'
+  | 'lawlinks'
+  | 'maheshwari';
 
 import { TWOD_WEBSITE } from '../data/twoDCafeData';
 import { BLUE_TOKAI_WEBSITE } from '../data/blueTokaiData';
@@ -112,7 +114,14 @@ import { RATHORE_WEDDINGS_WEBSITE } from '../data/rathoreWeddingsData';
 import { ALL_IN_ONE_DESTINATION_WEDDINGS_WEBSITE } from '../data/allInOneDestinationWeddingsData';
 import { LUXESPACE_WEBSITE } from '../data/luxeSpaceWebsiteData';
 import { SAVEWEB2ZIP_WEBSITE } from '../data/saveWeb2ZipWebsiteData';
+import { LAWLINKS_WEBSITE } from '../data/lawlinksWebsiteData';
+import { MAHESHWARI_WEBSITE } from '../data/maheshwariWebsiteData';
 import { RAOZ_MOTORS_WEBSITE } from '../data/raozMotorsData';
+
+export const ALL_LEGAL_WEBSITES: BusinessWebsite[] = [
+  LAWLINKS_WEBSITE,
+  MAHESHWARI_WEBSITE
+];
 
 export const ALL_WEB_TOOLS_WEBSITES: BusinessWebsite[] = [
   SAVEWEB2ZIP_WEBSITE
@@ -234,9 +243,11 @@ export const ALL_57_COLLECTION_WEBSITES: BusinessWebsite[] = [
   ...ALL_COMMERCIAL_VEHICLES_WEBSITES,
   ...ALL_EVENT_PLANNING_WEBSITES,
   ...ALL_DESTINATION_WEDDINGS_WEBSITES,
-  ...ALL_WEB_TOOLS_WEBSITES
+  ...ALL_WEB_TOOLS_WEBSITES,
+  ...ALL_LEGAL_WEBSITES
 ];
 
+export const ALL_61_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_57_COLLECTION_WEBSITES;
 export const ALL_60_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_57_COLLECTION_WEBSITES;
 export const ALL_59_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_57_COLLECTION_WEBSITES;
 export const ALL_58_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_57_COLLECTION_WEBSITES;
@@ -402,8 +413,8 @@ interface AppContextType {
   discountLeads: DiscountLead[];
   demoCategoryFilter: string | null;
   setDemoCategoryFilter: (cat: string | null) => void;
-  referenceCategoryFilter: 'all' | 'cafes' | 'restaurants' | 'travel' | 'salon' | 'jewellery' | 'beauty_cosmetics' | 'gym_fitness';
-  setReferenceCategoryFilter: (filter: 'all' | 'cafes' | 'restaurants' | 'travel' | 'salon' | 'jewellery' | 'beauty_cosmetics' | 'gym_fitness') => void;
+  referenceCategoryFilter: 'all' | 'cafes' | 'restaurants' | 'travel' | 'salon' | 'jewellery' | 'beauty_cosmetics' | 'gym_fitness' | 'web_tools';
+  setReferenceCategoryFilter: (filter: 'all' | 'cafes' | 'restaurants' | 'travel' | 'salon' | 'jewellery' | 'beauty_cosmetics' | 'gym_fitness' | 'web_tools') => void;
   categoryPickerOpen: boolean;
   setCategoryPickerOpen: (open: boolean) => void;
   openCategoryPicker: () => void;
@@ -479,7 +490,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
           const cleaned = parsed
             .filter((s: unknown): s is Partial<BusinessWebsite> => Boolean(s && typeof s === 'object' && !isLegacyDemoSite(s)))
             .map(s => normalizeBusinessSite(s));
-          const canonical = [...ALL_55_COLLECTION_WEBSITES];
+          const canonical = [...ALL_60_COLLECTION_WEBSITES];
           const custom = cleaned.filter(s => !canonical.some(c => c.slug === s.slug || c.id === s.id));
           return [...canonical, ...custom];
         }
@@ -487,7 +498,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     } catch (e) {
       console.warn('Could not parse stored websites', e);
     }
-    return ALL_55_COLLECTION_WEBSITES;
+    return ALL_60_COLLECTION_WEBSITES;
   });
 
   const [pricingPlans, setPricingPlans] = useState<PricingPlan[]>(() => {
@@ -587,6 +598,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [activeView, setActiveViewInternal] = useState<AppView>(() => {
     if (typeof window !== 'undefined') {
       const hash = window.location.hash.replace('#/', '').replace('#', '').trim().toLowerCase();
+      if (hash === 'maheshwari' || hash === 'maheshwariandco' || hash === 'maheshwari-co' || hash === 'site-62' || hash === '62' || hash === 'maheshwariandco.com') return 'maheshwari';
+      if (hash === 'lawlinks' || hash === 'lawlinks.in' || hash === 'law-links' || hash === 'site-61' || hash === '61' || hash === 'advocates') return 'lawlinks';
       if (hash === 'saveweb2zip' || hash === 'saveweb' || hash === 'web2zip' || hash === 'saveweb2zip.com' || hash === 'site-60' || hash === '60') return 'saveweb2zip';
       if (hash === 'luxespace-htx' || hash === 'luxespace' || hash === 'luxespacehtx' || hash === 'site-59' || hash === '59') return 'luxespace-htx';
       if (hash === 'all-in-one-destination-weddings' || hash === 'allinonedestinationweddings' || hash === 'destinationweddings' || hash === 'destination-weddings' || hash === 'destweds' || hash === 'site-58' || hash === '58') return 'all-in-one-destination-weddings';
@@ -600,12 +613,12 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       if (hash === 'choudhary-realestate') return 'choudhary-realestate';
       if (hash === 'square-yard-dealers') return 'square-yard-dealers';
     }
-    return 'raoz-weddings';
+    return 'home';
   });
   const [activeSiteSlug, setActiveSiteSlug] = useState<string | null>(null);
   const [activeCitySlug, setActiveCitySlug] = useState<string>('delhi');
   const [demoCategoryFilter, setDemoCategoryFilter] = useState<string | null>(null);
-  const [referenceCategoryFilter, setReferenceCategoryFilter] = useState<'all' | 'cafes' | 'restaurants' | 'travel' | 'salon' | 'jewellery' | 'beauty_cosmetics' | 'gym_fitness'>('all');
+  const [referenceCategoryFilter, setReferenceCategoryFilter] = useState<'all' | 'cafes' | 'restaurants' | 'travel' | 'salon' | 'jewellery' | 'beauty_cosmetics' | 'gym_fitness' | 'web_tools'>('all');
   const [categoryPickerOpen, setCategoryPickerOpen] = useState<boolean>(false);
   const openCategoryPicker = () => setCategoryPickerOpen(true);
   const [builderEditSiteId, setBuilderEditSiteId] = useState<string | null>(null);
@@ -896,6 +909,12 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       } else if (raw === 'luxespace-htx' || raw === 'luxespace' || raw === 'luxespacehtx' || raw === 'luxespace-venue' || raw === 'site-59' || raw === 'site/59' || raw === 'references/luxespacehtx' || raw === 'site/luxespace-htx') {
         setActiveViewInternal('luxespace-htx');
         setActiveSiteSlug('luxespace-htx');
+      } else if (raw === 'maheshwari' || raw === 'maheshwariandco' || raw === 'maheshwari-co' || raw === 'site-62' || raw === 'site/62' || raw === 'references/maheshwari' || raw === 'site/maheshwari' || raw === 'maheshwariandco.com') {
+        setActiveViewInternal('maheshwari');
+        setActiveSiteSlug('maheshwari');
+      } else if (raw === 'lawlinks' || raw === 'lawlinks.in' || raw === 'law-links' || raw === 'site-61' || raw === 'site/61' || raw === 'references/lawlinks' || raw === 'site/lawlinks') {
+        setActiveViewInternal('lawlinks');
+        setActiveSiteSlug('lawlinks');
       } else if (raw === 'saveweb2zip' || raw === 'saveweb' || raw === 'web2zip' || raw === 'saveweb2zip.com' || raw === 'site-60' || raw === 'site/60' || raw === 'references/saveweb2zip' || raw === 'site/saveweb2zip') {
         setActiveViewInternal('saveweb2zip');
         setActiveSiteSlug('saveweb2zip');

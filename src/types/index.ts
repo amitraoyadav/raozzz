@@ -92,6 +92,7 @@ export type BusinessCategory =
   | 'handicraft_store'
   | 'rooftop_cafe'
   | 'office_tiffin'
+  | 'web_tools'
   | (string & {});
 
 export type BookingPatternType =
@@ -216,7 +217,7 @@ export interface BusinessWebsite {
   sections: SectionConfig[];
   status: WebsiteStatus;
   customDomain?: CustomDomainConfig;
-  pricingPlanId: 'starter' | 'professional' | 'premium';
+  pricingPlanId: 'starter' | 'professional' | 'premium' | 'free';
   amountPaid: number;
   paymentStatus: 'paid' | 'pending' | 'unpaid';
   userId?: string;

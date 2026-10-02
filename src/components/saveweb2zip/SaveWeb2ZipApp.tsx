@@ -97,8 +97,56 @@ export const SaveWeb2ZipApp: React.FC = () => {
     setArchivedFilesList([]);
     setShowFileTree(false);
 
+    // Progressive counter animation
+    let count = 1;
+    const progressInterval = setInterval(() => {
+      count = Math.min(count + Math.floor(1 + Math.random() * 3), 48);
+      setDownloadedCount(count);
+    }, 120);
+
     try {
-      // Parse domain for customized sample content
+      // 1. Try real server-side crawl endpoint
+      const response = await fetch('/api/saveweb2zip/crawl', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          url: cleanUrl,
+          renameAssets,
+          copyMobileVersion,
+          simplifiedDownload,
+          saveStructure
+        })
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        if (data.success && data.zipBase64) {
+          clearInterval(progressInterval);
+          setDownloadedCount(data.filesCount || 24);
+
+          // Convert base64 to Blob
+          const binaryString = atob(data.zipBase64);
+          const bytes = new Uint8Array(binaryString.length);
+          for (let i = 0; i < binaryString.length; i++) {
+            bytes[i] = binaryString.charCodeAt(i);
+          }
+          const zipBlob = new Blob([bytes], { type: 'application/zip' });
+
+          setLastBlob(zipBlob);
+          setLastZipFilename(data.filename || 'SaveWeb2ZIP.zip');
+          setArchivedFilesList(data.files || ['index.html', 'README.txt']);
+
+          // Trigger download
+          triggerBrowserDownload(zipBlob, data.filename || 'SaveWeb2ZIP.zip');
+
+          setIsDownloading(false);
+          setPopupType('success');
+          setPopupActive(true);
+          return;
+        }
+      }
+
+      // 2. Client-side fallback if server crawl was blocked or timed out
       let domainName = 'website';
       try {
         const parsed = new URL(cleanUrl);
@@ -279,33 +327,19 @@ Service provided by SaveWeb2ZIP.com
       ];
       setArchivedFilesList(files);
 
-      // Multi-step progressive animation matching original behavior
-      const totalFilesTarget = Math.floor(25 + Math.random() * 50);
-      let count = 1;
-      const interval = setInterval(() => {
-        count += Math.floor(2 + Math.random() * 4);
-        if (count >= totalFilesTarget) {
-          clearInterval(interval);
-          setDownloadedCount(totalFilesTarget);
+      const finalBlob = await zip.generateAsync({ type: 'blob' });
+      const filename = `${domainName.replace(/[^a-zA-Z0-9_-]/g, '_')}_SaveWeb2ZIP.zip`;
+      clearInterval(progressInterval);
+      setDownloadedCount(files.length);
+      setLastBlob(finalBlob);
+      setLastZipFilename(filename);
 
-          // Finish zip generation
-          zip.generateAsync({ type: 'blob' }).then((blob) => {
-            const filename = `${domainName.replace(/[^a-zA-Z0-9_-]/g, '_')}_SaveWeb2ZIP.zip`;
-            setLastBlob(blob);
-            setLastZipFilename(filename);
-
-            // Auto trigger browser download
-            triggerBrowserDownload(blob, filename);
-
-            setIsDownloading(false);
-            setPopupType('success');
-            setPopupActive(true);
-          });
-        } else {
-          setDownloadedCount(count);
-        }
-      }, 70);
+      triggerBrowserDownload(finalBlob, filename);
+      setIsDownloading(false);
+      setPopupType('success');
+      setPopupActive(true);
     } catch (err: any) {
+      clearInterval(progressInterval);
       setIsDownloading(false);
       setErrorMessage(err?.message || t.popupDeclineTitle);
       setPopupType('error');

@@ -64,6 +64,8 @@ import { RathoreWeddingsApp } from './components/rathoreweddings/RathoreWeddings
 import { AllInOneDestinationWeddingsApp } from './components/destinationweddings/AllInOneDestinationWeddingsApp';
 import { LuxeSpaceApp } from './components/luxespace/LuxeSpaceApp';
 import { SaveWeb2ZipApp } from './components/saveweb2zip/SaveWeb2ZipApp';
+import { LawLinksApp } from './components/lawlinks/LawLinksApp';
+import { MaheshwariApp } from './components/maheshwari/MaheshwariApp';
 import { RaozMotorsApp } from './components/raozmotors/RaozMotorsApp';
 
 function AppContent() {
@@ -261,6 +263,14 @@ function AppContent() {
 
   if (activeView === 'saveweb2zip') {
     return <SaveWeb2ZipApp />;
+  }
+
+  if (activeView === 'lawlinks') {
+    return <LawLinksApp />;
+  }
+
+  if (activeView === 'maheshwari') {
+    return <MaheshwariApp onBackToHub={() => setActiveView('home')} />;
   }
 
   if (activeView === 'raoz-motors') {

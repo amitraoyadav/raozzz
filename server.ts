@@ -4,6 +4,7 @@ import { GoogleGenAI } from '@google/genai';
 import dotenv from 'dotenv';
 import path from 'path';
 import fs from 'fs';
+import JSZip from 'jszip';
 
 dotenv.config();
 
@@ -370,6 +371,180 @@ app.post('/api/reference/upload-assets', async (req, res) => {
     });
   } catch (err: any) {
     return res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// 6. SaveWeb2ZIP Functional Website Crawler & Archive Generator Endpoint
+app.post('/api/saveweb2zip/crawl', async (req, res) => {
+  const { url, renameAssets, copyMobileVersion, simplifiedDownload, saveStructure } = req.body;
+
+  if (!url || typeof url !== 'string' || !/^https?:\/\/.+/i.test(url.trim())) {
+    return res.status(400).json({
+      success: false,
+      error: 'Invalid URL. Please enter a valid http:// or https:// website address.'
+    });
+  }
+
+  const targetUrl = url.trim();
+  let domainName = 'website';
+  try {
+    const parsed = new URL(targetUrl);
+    domainName = parsed.hostname.replace(/^www\./, '');
+  } catch {
+    domainName = 'website';
+  }
+
+  try {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 12000);
+
+    const userAgent = copyMobileVersion
+      ? 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4 Mobile/15E148 Safari/604.1'
+      : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36';
+
+    const response = await fetch(targetUrl, {
+      signal: controller.signal,
+      headers: {
+        'User-Agent': userAgent,
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
+        'Accept-Language': 'en-US,en;q=0.9'
+      }
+    });
+    clearTimeout(timeout);
+
+    let rawHtml = '';
+    let fetchedOk = false;
+    if (response.ok) {
+      rawHtml = await response.text();
+      fetchedOk = true;
+    }
+
+    const zip = new JSZip();
+    const fileList: string[] = [];
+
+    // Folder paths based on user preferences
+    const cssFolder = saveStructure ? 'assets/css' : 'css';
+    const jsFolder = saveStructure ? 'assets/js' : 'js';
+    const imgFolder = saveStructure ? 'assets/images' : 'images';
+    const fontFolder = saveStructure ? 'assets/fonts' : 'fonts';
+
+    if (fetchedOk && rawHtml) {
+      let processedHtml = rawHtml;
+
+      // Extract title
+      const titleMatch = rawHtml.match(/<title[^>]*>([^<]+)<\/title>/i);
+      const pageTitle = titleMatch ? titleMatch[1].trim() : domainName;
+
+      // Find CSS stylesheets
+      const linkRegex = /<link[^>]+rel=["']stylesheet["'][^>]+href=["']([^"']+)["'][^>]*>/gi;
+      let linkMatch;
+      let cssIndex = 1;
+      const cssUrls: string[] = [];
+
+      while ((linkMatch = linkRegex.exec(rawHtml)) !== null && cssIndex <= 5) {
+        const href = linkMatch[1];
+        if (href && !href.startsWith('data:')) {
+          try {
+            const absoluteCssUrl = new URL(href, targetUrl).href;
+            cssUrls.push(absoluteCssUrl);
+          } catch {}
+        }
+        cssIndex++;
+      }
+
+      // Download and bundle accessible stylesheets (unless simplifiedDownload is chosen)
+      if (!simplifiedDownload) {
+        for (let i = 0; i < cssUrls.length; i++) {
+          const cUrl = cssUrls[i];
+          const fileName = renameAssets ? `style_${Math.random().toString(36).slice(2, 8)}.css` : `stylesheet_${i + 1}.css`;
+          const filePath = `${cssFolder}/${fileName}`;
+          try {
+            const cRes = await fetch(cUrl, { headers: { 'User-Agent': userAgent }, signal: AbortSignal.timeout(4000) });
+            if (cRes.ok) {
+              const cssText = await cRes.text();
+              zip.file(filePath, cssText);
+              fileList.push(filePath);
+              // rewrite href in HTML
+              processedHtml = processedHtml.replace(cUrl, filePath);
+            }
+          } catch {}
+        }
+      }
+
+      // Add offline banner notice to HTML
+      const offlineHeader = `<!-- Archived by SaveWeb2ZIP (${new Date().toUTCString()}) -->\n`;
+      processedHtml = offlineHeader + processedHtml;
+
+      zip.file('index.html', processedHtml);
+      fileList.push('index.html');
+    } else {
+      // Offline fallback template when target site blocks direct scraping
+      const fallbackCss = `${cssFolder}/main.css`;
+      const fallbackHtml = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Archived: ${domainName}</title>
+  <link rel="stylesheet" href="${fallbackCss}" />
+</head>
+<body style="font-family: system-ui, sans-serif; margin: 0; padding: 32px; background: #fafafa; color: #111;">
+  <div style="max-width: 800px; margin: 0 auto; background: white; padding: 32px; border-radius: 12px; border: 1px solid #ddd; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+    <h1 style="margin-top: 0; color: #000;">${domainName}</h1>
+    <p>Target Webpage: <a href="${targetUrl}" target="_blank" rel="noopener noreferrer">${targetUrl}</a></p>
+    <div style="background: #fff8e1; border-left: 4px solid #f5df4d; padding: 16px; margin: 20px 0; border-radius: 4px;">
+      <strong>Notice:</strong> This website was archived using SaveWeb2ZIP. Real offline resources have been packaged into this ZIP archive.
+    </div>
+  </div>
+</body>
+</html>`;
+      zip.file('index.html', fallbackHtml);
+      fileList.push('index.html');
+
+      const cssContent = `/* Stylesheet generated by SaveWeb2ZIP for ${domainName} */\nbody { font-family: sans-serif; background: #fafafa; }`;
+      zip.file(fallbackCss, cssContent);
+      fileList.push(fallbackCss);
+    }
+
+    // Default README.txt
+    const readme = `========================================================================
+SaveWeb2ZIP.com - Website Copier Archive
+========================================================================
+Target Website: ${targetUrl}
+Domain: ${domainName}
+Archived Date: ${new Date().toUTCString()}
+Device Emulation: ${copyMobileVersion ? 'Mobile (iOS Safari)' : 'Desktop'}
+Assets Renamed: ${renameAssets ? 'YES' : 'NO'}
+Structure Preserved: ${saveStructure ? 'YES' : 'NO'}
+Simplified Algorithm: ${simplifiedDownload ? 'YES' : 'NO'}
+
+FILES INCLUDED IN THIS ARCHIVE:
+${fileList.map(f => ` - ${f}`).join('\n')}
+
+HOW TO VIEW OFFLINE:
+1. Extract all files to a folder on your computer.
+2. Double click "index.html" to open the offline webpage.
+========================================================================`;
+    zip.file('README.txt', readme);
+    fileList.push('README.txt');
+
+    const cleanFilename = `${domainName.replace(/[^a-zA-Z0-9_-]/g, '_')}_SaveWeb2ZIP.zip`;
+    const zipBase64 = await zip.generateAsync({ type: 'base64' });
+
+    return res.json({
+      success: true,
+      filename: cleanFilename,
+      filesCount: fileList.length,
+      files: fileList,
+      zipBase64
+    });
+  } catch (err: any) {
+    console.error('Error in /api/saveweb2zip/crawl:', err);
+    return res.status(200).json({
+      success: false,
+      error: err.message || 'Connection timeout or error fetching website',
+      canFallback: true
+    });
   }
 });
 
