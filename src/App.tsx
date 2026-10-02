@@ -59,6 +59,11 @@ import { DLCGroupApp } from './components/dlcgroup/DLCGroupApp';
 import { RaozPropertiesApp } from './components/raozproperties/RaozPropertiesApp';
 import { RaozBazaarApp } from './components/raozbazaar/RaozBazaarApp';
 import { RaozWeddingsApp } from './components/raozweddings/RaozWeddingsApp';
+import { SMLWWeddingsApp } from './components/smlwweddings/SMLWWeddingsApp';
+import { RathoreWeddingsApp } from './components/rathoreweddings/RathoreWeddingsApp';
+import { AllInOneDestinationWeddingsApp } from './components/destinationweddings/AllInOneDestinationWeddingsApp';
+import { LuxeSpaceApp } from './components/luxespace/LuxeSpaceApp';
+import { SaveWeb2ZipApp } from './components/saveweb2zip/SaveWeb2ZipApp';
 import { RaozMotorsApp } from './components/raozmotors/RaozMotorsApp';
 
 function AppContent() {
@@ -236,6 +241,26 @@ function AppContent() {
 
   if (activeView === 'raoz-weddings') {
     return <RaozWeddingsApp />;
+  }
+
+  if (activeView === 'smlwindia') {
+    return <SMLWWeddingsApp />;
+  }
+
+  if (activeView === 'rathore-weddings') {
+    return <RathoreWeddingsApp />;
+  }
+
+  if (activeView === 'all-in-one-destination-weddings') {
+    return <AllInOneDestinationWeddingsApp />;
+  }
+
+  if (activeView === 'luxespace-htx') {
+    return <LuxeSpaceApp />;
+  }
+
+  if (activeView === 'saveweb2zip') {
+    return <SaveWeb2ZipApp />;
   }
 
   if (activeView === 'raoz-motors') {

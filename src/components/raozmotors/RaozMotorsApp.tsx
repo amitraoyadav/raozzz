@@ -220,7 +220,7 @@ export const RaozMotorsApp: React.FC = () => {
                 <span className="text-xl sm:text-2xl font-light tracking-tight text-amber-400">MOTORS</span>
               </div>
               <div className="text-[10px] tracking-widest text-stone-400 uppercase font-mono font-semibold">
-                Commercial Vehicles · India
+                Automobile &amp; Commercial Vehicles · India
               </div>
             </div>
           </div>

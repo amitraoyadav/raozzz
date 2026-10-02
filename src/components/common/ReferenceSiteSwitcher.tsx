@@ -5,7 +5,7 @@ import { useApp } from '../../context/AppContext';
 export interface ReferenceSiteInfo {
   id: string;
   num: number;
-  category: 'cafe' | 'restaurant' | 'travel' | 'salon' | 'jewellery' | 'beauty_cosmetics' | 'gym_fitness' | 'loans' | 'real_estate' | 'shop' | 'wedding' | 'commercial_vehicles';
+  category: 'cafe' | 'restaurant' | 'travel' | 'salon' | 'jewellery' | 'beauty_cosmetics' | 'gym_fitness' | 'loans' | 'real_estate' | 'shop' | 'wedding' | 'commercial_vehicles' | 'wedding_event_planning' | 'destination_weddings' | 'web_tools';
   name: string;
   originalUrl: string;
   slug: string;
@@ -670,24 +670,76 @@ export const ALL_29_REFERENCE_SITES: ReferenceSiteInfo[] = [
     badge: 'Site 55 · Wedding Category'
   },
   {
-    id: 'raoz-motors',
+    id: 'smlwindia',
     num: 56,
-    category: 'commercial_vehicles',
-    name: 'RAOZ MOTORS',
+    category: 'wedding',
+    name: 'SMLW LUXURY WEDDINGS',
     originalUrl: 'https://www.smlwindia.com/',
-    slug: 'raoz-motors',
+    slug: 'smlwindia',
     referencePath: '/references/smlwindia/',
-    concept: "India's Premier Commercial Vehicles Platform · Trucks, Buses & Special Applications (Sartaj, Samrat, Supreme, Saarthi School Coaches & 300+ 3S Dealers)",
-    themeColor: '#f59e0b',
-    badge: 'Site 56 · Commercial Vehicles'
+    concept: "Shubh Muhurat Luxury Weddings (SMLW) · Best Destination Wedding Planners in Delhi NCR & India · Palaces, Forts, Beachfronts & 24-Hr Venue Availability",
+    themeColor: '#d2cd48',
+    badge: 'Site 56 · Wedding Category'
+  },
+  {
+    id: 'rathore-weddings',
+    num: 57,
+    category: 'wedding_event_planning',
+    name: 'RATHORE WEDDINGS',
+    originalUrl: 'https://www.bmpweddings.in/',
+    slug: 'rathore-weddings',
+    referencePath: '/references/bmpweddings/',
+    concept: "Rathore Weddings · Luxury Wedding & Event Planners · Bespoke Decor, Royal Palaces, 50+ Venues & End-to-End Hospitality",
+    themeColor: '#FFD481',
+    badge: 'Site 57 · Wedding & Event Planning'
+  },
+  {
+    id: 'all-in-one-destination-weddings',
+    num: 58,
+    category: 'destination_weddings',
+    name: 'DESTINATION WEDDINGS',
+    originalUrl: 'https://www.destinationweddings.com/',
+    slug: 'all-in-one-destination-weddings',
+    referencePath: '/references/destinationweddings/',
+    concept: "All In One Destination Weddings · 100% Free Certified Specialist Planning · Top Resorts & Venues in Mexico, Dominican Republic, Jamaica & Caribbean",
+    themeColor: '#b3275a',
+    badge: 'Site 58 · Destination Weddings'
+  },
+  {
+    id: 'luxespace-htx',
+    num: 59,
+    category: 'wedding',
+    name: 'LUXESPACE HTX',
+    originalUrl: 'https://luxespacehtx.com/',
+    slug: 'luxespace-htx',
+    referencePath: '/references/luxespacehtx/',
+    concept: "LuxeSpace HTX · Modern Architectural Wedding & Event Venue in Houston, Texas · 150 Guests, Bookmatched Marble Wall & Mood Lighting",
+    themeColor: '#c5a059',
+    badge: 'Site 59 · Wedding Category'
+  },
+  {
+    id: 'saveweb2zip',
+    num: 60,
+    category: 'web_tools',
+    name: 'SAVEWEB2ZIP',
+    originalUrl: 'https://saveweb2zip.com/en',
+    slug: 'saveweb2zip',
+    referencePath: '/references/saveweb2zip/',
+    concept: "SaveWeb2ZIP · Online Website Copier & Archiver · Download Full Webpages to ZIP Archive with Assets, HTML, CSS, JS & Fonts",
+    themeColor: '#f5df4d',
+    badge: 'Site 60 · Web Tools / Utilities'
   }
 ];
 
-export const ALL_56_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_29_REFERENCE_SITES;
-export const ALL_55_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_56_REFERENCE_SITES;
-export const ALL_54_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_55_REFERENCE_SITES;
-export const ALL_53_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_55_REFERENCE_SITES;
-export const ALL_52_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_55_REFERENCE_SITES;
+export const ALL_60_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_29_REFERENCE_SITES;
+export const ALL_59_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_60_REFERENCE_SITES;
+export const ALL_58_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_60_REFERENCE_SITES;
+export const ALL_57_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_60_REFERENCE_SITES;
+export const ALL_56_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_60_REFERENCE_SITES;
+export const ALL_55_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_60_REFERENCE_SITES;
+export const ALL_54_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_60_REFERENCE_SITES;
+export const ALL_53_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_60_REFERENCE_SITES;
+export const ALL_52_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_60_REFERENCE_SITES;
 export const ALL_51_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_52_REFERENCE_SITES;
 export const ALL_50_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_51_REFERENCE_SITES;
 export const ALL_49_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_51_REFERENCE_SITES;
@@ -714,30 +766,45 @@ interface SwitcherProps {
 export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }) => {
   const { setActiveView } = useApp();
   const [modalOpen, setModalOpen] = useState(false);
-  const [categoryFilter, setCategoryFilter] = useState<'all' | 'cafe' | 'restaurant' | 'travel' | 'salon' | 'jewellery' | 'beauty_cosmetics' | 'gym_fitness' | 'loans' | 'real_estate' | 'shop' | 'wedding' | 'commercial_vehicles'>('all');
+  const [categoryFilter, setCategoryFilter] = useState<'all' | 'cafe' | 'restaurant' | 'travel' | 'salon' | 'jewellery' | 'beauty_cosmetics' | 'gym_fitness' | 'loans' | 'real_estate' | 'shop' | 'wedding' | 'commercial_vehicles' | 'wedding_event_planning' | 'destination_weddings' | 'web_tools'>('all');
 
   const currentSite =
-    ALL_56_REFERENCE_SITES.find(s => s.id === currentSiteId || s.slug === currentSiteId) ||
-    ALL_56_REFERENCE_SITES.find(s => s.id === 'raoz-motors') ||
-    ALL_56_REFERENCE_SITES.find(s => s.id === 'raoz-weddings') ||
-    ALL_56_REFERENCE_SITES.find(s => s.id === 'raoz-bazaar') ||
-    ALL_56_REFERENCE_SITES.find(s => s.id === 'raoz-properties') ||
-    ALL_56_REFERENCE_SITES.find(s => s.id === 'dlc-group') ||
-    ALL_56_REFERENCE_SITES.find(s => s.id === 'choudhary-realestate') ||
-    ALL_56_REFERENCE_SITES.find(s => s.id === 'square-yard-dealers') ||
-    ALL_56_REFERENCE_SITES[0];
+    ALL_60_REFERENCE_SITES.find(s => s.id === currentSiteId || s.slug === currentSiteId) ||
+    ALL_60_REFERENCE_SITES.find(s => s.id === 'saveweb2zip') ||
+    ALL_60_REFERENCE_SITES.find(s => s.id === 'luxespace-htx') ||
+    ALL_60_REFERENCE_SITES.find(s => s.id === 'all-in-one-destination-weddings') ||
+    ALL_60_REFERENCE_SITES.find(s => s.id === 'rathore-weddings') ||
+    ALL_60_REFERENCE_SITES.find(s => s.id === 'smlwindia') ||
+    ALL_60_REFERENCE_SITES.find(s => s.id === 'raoz-weddings') ||
+    ALL_60_REFERENCE_SITES.find(s => s.id === 'raoz-motors') ||
+    ALL_60_REFERENCE_SITES.find(s => s.id === 'raoz-bazaar') ||
+    ALL_60_REFERENCE_SITES.find(s => s.id === 'raoz-properties') ||
+    ALL_60_REFERENCE_SITES.find(s => s.id === 'dlc-group') ||
+    ALL_60_REFERENCE_SITES.find(s => s.id === 'choudhary-realestate') ||
+    ALL_60_REFERENCE_SITES.find(s => s.id === 'square-yard-dealers') ||
+    ALL_60_REFERENCE_SITES[0];
 
-  const filteredSites = ALL_56_REFERENCE_SITES.filter(s => {
+  const filteredSites = ALL_60_REFERENCE_SITES.filter(s => {
     if (categoryFilter === 'all') return true;
     return s.category === categoryFilter;
   });
 
   const handleSelectSite = (site: ReferenceSiteInfo) => {
     setModalOpen(false);
-    if (site.id === 'raoz-motors' || site.slug === 'raoz-motors') {
-      setActiveView('raoz-motors');
+    if (site.id === 'saveweb2zip' || site.slug === 'saveweb2zip') {
+      setActiveView('saveweb2zip');
+    } else if (site.id === 'luxespace-htx' || site.slug === 'luxespace-htx' || site.id === 'luxespace') {
+      setActiveView('luxespace-htx');
+    } else if (site.id === 'all-in-one-destination-weddings' || site.slug === 'all-in-one-destination-weddings' || site.id === 'destinationweddings') {
+      setActiveView('all-in-one-destination-weddings');
+    } else if (site.id === 'rathore-weddings' || site.slug === 'rathore-weddings') {
+      setActiveView('rathore-weddings');
+    } else if (site.id === 'smlwindia' || site.slug === 'smlwindia') {
+      setActiveView('smlwindia');
     } else if (site.id === 'raoz-weddings' || site.slug === 'raoz-weddings') {
       setActiveView('raoz-weddings');
+    } else if (site.id === 'raoz-motors' || site.slug === 'raoz-motors') {
+      setActiveView('raoz-motors');
     } else if (site.id === 'raoz-bazaar' || site.slug === 'raoz-bazaar') {
       setActiveView('raoz-bazaar');
     } else if (site.id === 'raoz-properties' || site.slug === 'raoz-properties') {
@@ -768,7 +835,10 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
     if (cat === 'real_estate') return 'REAL ESTATE';
     if (cat === 'shop' || cat === 'store') return 'STORE / SHOP';
     if (cat === 'wedding') return 'WEDDING';
-    if (cat === 'commercial_vehicles') return 'COMMERCIAL VEHICLES';
+    if (cat === 'wedding_event_planning') return 'WEDDING & EVENT PLANNING';
+    if (cat === 'destination_weddings') return 'DESTINATION WEDDINGS';
+    if (cat === 'web_tools') return 'WEB TOOLS / UTILITIES';
+    if (cat === 'commercial_vehicles') return 'AUTOMOBILE / COMMERCIAL VEHICLES';
     return 'JEWELLERY';
   };
 
@@ -781,7 +851,7 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
             style={{ backgroundColor: currentSite.themeColor || '#10b981' }}
           />
           <span className="font-bold tracking-wide truncate max-w-[200px] xs:max-w-[320px] sm:max-w-none text-white font-mono text-[11px] sm:text-xs">
-            WEBSITE {currentSite.num}/{ALL_56_REFERENCE_SITES.length}: {currentSite.name.toUpperCase()} ({getCategoryTitle(currentSite.category)})
+            WEBSITE {currentSite.num}/{ALL_60_REFERENCE_SITES.length}: {currentSite.name.toUpperCase()} ({getCategoryTitle(currentSite.category)})
           </span>
         </div>
 
@@ -792,7 +862,7 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
             className="px-2.5 py-1 rounded bg-stone-800 hover:bg-stone-700 text-stone-200 border border-stone-700 font-medium text-[11px] flex items-center gap-1.5 cursor-pointer transition-colors"
           >
             <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-            <span>Switch Website ({ALL_56_REFERENCE_SITES.length} Sites)</span>
+            <span>Switch Website ({ALL_60_REFERENCE_SITES.length} Sites)</span>
             <ChevronDown className="w-3.5 h-3.5 text-stone-400" />
           </button>
 
@@ -806,7 +876,7 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
         </div>
       </nav>
 
-      {/* 56 Reference Websites Picker Modal */}
+      {/* 60 Reference Websites Picker Modal */}
       {modalOpen && (
         <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm flex items-center justify-center p-4">
           <div className="bg-[#18181b] text-white border border-stone-800 rounded-2xl w-full max-w-5xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden">
@@ -815,13 +885,13 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
               <div>
                 <div className="flex items-center gap-2 text-amber-400 text-xs font-bold uppercase tracking-wider">
                   <Sparkles className="w-4 h-4" />
-                  <span>{ALL_56_REFERENCE_SITES.length} Complete Faithful Website Recreations</span>
+                  <span>{ALL_60_REFERENCE_SITES.length} Complete Faithful Website Recreations</span>
                 </div>
                 <h3 className="text-lg sm:text-xl font-bold text-white mt-1">
-                  Reference Website Directory — Commercial Vehicles, Wedding, Store/Shop, Real Estate, Loans, Cafes &amp; More
+                  Reference Website Directory — Web Tools, Wedding Venues, Destination Weddings, Event Planning, Real Estate &amp; More
                 </h3>
                 <p className="text-xs text-stone-400 mt-0.5">
-                  Twelve Categories: 1 Commercial Vehicles Portal (Trucks, Buses, Special Applications), 1 Wedding Portal, 1 Store/Shop, 5 Real Estate, 2 Loans & Finance, 19 Cafes, 10 Restaurants, 7 Tour & Travel, 3 Salons, 4 Jewellery, 1 Beauty & Cosmetics, 2 Gym & Fitness.
+                  Fifteen Categories: 1 Web Tools / Utilities (Site 60: SaveWeb2ZIP), 3 Wedding &amp; Event Venues (Sites 55, 56, 59: LuxeSpace HTX), 1 Destination Weddings (Site 58), 1 Wedding &amp; Event Planning (Site 57: Rathore Weddings), 1 Commercial Vehicles, 1 Store/Shop, 5 Real Estate, 2 Loans &amp; Finance, 19 Cafes, 10 Restaurants, 7 Tour &amp; Travel, 3 Salons, 4 Jewellery, 1 Beauty &amp; Cosmetics, 2 Gym &amp; Fitness.
                 </p>
               </div>
               <button
@@ -963,7 +1033,7 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
                 }`}
               >
                 <Sparkles className="w-3.5 h-3.5 text-rose-400" />
-                <span>Wedding ({ALL_56_REFERENCE_SITES.filter(s => s.category === 'wedding').length})</span>
+                <span>Wedding ({ALL_59_REFERENCE_SITES.filter(s => s.category === 'wedding').length})</span>
               </button>
               <button
                 onClick={() => setCategoryFilter('commercial_vehicles')}
@@ -974,7 +1044,29 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
                 }`}
               >
                 <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-                <span>Commercial Vehicles ({ALL_56_REFERENCE_SITES.filter(s => s.category === 'commercial_vehicles').length})</span>
+                <span>Automobile / Commercial Vehicles ({ALL_59_REFERENCE_SITES.filter(s => s.category === 'commercial_vehicles').length})</span>
+              </button>
+              <button
+                onClick={() => setCategoryFilter('wedding_event_planning')}
+                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
+                  categoryFilter === 'wedding_event_planning'
+                    ? 'bg-[#FFD481] text-stone-950 font-black shadow-sm ring-1 ring-amber-300'
+                    : 'bg-stone-800 text-stone-300 hover:bg-stone-700'
+                }`}
+              >
+                <Sparkles className="w-3.5 h-3.5 text-amber-300" />
+                <span>Wedding &amp; Event Planning ({ALL_59_REFERENCE_SITES.filter(s => s.category === 'wedding_event_planning').length})</span>
+              </button>
+              <button
+                onClick={() => setCategoryFilter('destination_weddings')}
+                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
+                  categoryFilter === 'destination_weddings'
+                    ? 'bg-[#b3275a] text-white font-black shadow-sm ring-1 ring-pink-400'
+                    : 'bg-stone-800 text-stone-300 hover:bg-stone-700'
+                }`}
+              >
+                <Sparkles className="w-3.5 h-3.5 text-pink-400" />
+                <span>Destination Weddings ({ALL_59_REFERENCE_SITES.filter(s => s.category === 'destination_weddings').length})</span>
               </button>
             </div>
 

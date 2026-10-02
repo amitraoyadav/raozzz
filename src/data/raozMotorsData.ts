@@ -23,7 +23,7 @@ export const RAOZ_MOTORS_WEBSITE: BusinessWebsite = {
   coverUrl: '/assets/raozmotors/hero_fleet_highway.jpg',
   bookingType: 'consultation_quote',
   bookingCtaLabel: 'Request Fleet Quotation',
-  specialBadge: 'Site #56 · Commercial Vehicles Category',
+  specialBadge: 'Site #56 · Automobile / Commercial Vehicles Category',
   status: 'published',
   pricingPlanId: 'premium',
   amountPaid: 99999,

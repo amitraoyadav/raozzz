@@ -46,7 +46,12 @@ export type AppView =
   | 'raoz-properties'
   | 'raoz-bazaar'
   | 'raoz-weddings'
-  | 'raoz-motors';
+  | 'raoz-motors'
+  | 'smlwindia'
+  | 'rathore-weddings'
+  | 'all-in-one-destination-weddings'
+  | 'luxespace-htx'
+  | 'saveweb2zip';
 
 import { TWOD_WEBSITE } from '../data/twoDCafeData';
 import { BLUE_TOKAI_WEBSITE } from '../data/blueTokaiData';
@@ -102,7 +107,24 @@ import { DLC_GROUP_WEBSITE } from '../data/dlcGroupData';
 import { RAOZ_PROPERTIES_WEBSITE } from '../data/raozPropertiesData';
 import { RAOZ_BAZAAR_WEBSITE } from '../data/raozBazaarData';
 import { RAOZ_WEDDINGS_WEBSITE } from '../data/raozWeddingsData';
+import { SMLW_WEDDINGS_WEBSITE } from '../data/smlwWeddingsData';
+import { RATHORE_WEDDINGS_WEBSITE } from '../data/rathoreWeddingsData';
+import { ALL_IN_ONE_DESTINATION_WEDDINGS_WEBSITE } from '../data/allInOneDestinationWeddingsData';
+import { LUXESPACE_WEBSITE } from '../data/luxeSpaceWebsiteData';
+import { SAVEWEB2ZIP_WEBSITE } from '../data/saveWeb2ZipWebsiteData';
 import { RAOZ_MOTORS_WEBSITE } from '../data/raozMotorsData';
+
+export const ALL_WEB_TOOLS_WEBSITES: BusinessWebsite[] = [
+  SAVEWEB2ZIP_WEBSITE
+];
+
+export const ALL_DESTINATION_WEDDINGS_WEBSITES: BusinessWebsite[] = [
+  ALL_IN_ONE_DESTINATION_WEDDINGS_WEBSITE
+];
+
+export const ALL_EVENT_PLANNING_WEBSITES: BusinessWebsite[] = [
+  RATHORE_WEDDINGS_WEBSITE
+];
 
 export const ALL_COMMERCIAL_VEHICLES_WEBSITES: BusinessWebsite[] = [
   RAOZ_MOTORS_WEBSITE
@@ -118,7 +140,9 @@ export const ALL_STORE_WEBSITES: BusinessWebsite[] = [
 ];
 
 export const ALL_WEDDING_WEBSITES: BusinessWebsite[] = [
-  RAOZ_WEDDINGS_WEBSITE
+  RAOZ_WEDDINGS_WEBSITE,
+  SMLW_WEDDINGS_WEBSITE,
+  LUXESPACE_WEBSITE
 ];
 
 export const ALL_REAL_ESTATE_WEBSITES: BusinessWebsite[] = [
@@ -195,7 +219,7 @@ export const ALL_GYM_FITNESS_WEBSITES: BusinessWebsite[] = [
   FITPASS_WEBSITE
 ];
 
-export const ALL_56_COLLECTION_WEBSITES: BusinessWebsite[] = [
+export const ALL_57_COLLECTION_WEBSITES: BusinessWebsite[] = [
   ...ALL_CAFE_WEBSITES,
   ...ALL_RESTAURANT_WEBSITES,
   ...ALL_TRAVEL_WEBSITES,
@@ -207,11 +231,17 @@ export const ALL_56_COLLECTION_WEBSITES: BusinessWebsite[] = [
   ...ALL_REAL_ESTATE_WEBSITES,
   ...ALL_STORE_WEBSITES,
   ...ALL_WEDDING_WEBSITES,
-  ...ALL_COMMERCIAL_VEHICLES_WEBSITES
+  ...ALL_COMMERCIAL_VEHICLES_WEBSITES,
+  ...ALL_EVENT_PLANNING_WEBSITES,
+  ...ALL_DESTINATION_WEDDINGS_WEBSITES,
+  ...ALL_WEB_TOOLS_WEBSITES
 ];
 
+export const ALL_60_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_57_COLLECTION_WEBSITES;
+export const ALL_59_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_57_COLLECTION_WEBSITES;
+export const ALL_58_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_57_COLLECTION_WEBSITES;
+export const ALL_56_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_57_COLLECTION_WEBSITES;
 export const ALL_55_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_56_COLLECTION_WEBSITES;
-
 export const ALL_54_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_55_COLLECTION_WEBSITES;
 export const ALL_53_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_55_COLLECTION_WEBSITES;
 export const ALL_52_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_55_COLLECTION_WEBSITES;
@@ -557,7 +587,12 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [activeView, setActiveViewInternal] = useState<AppView>(() => {
     if (typeof window !== 'undefined') {
       const hash = window.location.hash.replace('#/', '').replace('#', '').trim().toLowerCase();
-      if (hash === 'raoz-motors' || hash === 'commercial-vehicles' || hash === 'trucks' || hash === 'buses' || hash === 'sml' || hash === 'smlwindia' || hash === 'smlisuzu' || hash === 'site-56' || hash === '56') return 'raoz-motors';
+      if (hash === 'saveweb2zip' || hash === 'saveweb' || hash === 'web2zip' || hash === 'saveweb2zip.com' || hash === 'site-60' || hash === '60') return 'saveweb2zip';
+      if (hash === 'luxespace-htx' || hash === 'luxespace' || hash === 'luxespacehtx' || hash === 'site-59' || hash === '59') return 'luxespace-htx';
+      if (hash === 'all-in-one-destination-weddings' || hash === 'allinonedestinationweddings' || hash === 'destinationweddings' || hash === 'destination-weddings' || hash === 'destweds' || hash === 'site-58' || hash === '58') return 'all-in-one-destination-weddings';
+      if (hash === 'rathore-weddings' || hash === 'rathore' || hash === 'bmpweddings' || hash === 'bmp' || hash === 'wedding-events' || hash === 'site-57' || hash === '57') return 'rathore-weddings';
+      if (hash === 'smlwindia' || hash === 'smlw' || hash === 'smlw-weddings' || hash === 'shubh-muhurat' || hash === 'site-56' || hash === '56') return 'smlwindia';
+      if (hash === 'raoz-motors' || hash === 'commercial-vehicles' || hash === 'trucks' || hash === 'buses') return 'raoz-motors';
       if (hash === 'raoz-weddings' || hash === 'wedding' || hash === 'weddings' || hash === 'theweddingcompany' || hash === 'site-55' || hash === '55') return 'raoz-weddings';
       if (hash === 'raoz-bazaar' || hash === 'smartkirana' || hash === 'store' || hash === 'shop' || hash === 'site-54' || hash === '54') return 'raoz-bazaar';
       if (hash === 'raoz-properties') return 'raoz-properties';
@@ -849,7 +884,22 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       } else if (raw === 'raoz-weddings' || raw === 'wedding' || raw === 'weddings' || raw === 'theweddingcompany' || raw === 'site-55' || raw === 'site/55' || raw === 'site/raoz-weddings' || raw === 'references/theweddingcompany' || raw === 'wedding-venues') {
         setActiveViewInternal('raoz-weddings');
         setActiveSiteSlug('raoz-weddings');
-      } else if (raw === 'raoz-motors' || raw === 'commercial-vehicles' || raw === 'trucks' || raw === 'buses' || raw === 'sml' || raw === 'smlwindia' || raw === 'smlisuzu' || raw === 'site-56' || raw === 'site/56' || raw === 'site/raoz-motors' || raw === 'references/smlwindia' || raw === 'commercial') {
+      } else if (raw === 'smlwindia' || raw === 'smlw' || raw === 'smlw-weddings' || raw === 'shubh-muhurat' || raw === 'shubhmuhurat' || raw === 'site-56' || raw === 'site/56' || raw === 'references/smlwindia' || raw === 'site/smlwindia') {
+        setActiveViewInternal('smlwindia');
+        setActiveSiteSlug('smlwindia');
+      } else if (raw === 'rathore-weddings' || raw === 'rathore' || raw === 'bmpweddings' || raw === 'bmp' || raw === 'wedding-events' || raw === 'site-57' || raw === 'site/57' || raw === 'references/bmpweddings' || raw === 'site/rathore-weddings') {
+        setActiveViewInternal('rathore-weddings');
+        setActiveSiteSlug('rathore-weddings');
+      } else if (raw === 'all-in-one-destination-weddings' || raw === 'allinonedestinationweddings' || raw === 'destinationweddings' || raw === 'destination-weddings' || raw === 'destweds' || raw === 'site-58' || raw === 'site/58' || raw === 'references/destinationweddings' || raw === 'site/all-in-one-destination-weddings') {
+        setActiveViewInternal('all-in-one-destination-weddings');
+        setActiveSiteSlug('all-in-one-destination-weddings');
+      } else if (raw === 'luxespace-htx' || raw === 'luxespace' || raw === 'luxespacehtx' || raw === 'luxespace-venue' || raw === 'site-59' || raw === 'site/59' || raw === 'references/luxespacehtx' || raw === 'site/luxespace-htx') {
+        setActiveViewInternal('luxespace-htx');
+        setActiveSiteSlug('luxespace-htx');
+      } else if (raw === 'saveweb2zip' || raw === 'saveweb' || raw === 'web2zip' || raw === 'saveweb2zip.com' || raw === 'site-60' || raw === 'site/60' || raw === 'references/saveweb2zip' || raw === 'site/saveweb2zip') {
+        setActiveViewInternal('saveweb2zip');
+        setActiveSiteSlug('saveweb2zip');
+      } else if (raw === 'raoz-motors' || raw === 'commercial-vehicles' || raw === 'trucks' || raw === 'buses' || raw === 'site/raoz-motors') {
         setActiveViewInternal('raoz-motors');
         setActiveSiteSlug('raoz-motors');
       } else if (raw === 'square-yard-dealers' || raw === 'squareyards' || raw === 'square-yards' || raw === 'real-estate' || raw === 'property-dealers' || raw === 'dealers' || raw === 'realestate' || raw === 'buy' || raw === 'rent' || raw === 'sell' || raw === 'projects' || raw === 'demo/square-yard-dealers' || raw === 'demos/square-yard-dealers' || raw === 'site/square-yard-dealers' || raw === 'references/square-yards') {
