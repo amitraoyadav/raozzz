@@ -5,7 +5,7 @@ import { useApp } from '../../context/AppContext';
 export interface ReferenceSiteInfo {
   id: string;
   num: number;
-  category: 'cafe' | 'restaurant' | 'travel' | 'salon' | 'jewellery' | 'beauty_cosmetics' | 'gym_fitness' | 'loans' | 'real_estate' | 'shop' | 'wedding' | 'commercial_vehicles' | 'wedding_event_planning' | 'destination_weddings' | 'web_tools' | 'lawyer';
+  category: 'cafe' | 'restaurant' | 'travel' | 'salon' | 'jewellery' | 'beauty_cosmetics' | 'gym_fitness' | 'loans' | 'real_estate' | 'shop' | 'wedding' | 'commercial_vehicles' | 'wedding_event_planning' | 'destination_weddings' | 'web_tools' | 'lawyer' | 'healthcare';
   name: string;
   originalUrl: string;
   slug: string;
@@ -764,11 +764,64 @@ export const ALL_29_REFERENCE_SITES: ReferenceSiteInfo[] = [
     concept: "Maheshwari & Co. · Advocates & Legal Consultants · Full Service Law Firm in Delhi & Mumbai, Corporate M&A, Supreme Court Litigation, International Arbitration & IPR",
     themeColor: '#8B1E2B',
     badge: 'Site 62 · Full Service Law Firm'
+  },
+  {
+    id: 'group-ach',
+    num: 63,
+    category: 'loans',
+    name: 'GROUP ACH LOAN SOLUTIONS',
+    originalUrl: 'https://www.achlinks.in/',
+    slug: 'group-ach',
+    referencePath: '/portfolio/group-ach-loan-solutions',
+    concept: "Group ACH Loan Solutions · Expert Home Loan & Loan Against Property Advisors · 70+ Partner Banks, EMI & Balance Transfer Calculators, Doorstep Verification & WhatsApp Advisory",
+    themeColor: '#2F483E',
+    badge: 'Site 63 · Loan & Finance Website'
+  },
+  {
+    id: 'clinicbypeople',
+    num: 64,
+    category: 'healthcare',
+    name: 'CLINICBYPeople',
+    originalUrl: 'https://clinicbypeople.in/',
+    slug: '64-clinicbypeople',
+    referencePath: '/portfolio/64-clinicbypeople',
+    concept: "ClinicByPeople · Healthcare & Clinic Platform · Specialist Discovery, Daycare Laparoscopy, Laser Proctology & Cashless Insurance",
+    themeColor: '#0C5BE2',
+    badge: 'Site 64 · Healthcare & Clinic Website'
+  },
+  {
+    id: 'medicareplus',
+    num: 65,
+    category: 'healthcare',
+    name: 'MEDICAREPLUS HOSPITAL',
+    originalUrl: 'https://www.lilavatihospital.com/',
+    slug: '65-medicareplus-hospital',
+    referencePath: '/portfolio/65-medicareplus-hospital',
+    concept: "MedicarePlus Hospital · Multispeciality Hospital Website · 22 Specialities, 400+ Specialists, OPD Booking, Emergency Support, Online Payment & Inpatient Care",
+    themeColor: '#0C4A60',
+    badge: 'Site 65 · Healthcare / Multispeciality Hospital'
+  },
+  {
+    id: 'skinsciene-naturals',
+    num: 66,
+    category: 'healthcare',
+    name: 'SKINSCIENE NATURALS',
+    originalUrl: 'https://www.olivaclinic.com/',
+    slug: '66-skinsciene-naturals',
+    referencePath: '/portfolio/66-skinsciene-naturals',
+    concept: "SkinSciene Naturals · Premium Skin, Hair & Aesthetic Clinic · 120+ MD Dermatologists, 36+ Clinics in 10 Cities, US-FDA Lasers, Before/After Slider & Online Booking",
+    themeColor: '#064E3B',
+    badge: 'Site 66 · Beauty / Dermatology / Aesthetic Clinic'
   }
 ];
 
-export const ALL_61_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_29_REFERENCE_SITES;
-export const ALL_60_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_61_REFERENCE_SITES;
+export const ALL_66_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_29_REFERENCE_SITES;
+export const ALL_65_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_66_REFERENCE_SITES;
+export const ALL_64_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_65_REFERENCE_SITES;
+export const ALL_63_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_64_REFERENCE_SITES;
+export const ALL_62_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_63_REFERENCE_SITES;
+export const ALL_61_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_63_REFERENCE_SITES;
+export const ALL_60_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_63_REFERENCE_SITES;
 export const ALL_59_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_60_REFERENCE_SITES;
 export const ALL_58_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_60_REFERENCE_SITES;
 export const ALL_57_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_60_REFERENCE_SITES;
@@ -803,7 +856,7 @@ interface SwitcherProps {
 export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }) => {
   const { setActiveView } = useApp();
   const [modalOpen, setModalOpen] = useState(false);
-  const [categoryFilter, setCategoryFilter] = useState<'all' | 'cafe' | 'restaurant' | 'travel' | 'salon' | 'jewellery' | 'beauty_cosmetics' | 'gym_fitness' | 'loans' | 'real_estate' | 'shop' | 'wedding' | 'commercial_vehicles' | 'wedding_event_planning' | 'destination_weddings' | 'web_tools' | 'lawyer'>('all');
+  const [categoryFilter, setCategoryFilter] = useState<'all' | 'cafe' | 'restaurant' | 'travel' | 'salon' | 'jewellery' | 'beauty_cosmetics' | 'gym_fitness' | 'loans' | 'real_estate' | 'shop' | 'wedding' | 'commercial_vehicles' | 'wedding_event_planning' | 'destination_weddings' | 'web_tools' | 'lawyer' | 'healthcare'>('all');
 
   const currentSite =
     ALL_60_REFERENCE_SITES.find(s => s.id === currentSiteId || s.slug === currentSiteId) ||
@@ -829,7 +882,15 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
 
   const handleSelectSite = (site: ReferenceSiteInfo) => {
     setModalOpen(false);
-    if (site.id === 'maheshwari' || site.slug === 'maheshwari') {
+    if (site.id === 'skinsciene-naturals' || site.slug === '66-skinsciene-naturals' || site.slug === 'skinsciene-naturals' || site.slug === 'skinsciene') {
+      setActiveView('skinsciene-naturals');
+    } else if (site.id === 'medicareplus' || site.slug === '65-medicareplus-hospital' || site.slug === 'medicareplus' || site.slug === 'medicareplus-hospital') {
+      setActiveView('medicareplus');
+    } else if (site.id === 'clinicbypeople' || site.slug === '64-clinicbypeople' || site.slug === 'clinicbypeople') {
+      setActiveView('clinicbypeople');
+    } else if (site.id === 'group-ach' || site.slug === 'group-ach' || site.slug === 'group-ach-loan-solutions') {
+      setActiveView('group-ach');
+    } else if (site.id === 'maheshwari' || site.slug === 'maheshwari') {
       setActiveView('maheshwari');
     } else if (site.id === 'lawlinks' || site.slug === 'lawlinks') {
       setActiveView('lawlinks');

@@ -82,6 +82,12 @@ export const DemoShowcase: React.FC<DemoShowcaseProps> = ({ onOpenOrderModal }) 
     if (referenceCategoryFilter === 'web_tools' && site.category !== 'web_tools') {
       return false;
     }
+    if (referenceCategoryFilter === 'loans' && site.category !== 'loan' && site.category !== 'loans' && site.category !== 'loan_dsa') {
+      return false;
+    }
+    if (referenceCategoryFilter === 'healthcare' && site.category !== 'healthcare' && site.category !== 'clinic' && site.category !== 'hospital') {
+      return false;
+    }
 
     // Specific Category match
     if (selectedCategory !== 'all' && site.category !== selectedCategory) {
@@ -348,11 +354,55 @@ export const DemoShowcase: React.FC<DemoShowcaseProps> = ({ onOpenOrderModal }) 
                     {websites.filter(w => w.category === 'web_tools').length}
                   </span>
                 </button>
+
+                {/* 9. LOAN */}
+                <button
+                  onClick={() => {
+                    const next = referenceCategoryFilter === 'loans' ? 'all' : 'loans';
+                    setReferenceCategoryFilter(next);
+                    setSelectedCategory('all');
+                  }}
+                  className={`px-3.5 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center gap-1.5 sm:gap-2 ${
+                    referenceCategoryFilter === 'loans'
+                      ? 'bg-[#14162B] text-white shadow-sm ring-1 ring-[#14162B]'
+                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                  }`}
+                  aria-pressed={referenceCategoryFilter === 'loans'}
+                >
+                  <span>💰 LOAN</span>
+                  <span className={`text-[10px] px-1.5 py-0.5 rounded-md font-mono ${
+                    referenceCategoryFilter === 'loans' ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-700'
+                  }`}>
+                    {websites.filter(w => w.category === 'loan' || w.category === 'loans' || w.category === 'loan_dsa').length}
+                  </span>
+                </button>
+
+                {/* 10. HEALTHCARE */}
+                <button
+                  onClick={() => {
+                    const next = referenceCategoryFilter === 'healthcare' ? 'all' : 'healthcare';
+                    setReferenceCategoryFilter(next);
+                    setSelectedCategory('all');
+                  }}
+                  className={`px-3.5 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center gap-1.5 sm:gap-2 ${
+                    referenceCategoryFilter === 'healthcare'
+                      ? 'bg-[#14162B] text-white shadow-sm ring-1 ring-[#14162B]'
+                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                  }`}
+                  aria-pressed={referenceCategoryFilter === 'healthcare'}
+                >
+                  <span>🩺 HEALTHCARE</span>
+                  <span className={`text-[10px] px-1.5 py-0.5 rounded-md font-mono ${
+                    referenceCategoryFilter === 'healthcare' ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-700'
+                  }`}>
+                    {websites.filter(w => w.category === 'healthcare' || w.category === 'clinic' || w.category === 'hospital').length}
+                  </span>
+                </button>
               </div>
 
               {referenceCategoryFilter !== 'all' && (
                 <div className="mt-2 flex items-center gap-2 text-xs text-slate-500 font-['Inter']">
-                  <span>Filtered by: <strong className="text-slate-800 capitalize">{referenceCategoryFilter === 'travel' ? 'Tour & Travel' : referenceCategoryFilter === 'salon' ? 'Salon' : referenceCategoryFilter === 'jewellery' ? 'Jewellery' : referenceCategoryFilter === 'beauty_cosmetics' ? 'Beauty & Cosmetics' : referenceCategoryFilter === 'gym_fitness' ? 'Gym & Fitness' : referenceCategoryFilter === 'web_tools' ? 'Web Tools / Utilities' : referenceCategoryFilter}</strong></span>
+                  <span>Filtered by: <strong className="text-slate-800 capitalize">{referenceCategoryFilter === 'travel' ? 'Tour & Travel' : referenceCategoryFilter === 'salon' ? 'Salon' : referenceCategoryFilter === 'jewellery' ? 'Jewellery' : referenceCategoryFilter === 'beauty_cosmetics' ? 'Beauty & Cosmetics' : referenceCategoryFilter === 'gym_fitness' ? 'Gym & Fitness' : referenceCategoryFilter === 'web_tools' ? 'Web Tools / Utilities' : referenceCategoryFilter === 'loans' ? 'Loans & Finance' : referenceCategoryFilter === 'healthcare' ? 'Healthcare & Clinic' : referenceCategoryFilter}</strong></span>
                   <span>•</span>
                   <button
                     onClick={() => {
@@ -474,6 +524,10 @@ export const DemoShowcase: React.FC<DemoShowcaseProps> = ({ onOpenOrderModal }) 
               {filteredWebsites.map(site => {
                 const catToken = getCategoryToken(site.category);
                 const catMeta = CATEGORY_INFO[site.category] || CATEGORY_INFO.cafe;
+                const isSkinSciene = site.slug === '66-skinsciene-naturals' || site.slug === 'skinsciene-naturals' || site.slug === 'skinsciene' || site.id === 'site-skinsciene-66';
+                const isMedicarePlus = site.slug === '65-medicareplus-hospital' || site.slug === 'medicareplus' || site.slug === 'medicareplus-hospital' || site.id === 'site-medicareplus-65';
+                const isGroupAch = site.slug === 'group-ach' || site.slug === 'group-ach-loan-solutions' || site.id === 'site-group-ach-63';
+                const isClinicByPeople = site.slug === '64-clinicbypeople' || site.slug === 'clinicbypeople' || site.id === 'site-clinicbypeople-64';
 
                 return (
                   <div
@@ -483,75 +537,354 @@ export const DemoShowcase: React.FC<DemoShowcaseProps> = ({ onOpenOrderModal }) 
                 <div>
                   {/* Template Screenshot / Preview Image */}
                   <div
-                    onClick={() => setPreviewSite(site)}
+                    onClick={() => {
+                      if (isSkinSciene) {
+                        setActiveView('skinsciene-naturals');
+                      } else if (isMedicarePlus) {
+                        setActiveView('medicareplus');
+                      } else if (isClinicByPeople) {
+                        setActiveView('clinicbypeople');
+                      } else if (isGroupAch) {
+                        setActiveView('group-ach');
+                      } else {
+                        setPreviewSite(site);
+                      }
+                    }}
                     className="relative h-48 sm:h-52 bg-slate-100 overflow-hidden cursor-pointer"
                   >
-                    <img
-                      src={
-                        site.coverUrl ||
-                        site.items?.[0]?.imageUrl ||
-                        'https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=600&q=80'
-                      }
-                      alt={site.businessName}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                    {isSkinSciene ? (
+                      /* Polished authentic website mockup of SkinSciene Naturals */
+                      <div className="w-full h-full bg-[#062018] p-3 text-white flex flex-col justify-between relative overflow-hidden group-hover:scale-105 transition-transform duration-300 font-['Satoshi',sans-serif]">
+                        <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/25 via-transparent to-transparent pointer-events-none" />
+                        <div className="relative z-10 flex items-center justify-between border-b border-white/10 pb-2">
+                          <div className="flex items-center gap-1.5">
+                            <span className="w-5 h-5 rounded-lg bg-emerald-600 text-white flex items-center justify-center text-[10px] font-black">
+                              SN
+                            </span>
+                            <span className="font-serif font-black tracking-wider text-[11px] uppercase">
+                              SKINSCIENE <span className="text-emerald-400 font-bold">NATURALS</span>
+                            </span>
+                          </div>
+                          <span className="text-[9px] font-mono text-emerald-400 bg-emerald-950/80 px-1.5 py-0.5 rounded border border-emerald-800/40">
+                            1800 572 8899
+                          </span>
+                        </div>
+
+                        <div className="relative z-10 my-auto text-center py-1">
+                          <span className="text-[9px] font-bold uppercase tracking-wider text-emerald-300">
+                            Dermatologist-Led Clinic
+                          </span>
+                          <h4 className="font-serif text-sm font-bold leading-tight mt-0.5">
+                            US-FDA Laser Hair Removal &amp; Acne Scars
+                          </h4>
+                          <div className="mt-2 flex items-center justify-center gap-1 text-[9px] text-slate-300">
+                            <span className="bg-white/10 px-1.5 py-0.5 rounded">120+ MD Doctors</span>
+                            <span className="bg-white/10 px-1.5 py-0.5 rounded">36+ Clinics</span>
+                            <span className="bg-white/10 px-1.5 py-0.5 rounded">10 Cities</span>
+                          </div>
+                        </div>
+
+                        <div className="relative z-10 flex items-center justify-between text-[9px] text-slate-400 pt-1 border-t border-white/10">
+                          <span>Soprano Titanium Laser</span>
+                          <span className="text-emerald-400 font-bold">Free Consult Screening</span>
+                        </div>
+                      </div>
+                    ) : isMedicarePlus ? (
+                      /* Polished authentic website mockup of MedicarePlus Hospital */
+                      <div className="w-full h-full bg-[#051E28] p-3 text-white flex flex-col justify-between relative overflow-hidden group-hover:scale-105 transition-transform duration-300 font-['Satoshi',sans-serif]">
+                        <div className="absolute inset-0 bg-gradient-to-br from-[#00A896]/20 via-transparent to-transparent pointer-events-none" />
+                        <div className="relative z-10 flex items-center justify-between border-b border-white/10 pb-2">
+                          <div className="flex items-center gap-1.5">
+                            <span className="w-5 h-5 rounded-lg bg-[#00A896] text-white flex items-center justify-center text-[10px] font-black">
+                              M+
+                            </span>
+                            <span className="font-extrabold text-xs text-white tracking-tight">
+                              MedicarePlus Hospital
+                            </span>
+                          </div>
+                          <span className="text-[9px] font-mono text-teal-300 bg-teal-950/70 px-1.5 py-0.5 rounded border border-teal-800/40">
+                            medicareplusdemo.in
+                          </span>
+                        </div>
+
+                        <div className="relative z-10 my-auto text-center py-2">
+                          <span className="text-[9px] font-bold uppercase tracking-wider text-teal-300">
+                            Multispeciality Hospital · 24x7 Emergency
+                          </span>
+                          <h4 className="text-sm font-extrabold text-white leading-tight mt-0.5">
+                            Advanced Healthcare. Compassionate Care.
+                          </h4>
+                          <div className="mt-2 flex items-center justify-center gap-1 text-[9px] text-slate-300">
+                            <span className="bg-white/10 px-1.5 py-0.5 rounded">22 Specialities</span>
+                            <span className="bg-white/10 px-1.5 py-0.5 rounded">400+ Doctors</span>
+                            <span className="bg-white/10 px-1.5 py-0.5 rounded">Online OPD</span>
+                          </div>
+                        </div>
+
+                        <div className="relative z-10 flex items-center justify-between text-[9px] text-slate-400 pt-1 border-t border-white/10">
+                          <span>Ambulance: +91 90000 50000</span>
+                          <span className="text-teal-300 font-bold">NABH Benchmark</span>
+                        </div>
+                      </div>
+                    ) : isClinicByPeople ? (
+                      /* Polished authentic website mockup of ClinicByPeople */
+                      <div className="w-full h-full bg-[#0B1528] p-3 text-white flex flex-col justify-between relative overflow-hidden group-hover:scale-105 transition-transform duration-300 font-['Lexend',sans-serif]">
+                        <div className="absolute inset-0 bg-gradient-to-br from-[#0C5BE2]/25 via-transparent to-transparent pointer-events-none" />
+                        <div className="relative z-10 flex items-center justify-between border-b border-white/10 pb-2">
+                          <div className="flex items-center gap-1.5">
+                            <span className="w-5 h-5 rounded-lg bg-[#0C5BE2] text-white flex items-center justify-center text-[10px] font-black">
+                              CP
+                            </span>
+                            <span className="font-extrabold text-xs text-white tracking-tight">
+                              ClinicByPeople
+                            </span>
+                          </div>
+                          <span className="text-[9px] font-mono text-sky-400 bg-sky-950/60 px-1.5 py-0.5 rounded border border-sky-800/40">
+                            clinicbypeople.in
+                          </span>
+                        </div>
+
+                        <div className="relative z-10 my-auto text-center py-2">
+                          <span className="text-[9px] font-bold uppercase tracking-wider text-[#FF6B4A]">
+                            Specialist Care · Trusted Doctors
+                          </span>
+                          <h4 className="text-sm font-extrabold text-white leading-tight mt-0.5">
+                            Modern Specialist Healthcare Platform
+                          </h4>
+                          <div className="mt-2 flex items-center justify-center gap-1 text-[9px] text-slate-300">
+                            <span className="bg-white/10 px-1.5 py-0.5 rounded">8 Specialities</span>
+                            <span className="bg-white/10 px-1.5 py-0.5 rounded">Free OPD</span>
+                            <span className="bg-white/10 px-1.5 py-0.5 rounded">Cashless</span>
+                          </div>
+                        </div>
+
+                        <div className="relative z-10 flex items-center justify-between text-[9px] text-slate-400 pt-1 border-t border-white/10">
+                          <span>15-Min Consultation Callback</span>
+                          <span className="text-sky-400 font-bold">NABH Daycare Centres</span>
+                        </div>
+                      </div>
+                    ) : isGroupAch ? (
+                      /* Polished authentic website mockup of Group ACH Loan Solutions */
+                      <div className="w-full h-full bg-[#192721] p-3 text-white flex flex-col justify-between relative overflow-hidden group-hover:scale-105 transition-transform duration-300">
+                        {/* Background pattern */}
+                        <div className="absolute inset-0 bg-radial from-[#2F483E]/60 to-transparent pointer-events-none" />
+                        <div className="relative z-10 flex items-center justify-between border-b border-white/10 pb-2">
+                          <div className="flex items-center gap-1.5">
+                            <span className="w-5 h-5 rounded bg-[#85673E] text-white flex items-center justify-center font-serif text-[10px] font-bold">
+                              ACH
+                            </span>
+                            <span className="font-serif text-xs font-bold text-white tracking-tight">
+                              Group ACH
+                            </span>
+                          </div>
+                          <span className="text-[9px] font-mono text-emerald-400 bg-emerald-950/60 px-1.5 py-0.5 rounded border border-emerald-800/40">
+                            www.achlinks.in
+                          </span>
+                        </div>
+
+                        <div className="relative z-10 my-auto text-center py-2">
+                          <span className="text-[9px] font-bold uppercase tracking-wider text-[#D4AF37]">
+                            Expert Loan Advisory
+                          </span>
+                          <h4 className="font-serif text-sm font-bold leading-tight mt-0.5">
+                            Home Loan &amp; Property Loan Solutions
+                          </h4>
+                          <div className="mt-2 flex items-center justify-center gap-1 text-[9px] text-slate-300">
+                            <span className="bg-white/10 px-1.5 py-0.5 rounded">70+ Banks</span>
+                            <span className="bg-white/10 px-1.5 py-0.5 rounded">EMI Calculator</span>
+                            <span className="bg-white/10 px-1.5 py-0.5 rounded">Doorstep</span>
+                          </div>
+                        </div>
+
+                        <div className="relative z-10 flex items-center justify-between text-[9px] text-slate-400 pt-1 border-t border-white/10">
+                          <span>Starting from 8.35% p.a.</span>
+                          <span className="text-emerald-400 font-bold">Zero Advisory Fee</span>
+                        </div>
+                      </div>
+                    ) : (
+                      <>
+                        <img
+                          src={
+                            site.coverUrl ||
+                            site.items?.[0]?.imageUrl ||
+                            'https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=600&q=80'
+                          }
+                          alt={site.businessName}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                          loading="lazy"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                      </>
+                    )}
 
                     {/* Category pill on image */}
-                    <div className="absolute top-3 left-3 right-3 flex items-center justify-between">
+                    <div className="absolute top-3 left-3 right-3 flex items-center justify-between z-20 pointer-events-none">
                       <span className="px-2.5 py-0.5 rounded-md text-[10px] font-bold bg-[#14162B]/90 text-white backdrop-blur-md">
-                        {catMeta.label}
+                        {isSkinSciene ? '#66' : isMedicarePlus ? '#65' : isClinicByPeople ? '#64' : isGroupAch ? '#63' : catMeta.label}
                       </span>
                       <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-600 text-white shadow-xs">
-                        LIVE DEMO
+                        DEMO WEBSITE
                       </span>
                     </div>
 
                     {/* Business Name in Preview */}
-                    <div className="absolute bottom-3 left-3 right-3 text-white">
-                      <h3
-                        className="font-bold text-base truncate"
-                        style={{ fontFamily: catToken.headlineFont }}
-                      >
-                        {site.businessName}
-                      </h3>
-                      <p className="text-slate-300 text-xs truncate flex items-center gap-1 font-['Inter']">
-                        <MapPin className="w-3 h-3 text-[#FF6B4A]" />
-                        {site.city || 'Local Store'}
-                      </p>
-                    </div>
+                    {!isGroupAch && !isClinicByPeople && !isMedicarePlus && !isSkinSciene && (
+                      <div className="absolute bottom-3 left-3 right-3 text-white z-20">
+                        <h3
+                          className="font-bold text-base truncate"
+                          style={{ fontFamily: catToken.headlineFont }}
+                        >
+                          {site.businessName}
+                        </h3>
+                        <p className="text-slate-300 text-xs truncate flex items-center gap-1 font-['Inter']">
+                          <MapPin className="w-3 h-3 text-[#FF6B4A]" />
+                          {site.city || 'Local Store'}
+                        </p>
+                      </div>
+                    )}
                   </div>
 
                   {/* Body: Short Description & Meta */}
                   <div className="p-4 space-y-2 font-['Inter']">
-                    <p className="text-xs text-[#51556E] line-clamp-2 leading-relaxed">
-                      {site.description || site.tagline}
-                    </p>
-                    <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-[#636882]">
-                      <span>{site.items?.length || 0} Catalog Items</span>
-                      <span className="font-semibold text-[#4338CA]">WhatsApp Direct</span>
-                    </div>
+                    {isSkinSciene ? (
+                      <div>
+                        <div className="flex items-center gap-1.5 mb-1 flex-wrap">
+                          <span className="font-mono text-[11px] font-bold text-emerald-800 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200">
+                            #66
+                          </span>
+                          <h3 className="font-extrabold text-base text-slate-900 leading-tight">
+                            SKINSCIENE NATURALS
+                          </h3>
+                        </div>
+                        <p className="text-[11px] font-semibold text-emerald-700 uppercase tracking-wide">
+                          Premium Skin, Hair &amp; Aesthetic Clinic
+                        </p>
+                        <p className="text-xs text-[#51556E] line-clamp-2 leading-relaxed mt-1.5">
+                          100% US-FDA approved dermatology and hair clinic network with 120+ MD dermatologists, 36+ clinics in 10 cities, before/after slider, and appointment scheduling.
+                        </p>
+                        <div className="pt-2 mt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-[#636882]">
+                          <span className="font-semibold text-emerald-800">120+ MD Doctors</span>
+                          <span className="font-semibold text-teal-700">36+ Clinics in 10 Cities</span>
+                        </div>
+                      </div>
+                    ) : isMedicarePlus ? (
+                      <div>
+                        <div className="flex items-center gap-1.5 mb-1 flex-wrap">
+                          <span className="font-mono text-[11px] font-bold text-teal-700 bg-teal-50 px-1.5 py-0.5 rounded">
+                            #65
+                          </span>
+                          <h3 className="font-extrabold text-base text-slate-900 leading-tight">
+                            MEDICAREPLUS HOSPITAL
+                          </h3>
+                        </div>
+                        <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wide">
+                          Multispeciality Hospital Website
+                        </p>
+                        <p className="text-xs text-[#51556E] line-clamp-2 leading-relaxed mt-1.5">
+                          A complete modern hospital website with doctor discovery, specialities, healthcare services, patient information, appointments, emergency support and hospital resources.
+                        </p>
+                        <div className="pt-2 mt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-[#636882]">
+                          <span className="font-semibold text-teal-700">Doctor Discovery &amp; OPD</span>
+                          <span className="font-semibold text-emerald-600">NABH Standards</span>
+                        </div>
+                      </div>
+                    ) : isClinicByPeople ? (
+                      <div>
+                        <div className="flex items-center gap-1.5 mb-1">
+                          <span className="font-mono text-[11px] font-bold text-sky-700 bg-sky-50 px-1.5 py-0.5 rounded">
+                            #64
+                          </span>
+                          <h3 className="font-extrabold text-base text-slate-900 leading-tight">
+                            CLINICBYPeople
+                          </h3>
+                        </div>
+                        <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wide">
+                          Healthcare &amp; Clinic Website
+                        </p>
+                        <p className="text-xs text-[#51556E] line-clamp-2 leading-relaxed mt-1.5">
+                          Modern healthcare platform for specialist discovery, consultation, treatment information and patient support.
+                        </p>
+                        <div className="pt-2 mt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-[#636882]">
+                          <span className="font-semibold text-sky-700">Specialist Discovery</span>
+                          <span className="font-semibold text-emerald-600">Cashless Insurance</span>
+                        </div>
+                      </div>
+                    ) : isGroupAch ? (
+                      <div>
+                        <div className="flex items-center gap-1.5 mb-1">
+                          <span className="font-mono text-[11px] font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded">
+                            #63
+                          </span>
+                          <h3 className="font-serif font-bold text-base text-slate-900 leading-tight">
+                            GROUP ACH LOAN SOLUTIONS
+                          </h3>
+                        </div>
+                        <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wide">
+                          Loan &amp; Finance Website
+                        </p>
+                        <p className="text-xs text-[#51556E] line-clamp-2 leading-relaxed mt-1.5">
+                          Professional home loan and property loan advisory website with loan calculators, lender information, lead generation, SEO-focused pages and responsive design.
+                        </p>
+                        <div className="pt-2 mt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-[#636882]">
+                          <span className="font-semibold text-emerald-700">70+ Partner Banks</span>
+                          <span className="font-semibold text-[#4338CA]">Interactive Calculators</span>
+                        </div>
+                      </div>
+                    ) : (
+                      <>
+                        <p className="text-xs text-[#51556E] line-clamp-2 leading-relaxed">
+                          {site.description || site.tagline}
+                        </p>
+                        <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-[#636882]">
+                          <span>{site.items?.length || 0} Catalog Items</span>
+                          <span className="font-semibold text-[#4338CA]">WhatsApp Direct</span>
+                        </div>
+                      </>
+                    )}
                   </div>
                 </div>
 
                 {/* Exact Required Card Action Buttons: Open Complete Website and Preview */}
                 <div className="p-3 bg-[#FAFAF8] border-t border-[#E8E7F0] flex items-center gap-2">
                   <button
-                    onClick={() => setActiveView('site', site.slug)}
+                    onClick={() => {
+                      if (isSkinSciene) {
+                        setActiveView('skinsciene-naturals');
+                      } else if (isMedicarePlus) {
+                        setActiveView('medicareplus');
+                      } else if (isClinicByPeople) {
+                        setActiveView('clinicbypeople');
+                      } else if (isGroupAch) {
+                        setActiveView('group-ach');
+                      } else {
+                        setActiveView('site', site.slug);
+                      }
+                    }}
                     className="flex-1 min-h-[44px] px-3.5 py-2 bg-[#14162B] hover:bg-[#4338CA] active:bg-[#3730A3] text-white text-xs font-bold rounded-xl shadow-xs transition-colors cursor-pointer flex items-center justify-center gap-1.5"
                   >
                     <ExternalLink className="w-3.5 h-3.5 text-amber-400" />
-                    <span>{site.bookingCtaLabel || 'View Demo'}</span>
+                    <span>{isSkinSciene || isMedicarePlus || isClinicByPeople || isGroupAch ? 'VIEW PROJECT' : (site.bookingCtaLabel || 'View Demo')}</span>
                   </button>
 
                   <button
-                    onClick={() => setPreviewSite(site)}
+                    onClick={() => {
+                      if (isSkinSciene) {
+                        setActiveView('skinsciene-naturals');
+                      } else if (isMedicarePlus) {
+                        setActiveView('medicareplus');
+                      } else if (isClinicByPeople) {
+                        setActiveView('clinicbypeople');
+                      } else if (isGroupAch) {
+                        setActiveView('group-ach');
+                      } else {
+                        setPreviewSite(site);
+                      }
+                    }}
                     className="min-h-[44px] px-3 py-2 bg-white hover:bg-slate-50 border border-[#D5D4E3] active:bg-slate-100 text-slate-800 text-xs font-bold rounded-xl transition-colors cursor-pointer flex items-center justify-center gap-1.5"
-                    title="Quick Device Preview"
+                    title={isSkinSciene || isMedicarePlus ? 'Launch Interactive Demo' : 'Quick Device Preview'}
                   >
                     <Eye className="w-4 h-4 text-slate-500" />
-                    <span className="hidden xs:inline">Preview</span>
+                    <span className="hidden xs:inline">{isSkinSciene || isMedicarePlus ? 'LAUNCH DEMO' : 'Preview'}</span>
                   </button>
                 </div>
               </div>

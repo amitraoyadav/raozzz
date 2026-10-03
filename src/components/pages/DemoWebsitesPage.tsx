@@ -97,6 +97,12 @@ export const DemoWebsitesPage: React.FC<DemoWebsitesPageProps> = ({ onOpenOrderM
       if (referenceCategoryFilter === 'web_tools' && site.category !== 'web_tools') {
         return false;
       }
+      if (referenceCategoryFilter === 'loans' && site.category !== 'loan' && site.category !== 'loans' && site.category !== 'loan_dsa') {
+        return false;
+      }
+      if (referenceCategoryFilter === 'healthcare' && site.category !== 'healthcare' && site.category !== 'clinic' && site.category !== 'hospital') {
+        return false;
+      }
       if (selectedDemoCat !== 'all') {
         if ((selectedDemoCat === 'gym' || selectedDemoCat === 'gym_fitness') && (site.category === 'gym' || site.category === ('gym_fitness' as any))) {
           // match
@@ -631,11 +637,53 @@ export const DemoWebsitesPage: React.FC<DemoWebsitesPageProps> = ({ onOpenOrderM
                     {websites.filter(w => w.category === 'web_tools').length}
                   </span>
                 </button>
+
+                {/* 9. LOAN */}
+                <button
+                  onClick={() => {
+                    const next = referenceCategoryFilter === 'loans' ? 'all' : 'loans';
+                    setReferenceCategoryFilter(next);
+                  }}
+                  className={`px-3.5 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center gap-1.5 sm:gap-2 ${
+                    referenceCategoryFilter === 'loans'
+                      ? 'bg-[#14162B] text-white shadow-sm ring-1 ring-[#14162B]'
+                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                  }`}
+                  aria-pressed={referenceCategoryFilter === 'loans'}
+                >
+                  <span>💰 LOAN</span>
+                  <span className={`text-[10px] px-1.5 py-0.5 rounded-md font-mono ${
+                    referenceCategoryFilter === 'loans' ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-700'
+                  }`}>
+                    {websites.filter(w => w.category === 'loan' || w.category === 'loans' || w.category === 'loan_dsa').length}
+                  </span>
+                </button>
+
+                {/* 10. HEALTHCARE */}
+                <button
+                  onClick={() => {
+                    const next = referenceCategoryFilter === 'healthcare' ? 'all' : 'healthcare';
+                    setReferenceCategoryFilter(next);
+                  }}
+                  className={`px-3.5 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center gap-1.5 sm:gap-2 ${
+                    referenceCategoryFilter === 'healthcare'
+                      ? 'bg-[#14162B] text-white shadow-sm ring-1 ring-[#14162B]'
+                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                  }`}
+                  aria-pressed={referenceCategoryFilter === 'healthcare'}
+                >
+                  <span>🩺 HEALTHCARE</span>
+                  <span className={`text-[10px] px-1.5 py-0.5 rounded-md font-mono ${
+                    referenceCategoryFilter === 'healthcare' ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-700'
+                  }`}>
+                    {websites.filter(w => w.category === 'healthcare' || w.category === 'clinic' || w.category === 'hospital').length}
+                  </span>
+                </button>
               </div>
 
               {referenceCategoryFilter !== 'all' && (
                 <div className="mt-2 flex items-center gap-2 text-xs text-slate-500 font-['Inter']">
-                  <span>Filtered by: <strong className="text-slate-800 capitalize">{referenceCategoryFilter === 'travel' ? 'Tour & Travel' : referenceCategoryFilter === 'salon' ? 'Salon' : referenceCategoryFilter === 'jewellery' ? 'Jewellery' : referenceCategoryFilter === 'beauty_cosmetics' ? 'Beauty & Cosmetics' : referenceCategoryFilter === 'gym_fitness' ? 'Gym & Fitness' : referenceCategoryFilter === 'web_tools' ? 'Web Tools / Utilities' : referenceCategoryFilter}</strong></span>
+                  <span>Filtered by: <strong className="text-slate-800 capitalize">{referenceCategoryFilter === 'travel' ? 'Tour & Travel' : referenceCategoryFilter === 'salon' ? 'Salon' : referenceCategoryFilter === 'jewellery' ? 'Jewellery' : referenceCategoryFilter === 'beauty_cosmetics' ? 'Beauty & Cosmetics' : referenceCategoryFilter === 'gym_fitness' ? 'Gym & Fitness' : referenceCategoryFilter === 'web_tools' ? 'Web Tools / Utilities' : referenceCategoryFilter === 'loans' ? 'Loans & Finance' : referenceCategoryFilter === 'healthcare' ? 'Healthcare & Clinic' : referenceCategoryFilter}</strong></span>
                   <span>•</span>
                   <button
                     onClick={() => setReferenceCategoryFilter('all')}
@@ -690,93 +738,284 @@ export const DemoWebsitesPage: React.FC<DemoWebsitesPageProps> = ({ onOpenOrderM
               </div>
             ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredWebsites.map(site => (
+              {filteredWebsites.map(site => {
+                const isSkinSciene = site.slug === '66-skinsciene-naturals' || site.slug === 'skinsciene-naturals' || site.slug === 'skinsciene' || site.id === 'site-skinsciene-66';
+                const isMedicarePlus = site.slug === '65-medicareplus-hospital' || site.slug === 'medicareplus' || site.slug === 'medicareplus-hospital' || site.id === 'site-medicareplus-65';
+                const isGroupAch = site.slug === 'group-ach' || site.slug === 'group-ach-loan-solutions' || site.id === 'site-group-ach-63';
+                const isClinicByPeople = site.slug === '64-clinicbypeople' || site.slug === 'clinicbypeople' || site.id === 'site-clinicbypeople-64';
+                return (
                 <div
                   key={site.slug}
                   className="bg-white rounded-3xl overflow-hidden border border-[#E8E7F0] shadow-sm hover:shadow-md hover:border-indigo-400 transition-all flex flex-col justify-between group"
                 >
                   {/* Cover */}
                   <div
-                    onClick={() => setPreviewModalSite(site)}
+                    onClick={() => {
+                      if (isSkinSciene) {
+                        setActiveView('skinsciene-naturals');
+                      } else if (isMedicarePlus) {
+                        setActiveView('medicareplus');
+                      } else if (isClinicByPeople) {
+                        setActiveView('clinicbypeople');
+                      } else if (isGroupAch) {
+                        setActiveView('group-ach');
+                      } else {
+                        setPreviewModalSite(site);
+                      }
+                    }}
                     className="relative aspect-16/10 bg-slate-900 overflow-hidden cursor-pointer"
                   >
-                    <img
-                      src={site.coverUrl || site.logoUrl}
-                      alt={site.businessName}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                    <div className="absolute top-3 left-3 flex items-center gap-1.5">
+                    {isSkinSciene ? (
+                      <div className="w-full h-full bg-[#062018] p-4 text-white flex flex-col justify-between relative group-hover:scale-105 transition-transform duration-300 font-['Satoshi',sans-serif]">
+                        <div className="flex items-center justify-between border-b border-white/10 pb-2">
+                          <div className="flex items-center gap-1.5">
+                            <span className="w-5 h-5 rounded-md bg-emerald-600 text-white flex items-center justify-center text-[10px] font-black">
+                              SN
+                            </span>
+                            <span className="font-extrabold text-xs text-white tracking-tight">SkinSciene Naturals</span>
+                          </div>
+                          <span className="text-[10px] font-mono text-emerald-300 bg-emerald-950/70 px-1.5 py-0.5 rounded border border-emerald-800/40">1800 572 8899</span>
+                        </div>
+                        <div className="my-auto text-center py-2">
+                          <span className="text-[9px] font-bold uppercase tracking-wider text-emerald-300 bg-emerald-900/60 px-2 py-0.5 rounded-full border border-emerald-700/50">Dermatologist-Led Clinic</span>
+                          <h4 className="font-serif text-sm font-bold mt-1 text-white leading-tight">US-FDA Laser &amp; Trichology</h4>
+                          <p className="text-[10px] text-slate-300 mt-1">120+ MD Dermatologists · 36+ Clinics across 10 Cities</p>
+                        </div>
+                        <div className="flex items-center justify-between text-[10px] text-slate-300 border-t border-white/10 pt-1.5">
+                          <span>Soprano Titanium Laser</span>
+                          <span className="text-emerald-400 font-bold">100% Doctor-Led</span>
+                        </div>
+                      </div>
+                    ) : isMedicarePlus ? (
+                      <div className="w-full h-full bg-[#051E28] p-4 text-white flex flex-col justify-between relative group-hover:scale-105 transition-transform duration-300 font-['Satoshi',sans-serif]">
+                        <div className="flex items-center justify-between border-b border-white/10 pb-2">
+                          <div className="flex items-center gap-1.5">
+                            <span className="w-5 h-5 rounded-md bg-[#00A896] text-white flex items-center justify-center text-[10px] font-black">
+                              M+
+                            </span>
+                            <span className="font-extrabold text-xs text-white tracking-tight">MedicarePlus Hospital</span>
+                          </div>
+                          <span className="text-[10px] font-mono text-teal-300 bg-teal-950/70 px-1.5 py-0.5 rounded border border-teal-800/40">medicareplusdemo.in</span>
+                        </div>
+                        <div className="my-auto text-center">
+                          <span className="text-[10px] font-bold uppercase tracking-wider text-teal-300">Multispeciality Hospital · 24x7 Emergency</span>
+                          <h4 className="font-extrabold text-sm sm:text-base mt-1">Advanced Healthcare. Compassionate Care.</h4>
+                          <p className="text-[11px] text-slate-300 mt-1">22 Specialities · 400+ Doctors · Online OPD &amp; Payment</p>
+                        </div>
+                        <div className="flex items-center justify-between text-[10px] text-slate-400 pt-1 border-t border-white/10">
+                          <span>Ambulance: +91 90000 50000</span>
+                          <span className="text-teal-300 font-bold">NABH Accredited</span>
+                        </div>
+                      </div>
+                    ) : isClinicByPeople ? (
+                      <div className="w-full h-full bg-[#0B1528] p-4 text-white flex flex-col justify-between relative group-hover:scale-105 transition-transform duration-300 font-['Lexend',sans-serif]">
+                        <div className="flex items-center justify-between border-b border-white/10 pb-2">
+                          <span className="font-extrabold text-xs text-white tracking-tight">ClinicByPeople</span>
+                          <span className="text-[10px] font-mono text-sky-400 bg-sky-950/60 px-1.5 py-0.5 rounded">clinicbypeople.in</span>
+                        </div>
+                        <div className="my-auto text-center">
+                          <span className="text-[10px] font-bold uppercase tracking-wider text-[#FF6B4A]">Specialist Healthcare Platform</span>
+                          <h4 className="font-extrabold text-sm sm:text-base mt-1">Modern Clinic &amp; Daycare Network</h4>
+                          <p className="text-[11px] text-slate-300 mt-1">Specialists · Free OPD · 100% Cashless Insurance</p>
+                        </div>
+                        <div className="flex items-center justify-between text-[10px] text-slate-400 pt-1 border-t border-white/10">
+                          <span>8 Core Specialities</span>
+                          <span className="text-sky-400 font-bold">NABH Centres</span>
+                        </div>
+                      </div>
+                    ) : isGroupAch ? (
+                      <div className="w-full h-full bg-[#192721] p-4 text-white flex flex-col justify-between relative group-hover:scale-105 transition-transform duration-300">
+                        <div className="flex items-center justify-between border-b border-white/10 pb-2">
+                          <span className="font-serif text-xs font-bold text-white tracking-tight">Group ACH</span>
+                          <span className="text-[10px] font-mono text-emerald-400 bg-emerald-950/60 px-1.5 py-0.5 rounded">www.achlinks.in</span>
+                        </div>
+                        <div className="my-auto text-center">
+                          <span className="text-[10px] font-bold uppercase tracking-wider text-[#D4AF37]">Loan Advisory Platform</span>
+                          <h4 className="font-serif text-sm sm:text-base font-bold mt-1">Group ACH Loan Solutions</h4>
+                          <p className="text-[11px] text-slate-300 mt-1">70+ Banks · Free Advisory · Doorstep Service</p>
+                        </div>
+                        <div className="flex items-center justify-between text-[10px] text-slate-400 pt-1 border-t border-white/10">
+                          <span>Home Loan &amp; LAP</span>
+                          <span className="text-emerald-400 font-bold">Rates from 8.35%</span>
+                        </div>
+                      </div>
+                    ) : (
+                      <img
+                        src={site.coverUrl || site.logoUrl}
+                        alt={site.businessName}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                    )}
+
+                    <div className="absolute top-3 left-3 flex items-center gap-1.5 z-20 pointer-events-none">
                       <span className="px-2.5 py-0.5 rounded-md bg-slate-950/85 backdrop-blur-xs text-white text-[10px] font-bold">
-                        {site.category.replace('_', ' ')}
+                        {isSkinSciene ? '#66' : isMedicarePlus ? '#65' : isClinicByPeople ? '#64' : isGroupAch ? '#63' : site.category.replace('_', ' ')}
                       </span>
-                      {site.referenceSiteName && (
-                        <span className="px-2.5 py-0.5 rounded-md bg-indigo-600 text-white text-[10px] font-bold">
-                          {site.referenceSiteName}
-                        </span>
-                      )}
+                      <span className="px-2.5 py-0.5 rounded-md bg-emerald-600 text-white text-[10px] font-bold">
+                        DEMO WEBSITE
+                      </span>
                     </div>
 
-                    <div className="absolute top-3 right-3 flex items-center gap-1.5 opacity-90 group-hover:opacity-100 transition-opacity">
-                      <button
-                        onClick={e => {
-                          e.stopPropagation();
-                          setPreviewModalSite(site);
-                        }}
-                        className="p-1.5 rounded-lg bg-black/60 backdrop-blur-xs text-white hover:bg-black/90 transition-colors shadow-xs cursor-pointer"
-                        title="Interactive Device Preview"
-                      >
-                        <Smartphone className="w-3.5 h-3.5" />
-                      </button>
-                      <button
-                        onClick={e => {
-                          e.stopPropagation();
-                          setQrModalSite(site);
-                        }}
-                        className="p-1.5 rounded-lg bg-black/60 backdrop-blur-xs text-white hover:bg-black/90 transition-colors shadow-xs cursor-pointer"
-                        title="Scan Counter QR Code"
-                      >
-                        <QrCode className="w-3.5 h-3.5" />
-                      </button>
-                    </div>
+                    {!isGroupAch && !isClinicByPeople && !isMedicarePlus && !isSkinSciene && (
+                      <div className="absolute top-3 right-3 flex items-center gap-1.5 opacity-90 group-hover:opacity-100 transition-opacity z-20">
+                        <button
+                          onClick={e => {
+                            e.stopPropagation();
+                            setPreviewModalSite(site);
+                          }}
+                          className="p-1.5 rounded-lg bg-black/60 backdrop-blur-xs text-white hover:bg-black/90 transition-colors shadow-xs cursor-pointer"
+                          title="Interactive Device Preview"
+                        >
+                          <Smartphone className="w-3.5 h-3.5" />
+                        </button>
+                        <button
+                          onClick={e => {
+                            e.stopPropagation();
+                            setQrModalSite(site);
+                          }}
+                          className="p-1.5 rounded-lg bg-black/60 backdrop-blur-xs text-white hover:bg-black/90 transition-colors shadow-xs cursor-pointer"
+                          title="Scan Counter QR Code"
+                        >
+                          <QrCode className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
+                    )}
                   </div>
 
                   {/* Body */}
                   <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
                     <div>
-                      <h3 className="text-base font-bold text-slate-900 group-hover:text-indigo-600 transition-colors line-clamp-1 font-['Fraunces']">
-                        {site.businessName}
-                      </h3>
-                      <p className="text-xs text-slate-600 mt-1 line-clamp-2 leading-relaxed">
-                        {site.tagline}
-                      </p>
-                      <p className="text-[11px] text-slate-400 mt-2.5 flex items-center gap-1">
-                        <MapPin className="w-3 h-3 text-indigo-600 shrink-0" />
-                        <span className="truncate">{site.address}</span>
-                      </p>
+                      {isSkinSciene ? (
+                        <div>
+                          <div className="flex items-center gap-1.5 mb-1 flex-wrap">
+                            <span className="font-mono text-xs font-bold text-emerald-800 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200">
+                              #66
+                            </span>
+                            <h3 className="text-base font-extrabold text-slate-900 group-hover:text-emerald-800 transition-colors">
+                              SKINSCIENE NATURALS
+                            </h3>
+                          </div>
+                          <p className="text-[11px] font-semibold text-emerald-700 uppercase tracking-wide">
+                            Premium Skin, Hair &amp; Aesthetic Clinic
+                          </p>
+                          <p className="text-xs text-slate-600 mt-2 line-clamp-2 leading-relaxed">
+                            100% US-FDA approved dermatology and hair clinic network with 120+ MD dermatologists, 36+ clinics in 10 cities, before/after slider, and appointment scheduling.
+                          </p>
+                        </div>
+                      ) : isMedicarePlus ? (
+                        <div>
+                          <div className="flex items-center gap-1.5 mb-1 flex-wrap">
+                            <span className="font-mono text-xs font-bold text-teal-700 bg-teal-50 px-1.5 py-0.5 rounded">
+                              #65
+                            </span>
+                            <h3 className="text-base font-extrabold text-slate-900 group-hover:text-teal-700 transition-colors">
+                              MEDICAREPLUS HOSPITAL
+                            </h3>
+                          </div>
+                          <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wide">
+                            Multispeciality Hospital Website
+                          </p>
+                          <p className="text-xs text-slate-600 mt-2 line-clamp-2 leading-relaxed">
+                            A complete modern hospital website with doctor discovery, specialities, healthcare services, patient information, appointments, emergency support and hospital resources.
+                          </p>
+                        </div>
+                      ) : isClinicByPeople ? (
+                        <div>
+                          <div className="flex items-center gap-1.5 mb-1">
+                            <span className="font-mono text-xs font-bold text-sky-700 bg-sky-50 px-1.5 py-0.5 rounded">
+                              #64
+                            </span>
+                            <h3 className="text-base font-extrabold text-slate-900 group-hover:text-sky-700 transition-colors">
+                              CLINICBYPeople
+                            </h3>
+                          </div>
+                          <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wide">
+                            Healthcare &amp; Clinic Website
+                          </p>
+                          <p className="text-xs text-slate-600 mt-2 line-clamp-2 leading-relaxed">
+                            Modern healthcare platform for specialist discovery, consultation, treatment information and patient support.
+                          </p>
+                        </div>
+                      ) : isGroupAch ? (
+                        <div>
+                          <div className="flex items-center gap-1.5 mb-1">
+                            <span className="font-mono text-xs font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded">
+                              #63
+                            </span>
+                            <h3 className="text-base font-bold text-slate-900 group-hover:text-emerald-700 transition-colors font-['Fraunces']">
+                              GROUP ACH LOAN SOLUTIONS
+                            </h3>
+                          </div>
+                          <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wide">
+                            Loan &amp; Finance Website
+                          </p>
+                          <p className="text-xs text-slate-600 mt-2 line-clamp-2 leading-relaxed">
+                            Professional home loan and property loan advisory website with loan calculators, lender information, lead generation, SEO-focused pages and responsive design.
+                          </p>
+                        </div>
+                      ) : (
+                        <>
+                          <h3 className="text-base font-bold text-slate-900 group-hover:text-indigo-600 transition-colors line-clamp-1 font-['Fraunces']">
+                            {site.businessName}
+                          </h3>
+                          <p className="text-xs text-slate-600 mt-1 line-clamp-2 leading-relaxed">
+                            {site.tagline}
+                          </p>
+                          <p className="text-[11px] text-slate-400 mt-2.5 flex items-center gap-1">
+                            <MapPin className="w-3 h-3 text-indigo-600 shrink-0" />
+                            <span className="truncate">{site.address}</span>
+                          </p>
+                        </>
+                      )}
                     </div>
 
                     {/* Preview and Public Order Buttons */}
                     <div className="pt-4 border-t border-slate-100 flex items-center gap-2">
                       <button
-                        onClick={() => setActiveView('site', site.slug)}
-                        className="flex-1 min-h-[44px] px-3.5 py-2 rounded-xl bg-[#14162B] hover:bg-[#4338CA] text-white text-xs font-bold transition-colors flex items-center justify-center gap-1.5 cursor-pointer shadow-xs"
+                        onClick={() => {
+                          if (isSkinSciene) {
+                            setActiveView('skinsciene-naturals');
+                          } else if (isMedicarePlus) {
+                            setActiveView('medicareplus');
+                          } else if (isClinicByPeople) {
+                            setActiveView('clinicbypeople');
+                          } else if (isGroupAch) {
+                            setActiveView('group-ach');
+                          } else {
+                            setActiveView('site', site.slug);
+                          }
+                        }}
+                        className="flex-1 min-h-[44px] px-3.5 py-2 rounded-xl bg-[#14162B] hover:bg-[#00A896] text-white text-xs font-bold transition-colors flex items-center justify-center gap-1.5 cursor-pointer shadow-xs"
                       >
                         <ExternalLink className="w-3.5 h-3.5 text-amber-400" />
-                        <span>{site.bookingCtaLabel || 'Open Website'}</span>
+                        <span>{isSkinSciene || isMedicarePlus || isClinicByPeople || isGroupAch ? 'VIEW PROJECT' : (site.bookingCtaLabel || 'Open Website')}</span>
                       </button>
 
                       <button
-                        onClick={() => setPreviewModalSite(site)}
+                        onClick={() => {
+                          if (isSkinSciene) {
+                            setActiveView('skinsciene-naturals');
+                          } else if (isMedicarePlus) {
+                            setActiveView('medicareplus');
+                          } else if (isClinicByPeople) {
+                            setActiveView('clinicbypeople');
+                          } else if (isGroupAch) {
+                            setActiveView('group-ach');
+                          } else {
+                            setPreviewModalSite(site);
+                          }
+                        }}
                         className="min-h-[44px] px-3 py-2 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-slate-800 text-xs font-bold transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
-                        title="Interactive Device Preview"
+                        title={isSkinSciene || isMedicarePlus ? 'Launch Interactive Demo' : 'Interactive Device Preview'}
                       >
                         <Eye className="w-4 h-4 text-slate-500" />
-                        <span className="hidden sm:inline">Preview</span>
+                        <span className="hidden sm:inline">{isSkinSciene || isMedicarePlus ? 'LAUNCH DEMO' : 'Preview'}</span>
                       </button>
                     </div>
                   </div>
                 </div>
-              ))}
+              );
+            })}
             </div>
             )}
           </div>

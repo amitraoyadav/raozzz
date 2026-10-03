@@ -1,20 +1,21 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged, User } from 'firebase/auth';
-import { initializeFirestore, getFirestore, doc, getDocFromServer } from 'firebase/firestore';
+import { initializeFirestore, getFirestore, doc, getDoc } from 'firebase/firestore';
 import firebaseConfig from '../firebase-applet-config.json';
 
 const app = initializeApp(firebaseConfig);
 
-// Initialize with long-polling to prevent WebChannel streaming disconnects in iframe/sandbox preview environments
+let firestoreDb;
 try {
-  initializeFirestore(app, {
+  firestoreDb = initializeFirestore(app, {
+    experimentalAutoDetectLongPolling: true,
     experimentalForceLongPolling: true,
   }, firebaseConfig.firestoreDatabaseId);
-} catch (e) {
-  // If already initialized in hot-reload, ignore error
+} catch {
+  firestoreDb = getFirestore(app, firebaseConfig.firestoreDatabaseId);
 }
 
-export const db = getFirestore(app, firebaseConfig.firestoreDatabaseId); /* CRITICAL: The app will break without this line */
+export const db = firestoreDb; /* CRITICAL: The app will break without this line */
 export const auth = getAuth(app);
 export const googleProvider = new GoogleAuthProvider();
 
@@ -65,18 +66,15 @@ export function handleFirestoreError(error: unknown, operationType: OperationTyp
   return errInfo;
 }
 
-// Test connection on boot
+// Optional utility to check connection status
 export async function testConnection() {
   try {
-    await getDocFromServer(doc(db, 'test', 'connection'));
+    const testDoc = await getDoc(doc(db, 'test', 'connection'));
+    return testDoc.exists();
   } catch (error: any) {
     if (error?.code === 'permission-denied') {
-      // Backend is online and security rules actively processed the request
-      return;
+      return true;
     }
-    if (error instanceof Error && (error.message.includes('the client is offline') || error.message.includes('unavailable') || (error as any).code === 'unavailable')) {
-      console.info("Firestore operating with local cache fallback while verifying network connection.");
-    }
+    return false;
   }
 }
-testConnection();

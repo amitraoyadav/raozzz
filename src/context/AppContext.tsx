@@ -53,7 +53,11 @@ export type AppView =
   | 'luxespace-htx'
   | 'saveweb2zip'
   | 'lawlinks'
-  | 'maheshwari';
+  | 'maheshwari'
+  | 'group-ach'
+  | 'clinicbypeople'
+  | 'medicareplus'
+  | 'skinsciene-naturals';
 
 import { TWOD_WEBSITE } from '../data/twoDCafeData';
 import { BLUE_TOKAI_WEBSITE } from '../data/blueTokaiData';
@@ -117,6 +121,16 @@ import { SAVEWEB2ZIP_WEBSITE } from '../data/saveWeb2ZipWebsiteData';
 import { LAWLINKS_WEBSITE } from '../data/lawlinksWebsiteData';
 import { MAHESHWARI_WEBSITE } from '../data/maheshwariWebsiteData';
 import { RAOZ_MOTORS_WEBSITE } from '../data/raozMotorsData';
+import { GROUP_ACH_WEBSITE } from '../data/groupAchData';
+import { CLINICBYPEOPLE_WEBSITE } from '../data/clinicByPeopleData';
+import { MEDICAREPLUS_WEBSITE } from '../data/medicarePlusData';
+import { SKINSCIENE_WEBSITE } from '../data/skinScieneData';
+
+export const ALL_HEALTHCARE_WEBSITES: BusinessWebsite[] = [
+  CLINICBYPEOPLE_WEBSITE,
+  MEDICAREPLUS_WEBSITE,
+  SKINSCIENE_WEBSITE
+];
 
 export const ALL_LEGAL_WEBSITES: BusinessWebsite[] = [
   LAWLINKS_WEBSITE,
@@ -141,7 +155,8 @@ export const ALL_COMMERCIAL_VEHICLES_WEBSITES: BusinessWebsite[] = [
 
 export const ALL_LOANS_WEBSITES: BusinessWebsite[] = [
   SABKA_LOANS_WEBSITE,
-  SABKA_FINANCE_WEBSITE
+  SABKA_FINANCE_WEBSITE,
+  GROUP_ACH_WEBSITE
 ];
 
 export const ALL_STORE_WEBSITES: BusinessWebsite[] = [
@@ -244,9 +259,14 @@ export const ALL_57_COLLECTION_WEBSITES: BusinessWebsite[] = [
   ...ALL_EVENT_PLANNING_WEBSITES,
   ...ALL_DESTINATION_WEDDINGS_WEBSITES,
   ...ALL_WEB_TOOLS_WEBSITES,
-  ...ALL_LEGAL_WEBSITES
+  ...ALL_LEGAL_WEBSITES,
+  ...ALL_HEALTHCARE_WEBSITES
 ];
 
+export const ALL_65_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_57_COLLECTION_WEBSITES;
+export const ALL_64_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_65_COLLECTION_WEBSITES;
+export const ALL_63_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_64_COLLECTION_WEBSITES;
+export const ALL_62_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_63_COLLECTION_WEBSITES;
 export const ALL_61_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_57_COLLECTION_WEBSITES;
 export const ALL_60_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_57_COLLECTION_WEBSITES;
 export const ALL_59_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_57_COLLECTION_WEBSITES;
@@ -413,8 +433,8 @@ interface AppContextType {
   discountLeads: DiscountLead[];
   demoCategoryFilter: string | null;
   setDemoCategoryFilter: (cat: string | null) => void;
-  referenceCategoryFilter: 'all' | 'cafes' | 'restaurants' | 'travel' | 'salon' | 'jewellery' | 'beauty_cosmetics' | 'gym_fitness' | 'web_tools';
-  setReferenceCategoryFilter: (filter: 'all' | 'cafes' | 'restaurants' | 'travel' | 'salon' | 'jewellery' | 'beauty_cosmetics' | 'gym_fitness' | 'web_tools') => void;
+  referenceCategoryFilter: 'all' | 'cafes' | 'restaurants' | 'travel' | 'salon' | 'jewellery' | 'beauty_cosmetics' | 'gym_fitness' | 'web_tools' | 'loans' | 'healthcare';
+  setReferenceCategoryFilter: (filter: 'all' | 'cafes' | 'restaurants' | 'travel' | 'salon' | 'jewellery' | 'beauty_cosmetics' | 'gym_fitness' | 'web_tools' | 'loans' | 'healthcare') => void;
   categoryPickerOpen: boolean;
   setCategoryPickerOpen: (open: boolean) => void;
   openCategoryPicker: () => void;
@@ -618,7 +638,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [activeSiteSlug, setActiveSiteSlug] = useState<string | null>(null);
   const [activeCitySlug, setActiveCitySlug] = useState<string>('delhi');
   const [demoCategoryFilter, setDemoCategoryFilter] = useState<string | null>(null);
-  const [referenceCategoryFilter, setReferenceCategoryFilter] = useState<'all' | 'cafes' | 'restaurants' | 'travel' | 'salon' | 'jewellery' | 'beauty_cosmetics' | 'gym_fitness' | 'web_tools'>('all');
+  const [referenceCategoryFilter, setReferenceCategoryFilter] = useState<'all' | 'cafes' | 'restaurants' | 'travel' | 'salon' | 'jewellery' | 'beauty_cosmetics' | 'gym_fitness' | 'web_tools' | 'loans' | 'healthcare'>('all');
   const [categoryPickerOpen, setCategoryPickerOpen] = useState<boolean>(false);
   const openCategoryPicker = () => setCategoryPickerOpen(true);
   const [builderEditSiteId, setBuilderEditSiteId] = useState<string | null>(null);
@@ -909,6 +929,18 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       } else if (raw === 'luxespace-htx' || raw === 'luxespace' || raw === 'luxespacehtx' || raw === 'luxespace-venue' || raw === 'site-59' || raw === 'site/59' || raw === 'references/luxespacehtx' || raw === 'site/luxespace-htx') {
         setActiveViewInternal('luxespace-htx');
         setActiveSiteSlug('luxespace-htx');
+      } else if (raw === 'skinsciene' || raw === 'skinsciene-naturals' || raw === 'skinscienenaturals' || raw === '66-skinsciene-naturals' || raw === 'portfolio/66-skinsciene-naturals' || raw === 'portfolio/skinsciene-naturals' || raw === 'portfolio/skinsciene' || raw === 'portfolio/65-skinsciene-naturals' || raw === 'site-66' || raw === 'site/66' || raw === 'demo-66' || raw === 'demo/skinsciene' || raw === 'references/skinsciene' || raw === 'site/66-skinsciene-naturals' || raw === 'site/skinsciene-naturals' || raw === 'site/skinsciene' || raw === 'dermatology' || raw === 'skin-clinic' || raw === 'skinscienedemo.in') {
+        setActiveViewInternal('skinsciene-naturals');
+        setActiveSiteSlug('66-skinsciene-naturals');
+      } else if (raw === 'medicareplus' || raw === '65-medicareplus-hospital' || raw === 'portfolio/65-medicareplus-hospital' || raw === 'portfolio/medicareplus-hospital' || raw === 'portfolio/medicareplus' || raw === 'site-65' || raw === 'site/65' || raw === 'demo-65' || raw === 'demo/medicareplus' || raw === 'references/medicareplus' || raw === 'site/65-medicareplus-hospital' || raw === 'site/medicareplus-hospital' || raw === 'site/medicareplus' || raw === 'medicareplus-hospital' || raw === 'medicareplusdemo.in') {
+        setActiveViewInternal('medicareplus');
+        setActiveSiteSlug('65-medicareplus-hospital');
+      } else if (raw === 'clinicbypeople' || raw === '64-clinicbypeople' || raw === 'portfolio/64-clinicbypeople' || raw === 'portfolio/clinicbypeople' || raw === 'site-64' || raw === 'site/64' || raw === 'demo-64' || raw === 'demo/clinicbypeople' || raw === 'references/clinicbypeople' || raw === 'site/64-clinicbypeople' || raw === 'site/clinicbypeople') {
+        setActiveViewInternal('clinicbypeople');
+        setActiveSiteSlug('64-clinicbypeople');
+      } else if (raw === 'group-ach' || raw === 'group-ach-loan-solutions' || raw === 'portfolio/group-ach-loan-solutions' || raw === 'portfolio/group-ach' || raw === 'site-63' || raw === 'site/63' || raw === 'demo-63' || raw === 'demo/group-ach' || raw === 'achlinks' || raw === 'achlinks.in' || raw === 'references/group-ach' || raw === 'site/group-ach-loan-solutions' || raw === 'site/group-ach') {
+        setActiveViewInternal('group-ach');
+        setActiveSiteSlug('group-ach');
       } else if (raw === 'maheshwari' || raw === 'maheshwariandco' || raw === 'maheshwari-co' || raw === 'site-62' || raw === 'site/62' || raw === 'references/maheshwari' || raw === 'site/maheshwari' || raw === 'maheshwariandco.com') {
         setActiveViewInternal('maheshwari');
         setActiveSiteSlug('maheshwari');
@@ -981,6 +1013,18 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       } else {
         window.location.hash = '/demo-websites';
       }
+    } else if (view === 'skinsciene-naturals') {
+      setActiveSiteSlug('66-skinsciene-naturals');
+      window.location.hash = '/portfolio/66-skinsciene-naturals';
+    } else if (view === 'medicareplus') {
+      setActiveSiteSlug('65-medicareplus-hospital');
+      window.location.hash = '/portfolio/65-medicareplus-hospital';
+    } else if (view === 'clinicbypeople') {
+      setActiveSiteSlug('64-clinicbypeople');
+      window.location.hash = '/portfolio/64-clinicbypeople';
+    } else if (view === 'group-ach') {
+      setActiveSiteSlug('group-ach');
+      window.location.hash = '/portfolio/group-ach-loan-solutions';
     } else if (view === 'home') {
       setActiveSiteSlug(null);
       window.location.hash = '/';
@@ -1359,7 +1403,23 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       'dreamtotravels': 'dream-travels',
       'dream-to-travels': 'dream-travels',
       'tour-travel': 'dream-travels',
-      'auravoyage': 'dream-travels'
+      'auravoyage': 'dream-travels',
+      'clinicbypeople': '64-clinicbypeople',
+      'clinic-by-people': '64-clinicbypeople',
+      '64-clinicbypeople': '64-clinicbypeople',
+      'clinic': '64-clinicbypeople',
+      'medicareplus': '65-medicareplus-hospital',
+      'medicare-plus': '65-medicareplus-hospital',
+      'medicareplus-hospital': '65-medicareplus-hospital',
+      '65-medicareplus-hospital': '65-medicareplus-hospital',
+      'hospital': '65-medicareplus-hospital',
+      'skinsciene': '66-skinsciene-naturals',
+      'skinsciene-naturals': '66-skinsciene-naturals',
+      'skinscienenaturals': '66-skinsciene-naturals',
+      '66-skinsciene-naturals': '66-skinsciene-naturals',
+      '65-skinsciene-naturals': '66-skinsciene-naturals',
+      'dermatology': '66-skinsciene-naturals',
+      'skin-clinic': '66-skinsciene-naturals'
     };
     const target = aliasMap[clean] || clean;
     const found = websites.find(w => (w?.slug && (w.slug.toLowerCase() === clean || w.slug.toLowerCase() === target)) || (w?.id && (w.id.toLowerCase() === clean || w.id.toLowerCase() === target))) ||

@@ -67,11 +67,16 @@ import { SaveWeb2ZipApp } from './components/saveweb2zip/SaveWeb2ZipApp';
 import { LawLinksApp } from './components/lawlinks/LawLinksApp';
 import { MaheshwariApp } from './components/maheshwari/MaheshwariApp';
 import { RaozMotorsApp } from './components/raozmotors/RaozMotorsApp';
+import { GroupAchApp } from './components/groupach/GroupAchApp';
+import { ClinicByPeopleApp } from './components/clinicbypeople/ClinicByPeopleApp';
+import { MedicarePlusApp } from './components/medicareplus/MedicarePlusApp';
+import { SkinScieneApp } from './components/skinsciene/SkinScieneApp';
 
 function AppContent() {
   const {
     activeView,
     activeCitySlug,
+    activeSiteSlug,
     setActiveView,
     categoryPickerOpen,
     setCategoryPickerOpen,
@@ -138,6 +143,18 @@ function AppContent() {
   }
 
   if (activeView === 'site') {
+    if (activeSiteSlug === '66-skinsciene-naturals' || activeSiteSlug === 'skinsciene-naturals' || activeSiteSlug === 'skinsciene') {
+      return <SkinScieneApp onBackToHub={() => setActiveView('demo-websites')} />;
+    }
+    if (activeSiteSlug === '65-medicareplus-hospital' || activeSiteSlug === 'medicareplus' || activeSiteSlug === 'medicareplus-hospital') {
+      return <MedicarePlusApp onBackToHub={() => setActiveView('demo-websites')} />;
+    }
+    if (activeSiteSlug === '64-clinicbypeople' || activeSiteSlug === 'clinicbypeople') {
+      return <ClinicByPeopleApp onBackToHub={() => setActiveView('demo-websites')} />;
+    }
+    if (activeSiteSlug === 'group-ach' || activeSiteSlug === 'group-ach-loan-solutions') {
+      return <GroupAchApp onBackToHub={() => setActiveView('demo-websites')} />;
+    }
     return <SiteRenderer />;
   }
 
@@ -271,6 +288,22 @@ function AppContent() {
 
   if (activeView === 'maheshwari') {
     return <MaheshwariApp onBackToHub={() => setActiveView('home')} />;
+  }
+
+  if (activeView === 'group-ach') {
+    return <GroupAchApp onBackToHub={() => setActiveView('demo-websites')} />;
+  }
+
+  if (activeView === 'clinicbypeople') {
+    return <ClinicByPeopleApp onBackToHub={() => setActiveView('demo-websites')} />;
+  }
+
+  if (activeView === 'skinsciene-naturals') {
+    return <SkinScieneApp onBackToHub={() => setActiveView('demo-websites')} />;
+  }
+
+  if (activeView === 'medicareplus') {
+    return <MedicarePlusApp onBackToHub={() => setActiveView('demo-websites')} />;
   }
 
   if (activeView === 'raoz-motors') {
