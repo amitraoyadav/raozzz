@@ -71,6 +71,8 @@ import { GroupAchApp } from './components/groupach/GroupAchApp';
 import { ClinicByPeopleApp } from './components/clinicbypeople/ClinicByPeopleApp';
 import { MedicarePlusApp } from './components/medicareplus/MedicarePlusApp';
 import { SkinScieneApp } from './components/skinsciene/SkinScieneApp';
+import { LivintoApp } from './components/livinto/LivintoApp';
+import { DevdasApp } from './components/devdas/DevdasApp';
 
 function AppContent() {
   const {
@@ -143,6 +145,12 @@ function AppContent() {
   }
 
   if (activeView === 'site') {
+    if (activeSiteSlug === '68-devdas-wedding' || activeSiteSlug === 'devdas-wedding' || activeSiteSlug === '68-devdas' || activeSiteSlug === 'devdas') {
+      return <DevdasApp onBackToHub={() => setActiveView('demo-websites')} />;
+    }
+    if (activeSiteSlug === '67-livinto-interiors' || activeSiteSlug === 'livinto-interiors' || activeSiteSlug === '67-livinto' || activeSiteSlug === 'livinto') {
+      return <LivintoApp onBackToHub={() => setActiveView('demo-websites')} />;
+    }
     if (activeSiteSlug === '66-skinsciene-naturals' || activeSiteSlug === 'skinsciene-naturals' || activeSiteSlug === 'skinsciene') {
       return <SkinScieneApp onBackToHub={() => setActiveView('demo-websites')} />;
     }
@@ -296,6 +304,14 @@ function AppContent() {
 
   if (activeView === 'clinicbypeople') {
     return <ClinicByPeopleApp onBackToHub={() => setActiveView('demo-websites')} />;
+  }
+
+  if (activeView === 'devdas-wedding') {
+    return <DevdasApp onBackToHub={() => setActiveView('demo-websites')} />;
+  }
+
+  if (activeView === 'livinto-interiors') {
+    return <LivintoApp onBackToHub={() => setActiveView('demo-websites')} />;
   }
 
   if (activeView === 'skinsciene-naturals') {

@@ -57,7 +57,9 @@ export type AppView =
   | 'group-ach'
   | 'clinicbypeople'
   | 'medicareplus'
-  | 'skinsciene-naturals';
+  | 'skinsciene-naturals'
+  | 'livinto-interiors'
+  | 'devdas-wedding';
 
 import { TWOD_WEBSITE } from '../data/twoDCafeData';
 import { BLUE_TOKAI_WEBSITE } from '../data/blueTokaiData';
@@ -125,6 +127,16 @@ import { GROUP_ACH_WEBSITE } from '../data/groupAchData';
 import { CLINICBYPEOPLE_WEBSITE } from '../data/clinicByPeopleData';
 import { MEDICAREPLUS_WEBSITE } from '../data/medicarePlusData';
 import { SKINSCIENE_WEBSITE } from '../data/skinScieneData';
+import { LIVINTO_WEBSITE } from '../data/livintoInteriorsData';
+import { DEVDAS_WEBSITE } from '../data/devdasWeddingData';
+
+export const ALL_DEVDAS_WEBSITES: BusinessWebsite[] = [
+  DEVDAS_WEBSITE
+];
+
+export const ALL_INTERIOR_WEBSITES: BusinessWebsite[] = [
+  LIVINTO_WEBSITE
+];
 
 export const ALL_HEALTHCARE_WEBSITES: BusinessWebsite[] = [
   CLINICBYPEOPLE_WEBSITE,
@@ -260,7 +272,9 @@ export const ALL_57_COLLECTION_WEBSITES: BusinessWebsite[] = [
   ...ALL_DESTINATION_WEDDINGS_WEBSITES,
   ...ALL_WEB_TOOLS_WEBSITES,
   ...ALL_LEGAL_WEBSITES,
-  ...ALL_HEALTHCARE_WEBSITES
+  ...ALL_HEALTHCARE_WEBSITES,
+  ...ALL_INTERIOR_WEBSITES,
+  ...ALL_DEVDAS_WEBSITES
 ];
 
 export const ALL_65_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_57_COLLECTION_WEBSITES;
@@ -929,6 +943,12 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       } else if (raw === 'luxespace-htx' || raw === 'luxespace' || raw === 'luxespacehtx' || raw === 'luxespace-venue' || raw === 'site-59' || raw === 'site/59' || raw === 'references/luxespacehtx' || raw === 'site/luxespace-htx') {
         setActiveViewInternal('luxespace-htx');
         setActiveSiteSlug('luxespace-htx');
+      } else if (raw === 'devdas' || raw === 'devdas-wedding' || raw === 'devdaswedding' || raw === '68-devdas-wedding' || raw === '68-devdas' || raw === 'portfolio/68-devdas-wedding' || raw === 'portfolio/68-devdas' || raw === 'portfolio/devdas' || raw === 'site-68' || raw === 'site/68' || raw === 'demo-68' || raw === 'demo/devdas' || raw === 'references/devdas' || raw === 'site/68-devdas-wedding' || raw === 'site/devdas-wedding' || raw === 'site/devdas' || raw === 'destination-wedding' || raw === 'wedding-planner' || raw === 'devdaswedding.in') {
+        setActiveViewInternal('devdas-wedding');
+        setActiveSiteSlug('68-devdas-wedding');
+      } else if (raw === 'livinto' || raw === 'livinto-interiors' || raw === 'livintointeriors' || raw === '67-livinto-interiors' || raw === '67-livinto' || raw === 'portfolio/67-livinto-interiors' || raw === 'portfolio/67-livinto' || raw === 'portfolio/livinto' || raw === 'site-67' || raw === 'site/67' || raw === 'demo-67' || raw === 'demo/livinto' || raw === 'references/livinto' || raw === 'site/67-livinto-interiors' || raw === 'site/livinto-interiors' || raw === 'site/livinto' || raw === 'interior-design' || raw === 'interior' || raw === 'modular-kitchen' || raw === 'livintointeriors.com') {
+        setActiveViewInternal('livinto-interiors');
+        setActiveSiteSlug('67-livinto-interiors');
       } else if (raw === 'skinsciene' || raw === 'skinsciene-naturals' || raw === 'skinscienenaturals' || raw === '66-skinsciene-naturals' || raw === 'portfolio/66-skinsciene-naturals' || raw === 'portfolio/skinsciene-naturals' || raw === 'portfolio/skinsciene' || raw === 'portfolio/65-skinsciene-naturals' || raw === 'site-66' || raw === 'site/66' || raw === 'demo-66' || raw === 'demo/skinsciene' || raw === 'references/skinsciene' || raw === 'site/66-skinsciene-naturals' || raw === 'site/skinsciene-naturals' || raw === 'site/skinsciene' || raw === 'dermatology' || raw === 'skin-clinic' || raw === 'skinscienedemo.in') {
         setActiveViewInternal('skinsciene-naturals');
         setActiveSiteSlug('66-skinsciene-naturals');
@@ -1013,6 +1033,12 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       } else {
         window.location.hash = '/demo-websites';
       }
+    } else if (view === 'devdas-wedding') {
+      setActiveSiteSlug('68-devdas-wedding');
+      window.location.hash = '/portfolio/68-devdas-wedding';
+    } else if (view === 'livinto-interiors') {
+      setActiveSiteSlug('67-livinto-interiors');
+      window.location.hash = '/portfolio/67-livinto-interiors';
     } else if (view === 'skinsciene-naturals') {
       setActiveSiteSlug('66-skinsciene-naturals');
       window.location.hash = '/portfolio/66-skinsciene-naturals';
@@ -1419,7 +1445,21 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       '66-skinsciene-naturals': '66-skinsciene-naturals',
       '65-skinsciene-naturals': '66-skinsciene-naturals',
       'dermatology': '66-skinsciene-naturals',
-      'skin-clinic': '66-skinsciene-naturals'
+      'skin-clinic': '66-skinsciene-naturals',
+      'livinto': '67-livinto-interiors',
+      'livinto-interiors': '67-livinto-interiors',
+      'livintointeriors': '67-livinto-interiors',
+      '67-livinto-interiors': '67-livinto-interiors',
+      '67-livinto': '67-livinto-interiors',
+      'interior-design': '67-livinto-interiors',
+      'modular-kitchen': '67-livinto-interiors',
+      'devdas': '68-devdas-wedding',
+      'devdas-wedding': '68-devdas-wedding',
+      'devdaswedding': '68-devdas-wedding',
+      '68-devdas-wedding': '68-devdas-wedding',
+      '68-devdas': '68-devdas-wedding',
+      'destination-wedding': '68-devdas-wedding',
+      'wedding-planner': '68-devdas-wedding'
     };
     const target = aliasMap[clean] || clean;
     const found = websites.find(w => (w?.slug && (w.slug.toLowerCase() === clean || w.slug.toLowerCase() === target)) || (w?.id && (w.id.toLowerCase() === clean || w.id.toLowerCase() === target))) ||

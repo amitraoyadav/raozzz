@@ -812,10 +812,36 @@ export const ALL_29_REFERENCE_SITES: ReferenceSiteInfo[] = [
     concept: "SkinSciene Naturals · Premium Skin, Hair & Aesthetic Clinic · 120+ MD Dermatologists, 36+ Clinics in 10 Cities, US-FDA Lasers, Before/After Slider & Online Booking",
     themeColor: '#064E3B',
     badge: 'Site 66 · Beauty / Dermatology / Aesthetic Clinic'
+  },
+  {
+    id: 'livinto-interiors',
+    num: 67,
+    category: 'real_estate',
+    name: 'LIVINTO HOME INTERIORS',
+    originalUrl: 'https://dlifeinteriors.com/',
+    slug: '67-livinto-interiors',
+    referencePath: '/portfolio/67-livinto-interiors',
+    concept: "Livinto Home Interiors · Premium Home Interior Design & Execution · 29 Direct Showrooms, 350k Sq Ft German Factory, 40-Day Handover & 10-Yr Warranty",
+    themeColor: '#814882',
+    badge: 'Site 67 · Interior Design / Modular Living'
+  },
+  {
+    id: 'devdas-wedding',
+    num: 68,
+    category: 'destination_weddings',
+    name: 'DEVDAS WEDDING',
+    originalUrl: 'https://www.diwas.in/',
+    slug: '68-devdas-wedding',
+    referencePath: '/portfolio/68-devdas-wedding',
+    concept: "Devdas Wedding · Luxury Destination Wedding Planners in India & Worldwide · Palace Weddings in Rajasthan, Beachfront in Goa, Wilderness in Jim Corbett, Cost Estimator & Transparent Fees",
+    themeColor: '#7A1C30',
+    badge: 'Site 68 · Luxury Destination Wedding Planners'
   }
 ];
 
-export const ALL_66_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_29_REFERENCE_SITES;
+export const ALL_68_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_29_REFERENCE_SITES;
+export const ALL_67_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_68_REFERENCE_SITES;
+export const ALL_66_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_67_REFERENCE_SITES;
 export const ALL_65_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_66_REFERENCE_SITES;
 export const ALL_64_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_65_REFERENCE_SITES;
 export const ALL_63_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_64_REFERENCE_SITES;
@@ -860,7 +886,8 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
 
   const currentSite =
     ALL_60_REFERENCE_SITES.find(s => s.id === currentSiteId || s.slug === currentSiteId) ||
-    ALL_60_REFERENCE_SITES.find(s => s.id === 'lawlinks') ||
+    ALL_60_REFERENCE_SITES.find(s => s.id === 'devdas-wedding') ||
+    ALL_60_REFERENCE_SITES.find(s => s.id === 'livinto-interiors') ||
     ALL_60_REFERENCE_SITES.find(s => s.id === 'saveweb2zip') ||
     ALL_60_REFERENCE_SITES.find(s => s.id === 'luxespace-htx') ||
     ALL_60_REFERENCE_SITES.find(s => s.id === 'all-in-one-destination-weddings') ||
@@ -882,7 +909,11 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
 
   const handleSelectSite = (site: ReferenceSiteInfo) => {
     setModalOpen(false);
-    if (site.id === 'skinsciene-naturals' || site.slug === '66-skinsciene-naturals' || site.slug === 'skinsciene-naturals' || site.slug === 'skinsciene') {
+    if (site.id === 'devdas-wedding' || site.slug === '68-devdas-wedding' || site.slug === 'devdas-wedding' || site.slug === 'devdas') {
+      setActiveView('devdas-wedding');
+    } else if (site.id === 'livinto-interiors' || site.slug === '67-livinto-interiors' || site.slug === 'livinto-interiors' || site.slug === 'livinto') {
+      setActiveView('livinto-interiors');
+    } else if (site.id === 'skinsciene-naturals' || site.slug === '66-skinsciene-naturals' || site.slug === 'skinsciene-naturals' || site.slug === 'skinsciene') {
       setActiveView('skinsciene-naturals');
     } else if (site.id === 'medicareplus' || site.slug === '65-medicareplus-hospital' || site.slug === 'medicareplus' || site.slug === 'medicareplus-hospital') {
       setActiveView('medicareplus');
