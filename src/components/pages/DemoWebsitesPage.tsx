@@ -739,6 +739,9 @@ export const DemoWebsitesPage: React.FC<DemoWebsitesPageProps> = ({ onOpenOrderM
             ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredWebsites.map(site => {
+                const isUtsav = site.slug === '69-utsav-luxe' || site.slug === 'utsav-luxe' || site.slug === 'utsav' || site.slug === '69-utsav' || site.id === 'site-69' || site.id === 'site-utsav-69';
+                const isPsr = site.slug === '70-psr-venture-weddings' || site.slug === 'psr-venture-weddings' || site.slug === 'psr' || site.slug === '70-psr' || site.id === 'site-psr-venture-weddings-70';
+                const isDevdas = site.slug === '68-devdas-wedding' || site.slug === 'devdas-wedding' || site.slug === 'devdas' || site.slug === '68-devdas' || site.id === 'site-devdas-68';
                 const isSkinSciene = site.slug === '66-skinsciene-naturals' || site.slug === 'skinsciene-naturals' || site.slug === 'skinsciene' || site.id === 'site-skinsciene-66';
                 const isMedicarePlus = site.slug === '65-medicareplus-hospital' || site.slug === 'medicareplus' || site.slug === 'medicareplus-hospital' || site.id === 'site-medicareplus-65';
                 const isGroupAch = site.slug === 'group-ach' || site.slug === 'group-ach-loan-solutions' || site.id === 'site-group-ach-63';
@@ -751,7 +754,13 @@ export const DemoWebsitesPage: React.FC<DemoWebsitesPageProps> = ({ onOpenOrderM
                   {/* Cover */}
                   <div
                     onClick={() => {
-                      if (isSkinSciene) {
+                      if (isUtsav) {
+                        setActiveView('utsav-luxe');
+                      } else if (isPsr) {
+                        setActiveView('psr-venture-weddings');
+                      } else if (isDevdas) {
+                        setActiveView('devdas-wedding');
+                      } else if (isSkinSciene) {
                         setActiveView('skinsciene-naturals');
                       } else if (isMedicarePlus) {
                         setActiveView('medicareplus');
@@ -973,7 +982,13 @@ export const DemoWebsitesPage: React.FC<DemoWebsitesPageProps> = ({ onOpenOrderM
                     <div className="pt-4 border-t border-slate-100 flex items-center gap-2">
                       <button
                         onClick={() => {
-                          if (isSkinSciene) {
+                          if (isUtsav) {
+                            setActiveView('utsav-luxe');
+                          } else if (isPsr) {
+                            setActiveView('psr-venture-weddings');
+                          } else if (isDevdas) {
+                            setActiveView('devdas-wedding');
+                          } else if (isSkinSciene) {
                             setActiveView('skinsciene-naturals');
                           } else if (isMedicarePlus) {
                             setActiveView('medicareplus');
@@ -988,12 +1003,18 @@ export const DemoWebsitesPage: React.FC<DemoWebsitesPageProps> = ({ onOpenOrderM
                         className="flex-1 min-h-[44px] px-3.5 py-2 rounded-xl bg-[#14162B] hover:bg-[#00A896] text-white text-xs font-bold transition-colors flex items-center justify-center gap-1.5 cursor-pointer shadow-xs"
                       >
                         <ExternalLink className="w-3.5 h-3.5 text-amber-400" />
-                        <span>{isSkinSciene || isMedicarePlus || isClinicByPeople || isGroupAch ? 'VIEW PROJECT' : (site.bookingCtaLabel || 'Open Website')}</span>
+                        <span>{isUtsav || isPsr || isDevdas || isSkinSciene || isMedicarePlus || isClinicByPeople || isGroupAch ? 'VIEW PROJECT' : (site.bookingCtaLabel || 'Open Website')}</span>
                       </button>
 
                       <button
                         onClick={() => {
-                          if (isSkinSciene) {
+                          if (isUtsav) {
+                            setActiveView('utsav-luxe');
+                          } else if (isPsr) {
+                            setActiveView('psr-venture-weddings');
+                          } else if (isDevdas) {
+                            setActiveView('devdas-wedding');
+                          } else if (isSkinSciene) {
                             setActiveView('skinsciene-naturals');
                           } else if (isMedicarePlus) {
                             setActiveView('medicareplus');
@@ -1006,10 +1027,10 @@ export const DemoWebsitesPage: React.FC<DemoWebsitesPageProps> = ({ onOpenOrderM
                           }
                         }}
                         className="min-h-[44px] px-3 py-2 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-slate-800 text-xs font-bold transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
-                        title={isSkinSciene || isMedicarePlus ? 'Launch Interactive Demo' : 'Interactive Device Preview'}
+                        title={isUtsav || isPsr || isDevdas || isSkinSciene || isMedicarePlus ? 'Launch Interactive Demo' : 'Interactive Device Preview'}
                       >
                         <Eye className="w-4 h-4 text-slate-500" />
-                        <span className="hidden sm:inline">{isSkinSciene || isMedicarePlus ? 'LAUNCH DEMO' : 'Preview'}</span>
+                        <span className="hidden sm:inline">{isUtsav || isPsr || isDevdas || isSkinSciene || isMedicarePlus ? 'LAUNCH DEMO' : 'Preview'}</span>
                       </button>
                     </div>
                   </div>

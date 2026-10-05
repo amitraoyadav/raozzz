@@ -73,6 +73,9 @@ import { MedicarePlusApp } from './components/medicareplus/MedicarePlusApp';
 import { SkinScieneApp } from './components/skinsciene/SkinScieneApp';
 import { LivintoApp } from './components/livinto/LivintoApp';
 import { DevdasApp } from './components/devdas/DevdasApp';
+import { PsrVentureWeddingsApp } from './components/psrventureweddings/PsrVentureWeddingsApp';
+import { UtsavLuxeApp } from './components/utsavluxe/UtsavLuxeApp';
+import { RaozyWeddingPlannerApp } from './components/raozyweddingplanner/RaozyWeddingPlannerApp';
 
 function AppContent() {
   const {
@@ -145,6 +148,9 @@ function AppContent() {
   }
 
   if (activeView === 'site') {
+    if (activeSiteSlug === '70-psr-venture-weddings' || activeSiteSlug === 'psr-venture-weddings' || activeSiteSlug === '70-psr' || activeSiteSlug === 'psr' || activeSiteSlug === 'psr-weddings') {
+      return <PsrVentureWeddingsApp onBackToHub={() => setActiveView('demo-websites')} />;
+    }
     if (activeSiteSlug === '68-devdas-wedding' || activeSiteSlug === 'devdas-wedding' || activeSiteSlug === '68-devdas' || activeSiteSlug === 'devdas') {
       return <DevdasApp onBackToHub={() => setActiveView('demo-websites')} />;
     }
@@ -304,6 +310,18 @@ function AppContent() {
 
   if (activeView === 'clinicbypeople') {
     return <ClinicByPeopleApp onBackToHub={() => setActiveView('demo-websites')} />;
+  }
+
+  if (activeView === 'raozy-wedding-planner' || activeView === '71-raozy-wedding-planner') {
+    return <RaozyWeddingPlannerApp onBackToHub={() => setActiveView('demo-websites')} />;
+  }
+
+  if (activeView === 'psr-venture-weddings' || activeView === '70-psr-venture-weddings') {
+    return <PsrVentureWeddingsApp onBackToHub={() => setActiveView('demo-websites')} />;
+  }
+
+  if (activeView === 'utsav-luxe' || activeView === '69-utsav-luxe') {
+    return <UtsavLuxeApp onBackToHub={() => setActiveView('demo-websites')} />;
   }
 
   if (activeView === 'devdas-wedding') {

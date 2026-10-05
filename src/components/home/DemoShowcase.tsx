@@ -524,6 +524,8 @@ export const DemoShowcase: React.FC<DemoShowcaseProps> = ({ onOpenOrderModal }) 
               {filteredWebsites.map(site => {
                 const catToken = getCategoryToken(site.category);
                 const catMeta = CATEGORY_INFO[site.category] || CATEGORY_INFO.cafe;
+                const isUtsav = site.slug === '69-utsav-luxe' || site.slug === 'utsav-luxe' || site.slug === 'utsav' || site.slug === '69-utsav' || site.id === 'site-69' || site.id === 'site-utsav-69';
+                const isPsr = site.slug === '70-psr-venture-weddings' || site.slug === 'psr-venture-weddings' || site.slug === 'psr' || site.slug === '70-psr' || site.id === 'site-psr-venture-weddings-70';
                 const isDevdas = site.slug === '68-devdas-wedding' || site.slug === 'devdas-wedding' || site.slug === 'devdas' || site.slug === '68-devdas' || site.id === 'site-devdas-68';
                 const isLivinto = site.slug === '67-livinto-interiors' || site.slug === 'livinto-interiors' || site.slug === 'livinto' || site.slug === '67-livinto' || site.id === 'site-livinto-67';
                 const isSkinSciene = site.slug === '66-skinsciene-naturals' || site.slug === 'skinsciene-naturals' || site.slug === 'skinsciene' || site.id === 'site-skinsciene-66';
@@ -540,7 +542,11 @@ export const DemoShowcase: React.FC<DemoShowcaseProps> = ({ onOpenOrderModal }) 
                   {/* Template Screenshot / Preview Image */}
                   <div
                     onClick={() => {
-                      if (isDevdas) {
+                      if (isUtsav) {
+                        setActiveView('utsav-luxe');
+                      } else if (isPsr) {
+                        setActiveView('psr-venture-weddings');
+                      } else if (isDevdas) {
                         setActiveView('devdas-wedding');
                       } else if (isLivinto) {
                         setActiveView('livinto-interiors');
@@ -558,7 +564,81 @@ export const DemoShowcase: React.FC<DemoShowcaseProps> = ({ onOpenOrderModal }) 
                     }}
                     className="relative h-48 sm:h-52 bg-slate-100 overflow-hidden cursor-pointer"
                   >
-                    {isDevdas ? (
+                    {isUtsav ? (
+                      /* Polished authentic website mockup of UTSAV LUXE (Site 69) */
+                      <div className="w-full h-full bg-[#180A0A] p-3 text-white flex flex-col justify-between relative overflow-hidden group-hover:scale-105 transition-transform duration-300 font-sans">
+                        <div className="absolute inset-0 bg-gradient-to-br from-[#E05A47]/30 via-transparent to-amber-950/40 pointer-events-none" />
+                        <div className="relative z-10 flex items-center justify-between border-b border-white/10 pb-2">
+                          <div className="flex items-center gap-1.5">
+                            <span className="w-5 h-5 rounded-md bg-[#E05A47] text-white flex items-center justify-center text-[10px] font-serif font-black">
+                              U
+                            </span>
+                            <span className="font-serif font-bold tracking-wider text-[11px] uppercase text-white">
+                              UTSAV<span className="text-[#FF8D7B] font-light ml-0.5">LUXE</span>
+                            </span>
+                          </div>
+                          <span className="text-[9px] font-mono text-emerald-400 bg-emerald-950/80 px-1.5 py-0.5 rounded border border-emerald-800">
+                            3D CAD VERIFIED
+                          </span>
+                        </div>
+
+                        <div className="relative z-10 my-auto text-center py-1">
+                          <span className="text-[9px] font-bold uppercase tracking-widest text-[#FF8D7B]">
+                            3D Decor &amp; Turnkey Wedding Platform
+                          </span>
+                          <h4 className="font-serif text-sm font-bold leading-tight mt-0.5 text-white">
+                            Bengaluru • Delhi • Mumbai • Hyderabad • Jaipur • Goa
+                          </h4>
+                          <div className="mt-2 flex items-center justify-center gap-1 text-[9px] text-stone-200">
+                            <span className="bg-white/10 px-1.5 py-0.5 rounded">Photorealistic 3D</span>
+                            <span className="bg-white/10 px-1.5 py-0.5 rounded">0% Markups</span>
+                            <span className="bg-white/10 px-1.5 py-0.5 rounded">Cost Estimator</span>
+                          </div>
+                        </div>
+
+                        <div className="relative z-10 flex items-center justify-between text-[9px] text-stone-300 pt-1 border-t border-white/10">
+                          <span>3,200+ Weddings (4.94★)</span>
+                          <span className="text-[#FF8D7B] font-bold">Interactive Calculator</span>
+                        </div>
+                      </div>
+                    ) : isPsr ? (
+                      /* Polished authentic website mockup of PSR Venture Weddings */
+                      <div className="w-full h-full bg-[#120306] p-3 text-white flex flex-col justify-between relative overflow-hidden group-hover:scale-105 transition-transform duration-300 font-serif">
+                        <div className="absolute inset-0 bg-gradient-to-br from-amber-600/25 via-transparent to-red-950/40 pointer-events-none" />
+                        <div className="relative z-10 flex items-center justify-between border-b border-[#C5A059]/20 pb-2">
+                          <div className="flex items-center gap-1.5">
+                            <span className="w-5 h-5 rounded-lg bg-[#7A1B28] text-[#DFBE78] flex items-center justify-center text-[10px] font-black border border-[#C5A059]/50">
+                              PS
+                            </span>
+                            <span className="font-serif font-black tracking-wider text-[11px] uppercase text-white">
+                              PS <span className="text-[#DFBE78] font-normal italic">WEDDINGS</span>
+                            </span>
+                          </div>
+                          <span className="text-[9px] font-mono text-[#DFBE78] bg-[#7A1B28]/80 px-1.5 py-0.5 rounded border border-[#C5A059]/40">
+                            PALACE &amp; RESORT
+                          </span>
+                        </div>
+
+                        <div className="relative z-10 my-auto text-center py-1">
+                          <span className="text-[9px] font-bold uppercase tracking-widest text-[#DFBE78]">
+                            Luxury Destination Weddings in India
+                          </span>
+                          <h4 className="font-serif text-sm font-bold leading-tight mt-0.5 text-white">
+                            Udaipur • Jaipur • Goa • Kerala • Delhi NCR
+                          </h4>
+                          <div className="mt-2 flex items-center justify-center gap-1 text-[9px] text-stone-200">
+                            <span className="bg-white/10 px-1.5 py-0.5 rounded">14+ Palaces</span>
+                            <span className="bg-white/10 px-1.5 py-0.5 rounded">Turnkey Decor</span>
+                            <span className="bg-white/10 px-1.5 py-0.5 rounded">Budget Estimator</span>
+                          </div>
+                        </div>
+
+                        <div className="relative z-10 flex items-center justify-between text-[9px] text-stone-300 pt-1 border-t border-[#C5A059]/20 font-sans">
+                          <span>Royal Lake Mandaps</span>
+                          <span className="text-[#DFBE78] font-bold">Interactive Cost Calculator</span>
+                        </div>
+                      </div>
+                    ) : isDevdas ? (
                       /* Polished authentic website mockup of Devdas Wedding */
                       <div className="w-full h-full bg-[#180A0D] p-3 text-white flex flex-col justify-between relative overflow-hidden group-hover:scale-105 transition-transform duration-300 font-serif">
                         <div className="absolute inset-0 bg-gradient-to-br from-rose-900/40 via-transparent to-amber-950/30 pointer-events-none" />
@@ -970,7 +1050,11 @@ export const DemoShowcase: React.FC<DemoShowcaseProps> = ({ onOpenOrderModal }) 
                 <div className="p-3 bg-[#FAFAF8] border-t border-[#E8E7F0] flex items-center gap-2">
                   <button
                     onClick={() => {
-                      if (isDevdas) {
+                      if (isUtsav) {
+                        setActiveView('utsav-luxe');
+                      } else if (isPsr) {
+                        setActiveView('psr-venture-weddings');
+                      } else if (isDevdas) {
                         setActiveView('devdas-wedding');
                       } else if (isLivinto) {
                         setActiveView('livinto-interiors');
@@ -989,12 +1073,16 @@ export const DemoShowcase: React.FC<DemoShowcaseProps> = ({ onOpenOrderModal }) 
                     className="flex-1 min-h-[44px] px-3.5 py-2 bg-[#14162B] hover:bg-[#4338CA] active:bg-[#3730A3] text-white text-xs font-bold rounded-xl shadow-xs transition-colors cursor-pointer flex items-center justify-center gap-1.5"
                   >
                     <ExternalLink className="w-3.5 h-3.5 text-amber-400" />
-                    <span>{isDevdas || isLivinto || isSkinSciene || isMedicarePlus || isClinicByPeople || isGroupAch ? 'VIEW PROJECT' : (site.bookingCtaLabel || 'View Demo')}</span>
+                    <span>{isUtsav || isPsr || isDevdas || isLivinto || isSkinSciene || isMedicarePlus || isClinicByPeople || isGroupAch ? 'VIEW PROJECT' : (site.bookingCtaLabel || 'View Demo')}</span>
                   </button>
 
                   <button
                     onClick={() => {
-                      if (isDevdas) {
+                      if (isUtsav) {
+                        setActiveView('utsav-luxe');
+                      } else if (isPsr) {
+                        setActiveView('psr-venture-weddings');
+                      } else if (isDevdas) {
                         setActiveView('devdas-wedding');
                       } else if (isLivinto) {
                         setActiveView('livinto-interiors');
@@ -1011,10 +1099,10 @@ export const DemoShowcase: React.FC<DemoShowcaseProps> = ({ onOpenOrderModal }) 
                       }
                     }}
                     className="min-h-[44px] px-3 py-2 bg-white hover:bg-slate-50 border border-[#D5D4E3] active:bg-slate-100 text-slate-800 text-xs font-bold rounded-xl transition-colors cursor-pointer flex items-center justify-center gap-1.5"
-                    title={isDevdas || isLivinto || isSkinSciene || isMedicarePlus ? 'Launch Interactive Demo' : 'Quick Device Preview'}
+                    title={isUtsav || isPsr || isDevdas || isLivinto || isSkinSciene || isMedicarePlus ? 'Launch Interactive Demo' : 'Quick Device Preview'}
                   >
                     <Eye className="w-4 h-4 text-slate-500" />
-                    <span className="hidden xs:inline">{isDevdas || isLivinto || isSkinSciene || isMedicarePlus ? 'LAUNCH DEMO' : 'Preview'}</span>
+                    <span className="hidden xs:inline">{isUtsav || isPsr || isDevdas || isLivinto || isSkinSciene || isMedicarePlus ? 'LAUNCH DEMO' : 'Preview'}</span>
                   </button>
                 </div>
               </div>

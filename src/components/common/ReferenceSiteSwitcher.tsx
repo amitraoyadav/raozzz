@@ -836,10 +836,48 @@ export const ALL_29_REFERENCE_SITES: ReferenceSiteInfo[] = [
     concept: "Devdas Wedding · Luxury Destination Wedding Planners in India & Worldwide · Palace Weddings in Rajasthan, Beachfront in Goa, Wilderness in Jim Corbett, Cost Estimator & Transparent Fees",
     themeColor: '#7A1C30',
     badge: 'Site 68 · Luxury Destination Wedding Planners'
+  },
+  {
+    id: 'utsav-luxe',
+    num: 69,
+    category: 'destination_weddings',
+    name: 'UTSAV LUXE',
+    originalUrl: 'https://www.meragi.com/',
+    slug: '69-utsav-luxe',
+    referencePath: '/portfolio/69-utsav-luxe',
+    concept: "UTSAV LUXE · Next-Gen Full-Stack Wedding Planning & Experiential Decor Platform · In-House 3D CAD Decor Renders, Multi-City Studios (Bengaluru, Delhi, Mumbai, Hyderabad, Jaipur, Goa), Transparent Cost Estimator, Vetted Artisans & 14-Member Operations Squad",
+    themeColor: '#E05A47',
+    badge: 'Site 69 · Tech-Driven Wedding & Decor Platform'
+  },
+  {
+    id: 'psr-venture-weddings',
+    num: 70,
+    category: 'destination_weddings',
+    name: 'PS WEDDINGS',
+    originalUrl: 'https://www.globalweddingvenues.com/destination-wedding-planner-india/',
+    slug: '70-psr-venture-weddings',
+    referencePath: '/portfolio/70-psr-venture-weddings',
+    concept: "PS Weddings · Premier Destination Wedding Planner & Venue Specialist in India · Palaces in Udaipur & Jaipur, Beachfront in Goa, Backwaters in Kerala, Royal Haveli Buyouts & Interactive Cost Calculator",
+    themeColor: '#C5A059',
+    badge: 'Site 70 · Luxury Destination Wedding Planners'
+  },
+  {
+    id: 'raozy-wedding-planner',
+    num: 71,
+    category: 'destination_weddings',
+    name: 'RAOZY WEDDING PLANNER',
+    originalUrl: 'https://dwbytripn.in/',
+    slug: '71-raozy-wedding-planner',
+    referencePath: '/portfolio/71-raozy-wedding-planner',
+    concept: "RAOZY WEDDING PLANNER · India's Premier Bespoke Wedding Planning & In-House Decor Atelier · Capped at 60 Weddings Annually, 25k Sq Ft Gurugram Atelier, 3D CAD Virtual Renders, Direct Farm Florals & 100% Open-Book Fees",
+    themeColor: '#DFC082',
+    badge: 'Site 71 · Bespoke Luxury Wedding Atelier'
   }
 ];
 
-export const ALL_68_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_29_REFERENCE_SITES;
+export const ALL_71_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_29_REFERENCE_SITES;
+export const ALL_70_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_71_REFERENCE_SITES;
+export const ALL_68_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_70_REFERENCE_SITES;
 export const ALL_67_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_68_REFERENCE_SITES;
 export const ALL_66_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_67_REFERENCE_SITES;
 export const ALL_65_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_66_REFERENCE_SITES;
@@ -886,6 +924,8 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
 
   const currentSite =
     ALL_60_REFERENCE_SITES.find(s => s.id === currentSiteId || s.slug === currentSiteId) ||
+    ALL_60_REFERENCE_SITES.find(s => s.id === 'utsav-luxe') ||
+    ALL_60_REFERENCE_SITES.find(s => s.id === 'psr-venture-weddings') ||
     ALL_60_REFERENCE_SITES.find(s => s.id === 'devdas-wedding') ||
     ALL_60_REFERENCE_SITES.find(s => s.id === 'livinto-interiors') ||
     ALL_60_REFERENCE_SITES.find(s => s.id === 'saveweb2zip') ||
@@ -909,7 +949,11 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
 
   const handleSelectSite = (site: ReferenceSiteInfo) => {
     setModalOpen(false);
-    if (site.id === 'devdas-wedding' || site.slug === '68-devdas-wedding' || site.slug === 'devdas-wedding' || site.slug === 'devdas') {
+    if (site.id === 'utsav-luxe' || site.slug === '69-utsav-luxe' || site.slug === 'utsav-luxe' || site.slug === 'utsav') {
+      setActiveView('utsav-luxe');
+    } else if (site.id === 'psr-venture-weddings' || site.slug === '70-psr-venture-weddings' || site.slug === 'psr-venture-weddings' || site.slug === 'psr') {
+      setActiveView('psr-venture-weddings');
+    } else if (site.id === 'devdas-wedding' || site.slug === '68-devdas-wedding' || site.slug === 'devdas-wedding' || site.slug === 'devdas') {
       setActiveView('devdas-wedding');
     } else if (site.id === 'livinto-interiors' || site.slug === '67-livinto-interiors' || site.slug === 'livinto-interiors' || site.slug === 'livinto') {
       setActiveView('livinto-interiors');

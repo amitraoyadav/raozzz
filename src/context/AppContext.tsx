@@ -59,7 +59,13 @@ export type AppView =
   | 'medicareplus'
   | 'skinsciene-naturals'
   | 'livinto-interiors'
-  | 'devdas-wedding';
+  | 'devdas-wedding'
+  | 'utsav-luxe'
+  | '69-utsav-luxe'
+  | 'psr-venture-weddings'
+  | '70-psr-venture-weddings'
+  | 'raozy-wedding-planner'
+  | '71-raozy-wedding-planner';
 
 import { TWOD_WEBSITE } from '../data/twoDCafeData';
 import { BLUE_TOKAI_WEBSITE } from '../data/blueTokaiData';
@@ -129,9 +135,22 @@ import { MEDICAREPLUS_WEBSITE } from '../data/medicarePlusData';
 import { SKINSCIENE_WEBSITE } from '../data/skinScieneData';
 import { LIVINTO_WEBSITE } from '../data/livintoInteriorsData';
 import { DEVDAS_WEBSITE } from '../data/devdasWeddingData';
+import { UTSAV_LUXE_WEBSITE, ALL_UTSAV_WEBSITES } from '../data/utsavLuxeData';
+import { PSR_VENTURE_WEDDINGS_WEBSITE } from '../data/psrWeddingsData';
+import { RAOZY_WEDDING_WEBSITE } from '../data/raozyWeddingData';
 
 export const ALL_DEVDAS_WEBSITES: BusinessWebsite[] = [
   DEVDAS_WEBSITE
+];
+
+export const ALL_UTSAV_WEBSITES_EXPORT: BusinessWebsite[] = ALL_UTSAV_WEBSITES;
+
+export const ALL_PSR_WEBSITES: BusinessWebsite[] = [
+  PSR_VENTURE_WEDDINGS_WEBSITE
+];
+
+export const ALL_RAOZY_WEBSITES: BusinessWebsite[] = [
+  RAOZY_WEDDING_WEBSITE
 ];
 
 export const ALL_INTERIOR_WEBSITES: BusinessWebsite[] = [
@@ -274,9 +293,15 @@ export const ALL_57_COLLECTION_WEBSITES: BusinessWebsite[] = [
   ...ALL_LEGAL_WEBSITES,
   ...ALL_HEALTHCARE_WEBSITES,
   ...ALL_INTERIOR_WEBSITES,
-  ...ALL_DEVDAS_WEBSITES
+  ...ALL_DEVDAS_WEBSITES,
+  ...ALL_UTSAV_WEBSITES,
+  ...ALL_PSR_WEBSITES,
+  ...ALL_RAOZY_WEBSITES
 ];
 
+export const ALL_71_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_57_COLLECTION_WEBSITES;
+export const ALL_70_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_71_COLLECTION_WEBSITES;
+export const ALL_68_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_57_COLLECTION_WEBSITES;
 export const ALL_65_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_57_COLLECTION_WEBSITES;
 export const ALL_64_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_65_COLLECTION_WEBSITES;
 export const ALL_63_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_64_COLLECTION_WEBSITES;
@@ -632,6 +657,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [activeView, setActiveViewInternal] = useState<AppView>(() => {
     if (typeof window !== 'undefined') {
       const hash = window.location.hash.replace('#/', '').replace('#', '').trim().toLowerCase();
+      if (hash === 'raozy-wedding-planner' || hash === '71-raozy-wedding-planner' || hash === 'raozy' || hash === 'dwbytripn' || hash === 'dwbytripn.in' || hash === 'site-71' || hash === '71' || hash === '') return 'raozy-wedding-planner';
+      if (hash === 'utsav-luxe' || hash === '69-utsav-luxe' || hash === 'utsav' || hash === 'utsavluxe' || hash === 'site-69' || hash === '69' || hash === 'meragi') return 'utsav-luxe';
+      if (hash === 'psr-venture-weddings' || hash === '70-psr-venture-weddings' || hash === 'psr' || hash === 'site-70' || hash === '70') return 'psr-venture-weddings';
       if (hash === 'maheshwari' || hash === 'maheshwariandco' || hash === 'maheshwari-co' || hash === 'site-62' || hash === '62' || hash === 'maheshwariandco.com') return 'maheshwari';
       if (hash === 'lawlinks' || hash === 'lawlinks.in' || hash === 'law-links' || hash === 'site-61' || hash === '61' || hash === 'advocates') return 'lawlinks';
       if (hash === 'saveweb2zip' || hash === 'saveweb' || hash === 'web2zip' || hash === 'saveweb2zip.com' || hash === 'site-60' || hash === '60') return 'saveweb2zip';
@@ -943,6 +971,15 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       } else if (raw === 'luxespace-htx' || raw === 'luxespace' || raw === 'luxespacehtx' || raw === 'luxespace-venue' || raw === 'site-59' || raw === 'site/59' || raw === 'references/luxespacehtx' || raw === 'site/luxespace-htx') {
         setActiveViewInternal('luxespace-htx');
         setActiveSiteSlug('luxespace-htx');
+      } else if (raw === 'raozy' || raw === 'raozy-wedding-planner' || raw === 'raozyweddingplanner' || raw === '71-raozy-wedding-planner' || raw === '71-raozy' || raw === 'portfolio/71-raozy-wedding-planner' || raw === 'portfolio/raozy-wedding-planner' || raw === 'portfolio/raozy' || raw === 'site-71' || raw === 'site/71' || raw === 'demo-71' || raw === 'demo/raozy' || raw === 'references/raozy' || raw === 'references/dwbytripn' || raw === 'site/71-raozy-wedding-planner' || raw === 'site/raozy-wedding-planner' || raw === 'dwbytripn' || raw === 'dwbytripn.in') {
+        setActiveViewInternal('raozy-wedding-planner');
+        setActiveSiteSlug('71-raozy-wedding-planner');
+      } else if (raw === 'psr' || raw === 'psr-venture' || raw === 'psr-venture-weddings' || raw === 'psr-weddings' || raw === '70-psr-venture-weddings' || raw === '70-psr' || raw === 'portfolio/70-psr-venture-weddings' || raw === 'portfolio/psr-venture-weddings' || raw === 'portfolio/psr' || raw === 'site-70' || raw === 'site/70' || raw === 'demo-70' || raw === 'demo/psr' || raw === 'references/psr' || raw === 'site/70-psr-venture-weddings' || raw === 'site/psr-venture-weddings' || raw === 'psrventureweddings' || raw === 'psrventureweddings.com') {
+        setActiveViewInternal('psr-venture-weddings');
+        setActiveSiteSlug('70-psr-venture-weddings');
+      } else if (raw === 'utsav' || raw === 'utsav-luxe' || raw === 'utsavluxe' || raw === '69-utsav-luxe' || raw === '69-utsav' || raw === 'portfolio/69-utsav-luxe' || raw === 'portfolio/utsav-luxe' || raw === 'portfolio/utsav' || raw === 'site-69' || raw === 'site/69' || raw === 'demo-69' || raw === 'demo/utsav' || raw === 'references/utsav' || raw === 'references/meragi' || raw === 'site/69-utsav-luxe' || raw === 'site/utsav-luxe' || raw === 'utsavluxe.com' || raw === 'meragi') {
+        setActiveViewInternal('utsav-luxe');
+        setActiveSiteSlug('69-utsav-luxe');
       } else if (raw === 'devdas' || raw === 'devdas-wedding' || raw === 'devdaswedding' || raw === '68-devdas-wedding' || raw === '68-devdas' || raw === 'portfolio/68-devdas-wedding' || raw === 'portfolio/68-devdas' || raw === 'portfolio/devdas' || raw === 'site-68' || raw === 'site/68' || raw === 'demo-68' || raw === 'demo/devdas' || raw === 'references/devdas' || raw === 'site/68-devdas-wedding' || raw === 'site/devdas-wedding' || raw === 'site/devdas' || raw === 'destination-wedding' || raw === 'wedding-planner' || raw === 'devdaswedding.in') {
         setActiveViewInternal('devdas-wedding');
         setActiveSiteSlug('68-devdas-wedding');
@@ -1033,6 +1070,15 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       } else {
         window.location.hash = '/demo-websites';
       }
+    } else if (view === 'raozy-wedding-planner' || view === '71-raozy-wedding-planner') {
+      setActiveSiteSlug('71-raozy-wedding-planner');
+      window.location.hash = '/portfolio/71-raozy-wedding-planner';
+    } else if (view === 'psr-venture-weddings' || view === '70-psr-venture-weddings') {
+      setActiveSiteSlug('70-psr-venture-weddings');
+      window.location.hash = '/portfolio/70-psr-venture-weddings';
+    } else if (view === 'utsav-luxe' || view === '69-utsav-luxe') {
+      setActiveSiteSlug('69-utsav-luxe');
+      window.location.hash = '/portfolio/69-utsav-luxe';
     } else if (view === 'devdas-wedding') {
       setActiveSiteSlug('68-devdas-wedding');
       window.location.hash = '/portfolio/68-devdas-wedding';
@@ -1459,7 +1505,14 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       '68-devdas-wedding': '68-devdas-wedding',
       '68-devdas': '68-devdas-wedding',
       'destination-wedding': '68-devdas-wedding',
-      'wedding-planner': '68-devdas-wedding'
+      'wedding-planner': '68-devdas-wedding',
+      'psr': '70-psr-venture-weddings',
+      'psr-venture': '70-psr-venture-weddings',
+      'psr-venture-weddings': '70-psr-venture-weddings',
+      'psr-weddings': '70-psr-venture-weddings',
+      '70-psr-venture-weddings': '70-psr-venture-weddings',
+      '70-psr': '70-psr-venture-weddings',
+      'psrventureweddings': '70-psr-venture-weddings'
     };
     const target = aliasMap[clean] || clean;
     const found = websites.find(w => (w?.slug && (w.slug.toLowerCase() === clean || w.slug.toLowerCase() === target)) || (w?.id && (w.id.toLowerCase() === clean || w.id.toLowerCase() === target))) ||

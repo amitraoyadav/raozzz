@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://sabkaloans.in/sitemap.xml
+
+Sitemap: https://raozyweddings.com/sitemap.xml
