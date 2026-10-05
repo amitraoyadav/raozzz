@@ -82,6 +82,7 @@ import { Site74App } from './components/site74/Site74App';
 import { Site75App } from './components/site75/Site75App';
 import { Site76App } from './components/site76/Site76App';
 import { Site77App } from './components/site77/Site77App';
+import { Site78App } from './components/site78/Site78App';
 
 function AppContent() {
   const {
@@ -154,6 +155,18 @@ function AppContent() {
   }
 
   if (activeView === 'site') {
+    if (activeSiteSlug === '78-aurelia-resort' || activeSiteSlug === 'aurelia-resort' || activeSiteSlug === '78-aurelia' || activeSiteSlug === 'aurelia' || activeSiteSlug === 'anemos' || activeSiteSlug === 'anemos-goa' || activeSiteSlug === 'anemosgoa' || activeSiteSlug === 'site-78-aurelia-resort') {
+      return <Site78App onBackToHub={() => setActiveView('demo-websites')} />;
+    }
+    if (activeSiteSlug === '77-nocturna-club' || activeSiteSlug === 'nocturna-club' || activeSiteSlug === '77-nocturna' || activeSiteSlug === 'nocturna' || activeSiteSlug === 'hammerzz') {
+      return <Site77App onBackToHub={() => setActiveView('demo-websites')} />;
+    }
+    if (activeSiteSlug === '76-aranya-earth' || activeSiteSlug === 'aranya-earth' || activeSiteSlug === '76-aranya' || activeSiteSlug === 'aranya' || activeSiteSlug === 'craftedknots') {
+      return <Site76App onBackToHub={() => setActiveView('demo-websites')} />;
+    }
+    if (activeSiteSlug === '75-aura-luxe' || activeSiteSlug === 'aura-luxe' || activeSiteSlug === '75-aura' || activeSiteSlug === 'aura' || activeSiteSlug === 'bonevento') {
+      return <Site75App onBackToHub={() => setActiveView('demo-websites')} />;
+    }
     if (activeSiteSlug === '74-grandeur-weddings' || activeSiteSlug === 'grandeur-weddings' || activeSiteSlug === '74-grandeur' || activeSiteSlug === 'grandeur' || activeSiteSlug === 'marriottindiaweddings') {
       return <Site74App onBackToHub={() => setActiveView('demo-websites')} />;
     }
@@ -328,6 +341,10 @@ function AppContent() {
 
   if (activeView === 'clinicbypeople') {
     return <ClinicByPeopleApp onBackToHub={() => setActiveView('demo-websites')} />;
+  }
+
+  if (activeView === 'site-78-aurelia-resort' || activeView === '78-aurelia-resort') {
+    return <Site78App onBackToHub={() => setActiveView('demo-websites')} />;
   }
 
   if (activeView === 'site-77-nocturna-club' || activeView === '77-nocturna-club') {

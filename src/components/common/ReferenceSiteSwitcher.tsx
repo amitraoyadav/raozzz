@@ -5,7 +5,7 @@ import { useApp } from '../../context/AppContext';
 export interface ReferenceSiteInfo {
   id: string;
   num: number;
-  category: 'cafe' | 'restaurant' | 'travel' | 'salon' | 'jewellery' | 'beauty_cosmetics' | 'gym_fitness' | 'loans' | 'real_estate' | 'shop' | 'wedding' | 'commercial_vehicles' | 'wedding_event_planning' | 'destination_weddings' | 'web_tools' | 'lawyer' | 'healthcare';
+  category: 'cafe' | 'restaurant' | 'travel' | 'salon' | 'jewellery' | 'beauty_cosmetics' | 'gym_fitness' | 'loans' | 'real_estate' | 'shop' | 'wedding' | 'commercial_vehicles' | 'wedding_event_planning' | 'destination_weddings' | 'web_tools' | 'lawyer' | 'healthcare' | 'hotel';
   name: string;
   originalUrl: string;
   slug: string;
@@ -944,10 +944,23 @@ export const ALL_29_REFERENCE_SITES: ReferenceSiteInfo[] = [
     concept: 'NOCTURNA LUXURY NIGHTCLUB · Goa’s Premier Waterfront Nightclub & Ultra Lounge · Inspired by Hammerzz Club Architecture · 360° Void Acoustics Sound, 120-Beam Kinetic Lasers, Mezzanine VIP Tables & Interactive Booking',
     themeColor: '#D4AF37',
     badge: 'Site 77 · Luxury Nightclub Goa'
+  },
+  {
+    id: 'site-78-aurelia-resort',
+    num: 78,
+    category: 'hotel',
+    name: 'The Kensington Club & Resort',
+    originalUrl: 'https://panchshilaclub.org/',
+    slug: '78-aurelia-resort',
+    referencePath: '/portfolio/78-aurelia-resort',
+    concept: 'THE KENSINGTON CLUB (Panchshila Club Reference) · Elite Private Members Club, Sports Complex, Dining & Banquets in South Delhi (Est. 1972) + AURELIA GOA Beach Resort',
+    themeColor: '#0F2537',
+    badge: 'Site 78 · Elite Club & Resort'
   }
 ];
 
-export const ALL_77_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_29_REFERENCE_SITES;
+export const ALL_78_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_29_REFERENCE_SITES;
+export const ALL_77_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_78_REFERENCE_SITES;
 export const ALL_76_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_77_REFERENCE_SITES;
 export const ALL_75_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_76_REFERENCE_SITES;
 export const ALL_74_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_75_REFERENCE_SITES;
@@ -1027,7 +1040,11 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
 
   const handleSelectSite = (site: ReferenceSiteInfo) => {
     setModalOpen(false);
-    if (site.id === 'utsav-luxe' || site.slug === '69-utsav-luxe' || site.slug === 'utsav-luxe' || site.slug === 'utsav') {
+    if (site.id === 'site-78-aurelia-resort' || site.slug === '78-aurelia-resort' || site.slug === 'aurelia-resort' || site.slug === 'anemos-goa') {
+      setActiveView('site-78-aurelia-resort');
+    } else if (site.id === 'site-77-nocturna-club' || site.slug === '77-nocturna-club' || site.slug === 'nocturna') {
+      setActiveView('site-77-nocturna-club');
+    } else if (site.id === 'utsav-luxe' || site.slug === '69-utsav-luxe' || site.slug === 'utsav-luxe' || site.slug === 'utsav') {
       setActiveView('utsav-luxe');
     } else if (site.id === 'psr-venture-weddings' || site.slug === '70-psr-venture-weddings' || site.slug === 'psr-venture-weddings' || site.slug === 'psr') {
       setActiveView('psr-venture-weddings');
@@ -1095,6 +1112,7 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
     if (cat === 'destination_weddings') return 'DESTINATION WEDDINGS';
     if (cat === 'web_tools') return 'WEB TOOLS / UTILITIES';
     if (cat === 'commercial_vehicles') return 'AUTOMOBILE / COMMERCIAL VEHICLES';
+    if (cat === 'hotel') return 'LUXURY BEACH RESORT & BANQUET';
     return 'JEWELLERY';
   };
 

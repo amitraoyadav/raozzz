@@ -77,7 +77,9 @@ export type AppView =
   | 'site-76-aranya-earth'
   | '76-aranya-earth'
   | 'site-77-nocturna-club'
-  | '77-nocturna-club';
+  | '77-nocturna-club'
+  | 'site-78-aurelia-resort'
+  | '78-aurelia-resort';
 
 import { TWOD_WEBSITE } from '../data/twoDCafeData';
 import { BLUE_TOKAI_WEBSITE } from '../data/blueTokaiData';
@@ -711,7 +713,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [activeView, setActiveViewInternal] = useState<AppView>(() => {
     if (typeof window !== 'undefined') {
       const hash = window.location.hash.replace('#/', '').replace('#', '').trim().toLowerCase();
-      if (hash === 'site-77-nocturna-club' || hash === '77-nocturna-club' || hash === 'nocturna' || hash === 'nocturna-club' || hash === 'nocturnaclub' || hash === 'hammerzz' || hash === 'hammerzzclub' || hash === 'hammerzzclub.com' || hash === 'site-77' || hash === '77' || hash === '') return 'site-77-nocturna-club';
+      if (hash === 'site-78-aurelia-resort' || hash === '78-aurelia-resort' || hash === 'aurelia' || hash === 'aurelia-resort' || hash === 'aureliagoa' || hash === 'anemos' || hash === 'anemos-goa' || hash === 'anemosgoa' || hash === 'anemosgoa.com' || hash === 'site-78' || hash === '78' || hash === '') return 'site-78-aurelia-resort';
+      if (hash === 'site-77-nocturna-club' || hash === '77-nocturna-club' || hash === 'nocturna' || hash === 'nocturna-club' || hash === 'nocturnaclub' || hash === 'hammerzz' || hash === 'hammerzzclub' || hash === 'hammerzzclub.com' || hash === 'site-77' || hash === '77') return 'site-77-nocturna-club';
       if (hash === 'site-76-aranya-earth' || hash === '76-aranya-earth' || hash === 'aranya-earth' || hash === 'aranya' || hash === 'craftedknots' || hash === 'craftedknots.in' || hash === 'site-76' || hash === '76') return 'site-76-aranya-earth';
       if (hash === 'site-75-aura-luxe' || hash === '75-aura-luxe' || hash === 'auraluxe' || hash === 'aura-luxe' || hash === 'bonevento' || hash === 'bonevento.com' || hash === 'site-75' || hash === '75') return 'site-75-aura-luxe';
       if (hash === 'grandeur-weddings' || hash === '74-grandeur-weddings' || hash === 'grandeur' || hash === 'marriottindiaweddings' || hash === 'site-74' || hash === '74') return 'grandeur-weddings';
@@ -1031,6 +1034,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       } else if (raw === 'luxespace-htx' || raw === 'luxespace' || raw === 'luxespacehtx' || raw === 'luxespace-venue' || raw === 'site-59' || raw === 'site/59' || raw === 'references/luxespacehtx' || raw === 'site/luxespace-htx') {
         setActiveViewInternal('luxespace-htx');
         setActiveSiteSlug('luxespace-htx');
+      } else if (raw === 'site-78-aurelia-resort' || raw === '78-aurelia-resort' || raw === 'aurelia' || raw === 'aurelia-resort' || raw === 'aureliagoa' || raw === 'anemos' || raw === 'anemos-goa' || raw === 'anemosgoa' || raw === 'anemosgoa.com' || raw === 'site-78' || raw === 'site/78' || raw === 'demo-78' || raw === 'demo/aurelia' || raw === 'references/site-78-aurelia-resort' || raw === 'references/anemosgoa' || raw === 'portfolio/78-aurelia-resort' || raw === 'site/78-aurelia-resort') {
+        setActiveViewInternal('site-78-aurelia-resort');
+        setActiveSiteSlug('78-aurelia-resort');
       } else if (raw === 'site-77-nocturna-club' || raw === '77-nocturna-club' || raw === 'nocturna' || raw === 'nocturna-club' || raw === 'nocturnaclub' || raw === 'hammerzz' || raw === 'hammerzzclub' || raw === 'hammerzzclub.com' || raw === 'site-77' || raw === 'site/77' || raw === 'demo-77' || raw === 'demo/nocturna' || raw === 'references/site-77-nocturna-club' || raw === 'references/hammerzzclub' || raw === 'portfolio/77-nocturna-club' || raw === 'site/77-nocturna-club') {
         setActiveViewInternal('site-77-nocturna-club');
         setActiveSiteSlug('77-nocturna-club');
