@@ -920,10 +920,36 @@ export const ALL_29_REFERENCE_SITES: ReferenceSiteInfo[] = [
     concept: "AURA LUXE WEDDINGS · Haute Couture Wedding Atelier & Destination Celebrations Worldwide · Inspired by Bon Evento Architecture · Bespoke Scenography, Global Artist Curation, Regal Palaces & 4-Step Interactive Event Suite",
     themeColor: '#D4AF37',
     badge: 'Site 75 · Luxury Wedding Atelier'
+  },
+  {
+    id: 'site-76-aranya-earth',
+    num: 76,
+    category: 'shop',
+    name: 'ARANYA EARTH',
+    originalUrl: 'https://craftedknots.in/',
+    slug: '76-aranya-earth',
+    referencePath: '/portfolio/76-aranya-earth',
+    concept: 'ARANYA EARTH · Premium Natural Clothing & Conscious Living · Inspired by Crafted Knots Architecture & Ecommerce Structure · 100% GOTS Organic Cotton, Pure French Flax Linen, Wild Himalayan Hemp, Handspun Khadi & Botanical Dyes',
+    themeColor: '#2C3E2D',
+    badge: 'Site 76 · Natural Luxury Apparel'
+  },
+  {
+    id: 'site-77-nocturna-club',
+    num: 77,
+    category: 'restaurant',
+    name: 'NOCTURNA GOA',
+    originalUrl: 'https://hammerzzclub.com/',
+    slug: '77-nocturna-club',
+    referencePath: '/portfolio/77-nocturna-club',
+    concept: 'NOCTURNA LUXURY NIGHTCLUB · Goa’s Premier Waterfront Nightclub & Ultra Lounge · Inspired by Hammerzz Club Architecture · 360° Void Acoustics Sound, 120-Beam Kinetic Lasers, Mezzanine VIP Tables & Interactive Booking',
+    themeColor: '#D4AF37',
+    badge: 'Site 77 · Luxury Nightclub Goa'
   }
 ];
 
-export const ALL_75_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_29_REFERENCE_SITES;
+export const ALL_77_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_29_REFERENCE_SITES;
+export const ALL_76_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_77_REFERENCE_SITES;
+export const ALL_75_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_76_REFERENCE_SITES;
 export const ALL_74_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_75_REFERENCE_SITES;
 export const ALL_73_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_74_REFERENCE_SITES;
 export const ALL_72_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_73_REFERENCE_SITES;

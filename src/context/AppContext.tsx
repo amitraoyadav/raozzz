@@ -73,7 +73,11 @@ export type AppView =
   | 'grandeur-weddings'
   | '74-grandeur-weddings'
   | 'site-75-aura-luxe'
-  | '75-aura-luxe';
+  | '75-aura-luxe'
+  | 'site-76-aranya-earth'
+  | '76-aranya-earth'
+  | 'site-77-nocturna-club'
+  | '77-nocturna-club';
 
 import { TWOD_WEBSITE } from '../data/twoDCafeData';
 import { BLUE_TOKAI_WEBSITE } from '../data/blueTokaiData';
@@ -150,6 +154,16 @@ import { GLOBAL_PLANNERSS_WEBSITE } from '../data/globalPlannerssData';
 import { RAOZ_WEDDING_HUB_WEBSITE } from '../data/raozWeddingHubData';
 import { SITE_74_WEBSITE } from '../data/site74Data';
 import { SITE_75_WEBSITE } from '../data/site75Data';
+import { SITE_76_WEBSITE } from '../data/site76Data';
+import { SITE_77_WEBSITE } from '../data/site77Data';
+
+export const ALL_SITE_77_WEBSITES: BusinessWebsite[] = [
+  SITE_77_WEBSITE
+];
+
+export const ALL_SITE_76_WEBSITES: BusinessWebsite[] = [
+  SITE_76_WEBSITE
+];
 
 export const ALL_SITE_75_WEBSITES: BusinessWebsite[] = [
   SITE_75_WEBSITE
@@ -328,10 +342,14 @@ export const ALL_57_COLLECTION_WEBSITES: BusinessWebsite[] = [
   ...ALL_GLOBAL_PLANNERSS_WEBSITES,
   ...ALL_RAOZ_WEDDING_HUB_WEBSITES,
   ...ALL_SITE_74_WEBSITES,
-  ...ALL_SITE_75_WEBSITES
+  ...ALL_SITE_75_WEBSITES,
+  ...ALL_SITE_76_WEBSITES,
+  ...ALL_SITE_77_WEBSITES
 ];
 
-export const ALL_75_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_57_COLLECTION_WEBSITES;
+export const ALL_77_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_57_COLLECTION_WEBSITES;
+export const ALL_76_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_77_COLLECTION_WEBSITES;
+export const ALL_75_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_76_COLLECTION_WEBSITES;
 export const ALL_74_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_75_COLLECTION_WEBSITES;
 export const ALL_73_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_74_COLLECTION_WEBSITES;
 export const ALL_72_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_73_COLLECTION_WEBSITES;
@@ -693,7 +711,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [activeView, setActiveViewInternal] = useState<AppView>(() => {
     if (typeof window !== 'undefined') {
       const hash = window.location.hash.replace('#/', '').replace('#', '').trim().toLowerCase();
-      if (hash === 'site-75-aura-luxe' || hash === '75-aura-luxe' || hash === 'auraluxe' || hash === 'aura-luxe' || hash === 'bonevento' || hash === 'bonevento.com' || hash === 'site-75' || hash === '75' || hash === '') return 'site-75-aura-luxe';
+      if (hash === 'site-77-nocturna-club' || hash === '77-nocturna-club' || hash === 'nocturna' || hash === 'nocturna-club' || hash === 'nocturnaclub' || hash === 'hammerzz' || hash === 'hammerzzclub' || hash === 'hammerzzclub.com' || hash === 'site-77' || hash === '77' || hash === '') return 'site-77-nocturna-club';
+      if (hash === 'site-76-aranya-earth' || hash === '76-aranya-earth' || hash === 'aranya-earth' || hash === 'aranya' || hash === 'craftedknots' || hash === 'craftedknots.in' || hash === 'site-76' || hash === '76') return 'site-76-aranya-earth';
+      if (hash === 'site-75-aura-luxe' || hash === '75-aura-luxe' || hash === 'auraluxe' || hash === 'aura-luxe' || hash === 'bonevento' || hash === 'bonevento.com' || hash === 'site-75' || hash === '75') return 'site-75-aura-luxe';
       if (hash === 'grandeur-weddings' || hash === '74-grandeur-weddings' || hash === 'grandeur' || hash === 'marriottindiaweddings' || hash === 'site-74' || hash === '74') return 'grandeur-weddings';
       if (hash === 'raoz-wedding-hub' || hash === '73-raoz-wedding-hub' || hash === 'raozweddinghub' || hash === 'vowsafar' || hash === 'vows-afar' || hash === 'site-73' || hash === '73') return 'raoz-wedding-hub';
       if (hash === 'global-plannerss' || hash === '72-global-plannerss' || hash === 'globalplannerss' || hash === 'global-planner' || hash === 'site-72' || hash === '72') return 'global-plannerss';
@@ -1011,6 +1031,12 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       } else if (raw === 'luxespace-htx' || raw === 'luxespace' || raw === 'luxespacehtx' || raw === 'luxespace-venue' || raw === 'site-59' || raw === 'site/59' || raw === 'references/luxespacehtx' || raw === 'site/luxespace-htx') {
         setActiveViewInternal('luxespace-htx');
         setActiveSiteSlug('luxespace-htx');
+      } else if (raw === 'site-77-nocturna-club' || raw === '77-nocturna-club' || raw === 'nocturna' || raw === 'nocturna-club' || raw === 'nocturnaclub' || raw === 'hammerzz' || raw === 'hammerzzclub' || raw === 'hammerzzclub.com' || raw === 'site-77' || raw === 'site/77' || raw === 'demo-77' || raw === 'demo/nocturna' || raw === 'references/site-77-nocturna-club' || raw === 'references/hammerzzclub' || raw === 'portfolio/77-nocturna-club' || raw === 'site/77-nocturna-club') {
+        setActiveViewInternal('site-77-nocturna-club');
+        setActiveSiteSlug('77-nocturna-club');
+      } else if (raw === 'site-76-aranya-earth' || raw === '76-aranya-earth' || raw === 'aranya-earth' || raw === 'aranya' || raw === 'craftedknots' || raw === 'craftedknots.in' || raw === 'site-76' || raw === 'site/76' || raw === 'demo-76' || raw === 'demo/aranya-earth' || raw === 'references/site-76-aranya-earth' || raw === 'references/craftedknots' || raw === 'portfolio/76-aranya-earth' || raw === 'site/76-aranya-earth') {
+        setActiveViewInternal('site-76-aranya-earth');
+        setActiveSiteSlug('76-aranya-earth');
       } else if (raw === 'site-75-aura-luxe' || raw === '75-aura-luxe' || raw === 'auraluxe' || raw === 'aura-luxe' || raw === 'bonevento' || raw === 'bonevento.com' || raw === 'site-75' || raw === 'site/75' || raw === 'demo-75' || raw === 'demo/aura-luxe' || raw === 'references/site-75-aura-luxe' || raw === 'references/bonevento' || raw === 'portfolio/75-aura-luxe' || raw === 'site/75-aura-luxe') {
         setActiveViewInternal('site-75-aura-luxe');
         setActiveSiteSlug('75-aura-luxe');

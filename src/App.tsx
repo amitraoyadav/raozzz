@@ -80,6 +80,8 @@ import { GlobalPlannerssApp } from './components/globalplannerss/GlobalPlannerss
 import { RaozWeddingHubApp } from './components/raozweddinghub/RaozWeddingHubApp';
 import { Site74App } from './components/site74/Site74App';
 import { Site75App } from './components/site75/Site75App';
+import { Site76App } from './components/site76/Site76App';
+import { Site77App } from './components/site77/Site77App';
 
 function AppContent() {
   const {
@@ -326,6 +328,14 @@ function AppContent() {
 
   if (activeView === 'clinicbypeople') {
     return <ClinicByPeopleApp onBackToHub={() => setActiveView('demo-websites')} />;
+  }
+
+  if (activeView === 'site-77-nocturna-club' || activeView === '77-nocturna-club') {
+    return <Site77App onBackToHub={() => setActiveView('demo-websites')} />;
+  }
+
+  if (activeView === 'site-76-aranya-earth' || activeView === '76-aranya-earth') {
+    return <Site76App onBackToHub={() => setActiveView('demo-websites')} />;
   }
 
   if (activeView === 'site-75-aura-luxe' || activeView === '75-aura-luxe') {
