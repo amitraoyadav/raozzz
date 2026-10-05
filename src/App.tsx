@@ -76,6 +76,10 @@ import { DevdasApp } from './components/devdas/DevdasApp';
 import { PsrVentureWeddingsApp } from './components/psrventureweddings/PsrVentureWeddingsApp';
 import { UtsavLuxeApp } from './components/utsavluxe/UtsavLuxeApp';
 import { RaozyWeddingPlannerApp } from './components/raozyweddingplanner/RaozyWeddingPlannerApp';
+import { GlobalPlannerssApp } from './components/globalplannerss/GlobalPlannerssApp';
+import { RaozWeddingHubApp } from './components/raozweddinghub/RaozWeddingHubApp';
+import { Site74App } from './components/site74/Site74App';
+import { Site75App } from './components/site75/Site75App';
 
 function AppContent() {
   const {
@@ -148,6 +152,18 @@ function AppContent() {
   }
 
   if (activeView === 'site') {
+    if (activeSiteSlug === '74-grandeur-weddings' || activeSiteSlug === 'grandeur-weddings' || activeSiteSlug === '74-grandeur' || activeSiteSlug === 'grandeur' || activeSiteSlug === 'marriottindiaweddings') {
+      return <Site74App onBackToHub={() => setActiveView('demo-websites')} />;
+    }
+    if (activeSiteSlug === '73-raoz-wedding-hub' || activeSiteSlug === 'raoz-wedding-hub' || activeSiteSlug === '73-raoz' || activeSiteSlug === 'raoz-hub' || activeSiteSlug === 'vowsafar') {
+      return <RaozWeddingHubApp onBackToHub={() => setActiveView('demo-websites')} />;
+    }
+    if (activeSiteSlug === '72-global-plannerss' || activeSiteSlug === 'global-plannerss' || activeSiteSlug === '72-global' || activeSiteSlug === 'global-planners') {
+      return <GlobalPlannerssApp onBackToHub={() => setActiveView('demo-websites')} />;
+    }
+    if (activeSiteSlug === '71-raozy-wedding-planner' || activeSiteSlug === 'raozy-wedding-planner' || activeSiteSlug === '71-raozy' || activeSiteSlug === 'raozy') {
+      return <RaozyWeddingPlannerApp onBackToHub={() => setActiveView('demo-websites')} />;
+    }
     if (activeSiteSlug === '70-psr-venture-weddings' || activeSiteSlug === 'psr-venture-weddings' || activeSiteSlug === '70-psr' || activeSiteSlug === 'psr' || activeSiteSlug === 'psr-weddings') {
       return <PsrVentureWeddingsApp onBackToHub={() => setActiveView('demo-websites')} />;
     }
@@ -310,6 +326,22 @@ function AppContent() {
 
   if (activeView === 'clinicbypeople') {
     return <ClinicByPeopleApp onBackToHub={() => setActiveView('demo-websites')} />;
+  }
+
+  if (activeView === 'site-75-aura-luxe' || activeView === '75-aura-luxe') {
+    return <Site75App onBackToHub={() => setActiveView('demo-websites')} />;
+  }
+
+  if (activeView === 'grandeur-weddings' || activeView === '74-grandeur-weddings') {
+    return <Site74App onBackToHub={() => setActiveView('demo-websites')} />;
+  }
+
+  if (activeView === 'raoz-wedding-hub' || activeView === '73-raoz-wedding-hub') {
+    return <RaozWeddingHubApp onBackToHub={() => setActiveView('demo-websites')} />;
+  }
+
+  if (activeView === 'global-plannerss' || activeView === '72-global-plannerss') {
+    return <GlobalPlannerssApp onBackToHub={() => setActiveView('demo-websites')} />;
   }
 
   if (activeView === 'raozy-wedding-planner' || activeView === '71-raozy-wedding-planner') {

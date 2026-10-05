@@ -854,7 +854,7 @@ export const ALL_29_REFERENCE_SITES: ReferenceSiteInfo[] = [
     num: 70,
     category: 'destination_weddings',
     name: 'PS WEDDINGS',
-    originalUrl: 'https://www.globalweddingvenues.com/destination-wedding-planner-india/',
+    originalUrl: 'https://psweddings.in/',
     slug: '70-psr-venture-weddings',
     referencePath: '/portfolio/70-psr-venture-weddings',
     concept: "PS Weddings · Premier Destination Wedding Planner & Venue Specialist in India · Palaces in Udaipur & Jaipur, Beachfront in Goa, Backwaters in Kerala, Royal Haveli Buyouts & Interactive Cost Calculator",
@@ -866,16 +866,68 @@ export const ALL_29_REFERENCE_SITES: ReferenceSiteInfo[] = [
     num: 71,
     category: 'destination_weddings',
     name: 'RAOZY WEDDING PLANNER',
-    originalUrl: 'https://dwbytripn.in/',
+    originalUrl: 'https://raozyweddings.com/',
     slug: '71-raozy-wedding-planner',
     referencePath: '/portfolio/71-raozy-wedding-planner',
     concept: "RAOZY WEDDING PLANNER · India's Premier Bespoke Wedding Planning & In-House Decor Atelier · Capped at 60 Weddings Annually, 25k Sq Ft Gurugram Atelier, 3D CAD Virtual Renders, Direct Farm Florals & 100% Open-Book Fees",
     themeColor: '#DFC082',
     badge: 'Site 71 · Bespoke Luxury Wedding Atelier'
+  },
+  {
+    id: 'global-plannerss',
+    num: 72,
+    category: 'destination_weddings',
+    name: 'GLOBAL PLANNERSS',
+    originalUrl: 'https://globalplannerss.com/',
+    slug: '72-global-plannerss',
+    referencePath: '/portfolio/72-global-plannerss',
+    concept: "GLOBAL PLANNERSS · Luxury Wedding Planners · Intentionally Capped at 60 Weddings a Year · Published Transparent Fees from ₹2.5L, In-House Decor Production, and End-to-End Guest Hospitality across Delhi NCR, Goa, Udaipur, and Dubai",
+    themeColor: '#C19A4B',
+    badge: 'Site 72 · Capped at 60 Weddings / Year'
+  },
+  {
+    id: 'raoz-wedding-hub',
+    num: 73,
+    category: 'destination_weddings',
+    name: 'RAOZ WEDDING HUB',
+    originalUrl: 'https://vowsafar.au/',
+    slug: '73-raoz-wedding-hub',
+    referencePath: '/portfolio/73-raoz-wedding-hub',
+    concept: "RAOZ WEDDING HUB · Calm Destination Wedding Platform · Multi-Day Itineraries, 8-Language Guest Hubs (Zero App Download), Flight Trackers, Multi-Currency Budgets & 10-Phase Planner Suites",
+    themeColor: '#A85C3D',
+    badge: 'Site 73 · Destination Wedding Platform'
+  },
+  {
+    id: 'grandeur-weddings',
+    num: 74,
+    category: 'destination_weddings',
+    name: 'GRANDEUR WEDDINGS & RESORTS',
+    originalUrl: 'https://www.marriottindiaweddings.com/',
+    slug: '74-grandeur-weddings',
+    referencePath: '/portfolio/74-grandeur-weddings',
+    concept: "GRANDEUR WEDDINGS & RESORTS · Luxury Palaces, Beachfronts & Iconic Resort Weddings · Inspired by Marriott India Weddings Architecture · Multi-Destination Discovery, 7 Signature Banqueting Pillars, Inspiration Gallery & Multi-Step Event Planner",
+    themeColor: '#C5A059',
+    badge: 'Site 74 · Luxury Palaces & Resorts'
+  },
+  {
+    id: 'site-75-aura-luxe',
+    num: 75,
+    category: 'destination_weddings',
+    name: 'AURA LUXE WEDDINGS',
+    originalUrl: 'https://bonevento.com/',
+    slug: '75-aura-luxe',
+    referencePath: '/portfolio/75-aura-luxe',
+    concept: "AURA LUXE WEDDINGS · Haute Couture Wedding Atelier & Destination Celebrations Worldwide · Inspired by Bon Evento Architecture · Bespoke Scenography, Global Artist Curation, Regal Palaces & 4-Step Interactive Event Suite",
+    themeColor: '#D4AF37',
+    badge: 'Site 75 · Luxury Wedding Atelier'
   }
 ];
 
-export const ALL_71_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_29_REFERENCE_SITES;
+export const ALL_75_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_29_REFERENCE_SITES;
+export const ALL_74_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_75_REFERENCE_SITES;
+export const ALL_73_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_74_REFERENCE_SITES;
+export const ALL_72_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_73_REFERENCE_SITES;
+export const ALL_71_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_72_REFERENCE_SITES;
 export const ALL_70_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_71_REFERENCE_SITES;
 export const ALL_68_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_70_REFERENCE_SITES;
 export const ALL_67_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_68_REFERENCE_SITES;

@@ -524,6 +524,11 @@ export const DemoShowcase: React.FC<DemoShowcaseProps> = ({ onOpenOrderModal }) 
               {filteredWebsites.map(site => {
                 const catToken = getCategoryToken(site.category);
                 const catMeta = CATEGORY_INFO[site.category] || CATEGORY_INFO.cafe;
+                const isAuraLuxe = site.slug === '75-aura-luxe' || site.slug === 'site-75-aura-luxe' || site.id === 'site-75-aura-luxe';
+                const isGrandeurWeddings = site.slug === '74-grandeur-weddings' || site.slug === 'grandeur-weddings' || site.id === 'site-74-grandeur-weddings' || site.id === 'grandeur-weddings';
+                const isRaozWeddingHub = site.slug === '73-raoz-wedding-hub' || site.slug === 'raoz-wedding-hub' || site.id === 'raoz-wedding-hub' || site.id === 'site-raoz-wedding-hub-73';
+                const isGlobalPlannerss = site.slug === '72-global-plannerss' || site.slug === 'global-plannerss' || site.id === 'global-plannerss' || site.id === 'site-global-plannerss-72';
+                const isRaozy = site.slug === '71-raozy-wedding-planner' || site.slug === 'raozy-wedding-planner' || site.id === 'site-raozy-wedding-planner-71' || site.id === 'raozy-wedding-planner';
                 const isUtsav = site.slug === '69-utsav-luxe' || site.slug === 'utsav-luxe' || site.slug === 'utsav' || site.slug === '69-utsav' || site.id === 'site-69' || site.id === 'site-utsav-69';
                 const isPsr = site.slug === '70-psr-venture-weddings' || site.slug === 'psr-venture-weddings' || site.slug === 'psr' || site.slug === '70-psr' || site.id === 'site-psr-venture-weddings-70';
                 const isDevdas = site.slug === '68-devdas-wedding' || site.slug === 'devdas-wedding' || site.slug === 'devdas' || site.slug === '68-devdas' || site.id === 'site-devdas-68';
@@ -542,7 +547,17 @@ export const DemoShowcase: React.FC<DemoShowcaseProps> = ({ onOpenOrderModal }) 
                   {/* Template Screenshot / Preview Image */}
                   <div
                     onClick={() => {
-                      if (isUtsav) {
+                      if (isAuraLuxe) {
+                        setActiveView('site-75-aura-luxe');
+                      } else if (isGrandeurWeddings) {
+                        setActiveView('grandeur-weddings');
+                      } else if (isRaozWeddingHub) {
+                        setActiveView('raoz-wedding-hub');
+                      } else if (isGlobalPlannerss) {
+                        setActiveView('global-plannerss');
+                      } else if (isRaozy) {
+                        setActiveView('raozy-wedding-planner');
+                      } else if (isUtsav) {
                         setActiveView('utsav-luxe');
                       } else if (isPsr) {
                         setActiveView('psr-venture-weddings');
@@ -564,7 +579,155 @@ export const DemoShowcase: React.FC<DemoShowcaseProps> = ({ onOpenOrderModal }) 
                     }}
                     className="relative h-48 sm:h-52 bg-slate-100 overflow-hidden cursor-pointer"
                   >
-                    {isUtsav ? (
+                    {isAuraLuxe ? (
+                      /* Polished authentic website mockup of AURA LUXE WEDDINGS (Site 75) */
+                      <div className="w-full h-full bg-[#080B12] p-3 text-white flex flex-col justify-between relative overflow-hidden group-hover:scale-105 transition-transform duration-300 font-sans border-b border-[#D4AF37]/30">
+                        <div className="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/20 via-transparent to-black/90 pointer-events-none" />
+                        <div className="relative z-10 flex items-center justify-between border-b border-white/10 pb-2">
+                          <div className="flex items-center gap-1.5">
+                            <span className="w-5 h-5 rounded-full bg-[#D4AF37] text-[#080B12] flex items-center justify-center text-[10px] font-serif font-black tracking-widest">
+                              AL
+                            </span>
+                            <span className="font-serif font-bold tracking-widest text-[11px] text-white">
+                              AURA LUXE <span className="text-[#D4AF37] font-normal italic">ATELIER</span>
+                            </span>
+                          </div>
+                          <span className="text-[9px] font-mono text-[#D4AF37] bg-[#D4AF37]/15 px-1.5 py-0.5 rounded font-bold border border-[#D4AF37]/30">
+                            BON EVENTO ARCHITECTURE
+                          </span>
+                        </div>
+
+                        <div className="relative z-10 my-auto text-center py-1">
+                          <span className="text-[9px] font-bold uppercase tracking-widest text-[#D4AF37]">
+                            Haute Couture Wedding Atelier
+                          </span>
+                          <h4 className="font-serif text-sm font-medium leading-tight mt-0.5 text-stone-100">
+                            Mumbai · Udaipur · Lake Como · Dubai · Goa
+                          </h4>
+                          <div className="mt-2 flex items-center justify-center gap-1 text-[9px] text-stone-300 font-sans">
+                            <span className="bg-white/10 border border-white/10 px-1.5 py-0.5 rounded">Capped at 18 / Year</span>
+                            <span className="bg-white/10 border border-white/10 px-1.5 py-0.5 rounded">Couture Scenography</span>
+                            <span className="bg-white/10 border border-white/10 px-1.5 py-0.5 rounded">4-Step Planner</span>
+                          </div>
+                        </div>
+
+                        <div className="relative z-10 flex items-center justify-between text-[9px] text-stone-400 pt-1 border-t border-white/10 font-mono">
+                          <span>450+ Bespoke Celebrations</span>
+                          <span className="text-[#D4AF37] font-bold">Launch Atelier Demo →</span>
+                        </div>
+                      </div>
+                    ) : isGrandeurWeddings ? (
+                      /* Polished authentic website mockup of GRANDEUR WEDDINGS & RESORTS (Site 74) */
+                      <div className="w-full h-full bg-[#141210] p-3 text-white flex flex-col justify-between relative overflow-hidden group-hover:scale-105 transition-transform duration-300 font-sans border-b border-[#C5A059]/30">
+                        <div className="absolute inset-0 bg-gradient-to-br from-[#C5A059]/25 via-transparent to-black/80 pointer-events-none" />
+                        <div className="relative z-10 flex items-center justify-between border-b border-white/10 pb-2">
+                          <div className="flex items-center gap-1.5">
+                            <span className="w-5 h-5 rounded bg-[#C5A059] text-[#141210] flex items-center justify-center text-[10px] font-serif font-black tracking-widest">
+                              G
+                            </span>
+                            <span className="font-serif font-bold tracking-widest text-[11px] text-white">
+                              GRANDEUR <span className="text-[#C5A059] font-normal italic">WEDDINGS</span>
+                            </span>
+                          </div>
+                          <span className="text-[9px] font-mono text-[#C5A059] bg-[#C5A059]/15 px-1.5 py-0.5 rounded font-bold border border-[#C5A059]/30">
+                            MARRIOTT UX ARCHITECTURE
+                          </span>
+                        </div>
+
+                        <div className="relative z-10 my-auto text-center py-1">
+                          <span className="text-[9px] font-bold uppercase tracking-widest text-[#C5A059]">
+                            Luxury Palaces, Beachfronts &amp; Ballrooms
+                          </span>
+                          <h4 className="font-serif text-sm font-medium leading-tight mt-0.5 text-stone-100">
+                            Goa · Jaipur · Udaipur · Mussoorie · Dubai · Mumbai
+                          </h4>
+                          <div className="mt-2 flex items-center justify-center gap-1 text-[9px] text-stone-300 font-sans">
+                            <span className="bg-white/10 border border-white/10 px-1.5 py-0.5 rounded">18 Destinations</span>
+                            <span className="bg-white/10 border border-white/10 px-1.5 py-0.5 rounded">7 Banqueting Pillars</span>
+                            <span className="bg-white/10 border border-white/10 px-1.5 py-0.5 rounded">Multi-Step Planner</span>
+                          </div>
+                        </div>
+
+                        <div className="relative z-10 flex items-center justify-between text-[9px] text-stone-400 pt-1 border-t border-white/10 font-mono">
+                          <span>45+ Resorts &amp; Palaces</span>
+                          <span className="text-[#C5A059] font-bold">Launch Full Site →</span>
+                        </div>
+                      </div>
+                    ) : isRaozWeddingHub ? (
+                      /* Polished authentic website mockup of RAOZ WEDDING HUB (Site 73) */
+                      <div className="w-full h-full bg-[#FAF8F5] p-3 text-[#1F1B16] flex flex-col justify-between relative overflow-hidden group-hover:scale-105 transition-transform duration-300 font-sans border-b border-[#E8DFD3]">
+                        <div className="absolute inset-0 bg-gradient-to-br from-[#A85C3D]/10 via-transparent to-amber-900/10 pointer-events-none" />
+                        <div className="relative z-10 flex items-center justify-between border-b border-[#E8DFD3] pb-2">
+                          <div className="flex items-center gap-1.5">
+                            <span className="w-5 h-5 rounded-full bg-[#A85C3D] text-white flex items-center justify-center text-[10px] font-serif font-black">
+                              RH
+                            </span>
+                            <span className="font-serif font-bold tracking-tight text-[12px] text-[#1F1B16]">
+                              Raoz <span className="text-[#A85C3D] font-normal italic">Wedding Hub</span>
+                            </span>
+                          </div>
+                          <span className="text-[9px] font-mono text-[#A85C3D] bg-[#FAF2ED] px-1.5 py-0.5 rounded font-bold border border-[#A85C3D]/20">
+                            ONE CALM PLACE
+                          </span>
+                        </div>
+
+                        <div className="relative z-10 my-auto text-center py-1">
+                          <span className="text-[9px] font-bold uppercase tracking-widest text-[#A85C3D]">
+                            Destination Wedding Platform
+                          </span>
+                          <h4 className="font-serif text-sm font-medium leading-tight mt-0.5 text-[#1F1B16]">
+                            Bali • Tuscany • Amalfi • Santorini • Goa
+                          </h4>
+                          <div className="mt-2 flex items-center justify-center gap-1 text-[9px] text-[#6B6155] font-sans">
+                            <span className="bg-white/80 border border-[#E8DFD3] px-1.5 py-0.5 rounded">Multi-Day Schedules</span>
+                            <span className="bg-white/80 border border-[#E8DFD3] px-1.5 py-0.5 rounded">8-Language Hub</span>
+                            <span className="bg-white/80 border border-[#E8DFD3] px-1.5 py-0.5 rounded">AUD $89 One-Time</span>
+                          </div>
+                        </div>
+
+                        <div className="relative z-10 flex items-center justify-between text-[9px] text-[#7A6E62] pt-1 border-t border-[#E8DFD3] font-mono">
+                          <span>Couples · Planners · Guests</span>
+                          <span className="text-[#A85C3D] font-bold">Interactive Hub Demo →</span>
+                        </div>
+                      </div>
+                    ) : isGlobalPlannerss ? (
+                      /* Polished authentic website mockup of GLOBAL PLANNERSS (Site 72) */
+                      <div className="w-full h-full bg-[#12100E] p-3 text-white flex flex-col justify-between relative overflow-hidden group-hover:scale-105 transition-transform duration-300 font-serif">
+                        <div className="absolute inset-0 bg-gradient-to-br from-[#B08D57]/30 via-transparent to-black/70 pointer-events-none" />
+                        <div className="relative z-10 flex items-center justify-between border-b border-stone-800 pb-2">
+                          <div className="flex items-center gap-1.5">
+                            <span className="w-5 h-5 rounded-md bg-[#C19A4B] text-[#171410] flex items-center justify-center text-[10px] font-serif font-black">
+                              GP
+                            </span>
+                            <span className="font-serif font-bold tracking-wider text-[11px] uppercase text-white">
+                              GLOBAL <span className="text-[#C19A4B] font-light ml-0.5">PLANNERSS</span>
+                            </span>
+                          </div>
+                          <span className="text-[9px] font-mono text-[#E5D7B7] bg-black/60 px-1.5 py-0.5 rounded border border-[#C19A4B]/40">
+                            CAPPED AT 60 / YR
+                          </span>
+                        </div>
+
+                        <div className="relative z-10 my-auto text-center py-1">
+                          <span className="text-[9px] font-bold uppercase tracking-widest text-[#C19A4B]">
+                            We Carry Weddings · Luxury Planners
+                          </span>
+                          <h4 className="font-serif text-sm font-bold leading-tight mt-0.5 text-white">
+                            Delhi NCR • Goa • Udaipur • Dubai
+                          </h4>
+                          <div className="mt-2 flex items-center justify-center gap-1 text-[9px] text-stone-300 font-sans">
+                            <span className="bg-white/10 px-1.5 py-0.5 rounded">Published Fees ₹2.5L+</span>
+                            <span className="bg-white/10 px-1.5 py-0.5 rounded">In-House Decor</span>
+                            <span className="bg-white/10 px-1.5 py-0.5 rounded">3D Pre-Renders</span>
+                          </div>
+                        </div>
+
+                        <div className="relative z-10 flex items-center justify-between text-[9px] text-stone-300 pt-1 border-t border-stone-800 font-sans">
+                          <span>220+ Destination Weddings</span>
+                          <span className="text-[#C19A4B] font-bold">Interactive Budget Tool →</span>
+                        </div>
+                      </div>
+                    ) : isUtsav ? (
                       /* Polished authentic website mockup of UTSAV LUXE (Site 69) */
                       <div className="w-full h-full bg-[#180A0A] p-3 text-white flex flex-col justify-between relative overflow-hidden group-hover:scale-105 transition-transform duration-300 font-sans">
                         <div className="absolute inset-0 bg-gradient-to-br from-[#E05A47]/30 via-transparent to-amber-950/40 pointer-events-none" />
@@ -880,7 +1043,7 @@ export const DemoShowcase: React.FC<DemoShowcaseProps> = ({ onOpenOrderModal }) 
                     {/* Category pill on image */}
                     <div className="absolute top-3 left-3 right-3 flex items-center justify-between z-20 pointer-events-none">
                       <span className="px-2.5 py-0.5 rounded-md text-[10px] font-bold bg-[#14162B]/90 text-white backdrop-blur-md">
-                        {isDevdas ? '#68' : isLivinto ? '#67' : isSkinSciene ? '#66' : isMedicarePlus ? '#65' : isClinicByPeople ? '#64' : isGroupAch ? '#63' : catMeta.label}
+                        {isAuraLuxe ? '#75' : isGrandeurWeddings ? '#74' : isRaozWeddingHub ? '#73' : isGlobalPlannerss ? '#72' : isRaozy ? '#71' : isPsr ? '#70' : isUtsav ? '#69' : isDevdas ? '#68' : isLivinto ? '#67' : isSkinSciene ? '#66' : isMedicarePlus ? '#65' : isClinicByPeople ? '#64' : isGroupAch ? '#63' : catMeta.label}
                       </span>
                       <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-600 text-white shadow-xs">
                         DEMO WEBSITE
@@ -888,7 +1051,7 @@ export const DemoShowcase: React.FC<DemoShowcaseProps> = ({ onOpenOrderModal }) 
                     </div>
 
                     {/* Business Name in Preview */}
-                    {!isDevdas && !isLivinto && !isGroupAch && !isClinicByPeople && !isMedicarePlus && !isSkinSciene && (
+                    {!isAuraLuxe && !isGrandeurWeddings && !isRaozWeddingHub && !isGlobalPlannerss && !isRaozy && !isPsr && !isUtsav && !isDevdas && !isLivinto && !isGroupAch && !isClinicByPeople && !isMedicarePlus && !isSkinSciene && (
                       <div className="absolute bottom-3 left-3 right-3 text-white z-20">
                         <h3
                           className="font-bold text-base truncate"
@@ -906,7 +1069,91 @@ export const DemoShowcase: React.FC<DemoShowcaseProps> = ({ onOpenOrderModal }) 
 
                   {/* Body: Short Description & Meta */}
                   <div className="p-4 space-y-2 font-['Inter']">
-                    {isDevdas ? (
+                    {isAuraLuxe ? (
+                      <div>
+                        <div className="flex items-center gap-1.5 mb-1 flex-wrap">
+                          <span className="font-mono text-[11px] font-bold text-[#D4AF37] bg-amber-950/20 px-1.5 py-0.5 rounded border border-[#D4AF37]/40">
+                            #75
+                          </span>
+                          <h3 className="font-extrabold text-base text-slate-900 leading-tight">
+                            AURA LUXE WEDDINGS
+                          </h3>
+                        </div>
+                        <p className="text-[11px] font-semibold text-[#D4AF37] uppercase tracking-wide">
+                          Haute Couture Wedding Atelier · Bon Evento Architecture
+                        </p>
+                        <p className="text-xs text-[#51556E] line-clamp-2 leading-relaxed mt-1.5">
+                          Inspired by Bon Evento. Bespoke scenography, 8 signature wedding pillars, living archive case studies across Udaipur, Lake Como, and Dubai, 7-chapter ceremonial journey, and 4-step event planning suite.
+                        </p>
+                        <div className="pt-2 mt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-[#636882]">
+                          <span className="font-semibold text-[#D4AF37]">Capped at 18 / Year</span>
+                          <span className="font-semibold text-stone-700">Mumbai Atelier &amp; Global</span>
+                        </div>
+                      </div>
+                    ) : isGrandeurWeddings ? (
+                      <div>
+                        <div className="flex items-center gap-1.5 mb-1 flex-wrap">
+                          <span className="font-mono text-[11px] font-bold text-[#8C6D37] bg-amber-50 px-1.5 py-0.5 rounded border border-amber-200">
+                            #74
+                          </span>
+                          <h3 className="font-extrabold text-base text-slate-900 leading-tight">
+                            GRANDEUR WEDDINGS &amp; RESORTS
+                          </h3>
+                        </div>
+                        <p className="text-[11px] font-semibold text-[#8C6D37] uppercase tracking-wide">
+                          Luxury Palaces, Beachfronts &amp; Iconic Resorts · Marriott India Weddings Architecture
+                        </p>
+                        <p className="text-xs text-[#51556E] line-clamp-2 leading-relaxed mt-1.5">
+                          Inspired by Marriott India Weddings. Full multi-destination discovery across 18 iconic locations, 7 signature banqueting pillars, photo inspiration gallery with lightbox, exclusive wedding packages, and complete multi-step event planning suite.
+                        </p>
+                        <div className="pt-2 mt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-[#636882]">
+                          <span className="font-semibold text-[#8C6D37]">45+ Luxury Resorts</span>
+                          <span className="font-semibold text-stone-700">Multi-Step Event Concierge</span>
+                        </div>
+                      </div>
+                    ) : isRaozWeddingHub ? (
+                      <div>
+                        <div className="flex items-center gap-1.5 mb-1 flex-wrap">
+                          <span className="font-mono text-[11px] font-bold text-[#A85C3D] bg-orange-50 px-1.5 py-0.5 rounded border border-orange-200">
+                            #73
+                          </span>
+                          <h3 className="font-extrabold text-base text-slate-900 leading-tight">
+                            RAOZ WEDDING HUB
+                          </h3>
+                        </div>
+                        <p className="text-[11px] font-semibold text-[#A85C3D] uppercase tracking-wide">
+                          Destination Wedding Platform · Couples, Planners &amp; Guests
+                        </p>
+                        <p className="text-xs text-[#51556E] line-clamp-2 leading-relaxed mt-1.5">
+                          One calm platform for multi-day weddings. Multi-day itineraries, 8-language guest hubs (zero app download), flight &amp; room tracking, multi-currency budget buffers, and 10-phase planner suites.
+                        </p>
+                        <div className="pt-2 mt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-[#636882]">
+                          <span className="font-semibold text-[#A85C3D]">AUD $89 One-Time</span>
+                          <span className="font-semibold text-stone-700">8 Native Languages</span>
+                        </div>
+                      </div>
+                    ) : isGlobalPlannerss ? (
+                      <div>
+                        <div className="flex items-center gap-1.5 mb-1 flex-wrap">
+                          <span className="font-mono text-[11px] font-bold text-[#A8823E] bg-amber-50 px-1.5 py-0.5 rounded border border-amber-200">
+                            #72
+                          </span>
+                          <h3 className="font-extrabold text-base text-slate-900 leading-tight">
+                            GLOBAL PLANNERSS
+                          </h3>
+                        </div>
+                        <p className="text-[11px] font-semibold text-[#A8823E] uppercase tracking-wide">
+                          Luxury Wedding Planning &amp; Production · India &amp; Worldwide
+                        </p>
+                        <p className="text-xs text-[#51556E] line-clamp-2 leading-relaxed mt-1.5">
+                          We Carry Weddings. From 3D decor renders to guest concierge &amp; artist management. Transparent published pricing from ₹2.5 Lakhs, capped at 60 weddings a year.
+                        </p>
+                        <div className="pt-2 mt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-[#636882]">
+                          <span className="font-semibold text-[#A8823E]">Published Fees ₹2.5L+</span>
+                          <span className="font-semibold text-stone-700">Capped at 60 / Year</span>
+                        </div>
+                      </div>
+                    ) : isDevdas ? (
                       <div>
                         <div className="flex items-center gap-1.5 mb-1 flex-wrap">
                           <span className="font-mono text-[11px] font-bold text-[#7A1C30] bg-rose-50 px-1.5 py-0.5 rounded border border-rose-200">
@@ -1050,7 +1297,17 @@ export const DemoShowcase: React.FC<DemoShowcaseProps> = ({ onOpenOrderModal }) 
                 <div className="p-3 bg-[#FAFAF8] border-t border-[#E8E7F0] flex items-center gap-2">
                   <button
                     onClick={() => {
-                      if (isUtsav) {
+                      if (isAuraLuxe) {
+                        setActiveView('site-75-aura-luxe');
+                      } else if (isGrandeurWeddings) {
+                        setActiveView('grandeur-weddings');
+                      } else if (isRaozWeddingHub) {
+                        setActiveView('raoz-wedding-hub');
+                      } else if (isGlobalPlannerss) {
+                        setActiveView('global-plannerss');
+                      } else if (isRaozy) {
+                        setActiveView('raozy-wedding-planner');
+                      } else if (isUtsav) {
                         setActiveView('utsav-luxe');
                       } else if (isPsr) {
                         setActiveView('psr-venture-weddings');
@@ -1073,12 +1330,22 @@ export const DemoShowcase: React.FC<DemoShowcaseProps> = ({ onOpenOrderModal }) 
                     className="flex-1 min-h-[44px] px-3.5 py-2 bg-[#14162B] hover:bg-[#4338CA] active:bg-[#3730A3] text-white text-xs font-bold rounded-xl shadow-xs transition-colors cursor-pointer flex items-center justify-center gap-1.5"
                   >
                     <ExternalLink className="w-3.5 h-3.5 text-amber-400" />
-                    <span>{isUtsav || isPsr || isDevdas || isLivinto || isSkinSciene || isMedicarePlus || isClinicByPeople || isGroupAch ? 'VIEW PROJECT' : (site.bookingCtaLabel || 'View Demo')}</span>
+                    <span>{isAuraLuxe || isGrandeurWeddings || isRaozWeddingHub || isGlobalPlannerss || isRaozy || isUtsav || isPsr || isDevdas || isLivinto || isSkinSciene || isMedicarePlus || isClinicByPeople || isGroupAch ? 'VIEW PROJECT' : (site.bookingCtaLabel || 'View Demo')}</span>
                   </button>
 
                   <button
                     onClick={() => {
-                      if (isUtsav) {
+                      if (isAuraLuxe) {
+                        setActiveView('site-75-aura-luxe');
+                      } else if (isGrandeurWeddings) {
+                        setActiveView('grandeur-weddings');
+                      } else if (isRaozWeddingHub) {
+                        setActiveView('raoz-wedding-hub');
+                      } else if (isGlobalPlannerss) {
+                        setActiveView('global-plannerss');
+                      } else if (isRaozy) {
+                        setActiveView('raozy-wedding-planner');
+                      } else if (isUtsav) {
                         setActiveView('utsav-luxe');
                       } else if (isPsr) {
                         setActiveView('psr-venture-weddings');
@@ -1099,10 +1366,10 @@ export const DemoShowcase: React.FC<DemoShowcaseProps> = ({ onOpenOrderModal }) 
                       }
                     }}
                     className="min-h-[44px] px-3 py-2 bg-white hover:bg-slate-50 border border-[#D5D4E3] active:bg-slate-100 text-slate-800 text-xs font-bold rounded-xl transition-colors cursor-pointer flex items-center justify-center gap-1.5"
-                    title={isUtsav || isPsr || isDevdas || isLivinto || isSkinSciene || isMedicarePlus ? 'Launch Interactive Demo' : 'Quick Device Preview'}
+                    title={isAuraLuxe || isGrandeurWeddings || isRaozWeddingHub || isGlobalPlannerss || isRaozy || isUtsav || isPsr || isDevdas || isLivinto || isSkinSciene || isMedicarePlus ? 'Launch Interactive Demo' : 'Quick Device Preview'}
                   >
                     <Eye className="w-4 h-4 text-slate-500" />
-                    <span className="hidden xs:inline">{isUtsav || isPsr || isDevdas || isLivinto || isSkinSciene || isMedicarePlus ? 'LAUNCH DEMO' : 'Preview'}</span>
+                    <span className="hidden xs:inline">{isAuraLuxe || isGrandeurWeddings || isRaozWeddingHub || isGlobalPlannerss || isRaozy || isUtsav || isPsr || isDevdas || isLivinto || isSkinSciene || isMedicarePlus ? 'LAUNCH DEMO' : 'Preview'}</span>
                   </button>
                 </div>
               </div>
