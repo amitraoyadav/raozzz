@@ -1,7 +1,5 @@
-/**
- * Data definitions for SITE #78
- * AURELIA GOA — LUXURY BEACH RESORT & BANQUET
- */
+import { BusinessWebsite } from '../types';
+import { site78Config } from '../config/site78Config';
 
 export interface RoomItem {
   id: string;
@@ -1070,3 +1068,81 @@ export const TESTIMONIALS_DATA: TestimonialItem[] = [
     comment: 'A true boutique masterpiece in North Goa. Quiet, refined, sustainably minded, and far from the noise of Baga. The staff handled our airport transfers, dolphin safari, and rental scooter seamlessly. We will certainly return.'
   }
 ];
+
+export const SITE_78_WEBSITE: BusinessWebsite = {
+  id: 'site-78-aurelia-resort',
+  businessName: site78Config.BRAND_NAME,
+  templateId: 'anemos_resort_78',
+  category: 'hotel',
+  slug: '78-aurelia-resort',
+  tagline: site78Config.TAGLINE,
+  description: `${site78Config.BRAND_NAME} is Morjim Beach’s premier luxury beachfront boutique resort in North Goa with private plunge pools, organic fine dining, and coastal banquets.`,
+  ownerName: 'Executive Hospitality Board',
+  city: 'North Goa',
+  address: site78Config.FULL_ADDRESS,
+  phone: site78Config.PHONE_ROOMS,
+  whatsapp: site78Config.WHATSAPP,
+  email: site78Config.EMAIL_RESERVATIONS,
+  mapsUrl: site78Config.MAPS_EMBED_URL,
+  openingHours: 'Mo,Tu,We,Th,Fr,Sa,Su 00:00-23:59',
+  bookingType: 'reservation_party',
+  bookingCtaLabel: 'Book Luxury Villa',
+  status: 'published',
+  pricingPlanId: 'premium',
+  amountPaid: 4999,
+  paymentStatus: 'paid',
+  coverUrl: '/assets/site78/60.webp',
+  logoUrl: '/images/logo.svg',
+  primaryColor: '#0F2537',
+  secondaryColor: '#D4AF37',
+  fontFamily: 'Cormorant Garamond, serif',
+  sections: [
+    { id: 'hero', title: 'Beachfront Drone Vista', isEnabled: true, order: 1 },
+    { id: 'overview', title: 'The Aurelia Sanctuary', isEnabled: true, order: 2 },
+    { id: 'rooms', title: 'Private Plunge Pool Suites', isEnabled: true, order: 3 },
+    { id: 'dining', title: 'Coastal Artisanal Dining', isEnabled: true, order: 4 },
+    { id: 'events', title: 'Beach Weddings & Banquets', isEnabled: true, order: 5 },
+    { id: 'reviews', title: 'Guest Chronicles', isEnabled: true, order: 6 },
+    { id: 'contact', title: 'Concierge & Direct Access', isEnabled: true, order: 7 }
+  ],
+  gallery: [
+    { id: 'g-1', title: 'Morjim Beachfront Horizon', category: 'resort', imageUrl: '/assets/site78/60.webp' },
+    { id: 'g-2', title: 'Private Plunge Pool Deck', category: 'rooms', imageUrl: '/assets/site78/61.webp' },
+    { id: 'g-3', title: 'Sunset Seafood Dining', category: 'dining', imageUrl: '/assets/site78/62.webp' },
+    { id: 'g-4', title: 'Beachfront Wedding Lawn', category: 'events', imageUrl: '/assets/site78/63.webp' }
+  ],
+  offers: [
+    {
+      id: 'offer-monsoon-retreat',
+      title: 'Complimentary Floating Breakfast & Airport Transfer',
+      description: 'Book 3 or more nights in any Private Pool Room and enjoy a floating breakfast tray and luxury airport pick-up.',
+      couponCode: 'AURELIALUXE',
+      discountPercent: 15,
+      validTill: '2026-12-31'
+    }
+  ],
+  items: [
+    {
+      id: 'item-deluxe-pool-room',
+      name: 'Deluxe Double Room With Private Pool',
+      description: '450 sq.ft. ground floor room featuring a private plunge pool and open-air rain shower.',
+      price: 18500,
+      category: 'Luxury Pool Suites',
+      imageUrl: '/assets/site78/60.webp',
+      isAvailable: true
+    },
+    {
+      id: 'item-two-bedroom-suite',
+      name: 'Two Bedroom Premium Suite with Pool',
+      description: '780 sq.ft. multi-level suite with dual en-suite baths, direct private garden, and private pool.',
+      price: 32000,
+      category: 'Luxury Pool Suites',
+      imageUrl: '/assets/site78/61.webp',
+      isAvailable: true
+    }
+  ],
+  createdAt: '2026-10-05T00:00:00.000Z',
+  updatedAt: '2026-10-05T00:00:00.000Z'
+};
+
+export default SITE_78_WEBSITE;

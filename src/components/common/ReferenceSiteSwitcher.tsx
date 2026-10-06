@@ -956,10 +956,62 @@ export const ALL_29_REFERENCE_SITES: ReferenceSiteInfo[] = [
     concept: 'THE KENSINGTON CLUB (Panchshila Club Reference) · Elite Private Members Club, Sports Complex, Dining & Banquets in South Delhi (Est. 1972) + AURELIA GOA Beach Resort',
     themeColor: '#0F2537',
     badge: 'Site 78 · Elite Club & Resort'
+  },
+  {
+    id: 'site-79-elysium-club',
+    num: 79,
+    category: 'restaurant',
+    name: 'ELYSIUM THE ECSTASY',
+    originalUrl: 'https://www.priveenewdelhi.com/',
+    slug: '79-elysium-club',
+    referencePath: '/portfolio/79-elysium-club',
+    concept: 'ELYSIUM THE ECSTASY · Delhi Premier Luxury Nightclub & Ultra Lounge · Inspired by Priveé New Delhi Architecture · 360° Void Acoustics Sound, 120-Beam Kinetic Lasers, Mezzanine VIP Tables & Online Privileges',
+    themeColor: '#DFB759',
+    badge: 'Site 79 · Luxury Nightclub Delhi'
+  },
+  {
+    id: 'site-80-club-bw',
+    num: 80,
+    category: 'restaurant',
+    name: 'CLUB NOIR BLANC',
+    originalUrl: 'https://clubbw.in/',
+    slug: '80-club-bw',
+    referencePath: '/portfolio/80-club-bw',
+    concept: 'CLUB NOIR BLANC · Monochrome Luxury Nightclub Destination at The Suryaa New Delhi · Inspired by Club BW Architecture · Hero Image Slider, This Week Upcoming Events, 360° Virtual Walk-Through, Media & Post Event Lightbox Galleries, Video Showcase & Table Reservations',
+    themeColor: '#FFD700',
+    badge: 'Site 80 · Luxury Nightclub (Club BW)'
+  },
+  {
+    id: 'site-81-luxury-real-estate',
+    num: 81,
+    category: 'real_estate',
+    name: 'VALTIERRA LUXURY MARKETPLACE',
+    originalUrl: 'https://www.jamesedition.com/',
+    slug: '81-luxury-real-estate',
+    referencePath: '/portfolio/81-luxury-real-estate',
+    concept: 'VALTIERRA & CO. · Ultra-Prime Global Luxury Real Estate Marketplace Inspired by JamesEdition · Multi-Currency Search & Filters, Curated Estates, Yacht & Jet Portals, The Journal Editorial, Virtual Viewing & Private Broker Directory',
+    themeColor: '#C5A059',
+    badge: 'Site 81 · Luxury Real Estate (JamesEdition)'
+  },
+  {
+    id: 'site-82-wealth-clinic',
+    num: 82,
+    category: 'real_estate',
+    name: 'WEALTH NEXUS',
+    originalUrl: 'https://wealth-clinic.com/',
+    slug: '82-wealth-clinic',
+    referencePath: '/portfolio/82-wealth-clinic',
+    concept: 'WEALTH NEXUS · Premium Indian Real Estate Consultancy & Property Discovery Inspired by Wealth Clinic · RERA-Compliant Project Marketplace, EMI & ROI Yield Calculators, Sector 132 Noida Hub, VIP Site Visit Scheduling & Free Consultation',
+    themeColor: '#F54900',
+    badge: 'Site 82 · Real Estate Consultancy (Wealth Clinic)'
   }
 ];
 
-export const ALL_78_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_29_REFERENCE_SITES;
+export const ALL_82_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_29_REFERENCE_SITES;
+export const ALL_81_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_82_REFERENCE_SITES;
+export const ALL_80_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_82_REFERENCE_SITES;
+export const ALL_79_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_80_REFERENCE_SITES;
+export const ALL_78_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_79_REFERENCE_SITES;
 export const ALL_77_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_78_REFERENCE_SITES;
 export const ALL_76_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_77_REFERENCE_SITES;
 export const ALL_75_REFERENCE_SITES: ReferenceSiteInfo[] = ALL_76_REFERENCE_SITES;
@@ -1014,33 +1066,45 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
   const [categoryFilter, setCategoryFilter] = useState<'all' | 'cafe' | 'restaurant' | 'travel' | 'salon' | 'jewellery' | 'beauty_cosmetics' | 'gym_fitness' | 'loans' | 'real_estate' | 'shop' | 'wedding' | 'commercial_vehicles' | 'wedding_event_planning' | 'destination_weddings' | 'web_tools' | 'lawyer' | 'healthcare'>('all');
 
   const currentSite =
-    ALL_60_REFERENCE_SITES.find(s => s.id === currentSiteId || s.slug === currentSiteId) ||
-    ALL_60_REFERENCE_SITES.find(s => s.id === 'utsav-luxe') ||
-    ALL_60_REFERENCE_SITES.find(s => s.id === 'psr-venture-weddings') ||
-    ALL_60_REFERENCE_SITES.find(s => s.id === 'devdas-wedding') ||
-    ALL_60_REFERENCE_SITES.find(s => s.id === 'livinto-interiors') ||
-    ALL_60_REFERENCE_SITES.find(s => s.id === 'saveweb2zip') ||
-    ALL_60_REFERENCE_SITES.find(s => s.id === 'luxespace-htx') ||
-    ALL_60_REFERENCE_SITES.find(s => s.id === 'all-in-one-destination-weddings') ||
-    ALL_60_REFERENCE_SITES.find(s => s.id === 'rathore-weddings') ||
-    ALL_60_REFERENCE_SITES.find(s => s.id === 'smlwindia') ||
-    ALL_60_REFERENCE_SITES.find(s => s.id === 'raoz-weddings') ||
-    ALL_60_REFERENCE_SITES.find(s => s.id === 'raoz-motors') ||
-    ALL_60_REFERENCE_SITES.find(s => s.id === 'raoz-bazaar') ||
-    ALL_60_REFERENCE_SITES.find(s => s.id === 'raoz-properties') ||
-    ALL_60_REFERENCE_SITES.find(s => s.id === 'dlc-group') ||
-    ALL_60_REFERENCE_SITES.find(s => s.id === 'choudhary-realestate') ||
-    ALL_60_REFERENCE_SITES.find(s => s.id === 'square-yard-dealers') ||
-    ALL_60_REFERENCE_SITES[0];
+    ALL_80_REFERENCE_SITES.find(s => s.id === currentSiteId || s.slug === currentSiteId) ||
+    ALL_80_REFERENCE_SITES.find(s => s.id === 'site-80-club-bw') ||
+    ALL_80_REFERENCE_SITES.find(s => s.id === 'site-79-elysium-club') ||
+    ALL_80_REFERENCE_SITES.find(s => s.id === 'site-78-aurelia-resort') ||
+    ALL_80_REFERENCE_SITES.find(s => s.id === 'site-77-nocturna-club') ||
+    ALL_80_REFERENCE_SITES.find(s => s.id === 'utsav-luxe') ||
+    ALL_80_REFERENCE_SITES.find(s => s.id === 'psr-venture-weddings') ||
+    ALL_80_REFERENCE_SITES.find(s => s.id === 'devdas-wedding') ||
+    ALL_80_REFERENCE_SITES.find(s => s.id === 'livinto-interiors') ||
+    ALL_80_REFERENCE_SITES.find(s => s.id === 'saveweb2zip') ||
+    ALL_80_REFERENCE_SITES.find(s => s.id === 'luxespace-htx') ||
+    ALL_80_REFERENCE_SITES.find(s => s.id === 'all-in-one-destination-weddings') ||
+    ALL_80_REFERENCE_SITES.find(s => s.id === 'rathore-weddings') ||
+    ALL_80_REFERENCE_SITES.find(s => s.id === 'smlwindia') ||
+    ALL_80_REFERENCE_SITES.find(s => s.id === 'raoz-weddings') ||
+    ALL_80_REFERENCE_SITES.find(s => s.id === 'raoz-motors') ||
+    ALL_80_REFERENCE_SITES.find(s => s.id === 'raoz-bazaar') ||
+    ALL_80_REFERENCE_SITES.find(s => s.id === 'raoz-properties') ||
+    ALL_80_REFERENCE_SITES.find(s => s.id === 'dlc-group') ||
+    ALL_80_REFERENCE_SITES.find(s => s.id === 'choudhary-realestate') ||
+    ALL_80_REFERENCE_SITES.find(s => s.id === 'square-yard-dealers') ||
+    ALL_80_REFERENCE_SITES[0];
 
-  const filteredSites = ALL_60_REFERENCE_SITES.filter(s => {
+  const filteredSites = ALL_80_REFERENCE_SITES.filter(s => {
     if (categoryFilter === 'all') return true;
     return s.category === categoryFilter;
   });
 
   const handleSelectSite = (site: ReferenceSiteInfo) => {
     setModalOpen(false);
-    if (site.id === 'site-78-aurelia-resort' || site.slug === '78-aurelia-resort' || site.slug === 'aurelia-resort' || site.slug === 'anemos-goa') {
+    if (site.id === 'site-82-wealth-clinic' || site.slug === '82-wealth-clinic' || site.slug === 'wealth-clinic' || site.slug === 'wealthclinic' || site.slug === 'wealthnexus' || site.slug === 'wealth-nexus') {
+      setActiveView('site-82-wealth-clinic');
+    } else if (site.id === 'site-81-luxury-real-estate' || site.slug === '81-luxury-real-estate' || site.slug === 'jamesedition' || site.slug === 'valtierra') {
+      setActiveView('site-81-luxury-real-estate');
+    } else if (site.id === 'site-80-club-bw' || site.slug === '80-club-bw' || site.slug === 'club-bw' || site.slug === 'clubbw') {
+      setActiveView('site-80-club-bw');
+    } else if (site.id === 'site-79-elysium-club' || site.slug === '79-elysium-club' || site.slug === 'elysium' || site.slug === 'privee') {
+      setActiveView('site-79-elysium-club');
+    } else if (site.id === 'site-78-aurelia-resort' || site.slug === '78-aurelia-resort' || site.slug === 'aurelia-resort' || site.slug === 'anemos-goa') {
       setActiveView('site-78-aurelia-resort');
     } else if (site.id === 'site-77-nocturna-club' || site.slug === '77-nocturna-club' || site.slug === 'nocturna') {
       setActiveView('site-77-nocturna-club');
@@ -1125,7 +1189,7 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
             style={{ backgroundColor: currentSite.themeColor || '#10b981' }}
           />
           <span className="font-bold tracking-wide truncate max-w-[200px] xs:max-w-[320px] sm:max-w-none text-white font-mono text-[11px] sm:text-xs">
-            WEBSITE {currentSite.num}/{ALL_60_REFERENCE_SITES.length}: {currentSite.name.toUpperCase()} ({getCategoryTitle(currentSite.category)})
+            WEBSITE {currentSite.num}/{ALL_80_REFERENCE_SITES.length}: {currentSite.name.toUpperCase()} ({getCategoryTitle(currentSite.category)})
           </span>
         </div>
 
@@ -1136,7 +1200,7 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
             className="px-2.5 py-1 rounded bg-stone-800 hover:bg-stone-700 text-stone-200 border border-stone-700 font-medium text-[11px] flex items-center gap-1.5 cursor-pointer transition-colors"
           >
             <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-            <span>Switch Website ({ALL_60_REFERENCE_SITES.length} Sites)</span>
+            <span>Switch Website ({ALL_80_REFERENCE_SITES.length} Sites)</span>
             <ChevronDown className="w-3.5 h-3.5 text-stone-400" />
           </button>
 
@@ -1150,7 +1214,7 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
         </div>
       </nav>
 
-      {/* 60 Reference Websites Picker Modal */}
+      {/* 80 Reference Websites Picker Modal */}
       {modalOpen && (
         <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm flex items-center justify-center p-4">
           <div className="bg-[#18181b] text-white border border-stone-800 rounded-2xl w-full max-w-5xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden">
@@ -1159,13 +1223,13 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
               <div>
                 <div className="flex items-center gap-2 text-amber-400 text-xs font-bold uppercase tracking-wider">
                   <Sparkles className="w-4 h-4" />
-                  <span>{ALL_60_REFERENCE_SITES.length} Complete Faithful Website Recreations</span>
+                  <span>{ALL_80_REFERENCE_SITES.length} Complete Faithful Website Recreations</span>
                 </div>
                 <h3 className="text-lg sm:text-xl font-bold text-white mt-1">
-                  Reference Website Directory — Web Tools, Wedding Venues, Destination Weddings, Event Planning, Real Estate &amp; More
+                  Reference Website Directory — Luxury Real Estate Marketplaces, Nightclubs, Hotels, Web Tools, Wedding Venues &amp; More
                 </h3>
                 <p className="text-xs text-stone-400 mt-0.5">
-                  Fifteen Categories: 1 Web Tools / Utilities (Site 60: SaveWeb2ZIP), 3 Wedding &amp; Event Venues (Sites 55, 56, 59: LuxeSpace HTX), 1 Destination Weddings (Site 58), 1 Wedding &amp; Event Planning (Site 57: Rathore Weddings), 1 Commercial Vehicles, 1 Store/Shop, 5 Real Estate, 2 Loans &amp; Finance, 19 Cafes, 10 Restaurants, 7 Tour &amp; Travel, 3 Salons, 4 Jewellery, 1 Beauty &amp; Cosmetics, 2 Gym &amp; Fitness.
+                  Complete 81-Site Multi-Industry Roster: Luxury Real Estate &amp; Asset Marketplaces, Nightclubs &amp; Bars, Hotels &amp; Resorts, Cafes, Restaurants, Tour &amp; Travel, Salons, Jewellery, Beauty &amp; Cosmetics, Gym &amp; Fitness, Loans &amp; Finance, Stores, Destination Weddings &amp; Legal Portals.
                 </p>
               </div>
               <button
@@ -1186,7 +1250,7 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
                     : 'bg-stone-800 text-stone-300 hover:bg-stone-700'
                 }`}
               >
-                All Websites ({ALL_55_REFERENCE_SITES.length})
+                All Websites ({ALL_80_REFERENCE_SITES.length})
               </button>
               <button
                 onClick={() => setCategoryFilter('cafe')}
@@ -1197,7 +1261,7 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
                 }`}
               >
                 <Coffee className="w-3.5 h-3.5" />
-                <span>Cafes ({ALL_37_REFERENCE_SITES.filter(s => s.category === 'cafe').length})</span>
+                <span>Cafes ({ALL_80_REFERENCE_SITES.filter(s => s.category === 'cafe').length})</span>
               </button>
               <button
                 onClick={() => setCategoryFilter('restaurant')}
@@ -1208,7 +1272,7 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
                 }`}
               >
                 <Utensils className="w-3.5 h-3.5" />
-                <span>Restaurants ({ALL_37_REFERENCE_SITES.filter(s => s.category === 'restaurant').length})</span>
+                <span>Restaurants ({ALL_80_REFERENCE_SITES.filter(s => s.category === 'restaurant').length})</span>
               </button>
               <button
                 onClick={() => setCategoryFilter('travel')}
@@ -1219,7 +1283,7 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
                 }`}
               >
                 <Compass className="w-3.5 h-3.5" />
-                <span>Tour & Travel ({ALL_37_REFERENCE_SITES.filter(s => s.category === 'travel').length})</span>
+                <span>Tour & Travel ({ALL_80_REFERENCE_SITES.filter(s => s.category === 'travel').length})</span>
               </button>
               <button
                 onClick={() => setCategoryFilter('salon')}
@@ -1230,7 +1294,7 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
                 }`}
               >
                 <Sparkles className="w-3.5 h-3.5" />
-                <span>Salon ({ALL_37_REFERENCE_SITES.filter(s => s.category === 'salon').length})</span>
+                <span>Salon ({ALL_80_REFERENCE_SITES.filter(s => s.category === 'salon').length})</span>
               </button>
               <button
                 onClick={() => setCategoryFilter('jewellery')}
@@ -1241,7 +1305,7 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
                 }`}
               >
                 <Sparkles className="w-3.5 h-3.5 text-amber-300" />
-                <span>Jewellery ({ALL_37_REFERENCE_SITES.filter(s => s.category === 'jewellery').length})</span>
+                <span>Jewellery ({ALL_80_REFERENCE_SITES.filter(s => s.category === 'jewellery').length})</span>
               </button>
               <button
                 onClick={() => setCategoryFilter('beauty_cosmetics')}
@@ -1252,7 +1316,7 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
                 }`}
               >
                 <Sparkles className="w-3.5 h-3.5 text-pink-400" />
-                <span>Beauty & Cosmetics ({ALL_49_REFERENCE_SITES.filter(s => s.category === 'beauty_cosmetics').length})</span>
+                <span>Beauty & Cosmetics ({ALL_80_REFERENCE_SITES.filter(s => s.category === 'beauty_cosmetics').length})</span>
               </button>
               <button
                 onClick={() => setCategoryFilter('gym_fitness')}
@@ -1263,7 +1327,7 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
                 }`}
               >
                 <Sparkles className="w-3.5 h-3.5 text-yellow-400" />
-                <span>Gym & Fitness ({ALL_49_REFERENCE_SITES.filter(s => s.category === 'gym_fitness').length})</span>
+                <span>Gym & Fitness ({ALL_80_REFERENCE_SITES.filter(s => s.category === 'gym_fitness').length})</span>
               </button>
               <button
                 onClick={() => setCategoryFilter('loans')}
@@ -1274,7 +1338,7 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
                 }`}
               >
                 <Sparkles className="w-3.5 h-3.5 text-blue-400" />
-                <span>Loans &amp; Finance ({ALL_50_REFERENCE_SITES.filter(s => s.category === 'loans').length})</span>
+                <span>Loans &amp; Finance ({ALL_80_REFERENCE_SITES.filter(s => s.category === 'loans').length})</span>
               </button>
               <button
                 onClick={() => setCategoryFilter('real_estate')}
@@ -1285,7 +1349,7 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
                 }`}
               >
                 <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-                <span>Real Estate ({ALL_54_REFERENCE_SITES.filter(s => s.category === 'real_estate').length})</span>
+                <span>Real Estate ({ALL_80_REFERENCE_SITES.filter(s => s.category === 'real_estate').length})</span>
               </button>
               <button
                 onClick={() => setCategoryFilter('shop')}
@@ -1296,7 +1360,7 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
                 }`}
               >
                 <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
-                <span>Store / Shop ({ALL_55_REFERENCE_SITES.filter(s => s.category === 'shop').length})</span>
+                <span>Store / Shop ({ALL_80_REFERENCE_SITES.filter(s => s.category === 'shop').length})</span>
               </button>
               <button
                 onClick={() => setCategoryFilter('wedding')}
@@ -1307,7 +1371,7 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
                 }`}
               >
                 <Sparkles className="w-3.5 h-3.5 text-rose-400" />
-                <span>Wedding ({ALL_59_REFERENCE_SITES.filter(s => s.category === 'wedding').length})</span>
+                <span>Wedding ({ALL_80_REFERENCE_SITES.filter(s => s.category === 'wedding').length})</span>
               </button>
               <button
                 onClick={() => setCategoryFilter('commercial_vehicles')}
@@ -1318,7 +1382,7 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
                 }`}
               >
                 <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-                <span>Automobile / Commercial Vehicles ({ALL_59_REFERENCE_SITES.filter(s => s.category === 'commercial_vehicles').length})</span>
+                <span>Automobile / Commercial Vehicles ({ALL_80_REFERENCE_SITES.filter(s => s.category === 'commercial_vehicles').length})</span>
               </button>
               <button
                 onClick={() => setCategoryFilter('wedding_event_planning')}
@@ -1329,7 +1393,7 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
                 }`}
               >
                 <Sparkles className="w-3.5 h-3.5 text-amber-300" />
-                <span>Wedding &amp; Event Planning ({ALL_59_REFERENCE_SITES.filter(s => s.category === 'wedding_event_planning').length})</span>
+                <span>Wedding &amp; Event Planning ({ALL_80_REFERENCE_SITES.filter(s => s.category === 'wedding_event_planning').length})</span>
               </button>
               <button
                 onClick={() => setCategoryFilter('destination_weddings')}
@@ -1340,7 +1404,7 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
                 }`}
               >
                 <Sparkles className="w-3.5 h-3.5 text-pink-400" />
-                <span>Destination Weddings ({ALL_59_REFERENCE_SITES.filter(s => s.category === 'destination_weddings').length})</span>
+                <span>Destination Weddings ({ALL_80_REFERENCE_SITES.filter(s => s.category === 'destination_weddings').length})</span>
               </button>
             </div>
 
@@ -1396,7 +1460,7 @@ export const ReferenceSiteSwitcher: React.FC<SwitcherProps> = ({ currentSiteId }
 
             {/* Modal Footer */}
             <div className="p-4 bg-[#141416] border-t border-stone-800 flex items-center justify-between text-xs text-stone-400">
-              <span>All {ALL_37_REFERENCE_SITES.length} reference websites preserved and active in this project.</span>
+              <span>All {ALL_80_REFERENCE_SITES.length} reference websites preserved and active in this project.</span>
               <button
                 onClick={() => setModalOpen(false)}
                 className="px-4 py-1.5 bg-stone-800 hover:bg-stone-700 text-white font-medium rounded-lg cursor-pointer transition-colors"

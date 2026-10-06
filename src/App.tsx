@@ -83,6 +83,10 @@ import { Site75App } from './components/site75/Site75App';
 import { Site76App } from './components/site76/Site76App';
 import { Site77App } from './components/site77/Site77App';
 import { Site78App } from './components/site78/Site78App';
+import { Site79App } from './components/site79/Site79App';
+import { Site80App } from './components/site80/Site80App';
+import { Site81App } from './components/site81/Site81App';
+import { Site82App } from './components/site82/Site82App';
 
 function AppContent() {
   const {
@@ -155,6 +159,18 @@ function AppContent() {
   }
 
   if (activeView === 'site') {
+    if (activeSiteSlug === '82-wealth-clinic' || activeSiteSlug === 'wealth-clinic' || activeSiteSlug === 'wealthclinic' || activeSiteSlug === 'wealthnexus' || activeSiteSlug === 'wealth-nexus' || activeSiteSlug === 'site-82-wealth-clinic' || activeSiteSlug === 'site-82') {
+      return <Site82App onBackToHub={() => setActiveView('demo-websites')} />;
+    }
+    if (activeSiteSlug === '81-luxury-real-estate' || activeSiteSlug === 'luxury-real-estate' || activeSiteSlug === '81-real-estate' || activeSiteSlug === 'jamesedition' || activeSiteSlug === 'valtierra' || activeSiteSlug === 'site-81-luxury-real-estate' || activeSiteSlug === 'site-81') {
+      return <Site81App onBackToHub={() => setActiveView('demo-websites')} />;
+    }
+    if (activeSiteSlug === '80-club-bw' || activeSiteSlug === 'club-bw' || activeSiteSlug === 'clubbw' || activeSiteSlug === '80-club' || activeSiteSlug === 'clubnoirblanc' || activeSiteSlug === 'site-80-club-bw' || activeSiteSlug === 'site-80') {
+      return <Site80App onBackToHub={() => setActiveView('demo-websites')} />;
+    }
+    if (activeSiteSlug === '79-elysium-club' || activeSiteSlug === 'elysium-club' || activeSiteSlug === '79-elysium' || activeSiteSlug === 'elysium' || activeSiteSlug === 'privee' || activeSiteSlug === 'privee-delhi' || activeSiteSlug === 'site-79-elysium-club' || activeSiteSlug === 'site-79') {
+      return <Site79App onBackToHub={() => setActiveView('demo-websites')} />;
+    }
     if (activeSiteSlug === '78-aurelia-resort' || activeSiteSlug === 'aurelia-resort' || activeSiteSlug === '78-aurelia' || activeSiteSlug === 'aurelia' || activeSiteSlug === 'anemos' || activeSiteSlug === 'anemos-goa' || activeSiteSlug === 'anemosgoa' || activeSiteSlug === 'site-78-aurelia-resort') {
       return <Site78App onBackToHub={() => setActiveView('demo-websites')} />;
     }
@@ -341,6 +357,22 @@ function AppContent() {
 
   if (activeView === 'clinicbypeople') {
     return <ClinicByPeopleApp onBackToHub={() => setActiveView('demo-websites')} />;
+  }
+
+  if (activeView === 'site-82-wealth-clinic' || activeView === '82-wealth-clinic' || activeView === 'wealth-clinic' || activeView === 'wealthnexus' || activeView === 'wealth-nexus') {
+    return <Site82App onBackToHub={() => setActiveView('demo-websites')} />;
+  }
+
+  if (activeView === 'site-81-luxury-real-estate' || activeView === '81-luxury-real-estate' || activeView === 'valtierra' || activeView === 'jamesedition') {
+    return <Site81App onBackToHub={() => setActiveView('demo-websites')} />;
+  }
+
+  if (activeView === 'site-80-club-bw' || activeView === '80-club-bw' || activeView === 'club-bw' || activeView === 'clubbw') {
+    return <Site80App onBackToHub={() => setActiveView('demo-websites')} />;
+  }
+
+  if (activeView === 'site-79-elysium-club' || activeView === '79-elysium-club') {
+    return <Site79App onBackToHub={() => setActiveView('demo-websites')} />;
   }
 
   if (activeView === 'site-78-aurelia-resort' || activeView === '78-aurelia-resort') {

@@ -121,7 +121,43 @@ import { BEAUTY_BERRY_WEBSITE } from './beautyBerryData';
 import { GOLDS_GYM_WEBSITE } from './goldsGymData';
 import { FITPASS_WEBSITE } from './fitpassData';
 
-// User's active 46 Reference Websites faithfully recreated
+// 47-80: Remaining categories & sites
+import { SABKA_LOANS_WEBSITE } from './sabkaLoansData';
+import { SABKA_FINANCE_WEBSITE } from './sabkaFinanceData';
+import { SQUARE_YARD_DEALERS_WEBSITE } from './squareYardDealersData';
+import { CHOUDHARY_REALESTATE_WEBSITE } from './choudharyRealestateData';
+import { DLC_GROUP_WEBSITE } from './dlcGroupData';
+import { RAOZ_PROPERTIES_WEBSITE } from './raozPropertiesData';
+import { RAOZ_BAZAAR_WEBSITE } from './raozBazaarData';
+import { RAOZ_WEDDINGS_WEBSITE } from './raozWeddingsData';
+import { SMLW_WEDDINGS_WEBSITE } from './smlwWeddingsData';
+import { RATHORE_WEDDINGS_WEBSITE } from './rathoreWeddingsData';
+import { ALL_IN_ONE_DESTINATION_WEDDINGS_WEBSITE } from './allInOneDestinationWeddingsData';
+import { LUXESPACE_WEBSITE } from './luxeSpaceWebsiteData';
+import { SAVEWEB2ZIP_WEBSITE } from './saveWeb2ZipWebsiteData';
+import { LAWLINKS_WEBSITE } from './lawlinksWebsiteData';
+import { MAHESHWARI_WEBSITE } from './maheshwariWebsiteData';
+import { RAOZ_MOTORS_WEBSITE } from './raozMotorsData';
+import { GROUP_ACH_WEBSITE } from './groupAchData';
+import { CLINICBYPEOPLE_WEBSITE } from './clinicByPeopleData';
+import { MEDICAREPLUS_WEBSITE } from './medicarePlusData';
+import { SKINSCIENE_WEBSITE } from './skinScieneData';
+import { LIVINTO_WEBSITE } from './livintoInteriorsData';
+import { DEVDAS_WEBSITE } from './devdasWeddingData';
+import { UTSAV_LUXE_WEBSITE } from './utsavLuxeData';
+import { PSR_VENTURE_WEDDINGS_WEBSITE } from './psrWeddingsData';
+import { RAOZY_WEDDING_WEBSITE } from './raozyWeddingData';
+import { GLOBAL_PLANNERSS_WEBSITE } from './globalPlannerssData';
+import { RAOZ_WEDDING_HUB_WEBSITE } from './raozWeddingHubData';
+import { SITE_74_WEBSITE } from './site74Data';
+import { SITE_75_WEBSITE } from './site75Data';
+import { SITE_76_WEBSITE } from './site76Data';
+import { SITE_77_WEBSITE } from './site77Data';
+import { SITE_78_WEBSITE } from './site78Data';
+import { SITE_79_WEBSITE } from './site79Data';
+import { SITE_80_WEBSITE } from './site80Data';
+
+// User's active 80 Reference Websites faithfully recreated
 export const DEFAULT_WEBSITES: BusinessWebsite[] = [
   // 1-19: Cafes (19)
   TWOD_WEBSITE,
@@ -183,7 +219,57 @@ export const DEFAULT_WEBSITES: BusinessWebsite[] = [
 
   // 45-46: Jewellery (3rd & 4th in Jewellery category)
   KRISHNA_JEWELLERS_WEBSITE,
-  HAZOORILAL_WEBSITE
+  HAZOORILAL_WEBSITE,
+
+  // 47-48: Loans & Finance (2)
+  SABKA_LOANS_WEBSITE,
+  SABKA_FINANCE_WEBSITE,
+
+  // 49-53: Real Estate (5)
+  SQUARE_YARD_DEALERS_WEBSITE,
+  CHOUDHARY_REALESTATE_WEBSITE,
+  DLC_GROUP_WEBSITE,
+  RAOZ_PROPERTIES_WEBSITE,
+  RAOZ_BAZAAR_WEBSITE,
+
+  // 54-56: Weddings (3)
+  RAOZ_WEDDINGS_WEBSITE,
+  SMLW_WEDDINGS_WEBSITE,
+  RATHORE_WEDDINGS_WEBSITE,
+
+  // 57-60: Destination Weddings, LuxeSpace, Web Tools, Vehicles (4)
+  ALL_IN_ONE_DESTINATION_WEDDINGS_WEBSITE,
+  LUXESPACE_WEBSITE,
+  SAVEWEB2ZIP_WEBSITE,
+  RAOZ_MOTORS_WEBSITE,
+
+  // 61-63: Legal & Corporate Finance (3)
+  LAWLINKS_WEBSITE,
+  MAHESHWARI_WEBSITE,
+  GROUP_ACH_WEBSITE,
+
+  // 64-67: Healthcare & Interiors (4)
+  CLINICBYPEOPLE_WEBSITE,
+  MEDICAREPLUS_WEBSITE,
+  SKINSCIENE_WEBSITE,
+  LIVINTO_WEBSITE,
+
+  // 68-73: Wedding Planners & Hubs (6)
+  DEVDAS_WEBSITE,
+  UTSAV_LUXE_WEBSITE,
+  PSR_VENTURE_WEDDINGS_WEBSITE,
+  RAOZY_WEDDING_WEBSITE,
+  GLOBAL_PLANNERSS_WEBSITE,
+  RAOZ_WEDDING_HUB_WEBSITE,
+
+  // 74-80: Grandeur, Aura, Aranya, Nocturna, Aurelia, Elysium, Noir Blanc (7)
+  SITE_74_WEBSITE,
+  SITE_75_WEBSITE,
+  SITE_76_WEBSITE,
+  SITE_77_WEBSITE,
+  SITE_78_WEBSITE,
+  SITE_79_WEBSITE,
+  SITE_80_WEBSITE
 ];
 
 export const INITIAL_LEADS: LeadEnquiry[] = [];

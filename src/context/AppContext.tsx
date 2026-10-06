@@ -79,7 +79,22 @@ export type AppView =
   | 'site-77-nocturna-club'
   | '77-nocturna-club'
   | 'site-78-aurelia-resort'
-  | '78-aurelia-resort';
+  | '78-aurelia-resort'
+  | 'site-79-elysium-club'
+  | '79-elysium-club'
+  | 'site-80-club-bw'
+  | '80-club-bw'
+  | 'club-bw'
+  | 'clubbw'
+  | 'site-81-luxury-real-estate'
+  | '81-luxury-real-estate'
+  | 'valtierra'
+  | 'jamesedition'
+  | 'site-82-wealth-clinic'
+  | '82-wealth-clinic'
+  | 'wealth-clinic'
+  | 'wealthnexus'
+  | 'wealth-nexus';
 
 import { TWOD_WEBSITE } from '../data/twoDCafeData';
 import { BLUE_TOKAI_WEBSITE } from '../data/blueTokaiData';
@@ -158,6 +173,31 @@ import { SITE_74_WEBSITE } from '../data/site74Data';
 import { SITE_75_WEBSITE } from '../data/site75Data';
 import { SITE_76_WEBSITE } from '../data/site76Data';
 import { SITE_77_WEBSITE } from '../data/site77Data';
+import { SITE_78_WEBSITE } from '../data/site78Data';
+import { SITE_79_WEBSITE } from '../data/site79Data';
+import { SITE_80_WEBSITE } from '../data/site80Data';
+import { SITE_81_WEBSITE } from '../data/site81Data';
+import { SITE_82_WEBSITE } from '../data/site82Data';
+
+export const ALL_SITE_82_WEBSITES: BusinessWebsite[] = [
+  SITE_82_WEBSITE
+];
+
+export const ALL_SITE_81_WEBSITES: BusinessWebsite[] = [
+  SITE_81_WEBSITE
+];
+
+export const ALL_SITE_80_WEBSITES: BusinessWebsite[] = [
+  SITE_80_WEBSITE
+];
+
+export const ALL_SITE_79_WEBSITES: BusinessWebsite[] = [
+  SITE_79_WEBSITE
+];
+
+export const ALL_SITE_78_WEBSITES: BusinessWebsite[] = [
+  SITE_78_WEBSITE
+];
 
 export const ALL_SITE_77_WEBSITES: BusinessWebsite[] = [
   SITE_77_WEBSITE
@@ -346,24 +386,34 @@ export const ALL_57_COLLECTION_WEBSITES: BusinessWebsite[] = [
   ...ALL_SITE_74_WEBSITES,
   ...ALL_SITE_75_WEBSITES,
   ...ALL_SITE_76_WEBSITES,
-  ...ALL_SITE_77_WEBSITES
+  ...ALL_SITE_77_WEBSITES,
+  ...ALL_SITE_78_WEBSITES,
+  ...ALL_SITE_79_WEBSITES,
+  ...ALL_SITE_80_WEBSITES,
+  ...ALL_SITE_81_WEBSITES,
+  ...ALL_SITE_82_WEBSITES
 ];
 
-export const ALL_77_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_57_COLLECTION_WEBSITES;
-export const ALL_76_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_77_COLLECTION_WEBSITES;
-export const ALL_75_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_76_COLLECTION_WEBSITES;
-export const ALL_74_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_75_COLLECTION_WEBSITES;
-export const ALL_73_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_74_COLLECTION_WEBSITES;
-export const ALL_72_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_73_COLLECTION_WEBSITES;
-export const ALL_71_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_72_COLLECTION_WEBSITES;
-export const ALL_70_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_71_COLLECTION_WEBSITES;
-export const ALL_68_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_57_COLLECTION_WEBSITES;
-export const ALL_65_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_57_COLLECTION_WEBSITES;
-export const ALL_64_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_65_COLLECTION_WEBSITES;
-export const ALL_63_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_64_COLLECTION_WEBSITES;
-export const ALL_62_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_63_COLLECTION_WEBSITES;
-export const ALL_61_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_57_COLLECTION_WEBSITES;
-export const ALL_60_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_57_COLLECTION_WEBSITES;
+export const ALL_82_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_57_COLLECTION_WEBSITES;
+export const ALL_81_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_82_COLLECTION_WEBSITES;
+export const ALL_80_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_81_COLLECTION_WEBSITES;
+export const ALL_79_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_80_COLLECTION_WEBSITES;
+export const ALL_78_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_80_COLLECTION_WEBSITES;
+export const ALL_77_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_80_COLLECTION_WEBSITES;
+export const ALL_76_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_80_COLLECTION_WEBSITES;
+export const ALL_75_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_80_COLLECTION_WEBSITES;
+export const ALL_74_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_80_COLLECTION_WEBSITES;
+export const ALL_73_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_80_COLLECTION_WEBSITES;
+export const ALL_72_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_80_COLLECTION_WEBSITES;
+export const ALL_71_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_80_COLLECTION_WEBSITES;
+export const ALL_70_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_80_COLLECTION_WEBSITES;
+export const ALL_68_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_80_COLLECTION_WEBSITES;
+export const ALL_65_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_80_COLLECTION_WEBSITES;
+export const ALL_64_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_80_COLLECTION_WEBSITES;
+export const ALL_63_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_80_COLLECTION_WEBSITES;
+export const ALL_62_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_80_COLLECTION_WEBSITES;
+export const ALL_61_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_80_COLLECTION_WEBSITES;
+export const ALL_60_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_80_COLLECTION_WEBSITES;
 export const ALL_59_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_57_COLLECTION_WEBSITES;
 export const ALL_58_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_57_COLLECTION_WEBSITES;
 export const ALL_56_COLLECTION_WEBSITES: BusinessWebsite[] = ALL_57_COLLECTION_WEBSITES;
@@ -605,7 +655,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
           const cleaned = parsed
             .filter((s: unknown): s is Partial<BusinessWebsite> => Boolean(s && typeof s === 'object' && !isLegacyDemoSite(s)))
             .map(s => normalizeBusinessSite(s));
-          const canonical = [...ALL_60_COLLECTION_WEBSITES];
+          const canonical = [...ALL_81_COLLECTION_WEBSITES];
           const custom = cleaned.filter(s => !canonical.some(c => c.slug === s.slug || c.id === s.id));
           return [...canonical, ...custom];
         }
@@ -613,7 +663,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     } catch (e) {
       console.warn('Could not parse stored websites', e);
     }
-    return ALL_60_COLLECTION_WEBSITES;
+    return ALL_81_COLLECTION_WEBSITES;
   });
 
   const [pricingPlans, setPricingPlans] = useState<PricingPlan[]>(() => {
@@ -713,7 +763,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [activeView, setActiveViewInternal] = useState<AppView>(() => {
     if (typeof window !== 'undefined') {
       const hash = window.location.hash.replace('#/', '').replace('#', '').trim().toLowerCase();
-      if (hash === 'site-78-aurelia-resort' || hash === '78-aurelia-resort' || hash === 'aurelia' || hash === 'aurelia-resort' || hash === 'aureliagoa' || hash === 'anemos' || hash === 'anemos-goa' || hash === 'anemosgoa' || hash === 'anemosgoa.com' || hash === 'site-78' || hash === '78' || hash === '') return 'site-78-aurelia-resort';
+      if (hash === 'site-79-elysium-club' || hash === '79-elysium-club' || hash === 'elysium' || hash === 'elysium-club' || hash === 'privee' || hash === 'privee-delhi' || hash === 'priveenewdelhi' || hash === 'site-79' || hash === '79' || hash === '') return 'site-79-elysium-club';
+      if (hash === 'site-78-aurelia-resort' || hash === '78-aurelia-resort' || hash === 'aurelia' || hash === 'aurelia-resort' || hash === 'aureliagoa' || hash === 'anemos' || hash === 'anemos-goa' || hash === 'anemosgoa' || hash === 'anemosgoa.com' || hash === 'site-78' || hash === '78') return 'site-78-aurelia-resort';
       if (hash === 'site-77-nocturna-club' || hash === '77-nocturna-club' || hash === 'nocturna' || hash === 'nocturna-club' || hash === 'nocturnaclub' || hash === 'hammerzz' || hash === 'hammerzzclub' || hash === 'hammerzzclub.com' || hash === 'site-77' || hash === '77') return 'site-77-nocturna-club';
       if (hash === 'site-76-aranya-earth' || hash === '76-aranya-earth' || hash === 'aranya-earth' || hash === 'aranya' || hash === 'craftedknots' || hash === 'craftedknots.in' || hash === 'site-76' || hash === '76') return 'site-76-aranya-earth';
       if (hash === 'site-75-aura-luxe' || hash === '75-aura-luxe' || hash === 'auraluxe' || hash === 'aura-luxe' || hash === 'bonevento' || hash === 'bonevento.com' || hash === 'site-75' || hash === '75') return 'site-75-aura-luxe';
@@ -1034,6 +1085,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       } else if (raw === 'luxespace-htx' || raw === 'luxespace' || raw === 'luxespacehtx' || raw === 'luxespace-venue' || raw === 'site-59' || raw === 'site/59' || raw === 'references/luxespacehtx' || raw === 'site/luxespace-htx') {
         setActiveViewInternal('luxespace-htx');
         setActiveSiteSlug('luxespace-htx');
+      } else if (raw === 'site-79-elysium-club' || raw === '79-elysium-club' || raw === 'elysium' || raw === 'elysium-club' || raw === 'privee' || raw === 'privee-delhi' || raw === 'priveenewdelhi' || raw === 'site-79' || raw === 'site/79' || raw === 'demo-79' || raw === 'references/site-79-elysium-club' || raw === 'portfolio/79-elysium-club' || raw === 'site/79-elysium-club') {
+        setActiveViewInternal('site-79-elysium-club');
+        setActiveSiteSlug('79-elysium-club');
       } else if (raw === 'site-78-aurelia-resort' || raw === '78-aurelia-resort' || raw === 'aurelia' || raw === 'aurelia-resort' || raw === 'aureliagoa' || raw === 'anemos' || raw === 'anemos-goa' || raw === 'anemosgoa' || raw === 'anemosgoa.com' || raw === 'site-78' || raw === 'site/78' || raw === 'demo-78' || raw === 'demo/aurelia' || raw === 'references/site-78-aurelia-resort' || raw === 'references/anemosgoa' || raw === 'portfolio/78-aurelia-resort' || raw === 'site/78-aurelia-resort') {
         setActiveViewInternal('site-78-aurelia-resort');
         setActiveSiteSlug('78-aurelia-resort');
@@ -1596,11 +1650,26 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       'psr-weddings': '70-psr-venture-weddings',
       '70-psr-venture-weddings': '70-psr-venture-weddings',
       '70-psr': '70-psr-venture-weddings',
-      'psrventureweddings': '70-psr-venture-weddings'
+      'psrventureweddings': '70-psr-venture-weddings',
+      '78-aurelia-resort': '78-aurelia-resort',
+      'aurelia-resort': '78-aurelia-resort',
+      'aurelia': '78-aurelia-resort',
+      'anemos': '78-aurelia-resort',
+      'anemos-goa': '78-aurelia-resort',
+      '79-elysium-club': '79-elysium-club',
+      'elysium-club': '79-elysium-club',
+      'elysium': '79-elysium-club',
+      'privee': '79-elysium-club',
+      'privee-delhi': '79-elysium-club',
+      '80-club-bw': '80-club-bw',
+      'club-bw': '80-club-bw',
+      'clubbw': '80-club-bw',
+      'clubnoirblanc': '80-club-bw',
+      'club-nb': '80-club-bw'
     };
     const target = aliasMap[clean] || clean;
     const found = websites.find(w => (w?.slug && (w.slug.toLowerCase() === clean || w.slug.toLowerCase() === target)) || (w?.id && (w.id.toLowerCase() === clean || w.id.toLowerCase() === target))) ||
-      ALL_30_COLLECTION_WEBSITES.find(w => (w?.slug && (w.slug.toLowerCase() === clean || w.slug.toLowerCase() === target)) || (w?.id && (w.id.toLowerCase() === clean || w.id.toLowerCase() === target))) ||
+      ALL_80_COLLECTION_WEBSITES.find(w => (w?.slug && (w.slug.toLowerCase() === clean || w.slug.toLowerCase() === target)) || (w?.id && (w.id.toLowerCase() === clean || w.id.toLowerCase() === target))) ||
       DEFAULT_WEBSITES.find(w => (w?.slug && w.slug.toLowerCase() === clean) || (w?.id && w.id.toLowerCase() === clean));
     return found ? normalizeBusinessSite(found) : undefined;
   };
